@@ -21,8 +21,7 @@ EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
 VERSION:		'Version';
 VERSIONNUM:	'4';
 SHEET:		'SHEET';
-POSINTEGER:	DIGIT+;
-NEGINTEGER:	'-'DIGIT+;
+INTEGER:		('-')?DIGIT+;
 FLOAT
     :   DIGIT+ '.' DIGIT* EXPONENT?
     |   '.' DIGIT+ EXPONENT?
@@ -33,8 +32,19 @@ SYMBOL	:	'SYMBOL';
 SYMBOLTYPE:	'res' 
 		| 'cap'
 		| 'ind' 
+		| 'ind2' //inductor with phase dot symbol
+		| 'diode'	
+		| 'schottky'
+		| 'zener'
+		| 'varactor'
+		| 'LED'
+		| 'TVSdiode'
+		| 'pnp'
+		| 'npn'
+		| 'voltage'
+		| 'current'
 		| 'nmos'
-		| 'pmos';	
+		| 'pmos';
 ROTTYPE	:	'R0' 
 		| 'R90' 
 		| 'R180' 
@@ -47,8 +57,6 @@ SYMATTR	:	'SYMATTR';
 INSTNAME:	'InstName';
 VALUE	:	'Value';
 SPICELINE :	'SpiceLine';
-TOL	:	'tol';
-PWR	:	'pwr';
 ASSIGN	:	'=';
 
 WINDOW 	:	'WINDOW';
@@ -63,16 +71,29 @@ WINDOWOPITON:	'Invisibile' //label invisible
 		| 'VRight'
 		| 'VTop'
 		| 'VBottom';
-CAPATTRIBUTE:	'V'
-		| 'Irms'
-		| 'Rser'
-		| 'Lser'
+
+RATTRIBUTE:	'tol'
+		|'pwr';
+PARATTRIBUTE:	'Rser' //un voltage può avere un Rser
 		| 'Rpar'
-		| 'Cpar'
+		| 'Cpar';
+CAPATTRIBUTE:	'V' // + PARATTRIBUTE
+		| 'Irms'
+		| 'Lser'
 		| 'mfg'
 		| 'pn'
 		| 'type';
-		
+INDATTRIBUTE:	'Ipk'; //+ PARATTRIBUTE
+
+DESCRIPTION:	'Description';
+TYPE	:	'Type';
+DIODEUPPER:	'Diode'; //TODO: quando si inserisce un tipo di diodo vengono inserite: SYMATTR Description Diode/	SYMATTR Type diode //da controllare semanticamente? che sia diode
+FLAG 	:	'FLAG';
+IOPIN	:	'IOPIN';
+IOPINATT:	'In'
+		| 'Out'
+		| 'BiDir';
+	
 //TODO: unità di misura tipo mu come le gestiamo?
 WS  :   ( ' '
         | '\t'
@@ -81,7 +102,8 @@ WS  :   ( ' '
         )+ {$channel=HIDDEN;}
     ;
     
-//TODO: STRING
-ID	:	(LETTER | DIGIT)(LETTER | DIGIT)*;		//come gestire caratteri speciali (_ va una sottolineatura sopra)/attenzione che un label può contenere anche solo numeri (per la semantica)
+STRING	:	'"' ~('"')* '"'; //TODO 
+ID	:	(LETTER | DIGIT | '-')(LETTER | DIGIT | '-')*;		//come gestire caratteri speciali (_ va una sottolineatura sopra)/attenzione che un label può contenere anche solo numeri (per la semantica) //attenzione che un id può essere anche un numero
+
 
 
