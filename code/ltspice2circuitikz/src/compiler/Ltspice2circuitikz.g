@@ -44,7 +44,8 @@ SYMBOLTYPE:	'res'
 		| 'voltage'
 		| 'current'
 		| 'nmos'
-		| 'pmos';
+		| 'pmos'
+		| 'polcap';
 ROTTYPE	:	'R0' 
 		| 'R90' 
 		| 'R180' 
@@ -60,7 +61,7 @@ SPICELINE :	'SpiceLine';
 ASSIGN	:	'=';
 
 WINDOW 	:	'WINDOW';
-WINDOWOPITON:	'Invisibile' //label invisible
+WINDOWOPTION:	'Invisibile' //label invisible
 		| 'Center' //label justification
 		| 'Left'
 		| 'Right'

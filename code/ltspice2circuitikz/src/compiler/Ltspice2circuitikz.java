@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-03-24 12:36:45
+// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-03-24 14:43:11
 
 	package compiler;
 
@@ -41,7 +41,7 @@ public class Ltspice2circuitikz extends Lexer {
 	public static final int VERSION=31;
 	public static final int VERSIONNUM=32;
 	public static final int WINDOW=33;
-	public static final int WINDOWOPITON=34;
+	public static final int WINDOWOPTION=34;
 	public static final int WIRE=35;
 	public static final int WS=36;
 
@@ -565,8 +565,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = SYMBOLTYPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:32:11: ( 'res' | 'cap' | 'ind' | 'ind2' | 'diode' | 'schottky' | 'zener' | 'varactor' | 'LED' | 'TVSdiode' | 'pnp' | 'npn' | 'voltage' | 'current' | 'nmos' | 'pmos' )
-			int alt12=16;
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:32:11: ( 'res' | 'cap' | 'ind' | 'ind2' | 'diode' | 'schottky' | 'zener' | 'varactor' | 'LED' | 'TVSdiode' | 'pnp' | 'npn' | 'voltage' | 'current' | 'nmos' | 'pmos' | 'polcap' )
+			int alt12=17;
 			switch ( input.LA(1) ) {
 			case 'r':
 				{
@@ -603,8 +603,8 @@ public class Ltspice2circuitikz extends Lexer {
 				if ( (LA12_3=='n') ) {
 					int LA12_14 = input.LA(3);
 					if ( (LA12_14=='d') ) {
-						int LA12_21 = input.LA(4);
-						if ( (LA12_21=='2') ) {
+						int LA12_22 = input.LA(4);
+						if ( (LA12_22=='2') ) {
 							alt12=4;
 						}
 
@@ -695,15 +695,23 @@ public class Ltspice2circuitikz extends Lexer {
 				break;
 			case 'p':
 				{
-				int LA12_10 = input.LA(2);
-				if ( (LA12_10=='n') ) {
+				switch ( input.LA(2) ) {
+				case 'n':
+					{
 					alt12=11;
-				}
-				else if ( (LA12_10=='m') ) {
+					}
+					break;
+				case 'm':
+					{
 					alt12=16;
-				}
-
-				else {
+					}
+					break;
+				case 'o':
+					{
+					alt12=17;
+					}
+					break;
+				default:
 					int nvaeMark = input.mark();
 					try {
 						input.consume();
@@ -714,7 +722,6 @@ public class Ltspice2circuitikz extends Lexer {
 						input.rewind(nvaeMark);
 					}
 				}
-
 				}
 				break;
 			case 'n':
@@ -859,6 +866,13 @@ public class Ltspice2circuitikz extends Lexer {
 
 					}
 					break;
+				case 17 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:48:5: 'polcap'
+					{
+					match("polcap"); 
+
+					}
+					break;
 
 			}
 			state.type = _type;
@@ -875,7 +889,7 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = ROTTYPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:48:9: ( 'R0' | 'R90' | 'R180' | 'R270' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:49:9: ( 'R0' | 'R90' | 'R180' | 'R270' )
 			int alt13=4;
 			int LA13_0 = input.LA(1);
 			if ( (LA13_0=='R') ) {
@@ -921,28 +935,28 @@ public class Ltspice2circuitikz extends Lexer {
 
 			switch (alt13) {
 				case 1 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:48:11: 'R0'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:49:11: 'R0'
 					{
 					match("R0"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:49:5: 'R90'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:50:5: 'R90'
 					{
 					match("R90"); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:50:5: 'R180'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:51:5: 'R180'
 					{
 					match("R180"); 
 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:51:5: 'R270'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:52:5: 'R270'
 					{
 					match("R270"); 
 
@@ -964,7 +978,7 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = MIRRORTYPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:52:12: ( 'M0' | 'M90' | 'M180' | 'M270' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:53:12: ( 'M0' | 'M90' | 'M180' | 'M270' )
 			int alt14=4;
 			int LA14_0 = input.LA(1);
 			if ( (LA14_0=='M') ) {
@@ -1010,28 +1024,28 @@ public class Ltspice2circuitikz extends Lexer {
 
 			switch (alt14) {
 				case 1 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:52:14: 'M0'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:53:14: 'M0'
 					{
 					match("M0"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:53:5: 'M90'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:54:5: 'M90'
 					{
 					match("M90"); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:54:5: 'M180'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:55:5: 'M180'
 					{
 					match("M180"); 
 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:55:5: 'M270'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:56:5: 'M270'
 					{
 					match("M270"); 
 
@@ -1053,8 +1067,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = SYMATTR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:56:9: ( 'SYMATTR' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:56:11: 'SYMATTR'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:57:9: ( 'SYMATTR' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:57:11: 'SYMATTR'
 			{
 			match("SYMATTR"); 
 
@@ -1074,8 +1088,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = INSTNAME;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:57:9: ( 'InstName' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:57:11: 'InstName'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:58:9: ( 'InstName' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:58:11: 'InstName'
 			{
 			match("InstName"); 
 
@@ -1095,8 +1109,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = VALUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:58:7: ( 'Value' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:58:9: 'Value'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:59:7: ( 'Value' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:59:9: 'Value'
 			{
 			match("Value"); 
 
@@ -1116,8 +1130,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = SPICELINE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:59:11: ( 'SpiceLine' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:59:13: 'SpiceLine'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:60:11: ( 'SpiceLine' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:60:13: 'SpiceLine'
 			{
 			match("SpiceLine"); 
 
@@ -1137,8 +1151,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = ASSIGN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:60:8: ( '=' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:60:10: '='
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:61:8: ( '=' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:61:10: '='
 			{
 			match('='); 
 			}
@@ -1157,8 +1171,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = WINDOW;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:62:9: ( 'WINDOW' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:62:11: 'WINDOW'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:63:9: ( 'WINDOW' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:63:11: 'WINDOW'
 			{
 			match("WINDOW"); 
 
@@ -1173,12 +1187,12 @@ public class Ltspice2circuitikz extends Lexer {
 	}
 	// $ANTLR end "WINDOW"
 
-	// $ANTLR start "WINDOWOPITON"
-	public final void mWINDOWOPITON() throws RecognitionException {
+	// $ANTLR start "WINDOWOPTION"
+	public final void mWINDOWOPTION() throws RecognitionException {
 		try {
-			int _type = WINDOWOPITON;
+			int _type = WINDOWOPTION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:63:13: ( 'Invisibile' | 'Center' | 'Left' | 'Right' | 'Top' | 'Bottom' | 'VCenter' | 'VLeft' | 'VRight' | 'VTop' | 'VBottom' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:64:13: ( 'Invisibile' | 'Center' | 'Left' | 'Right' | 'Top' | 'Bottom' | 'VCenter' | 'VLeft' | 'VRight' | 'VTop' | 'VBottom' )
 			int alt15=11;
 			switch ( input.LA(1) ) {
 			case 'I':
@@ -1259,77 +1273,77 @@ public class Ltspice2circuitikz extends Lexer {
 			}
 			switch (alt15) {
 				case 1 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:63:15: 'Invisibile'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:64:15: 'Invisibile'
 					{
 					match("Invisibile"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:64:5: 'Center'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:65:5: 'Center'
 					{
 					match("Center"); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:65:5: 'Left'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:66:5: 'Left'
 					{
 					match("Left"); 
 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:66:5: 'Right'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:67:5: 'Right'
 					{
 					match("Right"); 
 
 					}
 					break;
 				case 5 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:67:5: 'Top'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:68:5: 'Top'
 					{
 					match("Top"); 
 
 					}
 					break;
 				case 6 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:68:5: 'Bottom'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:69:5: 'Bottom'
 					{
 					match("Bottom"); 
 
 					}
 					break;
 				case 7 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:69:5: 'VCenter'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:70:5: 'VCenter'
 					{
 					match("VCenter"); 
 
 					}
 					break;
 				case 8 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:70:5: 'VLeft'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:71:5: 'VLeft'
 					{
 					match("VLeft"); 
 
 					}
 					break;
 				case 9 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:71:5: 'VRight'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:72:5: 'VRight'
 					{
 					match("VRight"); 
 
 					}
 					break;
 				case 10 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:72:5: 'VTop'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:73:5: 'VTop'
 					{
 					match("VTop"); 
 
 					}
 					break;
 				case 11 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:73:5: 'VBottom'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:74:5: 'VBottom'
 					{
 					match("VBottom"); 
 
@@ -1344,14 +1358,14 @@ public class Ltspice2circuitikz extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "WINDOWOPITON"
+	// $ANTLR end "WINDOWOPTION"
 
 	// $ANTLR start "RATTRIBUTE"
 	public final void mRATTRIBUTE() throws RecognitionException {
 		try {
 			int _type = RATTRIBUTE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:75:11: ( 'tol' | 'pwr' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:76:11: ( 'tol' | 'pwr' )
 			int alt16=2;
 			int LA16_0 = input.LA(1);
 			if ( (LA16_0=='t') ) {
@@ -1369,14 +1383,14 @@ public class Ltspice2circuitikz extends Lexer {
 
 			switch (alt16) {
 				case 1 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:75:13: 'tol'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:76:13: 'tol'
 					{
 					match("tol"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:76:4: 'pwr'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:77:4: 'pwr'
 					{
 					match("pwr"); 
 
@@ -1398,7 +1412,7 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = PARATTRIBUTE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:77:13: ( 'Rser' | 'Rpar' | 'Cpar' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:78:13: ( 'Rser' | 'Rpar' | 'Cpar' )
 			int alt17=3;
 			int LA17_0 = input.LA(1);
 			if ( (LA17_0=='R') ) {
@@ -1435,21 +1449,21 @@ public class Ltspice2circuitikz extends Lexer {
 
 			switch (alt17) {
 				case 1 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:77:15: 'Rser'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:78:15: 'Rser'
 					{
 					match("Rser"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:78:5: 'Rpar'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:79:5: 'Rpar'
 					{
 					match("Rpar"); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:79:5: 'Cpar'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:80:5: 'Cpar'
 					{
 					match("Cpar"); 
 
@@ -1471,7 +1485,7 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = CAPATTRIBUTE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:80:13: ( 'V' | 'Irms' | 'Lser' | 'mfg' | 'pn' | 'type' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:81:13: ( 'V' | 'Irms' | 'Lser' | 'mfg' | 'pn' | 'type' )
 			int alt18=6;
 			switch ( input.LA(1) ) {
 			case 'V':
@@ -1511,41 +1525,41 @@ public class Ltspice2circuitikz extends Lexer {
 			}
 			switch (alt18) {
 				case 1 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:80:15: 'V'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:81:15: 'V'
 					{
 					match('V'); 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:81:5: 'Irms'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:82:5: 'Irms'
 					{
 					match("Irms"); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:82:5: 'Lser'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:83:5: 'Lser'
 					{
 					match("Lser"); 
 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:83:5: 'mfg'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:84:5: 'mfg'
 					{
 					match("mfg"); 
 
 					}
 					break;
 				case 5 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:84:5: 'pn'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:85:5: 'pn'
 					{
 					match("pn"); 
 
 					}
 					break;
 				case 6 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:85:5: 'type'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:86:5: 'type'
 					{
 					match("type"); 
 
@@ -1567,8 +1581,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = INDATTRIBUTE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:86:13: ( 'Ipk' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:86:15: 'Ipk'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:13: ( 'Ipk' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:15: 'Ipk'
 			{
 			match("Ipk"); 
 
@@ -1588,8 +1602,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = DESCRIPTION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:88:12: ( 'Description' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:88:14: 'Description'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:12: ( 'Description' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:14: 'Description'
 			{
 			match("Description"); 
 
@@ -1609,8 +1623,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = TYPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:6: ( 'Type' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:8: 'Type'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:90:6: ( 'Type' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:90:8: 'Type'
 			{
 			match("Type"); 
 
@@ -1630,8 +1644,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = DIODEUPPER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:90:11: ( 'Diode' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:90:13: 'Diode'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:91:11: ( 'Diode' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:91:13: 'Diode'
 			{
 			match("Diode"); 
 
@@ -1651,8 +1665,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = FLAG;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:91:7: ( 'FLAG' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:91:9: 'FLAG'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:92:7: ( 'FLAG' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:92:9: 'FLAG'
 			{
 			match("FLAG"); 
 
@@ -1672,8 +1686,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = IOPIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:92:7: ( 'IOPIN' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:92:9: 'IOPIN'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:93:7: ( 'IOPIN' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:93:9: 'IOPIN'
 			{
 			match("IOPIN"); 
 
@@ -1693,7 +1707,7 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = IOPINATT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:93:9: ( 'In' | 'Out' | 'BiDir' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:94:9: ( 'In' | 'Out' | 'BiDir' )
 			int alt19=3;
 			switch ( input.LA(1) ) {
 			case 'I':
@@ -1718,21 +1732,21 @@ public class Ltspice2circuitikz extends Lexer {
 			}
 			switch (alt19) {
 				case 1 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:93:11: 'In'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:94:11: 'In'
 					{
 					match("In"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:94:5: 'Out'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:95:5: 'Out'
 					{
 					match("Out"); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:95:5: 'BiDir'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:96:5: 'BiDir'
 					{
 					match("BiDir"); 
 
@@ -1754,10 +1768,10 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:98:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:98:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:99:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:99:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
 			{
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:98:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:99:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
 			int cnt20=0;
 			loop20:
 			while (true) {
@@ -1807,11 +1821,11 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = STRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:105:8: ( '\"' (~ ( '\"' ) )* '\"' )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:105:10: '\"' (~ ( '\"' ) )* '\"'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:106:8: ( '\"' (~ ( '\"' ) )* '\"' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:106:10: '\"' (~ ( '\"' ) )* '\"'
 			{
 			match('\"'); 
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:105:14: (~ ( '\"' ) )*
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:106:14: (~ ( '\"' ) )*
 			loop21:
 			while (true) {
 				int alt21=2;
@@ -1857,8 +1871,8 @@ public class Ltspice2circuitikz extends Lexer {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:106:4: ( ( LETTER | DIGIT | '-' ) ( LETTER | DIGIT | '-' )* )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:106:6: ( LETTER | DIGIT | '-' ) ( LETTER | DIGIT | '-' )*
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:107:4: ( ( LETTER | DIGIT | '-' ) ( LETTER | DIGIT | '-' )* )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:107:6: ( LETTER | DIGIT | '-' ) ( LETTER | DIGIT | '-' )*
 			{
 			if ( input.LA(1)=='-'||(input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -1868,7 +1882,7 @@ public class Ltspice2circuitikz extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:106:28: ( LETTER | DIGIT | '-' )*
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:107:28: ( LETTER | DIGIT | '-' )*
 			loop22:
 			while (true) {
 				int alt22=2;
@@ -1910,7 +1924,7 @@ public class Ltspice2circuitikz extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:8: ( VERSION | VERSIONNUM | SHEET | INTEGER | FLOAT | WIRE | SYMBOL | SYMBOLTYPE | ROTTYPE | MIRRORTYPE | SYMATTR | INSTNAME | VALUE | SPICELINE | ASSIGN | WINDOW | WINDOWOPITON | RATTRIBUTE | PARATTRIBUTE | CAPATTRIBUTE | INDATTRIBUTE | DESCRIPTION | TYPE | DIODEUPPER | FLAG | IOPIN | IOPINATT | WS | STRING | ID )
+		// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:8: ( VERSION | VERSIONNUM | SHEET | INTEGER | FLOAT | WIRE | SYMBOL | SYMBOLTYPE | ROTTYPE | MIRRORTYPE | SYMATTR | INSTNAME | VALUE | SPICELINE | ASSIGN | WINDOW | WINDOWOPTION | RATTRIBUTE | PARATTRIBUTE | CAPATTRIBUTE | INDATTRIBUTE | DESCRIPTION | TYPE | DIODEUPPER | FLAG | IOPIN | IOPINATT | WS | STRING | ID )
 		int alt23=30;
 		alt23 = dfa23.predict(input);
 		switch (alt23) {
@@ -2027,9 +2041,9 @@ public class Ltspice2circuitikz extends Lexer {
 				}
 				break;
 			case 17 :
-				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:138: WINDOWOPITON
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:138: WINDOWOPTION
 				{
-				mWINDOWOPITON(); 
+				mWINDOWOPTION(); 
 
 				}
 				break;
@@ -2188,78 +2202,79 @@ public class Ltspice2circuitikz extends Lexer {
 
 	static final String DFA23_eotS =
 		"\1\uffff\1\50\1\51\2\40\1\60\1\uffff\17\40\1\uffff\7\40\3\uffff\7\40\2"+
-		"\uffff\1\60\4\40\1\60\1\uffff\20\40\1\50\4\40\1\u0082\6\40\1\u0089\3\40"+
-		"\1\u008f\26\40\1\6\5\40\2\u00ab\1\40\1\u00ab\5\40\1\u00ab\3\40\1\u00b6"+
-		"\1\40\1\u00ab\1\40\1\u00b9\1\u00ab\1\40\1\uffff\1\u0082\5\40\1\uffff\1"+
-		"\u0089\4\40\1\uffff\1\40\1\u00c5\5\40\1\u00b9\1\40\1\50\3\40\1\u008f\5"+
-		"\40\1\u00b6\5\40\1\u00d9\1\40\1\uffff\1\40\1\u00ab\5\40\1\u00b6\1\50\1"+
-		"\40\1\uffff\1\u00e2\1\u00ab\1\uffff\1\u00ab\2\u0082\1\40\2\u00e4\2\u0089"+
-		"\2\40\1\50\1\uffff\2\40\1\u00e4\2\40\1\50\2\40\1\u00ed\1\40\1\u00ef\1"+
-		"\40\1\u00b6\2\40\1\u00f3\3\40\1\uffff\2\40\1\u00ab\1\40\1\u00ab\3\40\1"+
-		"\uffff\1\u00b6\1\uffff\2\40\1\u00ff\2\40\1\u008f\1\40\1\u0103\1\uffff"+
-		"\1\40\1\uffff\1\40\1\u00b6\1\40\1\uffff\1\u0107\2\40\1\u010a\7\40\1\uffff"+
-		"\2\u00b6\1\40\1\uffff\1\u0113\2\u00b6\1\uffff\1\u0114\1\40\1\uffff\1\u00ab"+
-		"\2\40\1\u00ab\4\40\2\uffff\1\40\3\u00ab\1\u011d\2\40\1\u0120\1\uffff\2"+
-		"\40\1\uffff\1\u00b6\1\40\1\u0124\1\uffff";
+		"\uffff\1\60\4\40\1\60\1\uffff\20\40\1\50\5\40\1\u0084\6\40\1\u008b\3\40"+
+		"\1\u0091\26\40\1\6\5\40\2\u00ad\1\40\1\u00ad\5\40\1\u00ad\3\40\1\u00b8"+
+		"\1\40\1\u00ad\2\40\1\u00bc\1\u00ad\1\40\1\uffff\1\u0084\5\40\1\uffff\1"+
+		"\u008b\4\40\1\uffff\1\40\1\u00c8\5\40\1\u00bc\1\40\1\50\3\40\1\u0091\5"+
+		"\40\1\u00b8\5\40\1\u00dc\1\40\1\uffff\1\40\1\u00ad\5\40\1\u00b8\1\50\1"+
+		"\40\1\uffff\1\u00e5\1\u00ad\1\40\1\uffff\1\u00ad\2\u0084\1\40\2\u00e8"+
+		"\2\u008b\2\40\1\50\1\uffff\2\40\1\u00e8\2\40\1\50\2\40\1\u00f1\1\40\1"+
+		"\u00f3\1\40\1\u00b8\2\40\1\u00f7\3\40\1\uffff\2\40\1\u00ad\1\40\1\u00ad"+
+		"\3\40\1\uffff\1\40\1\u00b8\1\uffff\2\40\1\u0104\2\40\1\u0091\1\40\1\u0108"+
+		"\1\uffff\1\40\1\uffff\1\40\1\u00b8\1\40\1\uffff\1\u010c\2\40\1\u010f\5"+
+		"\40\1\u00ad\2\40\1\uffff\2\u00b8\1\40\1\uffff\1\u0118\2\u00b8\1\uffff"+
+		"\1\u0119\1\40\1\uffff\1\u00ad\2\40\1\u00ad\4\40\2\uffff\1\40\3\u00ad\1"+
+		"\u0122\2\40\1\u0125\1\uffff\2\40\1\uffff\1\u00b8\1\40\1\u0129\1\uffff";
 	static final String DFA23_eofS =
-		"\u0125\uffff";
+		"\u012a\uffff";
 	static final String DFA23_minS =
 		"\1\11\2\55\1\110\1\60\1\55\1\uffff\1\111\1\145\1\141\1\156\1\151\1\143"+
 		"\1\145\1\141\1\105\1\126\2\155\2\60\1\117\1\uffff\1\145\1\151\1\157\1"+
 		"\146\1\145\1\114\1\165\3\uffff\1\162\1\154\2\145\1\151\2\157\2\uffff\1"+
 		"\55\1\53\1\105\1\115\1\151\1\55\1\uffff\1\116\1\163\1\160\1\162\1\144"+
 		"\1\157\1\150\1\156\1\162\1\154\1\104\1\146\1\145\1\123\2\160\1\55\1\157"+
-		"\1\162\1\156\1\157\1\55\1\60\1\70\1\67\1\147\1\145\1\141\1\55\1\60\1\70"+
-		"\1\67\1\55\1\155\1\153\1\120\1\156\1\141\1\164\1\104\1\154\1\160\1\147"+
-		"\1\163\1\157\1\101\1\164\1\163\1\165\1\156\1\146\1\147\1\160\1\164\1\60"+
-		"\1\55\1\105\1\101\1\143\1\105\1\104\2\55\1\162\1\55\1\144\1\157\1\145"+
-		"\1\141\1\164\1\55\1\164\1\162\1\144\1\55\1\145\1\55\1\163\2\55\1\163\1"+
-		"\uffff\1\55\2\60\1\150\2\162\1\uffff\1\55\2\60\1\164\1\151\1\uffff\1\163"+
-		"\1\55\1\111\1\164\1\162\1\164\1\151\1\55\1\145\1\55\1\143\1\144\1\107"+
-		"\1\55\1\151\1\145\2\164\1\150\1\55\1\164\1\124\1\117\1\124\1\145\1\55"+
-		"\1\117\1\uffff\1\145\1\55\1\145\1\164\1\162\1\143\1\141\2\55\1\151\1\uffff"+
-		"\2\55\1\uffff\3\55\1\164\4\55\1\116\1\163\1\55\1\uffff\1\116\1\145\1\55"+
-		"\1\157\1\162\1\55\1\162\1\145\1\55\1\157\1\55\1\145\1\55\1\164\1\157\1"+
-		"\55\1\114\1\124\1\114\1\uffff\1\127\1\156\1\55\1\164\1\55\1\164\1\147"+
-		"\1\157\1\uffff\1\55\1\uffff\1\141\1\151\1\55\1\162\1\155\1\55\1\151\1"+
-		"\55\1\uffff\1\156\1\uffff\1\162\1\55\1\155\1\uffff\1\55\1\122\1\151\1"+
-		"\55\1\164\1\153\1\157\1\145\1\144\1\155\1\142\1\uffff\2\55\1\160\1\uffff"+
-		"\3\55\1\uffff\1\55\1\156\1\uffff\1\55\1\171\1\162\1\55\2\145\1\151\1\164"+
-		"\2\uffff\1\145\4\55\1\154\1\151\1\55\1\uffff\1\145\1\157\1\uffff\1\55"+
-		"\1\156\1\55\1\uffff";
+		"\1\154\1\162\1\156\1\157\1\55\1\60\1\70\1\67\1\147\1\145\1\141\1\55\1"+
+		"\60\1\70\1\67\1\55\1\155\1\153\1\120\1\156\1\141\1\164\1\104\1\154\1\160"+
+		"\1\147\1\163\1\157\1\101\1\164\1\163\1\165\1\156\1\146\1\147\1\160\1\164"+
+		"\1\60\1\55\1\105\1\101\1\143\1\105\1\104\2\55\1\162\1\55\1\144\1\157\1"+
+		"\145\1\141\1\164\1\55\1\164\1\162\1\144\1\55\1\145\1\55\1\163\1\143\2"+
+		"\55\1\163\1\uffff\1\55\2\60\1\150\2\162\1\uffff\1\55\2\60\1\164\1\151"+
+		"\1\uffff\1\163\1\55\1\111\1\164\1\162\1\164\1\151\1\55\1\145\1\55\1\143"+
+		"\1\144\1\107\1\55\1\151\1\145\2\164\1\150\1\55\1\164\1\124\1\117\1\124"+
+		"\1\145\1\55\1\117\1\uffff\1\145\1\55\1\145\1\164\1\162\1\143\1\141\2\55"+
+		"\1\151\1\uffff\2\55\1\141\1\uffff\3\55\1\164\4\55\1\116\1\163\1\55\1\uffff"+
+		"\1\116\1\145\1\55\1\157\1\162\1\55\1\162\1\145\1\55\1\157\1\55\1\145\1"+
+		"\55\1\164\1\157\1\55\1\114\1\124\1\114\1\uffff\1\127\1\156\1\55\1\164"+
+		"\1\55\1\164\1\147\1\157\1\uffff\1\160\1\55\1\uffff\1\141\1\151\1\55\1"+
+		"\162\1\155\1\55\1\151\1\55\1\uffff\1\156\1\uffff\1\162\1\55\1\155\1\uffff"+
+		"\1\55\1\122\1\151\1\55\1\164\1\153\1\157\1\145\1\144\1\55\1\155\1\142"+
+		"\1\uffff\2\55\1\160\1\uffff\3\55\1\uffff\1\55\1\156\1\uffff\1\55\1\171"+
+		"\1\162\1\55\2\145\1\151\1\164\2\uffff\1\145\4\55\1\154\1\151\1\55\1\uffff"+
+		"\1\145\1\157\1\uffff\1\55\1\156\1\55\1\uffff";
 	static final String DFA23_maxS =
 		"\3\172\1\160\1\71\1\172\1\uffff\1\111\1\145\1\165\1\156\1\151\1\143\1"+
 		"\145\1\157\1\163\1\171\1\167\1\160\1\163\1\71\1\162\1\uffff\1\160\1\157"+
 		"\1\171\1\146\1\151\1\114\1\165\3\uffff\1\162\1\154\2\145\1\151\2\157\2"+
 		"\uffff\1\172\1\71\1\105\1\115\1\151\1\172\1\uffff\1\122\1\163\1\160\1"+
 		"\162\1\144\1\157\1\150\1\156\1\162\1\154\1\104\1\146\1\145\1\123\2\160"+
-		"\1\172\1\157\1\162\1\156\1\157\1\172\1\60\1\70\1\67\1\147\1\145\1\141"+
-		"\1\172\1\60\1\70\1\67\1\172\1\155\1\153\1\120\1\156\1\141\1\164\1\104"+
-		"\1\154\1\160\1\147\1\163\1\157\1\101\1\164\1\163\1\165\1\156\1\146\1\147"+
-		"\1\160\1\164\1\71\1\172\1\105\1\102\1\143\1\105\1\104\2\172\1\162\1\172"+
-		"\1\144\1\157\1\145\1\141\1\164\1\172\1\164\1\162\1\144\1\172\1\145\1\172"+
-		"\1\163\2\172\1\163\1\uffff\1\172\2\60\1\150\2\162\1\uffff\1\172\2\60\1"+
-		"\164\1\151\1\uffff\1\163\1\172\1\111\1\164\1\162\1\164\1\151\1\172\1\145"+
-		"\1\172\1\143\1\144\1\107\1\172\1\151\1\145\2\164\1\150\1\172\1\164\1\124"+
-		"\1\117\1\124\1\145\1\172\1\117\1\uffff\1\145\1\172\1\145\1\164\1\162\1"+
-		"\143\1\141\2\172\1\151\1\uffff\2\172\1\uffff\3\172\1\164\4\172\1\116\1"+
-		"\163\1\172\1\uffff\1\116\1\145\1\172\1\157\1\162\1\172\1\162\1\145\1\172"+
-		"\1\157\1\172\1\145\1\172\1\164\1\157\1\172\1\114\1\124\1\114\1\uffff\1"+
-		"\127\1\156\1\172\1\164\1\172\1\164\1\147\1\157\1\uffff\1\172\1\uffff\1"+
-		"\141\1\151\1\172\1\162\1\155\1\172\1\151\1\172\1\uffff\1\156\1\uffff\1"+
-		"\162\1\172\1\155\1\uffff\1\172\1\122\1\151\1\172\1\164\1\153\1\157\1\145"+
-		"\1\144\1\155\1\142\1\uffff\2\172\1\160\1\uffff\3\172\1\uffff\1\172\1\156"+
-		"\1\uffff\1\172\1\171\1\162\1\172\2\145\1\151\1\164\2\uffff\1\145\4\172"+
-		"\1\154\1\151\1\172\1\uffff\1\145\1\157\1\uffff\1\172\1\156\1\172\1\uffff";
+		"\1\172\1\157\1\154\1\162\1\156\1\157\1\172\1\60\1\70\1\67\1\147\1\145"+
+		"\1\141\1\172\1\60\1\70\1\67\1\172\1\155\1\153\1\120\1\156\1\141\1\164"+
+		"\1\104\1\154\1\160\1\147\1\163\1\157\1\101\1\164\1\163\1\165\1\156\1\146"+
+		"\1\147\1\160\1\164\1\71\1\172\1\105\1\102\1\143\1\105\1\104\2\172\1\162"+
+		"\1\172\1\144\1\157\1\145\1\141\1\164\1\172\1\164\1\162\1\144\1\172\1\145"+
+		"\1\172\1\163\1\143\2\172\1\163\1\uffff\1\172\2\60\1\150\2\162\1\uffff"+
+		"\1\172\2\60\1\164\1\151\1\uffff\1\163\1\172\1\111\1\164\1\162\1\164\1"+
+		"\151\1\172\1\145\1\172\1\143\1\144\1\107\1\172\1\151\1\145\2\164\1\150"+
+		"\1\172\1\164\1\124\1\117\1\124\1\145\1\172\1\117\1\uffff\1\145\1\172\1"+
+		"\145\1\164\1\162\1\143\1\141\2\172\1\151\1\uffff\2\172\1\141\1\uffff\3"+
+		"\172\1\164\4\172\1\116\1\163\1\172\1\uffff\1\116\1\145\1\172\1\157\1\162"+
+		"\1\172\1\162\1\145\1\172\1\157\1\172\1\145\1\172\1\164\1\157\1\172\1\114"+
+		"\1\124\1\114\1\uffff\1\127\1\156\1\172\1\164\1\172\1\164\1\147\1\157\1"+
+		"\uffff\1\160\1\172\1\uffff\1\141\1\151\1\172\1\162\1\155\1\172\1\151\1"+
+		"\172\1\uffff\1\156\1\uffff\1\162\1\172\1\155\1\uffff\1\172\1\122\1\151"+
+		"\1\172\1\164\1\153\1\157\1\145\1\144\1\172\1\155\1\142\1\uffff\2\172\1"+
+		"\160\1\uffff\3\172\1\uffff\1\172\1\156\1\uffff\1\172\1\171\1\162\1\172"+
+		"\2\145\1\151\1\164\2\uffff\1\145\4\172\1\154\1\151\1\172\1\uffff\1\145"+
+		"\1\157\1\uffff\1\172\1\156\1\172\1\uffff";
 	static final String DFA23_acceptS =
 		"\6\uffff\1\5\17\uffff\1\17\7\uffff\1\34\1\35\1\36\7\uffff\1\24\1\2\6\uffff"+
-		"\1\4\121\uffff\1\11\6\uffff\1\12\5\uffff\1\33\33\uffff\1\10\12\uffff\1"+
-		"\21\2\uffff\1\22\13\uffff\1\25\23\uffff\1\6\10\uffff\1\27\1\uffff\1\23"+
-		"\10\uffff\1\31\1\uffff\1\15\3\uffff\1\3\13\uffff\1\32\3\uffff\1\30\3\uffff"+
+		"\1\4\123\uffff\1\11\6\uffff\1\12\5\uffff\1\33\33\uffff\1\10\12\uffff\1"+
+		"\21\3\uffff\1\22\13\uffff\1\25\23\uffff\1\6\10\uffff\1\27\2\uffff\1\23"+
+		"\10\uffff\1\31\1\uffff\1\15\3\uffff\1\3\14\uffff\1\32\3\uffff\1\30\3\uffff"+
 		"\1\7\2\uffff\1\20\10\uffff\1\1\1\13\10\uffff\1\14\2\uffff\1\16\3\uffff"+
 		"\1\26";
 	static final String DFA23_specialS =
-		"\u0125\uffff}>";
+		"\u012a\uffff}>";
 	static final String[] DFA23_transitionS = {
 			"\2\36\2\uffff\1\36\22\uffff\1\36\1\uffff\1\37\12\uffff\1\4\1\6\1\uffff"+
 			"\4\5\1\2\5\5\3\uffff\1\26\3\uffff\1\40\1\30\1\27\1\33\1\40\1\34\2\40"+
@@ -2285,42 +2300,41 @@ public class Ltspice2circuitikz extends Lexer {
 			"\1\71\15\uffff\1\72",
 			"\1\73\37\uffff\1\74\15\uffff\1\75",
 			"\1\76\30\uffff\1\77\11\uffff\1\100",
-			"\1\102\1\101\10\uffff\1\103",
-			"\1\105\2\uffff\1\104",
-			"\1\106\1\110\1\111\6\uffff\1\107\57\uffff\1\112\6\uffff\1\114\2\uffff"+
-			"\1\113",
-			"\1\115\1\117\1\120\6\uffff\1\116",
-			"\1\124\36\uffff\1\121\1\uffff\1\123\1\uffff\1\122",
+			"\1\102\1\101\1\103\7\uffff\1\104",
+			"\1\106\2\uffff\1\105",
+			"\1\107\1\111\1\112\6\uffff\1\110\57\uffff\1\113\6\uffff\1\115\2\uffff"+
+			"\1\114",
+			"\1\116\1\120\1\121\6\uffff\1\117",
+			"\1\125\36\uffff\1\122\1\uffff\1\124\1\uffff\1\123",
 			"",
-			"\1\125\12\uffff\1\126",
-			"\1\130\5\uffff\1\127",
-			"\1\131\11\uffff\1\132",
-			"\1\133",
-			"\1\134\3\uffff\1\135",
-			"\1\136",
+			"\1\126\12\uffff\1\127",
+			"\1\131\5\uffff\1\130",
+			"\1\132\11\uffff\1\133",
+			"\1\134",
+			"\1\135\3\uffff\1\136",
 			"\1\137",
-			"",
-			"",
-			"",
 			"\1\140",
+			"",
+			"",
+			"",
 			"\1\141",
 			"\1\142",
 			"\1\143",
 			"\1\144",
 			"\1\145",
 			"\1\146",
+			"\1\147",
 			"",
 			"",
 			"\1\40\1\6\1\uffff\12\52\7\uffff\4\40\1\53\25\40\6\uffff\4\40\1\53\25"+
 			"\40",
-			"\1\6\1\uffff\1\147\2\uffff\12\150",
-			"\1\151",
+			"\1\6\1\uffff\1\150\2\uffff\12\151",
 			"\1\152",
 			"\1\153",
+			"\1\154",
 			"\1\40\2\uffff\12\57\7\uffff\32\40\6\uffff\32\40",
 			"",
-			"\1\155\3\uffff\1\154",
-			"\1\156",
+			"\1\156\3\uffff\1\155",
 			"\1\157",
 			"\1\160",
 			"\1\161",
@@ -2335,26 +2349,26 @@ public class Ltspice2circuitikz extends Lexer {
 			"\1\172",
 			"\1\173",
 			"\1\174",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\17\40\1\175\12\40",
-			"\1\176",
+			"\1\175",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\17\40\1\176\12\40",
 			"\1\177",
 			"\1\u0080",
 			"\1\u0081",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u0082",
 			"\1\u0083",
-			"\1\u0084",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u0085",
 			"\1\u0086",
 			"\1\u0087",
 			"\1\u0088",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u0089",
 			"\1\u008a",
-			"\1\u008b",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u008c",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\22\40\1\u008d\2\40\1\u008e"+
+			"\1\u008d",
+			"\1\u008e",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\22\40\1\u008f\2\40\1\u0090"+
 			"\4\40",
-			"\1\u0090",
-			"\1\u0091",
 			"\1\u0092",
 			"\1\u0093",
 			"\1\u0094",
@@ -2374,194 +2388,200 @@ public class Ltspice2circuitikz extends Lexer {
 			"\1\u00a2",
 			"\1\u00a3",
 			"\1\u00a4",
-			"\12\150",
-			"\1\40\2\uffff\12\150\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00a5",
-			"\1\u00a7\1\u00a6",
-			"\1\u00a8",
-			"\1\u00a9",
+			"\1\u00a6",
+			"\12\151",
+			"\1\40\2\uffff\12\151\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00a7",
+			"\1\u00a9\1\u00a8",
 			"\1\u00aa",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00ab",
 			"\1\u00ac",
-			"\1\40\2\uffff\2\40\1\u00ad\7\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00ae",
-			"\1\u00af",
+			"\1\40\2\uffff\2\40\1\u00af\7\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00b0",
 			"\1\u00b1",
 			"\1\u00b2",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00b3",
 			"\1\u00b4",
-			"\1\u00b5",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00b5",
+			"\1\u00b6",
 			"\1\u00b7",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\u00b8",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00b9",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00ba",
+			"\1\u00bb",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00bd",
 			"",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\u00bb",
-			"\1\u00bc",
-			"\1\u00bd",
 			"\1\u00be",
 			"\1\u00bf",
-			"",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00c0",
 			"\1\u00c1",
 			"\1\u00c2",
-			"\1\u00c3",
 			"",
-			"\1\u00c4",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00c3",
+			"\1\u00c4",
+			"\1\u00c5",
 			"\1\u00c6",
+			"",
 			"\1\u00c7",
-			"\1\u00c8",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00c9",
 			"\1\u00ca",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00cb",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00cc",
 			"\1\u00cd",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00ce",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00cf",
 			"\1\u00d0",
 			"\1\u00d1",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00d2",
 			"\1\u00d3",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00d4",
 			"\1\u00d5",
 			"\1\u00d6",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00d7",
 			"\1\u00d8",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00d9",
 			"\1\u00da",
-			"",
 			"\1\u00db",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\u00dc",
 			"\1\u00dd",
+			"",
 			"\1\u00de",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00df",
 			"\1\u00e0",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00e1",
-			"",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00e2",
 			"\1\u00e3",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\u00e5",
-			"\1\u00e6",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00e4",
 			"",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00e6",
+			"",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00e7",
-			"\1\u00e8",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00e9",
 			"\1\u00ea",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"",
 			"\1\u00eb",
 			"\1\u00ec",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00ed",
 			"\1\u00ee",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00ef",
 			"\1\u00f0",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\u00f1",
 			"\1\u00f2",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00f4",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00f5",
 			"\1\u00f6",
-			"",
-			"\1\u00f7",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00f8",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00f9",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u00fa",
+			"",
 			"\1\u00fb",
 			"\1\u00fc",
-			"",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"",
 			"\1\u00fd",
-			"\1\u00fe",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u00fe",
+			"\1\u00ff",
 			"\1\u0100",
+			"",
 			"\1\u0101",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"",
 			"\1\u0102",
+			"\1\u0103",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"",
-			"\1\u0104",
-			"",
 			"\1\u0105",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u0106",
-			"",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\u0108",
+			"\1\u0107",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"",
 			"\1\u0109",
+			"",
+			"\1\u010a",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u010b",
-			"\1\u010c",
+			"",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u010d",
 			"\1\u010e",
-			"\1\u010f",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u0110",
 			"\1\u0111",
-			"",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u0112",
-			"",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"",
+			"\1\u0113",
+			"\1\u0114",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u0115",
-			"",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u0116",
-			"\1\u0117",
+			"",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\u0118",
-			"\1\u0119",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u0117",
+			"",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u011a",
+			"",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u011b",
-			"",
-			"",
 			"\1\u011c",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u011d",
 			"\1\u011e",
 			"\1\u011f",
-			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u0120",
+			"",
 			"",
 			"\1\u0121",
-			"\1\u0122",
-			"",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			"\1\u0123",
+			"\1\u0124",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"",
+			"\1\u0126",
+			"\1\u0127",
+			"",
+			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
+			"\1\u0128",
 			"\1\40\2\uffff\12\40\7\uffff\32\40\6\uffff\32\40",
 			""
 	};
@@ -2597,7 +2617,7 @@ public class Ltspice2circuitikz extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "1:1: Tokens : ( VERSION | VERSIONNUM | SHEET | INTEGER | FLOAT | WIRE | SYMBOL | SYMBOLTYPE | ROTTYPE | MIRRORTYPE | SYMATTR | INSTNAME | VALUE | SPICELINE | ASSIGN | WINDOW | WINDOWOPITON | RATTRIBUTE | PARATTRIBUTE | CAPATTRIBUTE | INDATTRIBUTE | DESCRIPTION | TYPE | DIODEUPPER | FLAG | IOPIN | IOPINATT | WS | STRING | ID );";
+			return "1:1: Tokens : ( VERSION | VERSIONNUM | SHEET | INTEGER | FLOAT | WIRE | SYMBOL | SYMBOLTYPE | ROTTYPE | MIRRORTYPE | SYMATTR | INSTNAME | VALUE | SPICELINE | ASSIGN | WINDOW | WINDOWOPTION | RATTRIBUTE | PARATTRIBUTE | CAPATTRIBUTE | INDATTRIBUTE | DESCRIPTION | TYPE | DIODEUPPER | FLAG | IOPIN | IOPINATT | WS | STRING | ID );";
 		}
 	}
 
