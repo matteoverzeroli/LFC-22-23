@@ -1,15 +1,47 @@
-lexer grammar Ltspice2circuitikz;
+grammar Ltspice2circuitikz;
 
 options {
 	language = Java;
+	k=1;
 }
 
 @lexer::header {
-	package compiler;
+package compiler;
+}
+@header{
+package compiler;
 }
 
 @members {
 }
+parseCircuit:	prologueRule
+		componentRule*;
+prologueRule
+	:	versionRule //CONTROLLARE CHE SIA 4
+		sheetRule
+	;
+versionRule
+	:	VERSION INTEGER
+	;
+sheetRule
+	:	SHEET INTEGER INTEGER INTEGER
+	;
+componentRule
+	:	wireRule {System.out.println("sto riconoscendo wirerule");}
+		//| symbolRule
+		//| symattrRule
+	;
+wireRule:
+		WIRE INTEGER INTEGER INTEGER INTEGER
+	;
+symbolRule
+	:
+		SYMBOL SYMBOLTYPE INTEGER INTEGER (ROTTYPE | MIRRORTYPE)
+	;
+symattrRule
+	:
+		SYMATTR INSTNAME ID	
+	;
 
 fragment 
 LETTER : 'a'..'z'|'A'..'Z';
@@ -18,17 +50,9 @@ DIGIT : '0'..'9';
 fragment
 EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
 
-WS  :   ( ' '
-        | '\t'
-        | '\r'
-        | '\n'
-        )+ {$channel=HIDDEN;}
-    ;
 VERSION:		'Version';
-VERSIONNUM:	'4';
 SHEET:		'SHEET';
-POSINTEGER:	DIGIT+;
-NEGINTEGER:	'-'DIGIT+;
+INTEGER:		('-')?DIGIT+;
 FLOAT
     :   DIGIT+ '.' DIGIT* EXPONENT?
     |   '.' DIGIT+ EXPONENT?
@@ -39,8 +63,20 @@ SYMBOL	:	'SYMBOL';
 SYMBOLTYPE:	'res' 
 		| 'cap'
 		| 'ind' 
+		| 'ind2' //inductor with phase dot symbol
+		| 'diode'	
+		| 'schottky'
+		| 'zener'
+		| 'varactor'
+		| 'LED'
+		| 'TVSdiode'
+		| 'pnp'
+		| 'npn'
+		| 'voltage'
+		| 'current'
 		| 'nmos'
-		| 'pmos';	
+		| 'pmos'
+		| 'polcap';
 ROTTYPE	:	'R0' 
 		| 'R90' 
 		| 'R180' 
@@ -53,12 +89,10 @@ SYMATTR	:	'SYMATTR';
 INSTNAME:	'InstName';
 VALUE	:	'Value';
 SPICELINE :	'SpiceLine';
-TOL	:	'tol';
-PWR	:	'pwr';
 ASSIGN	:	'=';
 
 WINDOW 	:	'WINDOW';
-WINDOWOPITON:	'Invisibile' //label invisible
+WINDOWOPTION:	'Invisibile' //label invisible
 		| 'Center' //label justification
 		| 'Left'
 		| 'Right'
@@ -70,8 +104,38 @@ WINDOWOPITON:	'Invisibile' //label invisible
 		| 'VTop'
 		| 'VBottom';
 
-ID	:	(LETTER | DIGIT)(LETTER | DIGIT)*;		//come gestire caratteri speciali (_ va una sottolineatura sopra)/attenzione che un label può contenere anche solo numeri (per la semantica)
+RATTRIBUTE:	'tol'
+		|'pwr';
+PARATTRIBUTE:	'Rser' //un voltage può avere un Rser
+		| 'Rpar'
+		| 'Cpar';
+CAPATTRIBUTE:	'V' // + PARATTRIBUTE
+		| 'Irms'
+		| 'Lser'
+		| 'mfg'
+		| 'pn'
+		| 'type';
+INDATTRIBUTE:	'Ipk'; //+ PARATTRIBUTE
 
+DESCRIPTION:	'Description';
+TYPE	:	'Type';
+DIODEUPPER:	'Diode'; //TODO: quando si inserisce un tipo di diodo vengono inserite: SYMATTR Description Diode/	SYMATTR Type diode //da controllare semanticamente? che sia diode
+FLAG 	:	'FLAG';
+IOPIN	:	'IOPIN';
+IOPINATT:	'In'
+		| 'Out'
+		| 'BiDir';
+	
+//TODO: unità di misura tipo mu come le gestiamo?
+WS  :   ( ' '
+        | '\t'
+        | '\r'
+        | '\n'
+        )+ {$channel=HIDDEN;}
+    ;
+    
+STRING	:	'"' ~('"')* '"'; //TODO 
+ID	:	(LETTER | DIGIT | '-')(LETTER | DIGIT | '-')*;		//come gestire caratteri speciali (_ va una sottolineatura sopra)/attenzione che un label può contenere anche solo numeri (per la semantica) //attenzione che un id può essere anche un numero
 
 
 

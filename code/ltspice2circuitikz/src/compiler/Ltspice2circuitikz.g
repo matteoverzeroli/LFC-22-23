@@ -1,15 +1,47 @@
-lexer grammar Ltspice2circuitikz;
+grammar Ltspice2circuitikz;
 
 options {
 	language = Java;
+	k=1;
 }
 
 @lexer::header {
-	package compiler;
+package compiler;
+}
+@header{
+package compiler;
 }
 
 @members {
 }
+parseCircuit:	prologueRule
+		componentRule* {System.out.println("Ho riconosciuto component rule");}; //se metto tipo un WIRE.... poi una lettera a caso riconosce solo il primo wire e poi termina (correttamente)
+prologueRule
+	:	versionRule //CONTROLLARE CHE SIA 4
+		sheetRule
+	;
+versionRule
+	:	VERSION INTEGER
+	;
+sheetRule
+	:	SHEET INTEGER INTEGER INTEGER
+	;
+componentRule
+	:	wireRule {System.out.println("sto riconoscendo wirerule");}
+		| symbolRule {System.out.println("sto riconoscendo symbol");}
+		| symattrRule{System.out.println("sto riconoscendo symattr");}
+	;
+wireRule:
+		WIRE INTEGER INTEGER INTEGER INTEGER
+	;
+symbolRule
+	:
+		SYMBOL SYMBOLTYPE INTEGER INTEGER (ROTTYPE | MIRRORTYPE)
+	;
+symattrRule
+	:
+		SYMATTR INSTNAME ID	
+	;
 
 fragment 
 LETTER : 'a'..'z'|'A'..'Z';
@@ -19,7 +51,6 @@ fragment
 EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
 
 VERSION:		'Version';
-VERSIONNUM:	'4';
 SHEET:		'SHEET';
 INTEGER:		('-')?DIGIT+;
 FLOAT
