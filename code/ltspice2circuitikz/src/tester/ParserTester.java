@@ -9,13 +9,13 @@ import compiler.Ltspice2circuitikzLexer;
 import compiler.Ltspice2circuitikzParser;
 
 public class ParserTester {
-
+ 
 	static Ltspice2circuitikzParser parser; 
-  
-	public static void main(String[] args) {
-		CommonTokenStream tokens;
-	  	String fileIn = ".\\resources\\Test2.asc";
-
+   
+	public static void main(String[] args) { 
+		CommonTokenStream tokens; 
+	  	String fileIn = ".\\resources\\Test4.asc";
+ 
 		try {
 			System.out.println ("Parsing con ANTLR lexer");
 			System.out.println ("-----------------------");

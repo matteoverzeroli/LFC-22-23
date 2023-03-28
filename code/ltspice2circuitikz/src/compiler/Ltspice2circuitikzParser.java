@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-03-28 12:06:09
+// $ANTLR 3.5.1 C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-03-28 18:12:46
 
 package compiler;
 
@@ -425,29 +425,39 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "symattrRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:59:1: symattrRule : SYMATTR ( INSTNAME ID | VALUE INTEGER | SPICELINE ( attrRule )+ ) ;
+	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:59:1: symattrRule : SYMATTR ( INSTNAME ID | DESCRIPTION ID | TYPE SYMBOLTYPE | VALUE ( INTEGER | FLOAT | ID ) | SPICELINE ( attrRule )+ ) ;
 	public final void symattrRule() throws RecognitionException {
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:60:2: ( SYMATTR ( INSTNAME ID | VALUE INTEGER | SPICELINE ( attrRule )+ ) )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:61:3: SYMATTR ( INSTNAME ID | VALUE INTEGER | SPICELINE ( attrRule )+ )
+			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:60:2: ( SYMATTR ( INSTNAME ID | DESCRIPTION ID | TYPE SYMBOLTYPE | VALUE ( INTEGER | FLOAT | ID ) | SPICELINE ( attrRule )+ ) )
+			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:61:3: SYMATTR ( INSTNAME ID | DESCRIPTION ID | TYPE SYMBOLTYPE | VALUE ( INTEGER | FLOAT | ID ) | SPICELINE ( attrRule )+ )
 			{
 			match(input,SYMATTR,FOLLOW_SYMATTR_in_symattrRule252); 
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:61:11: ( INSTNAME ID | VALUE INTEGER | SPICELINE ( attrRule )+ )
-			int alt4=3;
+			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:61:11: ( INSTNAME ID | DESCRIPTION ID | TYPE SYMBOLTYPE | VALUE ( INTEGER | FLOAT | ID ) | SPICELINE ( attrRule )+ )
+			int alt4=5;
 			switch ( input.LA(1) ) {
 			case INSTNAME:
 				{
 				alt4=1;
 				}
 				break;
-			case VALUE:
+			case DESCRIPTION:
 				{
 				alt4=2;
 				}
 				break;
-			case SPICELINE:
+			case TYPE:
 				{
 				alt4=3;
+				}
+				break;
+			case VALUE:
+				{
+				alt4=4;
+				}
+				break;
+			case SPICELINE:
+				{
+				alt4=5;
 				}
 				break;
 			default:
@@ -457,24 +467,45 @@ public class Ltspice2circuitikzParser extends Parser {
 			}
 			switch (alt4) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:61:12: INSTNAME ID
+					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:61:13: INSTNAME ID
 					{
-					match(input,INSTNAME,FOLLOW_INSTNAME_in_symattrRule255); 
-					match(input,ID,FOLLOW_ID_in_symattrRule257); 
+					match(input,INSTNAME,FOLLOW_INSTNAME_in_symattrRule256); 
+					match(input,ID,FOLLOW_ID_in_symattrRule258); 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:61:26: VALUE INTEGER
+					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:62:6: DESCRIPTION ID
 					{
-					match(input,VALUE,FOLLOW_VALUE_in_symattrRule261); 
-					match(input,INTEGER,FOLLOW_INTEGER_in_symattrRule263); 
+					match(input,DESCRIPTION,FOLLOW_DESCRIPTION_in_symattrRule265); 
+					match(input,ID,FOLLOW_ID_in_symattrRule267); 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:61:42: SPICELINE ( attrRule )+
+					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:63:6: TYPE SYMBOLTYPE
 					{
-					match(input,SPICELINE,FOLLOW_SPICELINE_in_symattrRule267); 
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:61:52: ( attrRule )+
+					match(input,TYPE,FOLLOW_TYPE_in_symattrRule274); 
+					match(input,SYMBOLTYPE,FOLLOW_SYMBOLTYPE_in_symattrRule276); 
+					}
+					break;
+				case 4 :
+					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:64:6: VALUE ( INTEGER | FLOAT | ID )
+					{
+					match(input,VALUE,FOLLOW_VALUE_in_symattrRule283); 
+					if ( (input.LA(1) >= FLOAT && input.LA(1) <= ID)||input.LA(1)==INTEGER ) {
+						input.consume();
+						state.errorRecovery=false;
+					}
+					else {
+						MismatchedSetException mse = new MismatchedSetException(null,input);
+						throw mse;
+					}
+					}
+					break;
+				case 5 :
+					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:68:6: SPICELINE ( attrRule )+
+					{
+					match(input,SPICELINE,FOLLOW_SPICELINE_in_symattrRule329); 
+					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:68:16: ( attrRule )+
 					int cnt3=0;
 					loop3:
 					while (true) {
@@ -486,9 +517,9 @@ public class Ltspice2circuitikzParser extends Parser {
 
 						switch (alt3) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:61:52: attrRule
+							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:68:16: attrRule
 							{
-							pushFollow(FOLLOW_attrRule_in_symattrRule269);
+							pushFollow(FOLLOW_attrRule_in_symattrRule331);
 							attrRule();
 							state._fsp--;
 
@@ -524,11 +555,11 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "attrRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:64:1: attrRule : ( CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE ) ASSIGN ( INTEGER | FLOAT ) ;
+	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:71:1: attrRule : ( CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE ) ASSIGN ( INTEGER | FLOAT ) ;
 	public final void attrRule() throws RecognitionException {
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:65:2: ( ( CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE ) ASSIGN ( INTEGER | FLOAT ) )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:66:3: ( CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE ) ASSIGN ( INTEGER | FLOAT )
+			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:72:2: ( ( CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE ) ASSIGN ( INTEGER | FLOAT ) )
+			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:73:3: ( CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE ) ASSIGN ( INTEGER | FLOAT )
 			{
 			if ( input.LA(1)==CAPATTRIBUTE||input.LA(1)==INDATTRIBUTE||(input.LA(1) >= PARATTRIBUTE && input.LA(1) <= RATTRIBUTE) ) {
 				input.consume();
@@ -538,7 +569,7 @@ public class Ltspice2circuitikzParser extends Parser {
 				MismatchedSetException mse = new MismatchedSetException(null,input);
 				throw mse;
 			}
-			match(input,ASSIGN,FOLLOW_ASSIGN_in_attrRule304); 
+			match(input,ASSIGN,FOLLOW_ASSIGN_in_attrRule366); 
 			if ( input.LA(1)==FLOAT||input.LA(1)==INTEGER ) {
 				input.consume();
 				state.errorRecovery=false;
@@ -599,14 +630,18 @@ public class Ltspice2circuitikzParser extends Parser {
 	public static final BitSet FOLLOW_INTEGER_in_symbolRule230 = new BitSet(new long[]{0x0000000000008000L});
 	public static final BitSet FOLLOW_INTEGER_in_symbolRule232 = new BitSet(new long[]{0x0000000000480000L});
 	public static final BitSet FOLLOW_set_in_symbolRule234 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SYMATTR_in_symattrRule252 = new BitSet(new long[]{0x0000000041004000L});
-	public static final BitSet FOLLOW_INSTNAME_in_symattrRule255 = new BitSet(new long[]{0x0000000000001000L});
-	public static final BitSet FOLLOW_ID_in_symattrRule257 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VALUE_in_symattrRule261 = new BitSet(new long[]{0x0000000000008000L});
-	public static final BitSet FOLLOW_INTEGER_in_symattrRule263 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SPICELINE_in_symattrRule267 = new BitSet(new long[]{0x0000000000302020L});
-	public static final BitSet FOLLOW_attrRule_in_symattrRule269 = new BitSet(new long[]{0x0000000000302022L});
-	public static final BitSet FOLLOW_set_in_attrRule285 = new BitSet(new long[]{0x0000000000000010L});
-	public static final BitSet FOLLOW_ASSIGN_in_attrRule304 = new BitSet(new long[]{0x0000000000008800L});
-	public static final BitSet FOLLOW_set_in_attrRule308 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SYMATTR_in_symattrRule252 = new BitSet(new long[]{0x0000000061004040L});
+	public static final BitSet FOLLOW_INSTNAME_in_symattrRule256 = new BitSet(new long[]{0x0000000000001000L});
+	public static final BitSet FOLLOW_ID_in_symattrRule258 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DESCRIPTION_in_symattrRule265 = new BitSet(new long[]{0x0000000000001000L});
+	public static final BitSet FOLLOW_ID_in_symattrRule267 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TYPE_in_symattrRule274 = new BitSet(new long[]{0x0000000010000000L});
+	public static final BitSet FOLLOW_SYMBOLTYPE_in_symattrRule276 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VALUE_in_symattrRule283 = new BitSet(new long[]{0x0000000000009800L});
+	public static final BitSet FOLLOW_set_in_symattrRule285 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SPICELINE_in_symattrRule329 = new BitSet(new long[]{0x0000000000302020L});
+	public static final BitSet FOLLOW_attrRule_in_symattrRule331 = new BitSet(new long[]{0x0000000000302022L});
+	public static final BitSet FOLLOW_set_in_attrRule347 = new BitSet(new long[]{0x0000000000000010L});
+	public static final BitSet FOLLOW_ASSIGN_in_attrRule366 = new BitSet(new long[]{0x0000000000008800L});
+	public static final BitSet FOLLOW_set_in_attrRule370 = new BitSet(new long[]{0x0000000000000002L});
 }

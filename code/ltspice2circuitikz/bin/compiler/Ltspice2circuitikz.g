@@ -58,14 +58,21 @@ symbolRule
 	;
 symattrRule
 	:
-		SYMATTR (INSTNAME ID | VALUE INTEGER | SPICELINE attrRule+)
+		SYMATTR ( INSTNAME ID
+			| DESCRIPTION ID
+			| TYPE SYMBOLTYPE
+			| VALUE (  INTEGER 
+				 | FLOAT 
+				 | ID) // questo è problematico perchè accetta tutto p.e. Ciao come stai? lo accetta... 
+				       //potrebbe essere un caso limite che decidiamo di non affrontare.. creiamo una regola a aparte?
+			| SPICELINE attrRule+)
 	;
 	
 attrRule
 	:
 		(CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
 		 ASSIGN
-		(INTEGER | FLOAT) // esempio: Cpar=1, pwr=2.5, Rser=1
+		(INTEGER | FLOAT) // esempio: Cpar=1, pwr=2.5, Rser=1, può essere stringa?
 ;
 
 fragment 
