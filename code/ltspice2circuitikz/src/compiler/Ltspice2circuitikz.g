@@ -21,27 +21,52 @@ prologueRule
 		sheetRule
 	;
 versionRule
-	:	VERSION INTEGER
+	:	
+		VERSION INTEGER
 	;
+	
 sheetRule
-	:	SHEET INTEGER INTEGER INTEGER
+	:	
+		SHEET INTEGER INTEGER INTEGER
 	;
+	
 componentRule
 	:	wireRule {System.out.println("sto riconoscendo wirerule");}
 		| symbolRule {System.out.println("sto riconoscendo symbol");}
 		| symattrRule{System.out.println("sto riconoscendo symattr");}
+		| flagRule{System.out.println("sto riconoscendo flag");}
+		| windowRule{System.out.println("sto riconoscendo window");}
 	;
-wireRule:
+wireRule
+	:
 		WIRE INTEGER INTEGER INTEGER INTEGER
 	;
+	
+flagRule
+	:	
+		FLAG INTEGER INTEGER INTEGER
+	;
+	
+windowRule
+	:	
+		WINDOW INTEGER INTEGER INTEGER WINDOWOPTION INTEGER // forse l'ultimo INTEGER è opzionale, verificare
+	;
+
 symbolRule
 	:
 		SYMBOL SYMBOLTYPE INTEGER INTEGER (ROTTYPE | MIRRORTYPE)
 	;
 symattrRule
 	:
-		SYMATTR INSTNAME ID	
+		SYMATTR (INSTNAME ID | VALUE INTEGER | SPICELINE attrRule+)
 	;
+	
+attrRule
+	:
+		(CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
+		 ASSIGN
+		(INTEGER | FLOAT) // esempio: Cpar=1, pwr=2.5, Rser=1, può essere stringa?
+;
 
 fragment 
 LETTER : 'a'..'z'|'A'..'Z';

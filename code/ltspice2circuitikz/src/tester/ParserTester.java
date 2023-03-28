@@ -10,11 +10,11 @@ import compiler.Ltspice2circuitikzParser;
 
 public class ParserTester {
 
-	static Ltspice2circuitikzParser parser;
+	static Ltspice2circuitikzParser parser; 
   
 	public static void main(String[] args) {
 		CommonTokenStream tokens;
-	  	String fileIn = ".\\resources\\input.asc";
+	  	String fileIn = ".\\resources\\Test2.asc";
 
 		try {
 			System.out.println ("Parsing con ANTLR lexer");
@@ -26,13 +26,13 @@ public class ParserTester {
 												new FileReader(fileIn))); 
 
 			// 2.Creo uno stream (canale) di token per la comunicazione tra lexer e parser
-		    tokens = new CommonTokenStream(lexer);
+		    tokens = new CommonTokenStream(lexer); 
 		    
 		    // 3.Istanzio il parser
 			parser = new Ltspice2circuitikzParser(tokens);
 
 			// 4.Lancio l'analisi sintattica del documento di ingresso
-			parser.parseCircuit();
+			parser.parseCircuit(); 
 		
 		} catch (Exception e) {
 			System.out.println ("Parsing con ANTLR abortito\n\n");

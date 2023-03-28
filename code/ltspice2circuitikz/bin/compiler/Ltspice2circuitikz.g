@@ -15,33 +15,58 @@ package compiler;
 @members {
 }
 parseCircuit:	prologueRule
-		componentRule*;
+		componentRule* {System.out.println("Ho riconosciuto component rule");}; //se metto tipo un WIRE.... poi una lettera a caso riconosce solo il primo wire e poi termina (correttamente)
 prologueRule
 	:	versionRule //CONTROLLARE CHE SIA 4
 		sheetRule
 	;
 versionRule
-	:	VERSION INTEGER
+	:	
+		VERSION INTEGER
 	;
+	
 sheetRule
-	:	SHEET INTEGER INTEGER INTEGER
+	:	
+		SHEET INTEGER INTEGER INTEGER
 	;
+	
 componentRule
 	:	wireRule {System.out.println("sto riconoscendo wirerule");}
-		//| symbolRule
-		//| symattrRule
+		| symbolRule {System.out.println("sto riconoscendo symbol");}
+		| symattrRule{System.out.println("sto riconoscendo symattr");}
+		| flagRule{System.out.println("sto riconoscendo flag");}
+		| windowRule{System.out.println("sto riconoscendo window");}
 	;
-wireRule:
+wireRule
+	:
 		WIRE INTEGER INTEGER INTEGER INTEGER
 	;
+	
+flagRule
+	:	
+		FLAG INTEGER INTEGER INTEGER
+	;
+	
+windowRule
+	:	
+		WINDOW INTEGER INTEGER INTEGER WINDOWOPTION INTEGER // forse l'ultimo INTEGER è opzionale, verificare
+	;
+
 symbolRule
 	:
 		SYMBOL SYMBOLTYPE INTEGER INTEGER (ROTTYPE | MIRRORTYPE)
 	;
 symattrRule
 	:
-		SYMATTR INSTNAME ID	
+		SYMATTR (INSTNAME ID | VALUE INTEGER | SPICELINE attrRule+)
 	;
+	
+attrRule
+	:
+		(CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
+		 ASSIGN
+		(INTEGER | FLOAT) // esempio: Cpar=1, pwr=2.5, Rser=1
+;
 
 fragment 
 LETTER : 'a'..'z'|'A'..'Z';
