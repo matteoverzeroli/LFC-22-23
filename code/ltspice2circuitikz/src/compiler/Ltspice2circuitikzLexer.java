@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-03-28 18:12:46
+// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-03-29 10:15:53
 
 package compiler;
 
@@ -14,8 +14,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 	public static final int ASSIGN=4;
 	public static final int CAPATTRIBUTE=5;
 	public static final int DESCRIPTION=6;
-	public static final int DIGIT=7;
-	public static final int DIODEUPPER=8;
+	public static final int DESCRIPTIONATTR=7;
+	public static final int DIGIT=8;
 	public static final int EXPONENT=9;
 	public static final int FLAG=10;
 	public static final int FLOAT=11;
@@ -57,13 +57,13 @@ public class Ltspice2circuitikzLexer extends Lexer {
 	public Ltspice2circuitikzLexer(CharStream input, RecognizerSharedState state) {
 		super(input,state);
 	}
-	@Override public String getGrammarFileName() { return "C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g"; }
+	@Override public String getGrammarFileName() { return "C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g"; }
 
 	// $ANTLR start "LETTER"
 	public final void mLETTER() throws RecognitionException {
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:80:8: ( 'a' .. 'z' | 'A' .. 'Z' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:80:8: ( 'a' .. 'z' | 'A' .. 'Z' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -85,8 +85,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 	// $ANTLR start "DIGIT"
 	public final void mDIGIT() throws RecognitionException {
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:82:7: ( '0' .. '9' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:82:7: ( '0' .. '9' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 				input.consume();
@@ -108,8 +108,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 	// $ANTLR start "EXPONENT"
 	public final void mEXPONENT() throws RecognitionException {
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:84:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:84:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:84:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:84:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
 			{
 			if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
 				input.consume();
@@ -119,7 +119,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:84:22: ( '+' | '-' )?
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:84:22: ( '+' | '-' )?
 			int alt1=2;
 			int LA1_0 = input.LA(1);
 			if ( (LA1_0=='+'||LA1_0=='-') ) {
@@ -127,7 +127,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			}
 			switch (alt1) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 					{
 					if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
 						input.consume();
@@ -142,7 +142,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 			}
 
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:84:33: ( '0' .. '9' )+
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:84:33: ( '0' .. '9' )+
 			int cnt2=0;
 			loop2:
 			while (true) {
@@ -154,7 +154,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 				switch (alt2) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -189,8 +189,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = VERSION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:85:8: ( 'Version' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:85:11: 'Version'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:85:8: ( 'Version' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:85:11: 'Version'
 			{
 			match("Version"); 
 
@@ -210,8 +210,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = SHEET;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:86:6: ( 'SHEET' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:86:9: 'SHEET'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:86:6: ( 'SHEET' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:86:9: 'SHEET'
 			{
 			match("SHEET"); 
 
@@ -231,10 +231,10 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = INTEGER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:8: ( ( '-' )? ( DIGIT )+ )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:11: ( '-' )? ( DIGIT )+
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:8: ( ( '-' )? ( DIGIT )+ )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:11: ( '-' )? ( DIGIT )+
 			{
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:11: ( '-' )?
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:11: ( '-' )?
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0=='-') ) {
@@ -242,7 +242,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			}
 			switch (alt3) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:12: '-'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:12: '-'
 					{
 					match('-'); 
 					}
@@ -250,7 +250,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 			}
 
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:17: ( DIGIT )+
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:17: ( DIGIT )+
 			int cnt4=0;
 			loop4:
 			while (true) {
@@ -262,7 +262,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 				switch (alt4) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -299,14 +299,14 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = FLOAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:5: ( ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )? | '.' ( DIGIT )+ ( EXPONENT )? | ( DIGIT )+ EXPONENT )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:5: ( ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )? | '.' ( DIGIT )+ ( EXPONENT )? | ( DIGIT )+ EXPONENT )
 			int alt11=3;
 			alt11 = dfa11.predict(input);
 			switch (alt11) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:9: ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )?
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:9: ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )?
 					{
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:9: ( DIGIT )+
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:9: ( DIGIT )+
 					int cnt5=0;
 					loop5:
 					while (true) {
@@ -318,7 +318,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 						switch (alt5) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 							{
 							if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 								input.consume();
@@ -340,7 +340,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					}
 
 					match('.'); 
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:20: ( DIGIT )*
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:20: ( DIGIT )*
 					loop6:
 					while (true) {
 						int alt6=2;
@@ -351,7 +351,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 						switch (alt6) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 							{
 							if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 								input.consume();
@@ -369,7 +369,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 						}
 					}
 
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:27: ( EXPONENT )?
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:27: ( EXPONENT )?
 					int alt7=2;
 					int LA7_0 = input.LA(1);
 					if ( (LA7_0=='E'||LA7_0=='e') ) {
@@ -377,7 +377,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					}
 					switch (alt7) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:27: EXPONENT
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:89:27: EXPONENT
 							{
 							mEXPONENT(); 
 
@@ -389,10 +389,10 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:90:9: '.' ( DIGIT )+ ( EXPONENT )?
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:90:9: '.' ( DIGIT )+ ( EXPONENT )?
 					{
 					match('.'); 
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:90:13: ( DIGIT )+
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:90:13: ( DIGIT )+
 					int cnt8=0;
 					loop8:
 					while (true) {
@@ -404,7 +404,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 						switch (alt8) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 							{
 							if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 								input.consume();
@@ -425,7 +425,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 						cnt8++;
 					}
 
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:90:20: ( EXPONENT )?
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:90:20: ( EXPONENT )?
 					int alt9=2;
 					int LA9_0 = input.LA(1);
 					if ( (LA9_0=='E'||LA9_0=='e') ) {
@@ -433,7 +433,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					}
 					switch (alt9) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:90:20: EXPONENT
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:90:20: EXPONENT
 							{
 							mEXPONENT(); 
 
@@ -445,9 +445,9 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:91:9: ( DIGIT )+ EXPONENT
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:91:9: ( DIGIT )+ EXPONENT
 					{
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:91:9: ( DIGIT )+
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:91:9: ( DIGIT )+
 					int cnt10=0;
 					loop10:
 					while (true) {
@@ -459,7 +459,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 						switch (alt10) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 							{
 							if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 								input.consume();
@@ -500,8 +500,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = WIRE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:93:5: ( 'WIRE' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:93:8: 'WIRE'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:93:5: ( 'WIRE' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:93:8: 'WIRE'
 			{
 			match("WIRE"); 
 
@@ -521,8 +521,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = SYMBOL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:94:8: ( 'SYMBOL' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:94:10: 'SYMBOL'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:94:8: ( 'SYMBOL' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:94:10: 'SYMBOL'
 			{
 			match("SYMBOL"); 
 
@@ -542,22 +542,64 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = SYMBOLTYPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:95:11: ( 'res' | 'cap' | 'ind' | 'ind2' | 'diode' | 'schottky' | 'zener' | 'varactor' | 'LED' | 'TVSdiode' | 'pnp' | 'npn' | 'voltage' | 'current' | 'nmos' | 'pmos' | 'polcap' )
-			int alt12=17;
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:95:11: ( 'res' | 'res2' | 'cap' | 'ind' | 'ind2' | 'diode' | 'schottky' | 'zener' | 'varactor' | 'LED' | 'TVSdiode' | 'pnp' | 'pnp2' | 'pnp4' | 'npn' | 'npn2' | 'npn3' | 'npn4' | 'voltage' | 'current' | 'nmos' | 'pmos' | 'polcap' )
+			int alt12=23;
 			switch ( input.LA(1) ) {
 			case 'r':
 				{
-				alt12=1;
+				int LA12_1 = input.LA(2);
+				if ( (LA12_1=='e') ) {
+					int LA12_12 = input.LA(3);
+					if ( (LA12_12=='s') ) {
+						int LA12_23 = input.LA(4);
+						if ( (LA12_23=='2') ) {
+							alt12=2;
+						}
+
+						else {
+							alt12=1;
+						}
+
+					}
+
+					else {
+						int nvaeMark = input.mark();
+						try {
+							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++) {
+								input.consume();
+							}
+							NoViableAltException nvae =
+								new NoViableAltException("", 12, 12, input);
+							throw nvae;
+						} finally {
+							input.rewind(nvaeMark);
+						}
+					}
+
+				}
+
+				else {
+					int nvaeMark = input.mark();
+					try {
+						input.consume();
+						NoViableAltException nvae =
+							new NoViableAltException("", 12, 1, input);
+						throw nvae;
+					} finally {
+						input.rewind(nvaeMark);
+					}
+				}
+
 				}
 				break;
 			case 'c':
 				{
 				int LA12_2 = input.LA(2);
 				if ( (LA12_2=='a') ) {
-					alt12=2;
+					alt12=3;
 				}
 				else if ( (LA12_2=='u') ) {
-					alt12=14;
+					alt12=20;
 				}
 
 				else {
@@ -578,15 +620,15 @@ public class Ltspice2circuitikzLexer extends Lexer {
 				{
 				int LA12_3 = input.LA(2);
 				if ( (LA12_3=='n') ) {
-					int LA12_14 = input.LA(3);
-					if ( (LA12_14=='d') ) {
-						int LA12_22 = input.LA(4);
-						if ( (LA12_22=='2') ) {
-							alt12=4;
+					int LA12_15 = input.LA(3);
+					if ( (LA12_15=='d') ) {
+						int LA12_24 = input.LA(4);
+						if ( (LA12_24=='2') ) {
+							alt12=5;
 						}
 
 						else {
-							alt12=3;
+							alt12=4;
 						}
 
 					}
@@ -598,7 +640,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 								input.consume();
 							}
 							NoViableAltException nvae =
-								new NoViableAltException("", 12, 14, input);
+								new NoViableAltException("", 12, 15, input);
 							throw nvae;
 						} finally {
 							input.rewind(nvaeMark);
@@ -623,27 +665,27 @@ public class Ltspice2circuitikzLexer extends Lexer {
 				break;
 			case 'd':
 				{
-				alt12=5;
+				alt12=6;
 				}
 				break;
 			case 's':
 				{
-				alt12=6;
+				alt12=7;
 				}
 				break;
 			case 'z':
 				{
-				alt12=7;
+				alt12=8;
 				}
 				break;
 			case 'v':
 				{
 				int LA12_7 = input.LA(2);
 				if ( (LA12_7=='a') ) {
-					alt12=8;
+					alt12=9;
 				}
 				else if ( (LA12_7=='o') ) {
-					alt12=13;
+					alt12=19;
 				}
 
 				else {
@@ -662,12 +704,12 @@ public class Ltspice2circuitikzLexer extends Lexer {
 				break;
 			case 'L':
 				{
-				alt12=9;
+				alt12=10;
 				}
 				break;
 			case 'T':
 				{
-				alt12=10;
+				alt12=11;
 				}
 				break;
 			case 'p':
@@ -675,17 +717,48 @@ public class Ltspice2circuitikzLexer extends Lexer {
 				switch ( input.LA(2) ) {
 				case 'n':
 					{
-					alt12=11;
+					int LA12_18 = input.LA(3);
+					if ( (LA12_18=='p') ) {
+						switch ( input.LA(4) ) {
+						case '2':
+							{
+							alt12=13;
+							}
+							break;
+						case '4':
+							{
+							alt12=14;
+							}
+							break;
+						default:
+							alt12=12;
+						}
+					}
+
+					else {
+						int nvaeMark = input.mark();
+						try {
+							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++) {
+								input.consume();
+							}
+							NoViableAltException nvae =
+								new NoViableAltException("", 12, 18, input);
+							throw nvae;
+						} finally {
+							input.rewind(nvaeMark);
+						}
+					}
+
 					}
 					break;
 				case 'm':
 					{
-					alt12=16;
+					alt12=22;
 					}
 					break;
 				case 'o':
 					{
-					alt12=17;
+					alt12=23;
 					}
 					break;
 				default:
@@ -705,10 +778,46 @@ public class Ltspice2circuitikzLexer extends Lexer {
 				{
 				int LA12_11 = input.LA(2);
 				if ( (LA12_11=='p') ) {
-					alt12=12;
+					int LA12_21 = input.LA(3);
+					if ( (LA12_21=='n') ) {
+						switch ( input.LA(4) ) {
+						case '2':
+							{
+							alt12=16;
+							}
+							break;
+						case '3':
+							{
+							alt12=17;
+							}
+							break;
+						case '4':
+							{
+							alt12=18;
+							}
+							break;
+						default:
+							alt12=15;
+						}
+					}
+
+					else {
+						int nvaeMark = input.mark();
+						try {
+							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++) {
+								input.consume();
+							}
+							NoViableAltException nvae =
+								new NoViableAltException("", 12, 21, input);
+							throw nvae;
+						} finally {
+							input.rewind(nvaeMark);
+						}
+					}
+
 				}
 				else if ( (LA12_11=='m') ) {
-					alt12=15;
+					alt12=21;
 				}
 
 				else {
@@ -732,119 +841,161 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			}
 			switch (alt12) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:95:13: 'res'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:95:13: 'res'
 					{
 					match("res"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:96:5: 'cap'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:96:5: 'res2'
+					{
+					match("res2"); 
+
+					}
+					break;
+				case 3 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:97:5: 'cap'
 					{
 					match("cap"); 
 
 					}
 					break;
-				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:97:5: 'ind'
+				case 4 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:98:5: 'ind'
 					{
 					match("ind"); 
 
 					}
 					break;
-				case 4 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:98:5: 'ind2'
+				case 5 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:99:5: 'ind2'
 					{
 					match("ind2"); 
 
 					}
 					break;
-				case 5 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:99:5: 'diode'
+				case 6 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:100:5: 'diode'
 					{
 					match("diode"); 
 
 					}
 					break;
-				case 6 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:100:5: 'schottky'
+				case 7 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:101:5: 'schottky'
 					{
 					match("schottky"); 
 
 					}
 					break;
-				case 7 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:101:5: 'zener'
+				case 8 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:102:5: 'zener'
 					{
 					match("zener"); 
 
 					}
 					break;
-				case 8 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:102:5: 'varactor'
+				case 9 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:103:5: 'varactor'
 					{
 					match("varactor"); 
 
 					}
 					break;
-				case 9 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:103:5: 'LED'
+				case 10 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:104:5: 'LED'
 					{
 					match("LED"); 
 
 					}
 					break;
-				case 10 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:104:5: 'TVSdiode'
+				case 11 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:105:5: 'TVSdiode'
 					{
 					match("TVSdiode"); 
 
 					}
 					break;
-				case 11 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:105:5: 'pnp'
+				case 12 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:106:5: 'pnp'
 					{
 					match("pnp"); 
 
 					}
 					break;
-				case 12 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:106:5: 'npn'
+				case 13 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:107:5: 'pnp2'
+					{
+					match("pnp2"); 
+
+					}
+					break;
+				case 14 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:108:5: 'pnp4'
+					{
+					match("pnp4"); 
+
+					}
+					break;
+				case 15 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:109:5: 'npn'
 					{
 					match("npn"); 
 
 					}
 					break;
-				case 13 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:107:5: 'voltage'
+				case 16 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:110:5: 'npn2'
+					{
+					match("npn2"); 
+
+					}
+					break;
+				case 17 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:5: 'npn3'
+					{
+					match("npn3"); 
+
+					}
+					break;
+				case 18 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:112:5: 'npn4'
+					{
+					match("npn4"); 
+
+					}
+					break;
+				case 19 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:113:5: 'voltage'
 					{
 					match("voltage"); 
 
 					}
 					break;
-				case 14 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:108:5: 'current'
+				case 20 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:114:5: 'current'
 					{
 					match("current"); 
 
 					}
 					break;
-				case 15 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:109:5: 'nmos'
+				case 21 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:115:5: 'nmos'
 					{
 					match("nmos"); 
 
 					}
 					break;
-				case 16 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:110:5: 'pmos'
+				case 22 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:116:5: 'pmos'
 					{
 					match("pmos"); 
 
 					}
 					break;
-				case 17 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:5: 'polcap'
+				case 23 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:117:5: 'polcap'
 					{
 					match("polcap"); 
 
@@ -866,7 +1017,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = ROTTYPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:112:9: ( 'R0' | 'R90' | 'R180' | 'R270' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:118:9: ( 'R0' | 'R90' | 'R180' | 'R270' )
 			int alt13=4;
 			int LA13_0 = input.LA(1);
 			if ( (LA13_0=='R') ) {
@@ -912,28 +1063,28 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 			switch (alt13) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:112:11: 'R0'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:118:11: 'R0'
 					{
 					match("R0"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:113:5: 'R90'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:119:5: 'R90'
 					{
 					match("R90"); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:114:5: 'R180'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:120:5: 'R180'
 					{
 					match("R180"); 
 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:115:5: 'R270'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:121:5: 'R270'
 					{
 					match("R270"); 
 
@@ -955,7 +1106,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = MIRRORTYPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:116:12: ( 'M0' | 'M90' | 'M180' | 'M270' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:122:12: ( 'M0' | 'M90' | 'M180' | 'M270' )
 			int alt14=4;
 			int LA14_0 = input.LA(1);
 			if ( (LA14_0=='M') ) {
@@ -1001,28 +1152,28 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 			switch (alt14) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:116:14: 'M0'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:122:14: 'M0'
 					{
 					match("M0"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:117:5: 'M90'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:123:5: 'M90'
 					{
 					match("M90"); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:118:5: 'M180'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:124:5: 'M180'
 					{
 					match("M180"); 
 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:119:5: 'M270'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:125:5: 'M270'
 					{
 					match("M270"); 
 
@@ -1044,8 +1195,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = SYMATTR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:120:9: ( 'SYMATTR' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:120:11: 'SYMATTR'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:9: ( 'SYMATTR' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:11: 'SYMATTR'
 			{
 			match("SYMATTR"); 
 
@@ -1065,8 +1216,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = INSTNAME;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:121:9: ( 'InstName' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:121:11: 'InstName'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:127:9: ( 'InstName' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:127:11: 'InstName'
 			{
 			match("InstName"); 
 
@@ -1086,8 +1237,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = VALUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:122:7: ( 'Value' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:122:9: 'Value'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:128:7: ( 'Value' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:128:9: 'Value'
 			{
 			match("Value"); 
 
@@ -1107,8 +1258,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = SPICELINE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:123:11: ( 'SpiceLine' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:123:13: 'SpiceLine'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:11: ( 'SpiceLine' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:13: 'SpiceLine'
 			{
 			match("SpiceLine"); 
 
@@ -1128,8 +1279,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = ASSIGN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:124:8: ( '=' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:124:10: '='
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:130:8: ( '=' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:130:10: '='
 			{
 			match('='); 
 			}
@@ -1148,8 +1299,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = WINDOW;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:9: ( 'WINDOW' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:11: 'WINDOW'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:132:9: ( 'WINDOW' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:132:11: 'WINDOW'
 			{
 			match("WINDOW"); 
 
@@ -1169,7 +1320,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = WINDOWOPTION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:127:13: ( 'Invisibile' | 'Center' | 'Left' | 'Right' | 'Top' | 'Bottom' | 'VCenter' | 'VLeft' | 'VRight' | 'VTop' | 'VBottom' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:13: ( 'Invisibile' | 'Center' | 'Left' | 'Right' | 'Top' | 'Bottom' | 'VCenter' | 'VLeft' | 'VRight' | 'VTop' | 'VBottom' )
 			int alt15=11;
 			switch ( input.LA(1) ) {
 			case 'I':
@@ -1250,77 +1401,77 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			}
 			switch (alt15) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:127:15: 'Invisibile'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:15: 'Invisibile'
 					{
 					match("Invisibile"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:128:5: 'Center'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:134:5: 'Center'
 					{
 					match("Center"); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:5: 'Left'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:135:5: 'Left'
 					{
 					match("Left"); 
 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:130:5: 'Right'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:136:5: 'Right'
 					{
 					match("Right"); 
 
 					}
 					break;
 				case 5 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:131:5: 'Top'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:137:5: 'Top'
 					{
 					match("Top"); 
 
 					}
 					break;
 				case 6 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:132:5: 'Bottom'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:138:5: 'Bottom'
 					{
 					match("Bottom"); 
 
 					}
 					break;
 				case 7 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:5: 'VCenter'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:139:5: 'VCenter'
 					{
 					match("VCenter"); 
 
 					}
 					break;
 				case 8 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:134:5: 'VLeft'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:140:5: 'VLeft'
 					{
 					match("VLeft"); 
 
 					}
 					break;
 				case 9 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:135:5: 'VRight'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:141:5: 'VRight'
 					{
 					match("VRight"); 
 
 					}
 					break;
 				case 10 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:136:5: 'VTop'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:142:5: 'VTop'
 					{
 					match("VTop"); 
 
 					}
 					break;
 				case 11 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:137:5: 'VBottom'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:143:5: 'VBottom'
 					{
 					match("VBottom"); 
 
@@ -1342,7 +1493,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = RATTRIBUTE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:139:11: ( 'tol' | 'pwr' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:145:11: ( 'tol' | 'pwr' )
 			int alt16=2;
 			int LA16_0 = input.LA(1);
 			if ( (LA16_0=='t') ) {
@@ -1360,14 +1511,14 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 			switch (alt16) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:139:13: 'tol'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:145:13: 'tol'
 					{
 					match("tol"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:140:4: 'pwr'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:146:4: 'pwr'
 					{
 					match("pwr"); 
 
@@ -1389,7 +1540,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = PARATTRIBUTE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:141:13: ( 'Rser' | 'Rpar' | 'Cpar' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:147:13: ( 'Rser' | 'Rpar' | 'Cpar' )
 			int alt17=3;
 			int LA17_0 = input.LA(1);
 			if ( (LA17_0=='R') ) {
@@ -1426,21 +1577,21 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 			switch (alt17) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:141:15: 'Rser'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:147:15: 'Rser'
 					{
 					match("Rser"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:142:5: 'Rpar'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:148:5: 'Rpar'
 					{
 					match("Rpar"); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:143:5: 'Cpar'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:149:5: 'Cpar'
 					{
 					match("Cpar"); 
 
@@ -1462,7 +1613,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = CAPATTRIBUTE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:144:13: ( 'V' | 'Irms' | 'Lser' | 'mfg' | 'pn' | 'type' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:150:13: ( 'V' | 'Irms' | 'Lser' | 'mfg' | 'pn' | 'type' )
 			int alt18=6;
 			switch ( input.LA(1) ) {
 			case 'V':
@@ -1502,41 +1653,41 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			}
 			switch (alt18) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:144:15: 'V'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:150:15: 'V'
 					{
 					match('V'); 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:145:5: 'Irms'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:151:5: 'Irms'
 					{
 					match("Irms"); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:146:5: 'Lser'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:152:5: 'Lser'
 					{
 					match("Lser"); 
 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:147:5: 'mfg'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:153:5: 'mfg'
 					{
 					match("mfg"); 
 
 					}
 					break;
 				case 5 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:148:5: 'pn'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:154:5: 'pn'
 					{
 					match("pn"); 
 
 					}
 					break;
 				case 6 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:149:5: 'type'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:155:5: 'type'
 					{
 					match("type"); 
 
@@ -1558,8 +1709,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = INDATTRIBUTE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:150:13: ( 'Ipk' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:150:15: 'Ipk'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:156:13: ( 'Ipk' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:156:15: 'Ipk'
 			{
 			match("Ipk"); 
 
@@ -1579,8 +1730,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = DESCRIPTION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:152:12: ( 'Description' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:152:14: 'Description'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:158:12: ( 'Description' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:158:14: 'Description'
 			{
 			match("Description"); 
 
@@ -1600,8 +1751,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = TYPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:153:6: ( 'Type' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:153:8: 'Type'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:159:6: ( 'Type' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:159:8: 'Type'
 			{
 			match("Type"); 
 
@@ -1616,18 +1767,44 @@ public class Ltspice2circuitikzLexer extends Lexer {
 	}
 	// $ANTLR end "TYPE"
 
-	// $ANTLR start "DIODEUPPER"
-	public final void mDIODEUPPER() throws RecognitionException {
+	// $ANTLR start "DESCRIPTIONATTR"
+	public final void mDESCRIPTIONATTR() throws RecognitionException {
 		try {
-			int _type = DIODEUPPER;
+			int _type = DESCRIPTIONATTR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:154:11: ( 'Diode' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:154:13: 'Diode'
-			{
-			match("Diode"); 
-
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:160:16: ( 'Diode' | 'Capacitor' )
+			int alt19=2;
+			int LA19_0 = input.LA(1);
+			if ( (LA19_0=='D') ) {
+				alt19=1;
+			}
+			else if ( (LA19_0=='C') ) {
+				alt19=2;
 			}
 
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 19, 0, input);
+				throw nvae;
+			}
+
+			switch (alt19) {
+				case 1 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:160:18: 'Diode'
+					{
+					match("Diode"); 
+
+					}
+					break;
+				case 2 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:161:5: 'Capacitor'
+					{
+					match("Capacitor"); 
+
+					}
+					break;
+
+			}
 			state.type = _type;
 			state.channel = _channel;
 		}
@@ -1635,15 +1812,15 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "DIODEUPPER"
+	// $ANTLR end "DESCRIPTIONATTR"
 
 	// $ANTLR start "FLAG"
 	public final void mFLAG() throws RecognitionException {
 		try {
 			int _type = FLAG;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:155:7: ( 'FLAG' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:155:9: 'FLAG'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:163:7: ( 'FLAG' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:163:9: 'FLAG'
 			{
 			match("FLAG"); 
 
@@ -1663,8 +1840,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = IOPIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:156:7: ( 'IOPIN' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:156:9: 'IOPIN'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:164:7: ( 'IOPIN' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:164:9: 'IOPIN'
 			{
 			match("IOPIN"); 
 
@@ -1684,46 +1861,46 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = IOPINATT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:157:9: ( 'In' | 'Out' | 'BiDir' )
-			int alt19=3;
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:165:9: ( 'In' | 'Out' | 'BiDir' )
+			int alt20=3;
 			switch ( input.LA(1) ) {
 			case 'I':
 				{
-				alt19=1;
+				alt20=1;
 				}
 				break;
 			case 'O':
 				{
-				alt19=2;
+				alt20=2;
 				}
 				break;
 			case 'B':
 				{
-				alt19=3;
+				alt20=3;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 19, 0, input);
+					new NoViableAltException("", 20, 0, input);
 				throw nvae;
 			}
-			switch (alt19) {
+			switch (alt20) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:157:11: 'In'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:165:11: 'In'
 					{
 					match("In"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:158:5: 'Out'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:166:5: 'Out'
 					{
 					match("Out"); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:159:5: 'BiDir'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:167:5: 'BiDir'
 					{
 					match("BiDir"); 
 
@@ -1745,22 +1922,22 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:162:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:162:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:170:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:170:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
 			{
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:162:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
-			int cnt20=0;
-			loop20:
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:170:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+			int cnt21=0;
+			loop21:
 			while (true) {
-				int alt20=2;
-				int LA20_0 = input.LA(1);
-				if ( ((LA20_0 >= '\t' && LA20_0 <= '\n')||LA20_0=='\r'||LA20_0==' ') ) {
-					alt20=1;
+				int alt21=2;
+				int LA21_0 = input.LA(1);
+				if ( ((LA21_0 >= '\t' && LA21_0 <= '\n')||LA21_0=='\r'||LA21_0==' ') ) {
+					alt21=1;
 				}
 
-				switch (alt20) {
+				switch (alt21) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 					{
 					if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 						input.consume();
@@ -1774,11 +1951,11 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					break;
 
 				default :
-					if ( cnt20 >= 1 ) break loop20;
-					EarlyExitException eee = new EarlyExitException(20, input);
+					if ( cnt21 >= 1 ) break loop21;
+					EarlyExitException eee = new EarlyExitException(21, input);
 					throw eee;
 				}
-				cnt20++;
+				cnt21++;
 			}
 
 			_channel=HIDDEN;
@@ -1798,22 +1975,22 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = STRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:169:8: ( '\"' (~ ( '\"' ) )* '\"' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:169:10: '\"' (~ ( '\"' ) )* '\"'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:177:8: ( '\"' (~ ( '\"' ) )* '\"' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:177:10: '\"' (~ ( '\"' ) )* '\"'
 			{
 			match('\"'); 
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:169:14: (~ ( '\"' ) )*
-			loop21:
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:177:14: (~ ( '\"' ) )*
+			loop22:
 			while (true) {
-				int alt21=2;
-				int LA21_0 = input.LA(1);
-				if ( ((LA21_0 >= '\u0000' && LA21_0 <= '!')||(LA21_0 >= '#' && LA21_0 <= '\uFFFF')) ) {
-					alt21=1;
+				int alt22=2;
+				int LA22_0 = input.LA(1);
+				if ( ((LA22_0 >= '\u0000' && LA22_0 <= '!')||(LA22_0 >= '#' && LA22_0 <= '\uFFFF')) ) {
+					alt22=1;
 				}
 
-				switch (alt21) {
+				switch (alt22) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 					{
 					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '\uFFFF') ) {
 						input.consume();
@@ -1827,7 +2004,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					break;
 
 				default :
-					break loop21;
+					break loop22;
 				}
 			}
 
@@ -1848,8 +2025,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:170:4: ( ( LETTER | DIGIT | '-' ) ( LETTER | DIGIT | '-' )* )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:170:6: ( LETTER | DIGIT | '-' ) ( LETTER | DIGIT | '-' )*
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:178:4: ( ( LETTER | DIGIT | '-' ) ( LETTER | DIGIT | '-' )* )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:178:6: ( LETTER | DIGIT | '-' ) ( LETTER | DIGIT | '-' )*
 			{
 			if ( input.LA(1)=='-'||(input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -1859,18 +2036,18 @@ public class Ltspice2circuitikzLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:170:28: ( LETTER | DIGIT | '-' )*
-			loop22:
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:178:28: ( LETTER | DIGIT | '-' )*
+			loop23:
 			while (true) {
-				int alt22=2;
-				int LA22_0 = input.LA(1);
-				if ( (LA22_0=='-'||(LA22_0 >= '0' && LA22_0 <= '9')||(LA22_0 >= 'A' && LA22_0 <= 'Z')||(LA22_0 >= 'a' && LA22_0 <= 'z')) ) {
-					alt22=1;
+				int alt23=2;
+				int LA23_0 = input.LA(1);
+				if ( (LA23_0=='-'||(LA23_0 >= '0' && LA23_0 <= '9')||(LA23_0 >= 'A' && LA23_0 <= 'Z')||(LA23_0 >= 'a' && LA23_0 <= 'z')) ) {
+					alt23=1;
 				}
 
-				switch (alt22) {
+				switch (alt23) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 					{
 					if ( input.LA(1)=='-'||(input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 						input.consume();
@@ -1884,7 +2061,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					break;
 
 				default :
-					break loop22;
+					break loop23;
 				}
 			}
 
@@ -1901,208 +2078,208 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:8: ( VERSION | SHEET | INTEGER | FLOAT | WIRE | SYMBOL | SYMBOLTYPE | ROTTYPE | MIRRORTYPE | SYMATTR | INSTNAME | VALUE | SPICELINE | ASSIGN | WINDOW | WINDOWOPTION | RATTRIBUTE | PARATTRIBUTE | CAPATTRIBUTE | INDATTRIBUTE | DESCRIPTION | TYPE | DIODEUPPER | FLAG | IOPIN | IOPINATT | WS | STRING | ID )
-		int alt23=29;
-		alt23 = dfa23.predict(input);
-		switch (alt23) {
+		// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:8: ( VERSION | SHEET | INTEGER | FLOAT | WIRE | SYMBOL | SYMBOLTYPE | ROTTYPE | MIRRORTYPE | SYMATTR | INSTNAME | VALUE | SPICELINE | ASSIGN | WINDOW | WINDOWOPTION | RATTRIBUTE | PARATTRIBUTE | CAPATTRIBUTE | INDATTRIBUTE | DESCRIPTION | TYPE | DESCRIPTIONATTR | FLAG | IOPIN | IOPINATT | WS | STRING | ID )
+		int alt24=29;
+		alt24 = dfa24.predict(input);
+		switch (alt24) {
 			case 1 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:10: VERSION
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:10: VERSION
 				{
 				mVERSION(); 
 
 				}
 				break;
 			case 2 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:18: SHEET
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:18: SHEET
 				{
 				mSHEET(); 
 
 				}
 				break;
 			case 3 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:24: INTEGER
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:24: INTEGER
 				{
 				mINTEGER(); 
 
 				}
 				break;
 			case 4 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:32: FLOAT
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:32: FLOAT
 				{
 				mFLOAT(); 
 
 				}
 				break;
 			case 5 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:38: WIRE
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:38: WIRE
 				{
 				mWIRE(); 
 
 				}
 				break;
 			case 6 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:43: SYMBOL
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:43: SYMBOL
 				{
 				mSYMBOL(); 
 
 				}
 				break;
 			case 7 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:50: SYMBOLTYPE
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:50: SYMBOLTYPE
 				{
 				mSYMBOLTYPE(); 
 
 				}
 				break;
 			case 8 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:61: ROTTYPE
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:61: ROTTYPE
 				{
 				mROTTYPE(); 
 
 				}
 				break;
 			case 9 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:69: MIRRORTYPE
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:69: MIRRORTYPE
 				{
 				mMIRRORTYPE(); 
 
 				}
 				break;
 			case 10 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:80: SYMATTR
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:80: SYMATTR
 				{
 				mSYMATTR(); 
 
 				}
 				break;
 			case 11 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:88: INSTNAME
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:88: INSTNAME
 				{
 				mINSTNAME(); 
 
 				}
 				break;
 			case 12 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:97: VALUE
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:97: VALUE
 				{
 				mVALUE(); 
 
 				}
 				break;
 			case 13 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:103: SPICELINE
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:103: SPICELINE
 				{
 				mSPICELINE(); 
 
 				}
 				break;
 			case 14 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:113: ASSIGN
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:113: ASSIGN
 				{
 				mASSIGN(); 
 
 				}
 				break;
 			case 15 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:120: WINDOW
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:120: WINDOW
 				{
 				mWINDOW(); 
 
 				}
 				break;
 			case 16 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:127: WINDOWOPTION
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:127: WINDOWOPTION
 				{
 				mWINDOWOPTION(); 
 
 				}
 				break;
 			case 17 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:140: RATTRIBUTE
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:140: RATTRIBUTE
 				{
 				mRATTRIBUTE(); 
 
 				}
 				break;
 			case 18 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:151: PARATTRIBUTE
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:151: PARATTRIBUTE
 				{
 				mPARATTRIBUTE(); 
 
 				}
 				break;
 			case 19 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:164: CAPATTRIBUTE
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:164: CAPATTRIBUTE
 				{
 				mCAPATTRIBUTE(); 
 
 				}
 				break;
 			case 20 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:177: INDATTRIBUTE
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:177: INDATTRIBUTE
 				{
 				mINDATTRIBUTE(); 
 
 				}
 				break;
 			case 21 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:190: DESCRIPTION
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:190: DESCRIPTION
 				{
 				mDESCRIPTION(); 
 
 				}
 				break;
 			case 22 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:202: TYPE
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:202: TYPE
 				{
 				mTYPE(); 
 
 				}
 				break;
 			case 23 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:207: DIODEUPPER
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:207: DESCRIPTIONATTR
 				{
-				mDIODEUPPER(); 
+				mDESCRIPTIONATTR(); 
 
 				}
 				break;
 			case 24 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:218: FLAG
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:223: FLAG
 				{
 				mFLAG(); 
 
 				}
 				break;
 			case 25 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:223: IOPIN
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:228: IOPIN
 				{
 				mIOPIN(); 
 
 				}
 				break;
 			case 26 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:229: IOPINATT
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:234: IOPINATT
 				{
 				mIOPINATT(); 
 
 				}
 				break;
 			case 27 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:238: WS
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:243: WS
 				{
 				mWS(); 
 
 				}
 				break;
 			case 28 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:241: STRING
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:246: STRING
 				{
 				mSTRING(); 
 
 				}
 				break;
 			case 29 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:248: ID
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:253: ID
 				{
 				mID(); 
 
@@ -2114,7 +2291,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 
 	protected DFA11 dfa11 = new DFA11(this);
-	protected DFA23 dfa23 = new DFA23(this);
+	protected DFA24 dfa24 = new DFA24(this);
 	static final String DFA11_eotS =
 		"\5\uffff";
 	static final String DFA11_eofS =
@@ -2170,82 +2347,85 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		}
 	}
 
-	static final String DFA23_eotS =
+	static final String DFA24_eotS =
 		"\1\uffff\1\47\2\37\1\54\1\uffff\17\37\1\uffff\7\37\3\uffff\7\37\1\uffff"+
-		"\3\37\1\54\1\uffff\1\54\21\37\1\47\5\37\1\u0082\6\37\1\u0089\3\37\1\u008f"+
-		"\31\37\1\5\2\37\2\u00ab\1\37\1\u00ab\5\37\1\u00ab\3\37\1\u00b6\1\37\1"+
-		"\u00ab\2\37\1\u00ba\1\u00ab\1\37\1\uffff\1\u0082\5\37\1\uffff\1\u0089"+
-		"\4\37\1\uffff\1\37\1\u00c6\5\37\1\u00ba\1\37\1\47\3\37\1\u008f\5\37\1"+
-		"\u00b6\5\37\1\u00da\1\37\1\uffff\1\37\1\u00ab\5\37\1\u00b6\1\47\1\37\1"+
-		"\uffff\1\u00e3\1\u00ab\1\37\1\uffff\1\u00ab\2\u0082\1\37\2\u00e6\2\u0089"+
-		"\2\37\1\47\1\uffff\2\37\1\u00e6\2\37\1\47\2\37\1\u00ef\1\37\1\u00f1\1"+
-		"\37\1\u00b6\2\37\1\u00f5\3\37\1\uffff\2\37\1\u00ab\1\37\1\u00ab\3\37\1"+
-		"\uffff\1\37\1\u00b6\1\uffff\2\37\1\u0102\2\37\1\u008f\1\37\1\u0106\1\uffff"+
-		"\1\37\1\uffff\1\37\1\u00b6\1\37\1\uffff\1\u010a\2\37\1\u010d\5\37\1\u00ab"+
-		"\2\37\1\uffff\2\u00b6\1\37\1\uffff\1\u0116\2\u00b6\1\uffff\1\u0117\1\37"+
-		"\1\uffff\1\u00ab\2\37\1\u00ab\4\37\2\uffff\1\37\3\u00ab\1\u0120\2\37\1"+
-		"\u0123\1\uffff\2\37\1\uffff\1\u00b6\1\37\1\u0127\1\uffff";
-	static final String DFA23_eofS =
-		"\u0128\uffff";
-	static final String DFA23_minS =
+		"\3\37\1\54\1\uffff\1\54\21\37\1\47\5\37\1\u0083\6\37\1\u008a\3\37\1\u0090"+
+		"\32\37\1\5\2\37\2\u00ae\1\37\1\u00ae\5\37\1\u00ae\3\37\1\u00b9\1\37\1"+
+		"\u00ae\2\37\1\u00bf\1\u00ae\1\37\1\uffff\1\u0083\5\37\1\uffff\1\u008a"+
+		"\4\37\1\uffff\1\37\1\u00ce\6\37\1\u00bf\1\37\1\47\3\37\1\u0090\5\37\1"+
+		"\u00b9\5\37\1\u00e3\1\37\1\u00ae\1\uffff\1\37\1\u00ae\5\37\1\u00b9\1\47"+
+		"\1\37\1\uffff\1\u00ec\3\u00ae\1\37\1\uffff\4\u00ae\2\u0083\1\37\2\u00ef"+
+		"\2\u008a\2\37\1\47\1\uffff\2\37\1\u00ef\3\37\1\47\2\37\1\u00f9\1\37\1"+
+		"\u00fb\1\37\1\u00b9\2\37\1\u00ff\3\37\1\uffff\2\37\1\u00ae\1\37\1\u00ae"+
+		"\3\37\1\uffff\1\37\1\u00b9\1\uffff\2\37\1\u010c\3\37\1\u0090\1\37\1\u0111"+
+		"\1\uffff\1\37\1\uffff\1\37\1\u00b9\1\37\1\uffff\1\u0115\2\37\1\u0118\5"+
+		"\37\1\u00ae\2\37\1\uffff\1\u00b9\1\37\1\u00b9\1\37\1\uffff\1\u0122\2\u00b9"+
+		"\1\uffff\1\u0123\1\37\1\uffff\1\u00ae\2\37\1\u00ae\5\37\2\uffff\1\37\3"+
+		"\u00ae\1\u012d\3\37\1\u0131\1\uffff\1\37\1\u0111\1\37\1\uffff\1\u00b9"+
+		"\1\37\1\u0135\1\uffff";
+	static final String DFA24_eofS =
+		"\u0136\uffff";
+	static final String DFA24_minS =
 		"\1\11\1\55\1\110\1\60\1\55\1\uffff\1\111\1\145\1\141\1\156\1\151\1\143"+
-		"\1\145\1\141\1\105\1\126\2\155\2\60\1\117\1\uffff\1\145\1\151\1\157\1"+
+		"\1\145\1\141\1\105\1\126\2\155\2\60\1\117\1\uffff\1\141\1\151\1\157\1"+
 		"\146\1\145\1\114\1\165\3\uffff\1\162\1\154\2\145\1\151\2\157\1\uffff\1"+
 		"\105\1\115\1\151\1\55\1\uffff\1\55\1\53\1\116\1\163\1\160\1\162\1\144"+
 		"\1\157\1\150\1\156\1\162\1\154\1\104\1\146\1\145\1\123\2\160\1\55\1\157"+
 		"\1\154\1\162\1\156\1\157\1\55\1\60\1\70\1\67\1\147\1\145\1\141\1\55\1"+
-		"\60\1\70\1\67\1\55\1\155\1\153\1\120\1\156\1\141\1\164\1\104\1\154\1\160"+
-		"\1\147\1\163\1\157\1\101\1\164\1\163\1\165\1\156\1\146\1\147\1\160\1\164"+
-		"\1\105\1\101\1\143\1\60\1\55\1\105\1\104\2\55\1\162\1\55\1\144\1\157\1"+
-		"\145\1\141\1\164\1\55\1\164\1\162\1\144\1\55\1\145\1\55\1\163\1\143\2"+
-		"\55\1\163\1\uffff\1\55\2\60\1\150\2\162\1\uffff\1\55\2\60\1\164\1\151"+
-		"\1\uffff\1\163\1\55\1\111\1\164\1\162\1\164\1\151\1\55\1\145\1\55\1\143"+
-		"\1\144\1\107\1\55\1\151\1\145\2\164\1\150\1\55\1\164\1\124\1\117\1\124"+
-		"\1\145\1\55\1\117\1\uffff\1\145\1\55\1\145\1\164\1\162\1\143\1\141\2\55"+
-		"\1\151\1\uffff\2\55\1\141\1\uffff\3\55\1\164\4\55\1\116\1\163\1\55\1\uffff"+
-		"\1\116\1\145\1\55\1\157\1\162\1\55\1\162\1\145\1\55\1\157\1\55\1\145\1"+
-		"\55\1\164\1\157\1\55\1\114\1\124\1\114\1\uffff\1\127\1\156\1\55\1\164"+
-		"\1\55\1\164\1\147\1\157\1\uffff\1\160\1\55\1\uffff\1\141\1\151\1\55\1"+
-		"\162\1\155\1\55\1\151\1\55\1\uffff\1\156\1\uffff\1\162\1\55\1\155\1\uffff"+
-		"\1\55\1\122\1\151\1\55\1\164\1\153\1\157\1\145\1\144\1\55\1\155\1\142"+
-		"\1\uffff\2\55\1\160\1\uffff\3\55\1\uffff\1\55\1\156\1\uffff\1\55\1\171"+
-		"\1\162\1\55\2\145\1\151\1\164\2\uffff\1\145\4\55\1\154\1\151\1\55\1\uffff"+
-		"\1\145\1\157\1\uffff\1\55\1\156\1\55\1\uffff";
-	static final String DFA23_maxS =
+		"\60\1\70\1\67\1\55\1\155\1\153\1\120\1\156\1\141\1\160\1\164\1\104\1\154"+
+		"\1\160\1\147\1\163\1\157\1\101\1\164\1\163\1\165\1\156\1\146\1\147\1\160"+
+		"\1\164\1\105\1\101\1\143\1\60\1\55\1\105\1\104\2\55\1\162\1\55\1\144\1"+
+		"\157\1\145\1\141\1\164\1\55\1\164\1\162\1\144\1\55\1\145\1\55\1\163\1"+
+		"\143\2\55\1\163\1\uffff\1\55\2\60\1\150\2\162\1\uffff\1\55\2\60\1\164"+
+		"\1\151\1\uffff\1\163\1\55\1\111\1\164\1\162\1\141\1\164\1\151\1\55\1\145"+
+		"\1\55\1\143\1\144\1\107\1\55\1\151\1\145\2\164\1\150\1\55\1\164\1\124"+
+		"\1\117\1\124\1\145\1\55\1\117\1\55\1\uffff\1\145\1\55\1\145\1\164\1\162"+
+		"\1\143\1\141\2\55\1\151\1\uffff\4\55\1\141\1\uffff\6\55\1\164\4\55\1\116"+
+		"\1\163\1\55\1\uffff\1\116\1\145\1\55\1\143\1\157\1\162\1\55\1\162\1\145"+
+		"\1\55\1\157\1\55\1\145\1\55\1\164\1\157\1\55\1\114\1\124\1\114\1\uffff"+
+		"\1\127\1\156\1\55\1\164\1\55\1\164\1\147\1\157\1\uffff\1\160\1\55\1\uffff"+
+		"\1\141\1\151\1\55\1\162\1\151\1\155\1\55\1\151\1\55\1\uffff\1\156\1\uffff"+
+		"\1\162\1\55\1\155\1\uffff\1\55\1\122\1\151\1\55\1\164\1\153\1\157\1\145"+
+		"\1\144\1\55\1\155\1\142\1\uffff\1\55\1\164\1\55\1\160\1\uffff\3\55\1\uffff"+
+		"\1\55\1\156\1\uffff\1\55\1\171\1\162\1\55\2\145\1\151\1\157\1\164\2\uffff"+
+		"\1\145\4\55\1\154\1\162\1\151\1\55\1\uffff\1\145\1\55\1\157\1\uffff\1"+
+		"\55\1\156\1\55\1\uffff";
+	static final String DFA24_maxS =
 		"\2\172\1\160\1\71\1\172\1\uffff\1\111\1\145\1\165\1\156\1\151\1\143\1"+
 		"\145\1\157\1\163\1\171\1\167\1\160\1\163\1\71\1\162\1\uffff\1\160\1\157"+
 		"\1\171\1\146\1\151\1\114\1\165\3\uffff\1\162\1\154\2\145\1\151\2\157\1"+
 		"\uffff\1\105\1\115\1\151\1\172\1\uffff\1\172\1\71\1\122\1\163\1\160\1"+
 		"\162\1\144\1\157\1\150\1\156\1\162\1\154\1\104\1\146\1\145\1\123\2\160"+
 		"\1\172\1\157\1\154\1\162\1\156\1\157\1\172\1\60\1\70\1\67\1\147\1\145"+
-		"\1\141\1\172\1\60\1\70\1\67\1\172\1\155\1\153\1\120\1\156\1\141\1\164"+
-		"\1\104\1\154\1\160\1\147\1\163\1\157\1\101\1\164\1\163\1\165\1\156\1\146"+
-		"\1\147\1\160\1\164\1\105\1\102\1\143\1\71\1\172\1\105\1\104\2\172\1\162"+
-		"\1\172\1\144\1\157\1\145\1\141\1\164\1\172\1\164\1\162\1\144\1\172\1\145"+
-		"\1\172\1\163\1\143\2\172\1\163\1\uffff\1\172\2\60\1\150\2\162\1\uffff"+
-		"\1\172\2\60\1\164\1\151\1\uffff\1\163\1\172\1\111\1\164\1\162\1\164\1"+
-		"\151\1\172\1\145\1\172\1\143\1\144\1\107\1\172\1\151\1\145\2\164\1\150"+
-		"\1\172\1\164\1\124\1\117\1\124\1\145\1\172\1\117\1\uffff\1\145\1\172\1"+
-		"\145\1\164\1\162\1\143\1\141\2\172\1\151\1\uffff\2\172\1\141\1\uffff\3"+
-		"\172\1\164\4\172\1\116\1\163\1\172\1\uffff\1\116\1\145\1\172\1\157\1\162"+
-		"\1\172\1\162\1\145\1\172\1\157\1\172\1\145\1\172\1\164\1\157\1\172\1\114"+
-		"\1\124\1\114\1\uffff\1\127\1\156\1\172\1\164\1\172\1\164\1\147\1\157\1"+
-		"\uffff\1\160\1\172\1\uffff\1\141\1\151\1\172\1\162\1\155\1\172\1\151\1"+
-		"\172\1\uffff\1\156\1\uffff\1\162\1\172\1\155\1\uffff\1\172\1\122\1\151"+
-		"\1\172\1\164\1\153\1\157\1\145\1\144\1\172\1\155\1\142\1\uffff\2\172\1"+
-		"\160\1\uffff\3\172\1\uffff\1\172\1\156\1\uffff\1\172\1\171\1\162\1\172"+
-		"\2\145\1\151\1\164\2\uffff\1\145\4\172\1\154\1\151\1\172\1\uffff\1\145"+
-		"\1\157\1\uffff\1\172\1\156\1\172\1\uffff";
-	static final String DFA23_acceptS =
+		"\1\141\1\172\1\60\1\70\1\67\1\172\1\155\1\153\1\120\1\156\1\141\1\160"+
+		"\1\164\1\104\1\154\1\160\1\147\1\163\1\157\1\101\1\164\1\163\1\165\1\156"+
+		"\1\146\1\147\1\160\1\164\1\105\1\102\1\143\1\71\1\172\1\105\1\104\2\172"+
+		"\1\162\1\172\1\144\1\157\1\145\1\141\1\164\1\172\1\164\1\162\1\144\1\172"+
+		"\1\145\1\172\1\163\1\143\2\172\1\163\1\uffff\1\172\2\60\1\150\2\162\1"+
+		"\uffff\1\172\2\60\1\164\1\151\1\uffff\1\163\1\172\1\111\1\164\1\162\1"+
+		"\141\1\164\1\151\1\172\1\145\1\172\1\143\1\144\1\107\1\172\1\151\1\145"+
+		"\2\164\1\150\1\172\1\164\1\124\1\117\1\124\1\145\1\172\1\117\1\172\1\uffff"+
+		"\1\145\1\172\1\145\1\164\1\162\1\143\1\141\2\172\1\151\1\uffff\4\172\1"+
+		"\141\1\uffff\6\172\1\164\4\172\1\116\1\163\1\172\1\uffff\1\116\1\145\1"+
+		"\172\1\143\1\157\1\162\1\172\1\162\1\145\1\172\1\157\1\172\1\145\1\172"+
+		"\1\164\1\157\1\172\1\114\1\124\1\114\1\uffff\1\127\1\156\1\172\1\164\1"+
+		"\172\1\164\1\147\1\157\1\uffff\1\160\1\172\1\uffff\1\141\1\151\1\172\1"+
+		"\162\1\151\1\155\1\172\1\151\1\172\1\uffff\1\156\1\uffff\1\162\1\172\1"+
+		"\155\1\uffff\1\172\1\122\1\151\1\172\1\164\1\153\1\157\1\145\1\144\1\172"+
+		"\1\155\1\142\1\uffff\1\172\1\164\1\172\1\160\1\uffff\3\172\1\uffff\1\172"+
+		"\1\156\1\uffff\1\172\1\171\1\162\1\172\2\145\1\151\1\157\1\164\2\uffff"+
+		"\1\145\4\172\1\154\1\162\1\151\1\172\1\uffff\1\145\1\172\1\157\1\uffff"+
+		"\1\172\1\156\1\172\1\uffff";
+	static final String DFA24_acceptS =
 		"\5\uffff\1\4\17\uffff\1\16\7\uffff\1\33\1\34\1\35\7\uffff\1\23\4\uffff"+
-		"\1\3\125\uffff\1\10\6\uffff\1\11\5\uffff\1\32\33\uffff\1\7\12\uffff\1"+
-		"\20\3\uffff\1\21\13\uffff\1\24\23\uffff\1\5\10\uffff\1\26\2\uffff\1\22"+
-		"\10\uffff\1\30\1\uffff\1\14\3\uffff\1\2\14\uffff\1\31\3\uffff\1\27\3\uffff"+
-		"\1\6\2\uffff\1\17\10\uffff\1\1\1\12\10\uffff\1\13\2\uffff\1\15\3\uffff"+
+		"\1\3\126\uffff\1\10\6\uffff\1\11\5\uffff\1\32\35\uffff\1\7\12\uffff\1"+
+		"\20\5\uffff\1\21\16\uffff\1\24\24\uffff\1\5\10\uffff\1\26\2\uffff\1\22"+
+		"\11\uffff\1\30\1\uffff\1\14\3\uffff\1\2\14\uffff\1\31\4\uffff\1\27\3\uffff"+
+		"\1\6\2\uffff\1\17\11\uffff\1\1\1\12\11\uffff\1\13\3\uffff\1\15\3\uffff"+
 		"\1\25";
-	static final String DFA23_specialS =
-		"\u0128\uffff}>";
-	static final String[] DFA23_transitionS = {
+	static final String DFA24_specialS =
+		"\u0136\uffff}>";
+	static final String[] DFA24_transitionS = {
 			"\2\35\2\uffff\1\35\22\uffff\1\35\1\uffff\1\36\12\uffff\1\3\1\5\1\uffff"+
 			"\12\4\3\uffff\1\25\3\uffff\1\37\1\27\1\26\1\32\1\37\1\33\2\37\1\24\2"+
 			"\37\1\16\1\23\1\37\1\34\2\37\1\22\1\2\1\17\1\37\1\1\1\6\3\37\6\uffff"+
@@ -2275,34 +2455,33 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			"\1\114\1\116\1\117\6\uffff\1\115",
 			"\1\123\36\uffff\1\120\1\uffff\1\122\1\uffff\1\121",
 			"",
-			"\1\124\12\uffff\1\125",
-			"\1\127\5\uffff\1\126",
-			"\1\130\11\uffff\1\131",
-			"\1\132",
-			"\1\133\3\uffff\1\134",
-			"\1\135",
+			"\1\126\3\uffff\1\124\12\uffff\1\125",
+			"\1\130\5\uffff\1\127",
+			"\1\131\11\uffff\1\132",
+			"\1\133",
+			"\1\134\3\uffff\1\135",
 			"\1\136",
-			"",
-			"",
-			"",
 			"\1\137",
+			"",
+			"",
+			"",
 			"\1\140",
 			"\1\141",
 			"\1\142",
 			"\1\143",
 			"\1\144",
 			"\1\145",
-			"",
 			"\1\146",
+			"",
 			"\1\147",
 			"\1\150",
+			"\1\151",
 			"\1\37\2\uffff\12\53\7\uffff\32\37\6\uffff\32\37",
 			"",
 			"\1\37\1\5\1\uffff\12\55\7\uffff\4\37\1\56\25\37\6\uffff\4\37\1\56\25"+
 			"\37",
-			"\1\5\1\uffff\1\151\2\uffff\12\152",
-			"\1\154\3\uffff\1\153",
-			"\1\155",
+			"\1\5\1\uffff\1\152\2\uffff\12\153",
+			"\1\155\3\uffff\1\154",
 			"\1\156",
 			"\1\157",
 			"\1\160",
@@ -2317,26 +2496,26 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			"\1\171",
 			"\1\172",
 			"\1\173",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\17\37\1\174\12\37",
-			"\1\175",
+			"\1\174",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\17\37\1\175\12\37",
 			"\1\176",
 			"\1\177",
 			"\1\u0080",
 			"\1\u0081",
+			"\1\u0082",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\u0083",
 			"\1\u0084",
 			"\1\u0085",
 			"\1\u0086",
 			"\1\u0087",
 			"\1\u0088",
+			"\1\u0089",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\u008a",
 			"\1\u008b",
 			"\1\u008c",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\22\37\1\u008d\2\37\1\u008e"+
+			"\1\u008d",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\22\37\1\u008e\2\37\1\u008f"+
 			"\4\37",
-			"\1\u0090",
 			"\1\u0091",
 			"\1\u0092",
 			"\1\u0093",
@@ -2358,61 +2537,54 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			"\1\u00a3",
 			"\1\u00a4",
 			"\1\u00a5",
-			"\1\u00a7\1\u00a6",
-			"\1\u00a8",
-			"\12\152",
-			"\1\37\2\uffff\12\152\7\uffff\32\37\6\uffff\32\37",
-			"\1\u00a9",
+			"\1\u00a6",
+			"\1\u00a7",
+			"\1\u00a9\1\u00a8",
 			"\1\u00aa",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\12\153",
+			"\1\37\2\uffff\12\153\7\uffff\32\37\6\uffff\32\37",
+			"\1\u00ab",
 			"\1\u00ac",
 			"\1\37\2\uffff\2\37\1\u00ad\7\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\u00ae",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00af",
-			"\1\u00b0",
+			"\1\37\2\uffff\2\37\1\u00b0\7\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00b1",
 			"\1\u00b2",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00b3",
 			"\1\u00b4",
 			"\1\u00b5",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u00b6",
 			"\1\u00b7",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00b8",
-			"\1\u00b9",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\u00bb",
-			"",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\u00bc",
+			"\1\u00ba",
+			"\1\37\2\uffff\2\37\1\u00bb\1\37\1\u00bc\5\37\7\uffff\32\37\6\uffff\32"+
+			"\37",
 			"\1\u00bd",
 			"\1\u00be",
-			"\1\u00bf",
-			"\1\u00c0",
-			"",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\u00c1",
-			"\1\u00c2",
+			"\1\37\2\uffff\2\37\1\u00c0\1\u00c1\1\u00c2\5\37\7\uffff\32\37\6\uffff"+
+			"\32\37",
 			"\1\u00c3",
-			"\1\u00c4",
 			"",
-			"\1\u00c5",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u00c4",
+			"\1\u00c5",
+			"\1\u00c6",
 			"\1\u00c7",
 			"\1\u00c8",
+			"",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00c9",
 			"\1\u00ca",
 			"\1\u00cb",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00cc",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"",
 			"\1\u00cd",
-			"\1\u00ce",
-			"\1\u00cf",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u00cf",
 			"\1\u00d0",
 			"\1\u00d1",
 			"\1\u00d2",
@@ -2420,171 +2592,195 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			"\1\u00d4",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00d5",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00d6",
 			"\1\u00d7",
 			"\1\u00d8",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00d9",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u00da",
 			"\1\u00db",
-			"",
 			"\1\u00dc",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00dd",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00de",
 			"\1\u00df",
 			"\1\u00e0",
 			"\1\u00e1",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00e2",
-			"",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00e4",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00e5",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u00e6",
 			"\1\u00e7",
 			"\1\u00e8",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"",
 			"\1\u00e9",
 			"\1\u00ea",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00eb",
-			"\1\u00ec",
+			"",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00ed",
+			"",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00ee",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00f0",
+			"\1\u00f1",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"",
 			"\1\u00f2",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00f3",
-			"\1\u00f4",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u00f4",
+			"\1\u00f5",
 			"\1\u00f6",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00f7",
 			"\1\u00f8",
-			"",
-			"\1\u00f9",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00fa",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\u00fb",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00fc",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u00fd",
 			"\1\u00fe",
-			"",
-			"\1\u00ff",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"",
 			"\1\u0100",
 			"\1\u0101",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u0102",
+			"",
 			"\1\u0103",
 			"\1\u0104",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u0105",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"",
+			"\1\u0106",
 			"\1\u0107",
-			"",
 			"\1\u0108",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\u0109",
 			"",
+			"\1\u0109",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"",
+			"\1\u010a",
 			"\1\u010b",
-			"\1\u010c",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u010d",
 			"\1\u010e",
 			"\1\u010f",
-			"\1\u0110",
-			"\1\u0111",
-			"\1\u0112",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u0110",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"",
+			"\1\u0112",
+			"",
 			"\1\u0113",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u0114",
 			"",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\u0115",
-			"",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\u0118",
-			"",
+			"\1\u0116",
+			"\1\u0117",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u0119",
 			"\1\u011a",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u011b",
 			"\1\u011c",
 			"\1\u011d",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u011e",
-			"",
-			"",
 			"\1\u011f",
+			"",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
-			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u0120",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u0121",
-			"\1\u0122",
+			"",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			"\1\u0124",
-			"\1\u0125",
 			"",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u0125",
 			"\1\u0126",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u0127",
+			"\1\u0128",
+			"\1\u0129",
+			"\1\u012a",
+			"\1\u012b",
+			"",
+			"",
+			"\1\u012c",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u012e",
+			"\1\u012f",
+			"\1\u0130",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"",
+			"\1\u0132",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u0133",
+			"",
+			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
+			"\1\u0134",
 			"\1\37\2\uffff\12\37\7\uffff\32\37\6\uffff\32\37",
 			""
 	};
 
-	static final short[] DFA23_eot = DFA.unpackEncodedString(DFA23_eotS);
-	static final short[] DFA23_eof = DFA.unpackEncodedString(DFA23_eofS);
-	static final char[] DFA23_min = DFA.unpackEncodedStringToUnsignedChars(DFA23_minS);
-	static final char[] DFA23_max = DFA.unpackEncodedStringToUnsignedChars(DFA23_maxS);
-	static final short[] DFA23_accept = DFA.unpackEncodedString(DFA23_acceptS);
-	static final short[] DFA23_special = DFA.unpackEncodedString(DFA23_specialS);
-	static final short[][] DFA23_transition;
+	static final short[] DFA24_eot = DFA.unpackEncodedString(DFA24_eotS);
+	static final short[] DFA24_eof = DFA.unpackEncodedString(DFA24_eofS);
+	static final char[] DFA24_min = DFA.unpackEncodedStringToUnsignedChars(DFA24_minS);
+	static final char[] DFA24_max = DFA.unpackEncodedStringToUnsignedChars(DFA24_maxS);
+	static final short[] DFA24_accept = DFA.unpackEncodedString(DFA24_acceptS);
+	static final short[] DFA24_special = DFA.unpackEncodedString(DFA24_specialS);
+	static final short[][] DFA24_transition;
 
 	static {
-		int numStates = DFA23_transitionS.length;
-		DFA23_transition = new short[numStates][];
+		int numStates = DFA24_transitionS.length;
+		DFA24_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA23_transition[i] = DFA.unpackEncodedString(DFA23_transitionS[i]);
+			DFA24_transition[i] = DFA.unpackEncodedString(DFA24_transitionS[i]);
 		}
 	}
 
-	protected class DFA23 extends DFA {
+	protected class DFA24 extends DFA {
 
-		public DFA23(BaseRecognizer recognizer) {
+		public DFA24(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 23;
-			this.eot = DFA23_eot;
-			this.eof = DFA23_eof;
-			this.min = DFA23_min;
-			this.max = DFA23_max;
-			this.accept = DFA23_accept;
-			this.special = DFA23_special;
-			this.transition = DFA23_transition;
+			this.decisionNumber = 24;
+			this.eot = DFA24_eot;
+			this.eof = DFA24_eof;
+			this.min = DFA24_min;
+			this.max = DFA24_max;
+			this.accept = DFA24_accept;
+			this.special = DFA24_special;
+			this.transition = DFA24_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "1:1: Tokens : ( VERSION | SHEET | INTEGER | FLOAT | WIRE | SYMBOL | SYMBOLTYPE | ROTTYPE | MIRRORTYPE | SYMATTR | INSTNAME | VALUE | SPICELINE | ASSIGN | WINDOW | WINDOWOPTION | RATTRIBUTE | PARATTRIBUTE | CAPATTRIBUTE | INDATTRIBUTE | DESCRIPTION | TYPE | DIODEUPPER | FLAG | IOPIN | IOPINATT | WS | STRING | ID );";
+			return "1:1: Tokens : ( VERSION | SHEET | INTEGER | FLOAT | WIRE | SYMBOL | SYMBOLTYPE | ROTTYPE | MIRRORTYPE | SYMATTR | INSTNAME | VALUE | SPICELINE | ASSIGN | WINDOW | WINDOWOPTION | RATTRIBUTE | PARATTRIBUTE | CAPATTRIBUTE | INDATTRIBUTE | DESCRIPTION | TYPE | DESCRIPTIONATTR | FLAG | IOPIN | IOPINATT | WS | STRING | ID );";
 		}
 	}
 

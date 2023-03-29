@@ -15,9 +15,9 @@ package compiler;
 @members {
 }
 parseCircuit:	prologueRule
-		componentRule* {System.out.println("Ho riconosciuto component rule");}; //se metto tipo un WIRE.... poi una lettera a caso riconosce solo il primo wire e poi termina (correttamente)
+		componentRule* {System.out.println("Ho riconosciuto component rule");};
 prologueRule
-	:	versionRule //CONTROLLARE CHE SIA 4
+	:	versionRule //Controllo semantico che sia 4
 		sheetRule
 	;
 versionRule
@@ -49,7 +49,7 @@ flagRule
 	
 windowRule
 	:	
-		WINDOW INTEGER INTEGER INTEGER WINDOWOPTION INTEGER // forse l'ultimo INTEGER è opzionale, verificare
+		WINDOW INTEGER INTEGER INTEGER WINDOWOPTION INTEGER
 	;
 
 symbolRule
@@ -59,12 +59,11 @@ symbolRule
 symattrRule
 	:
 		SYMATTR ( INSTNAME ID
-			| DESCRIPTION ID
+			| DESCRIPTION DESCRIPTIONATTR
 			| TYPE SYMBOLTYPE
 			| VALUE (  INTEGER 
 				 | FLOAT 
-				 | ID) // questo è problematico perchè accetta tutto p.e. Ciao come stai? lo accetta... 
-				       //potrebbe essere un caso limite che decidiamo di non affrontare.. creiamo una regola a aparte?
+				 | ID)
 			| SPICELINE attrRule+)
 	;
 	
@@ -72,8 +71,9 @@ attrRule
 	:
 		(CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
 		 ASSIGN
-		(INTEGER | FLOAT) // esempio: Cpar=1, pwr=2.5, Rser=1, può essere stringa?
+		(INTEGER | FLOAT | STRING | ID)
 ;
+
 
 fragment 
 LETTER : 'a'..'z'|'A'..'Z';
@@ -93,9 +93,10 @@ FLOAT
 WIRE:		'WIRE';
 SYMBOL	:	'SYMBOL';
 SYMBOLTYPE:	'res' 
+		| 'res2'
 		| 'cap'
 		| 'ind' 
-		| 'ind2' //inductor with phase dot symbol
+		| 'ind2'
 		| 'diode'	
 		| 'schottky'
 		| 'zener'
@@ -103,7 +104,12 @@ SYMBOLTYPE:	'res'
 		| 'LED'
 		| 'TVSdiode'
 		| 'pnp'
+		| 'pnp2'
+		| 'pnp4'
 		| 'npn'
+		| 'npn2'
+		| 'npn3'
+		| 'npn4'
 		| 'voltage'
 		| 'current'
 		| 'nmos'
@@ -151,7 +157,9 @@ INDATTRIBUTE:	'Ipk'; //+ PARATTRIBUTE
 
 DESCRIPTION:	'Description';
 TYPE	:	'Type';
-DIODEUPPER:	'Diode'; //TODO: quando si inserisce un tipo di diodo vengono inserite: SYMATTR Description Diode/	SYMATTR Type diode //da controllare semanticamente? che sia diode
+DESCRIPTIONATTR:	'Diode'
+		| 'Capacitor'; // TODO: N.B. controlli semantici da vedere
+		
 FLAG 	:	'FLAG';
 IOPIN	:	'IOPIN';
 IOPINATT:	'In'
@@ -167,7 +175,6 @@ WS  :   ( ' '
     ;
     
 STRING	:	'"' ~('"')* '"'; //TODO 
-ID	:	(LETTER | DIGIT | '-')(LETTER | DIGIT | '-')*;		//come gestire caratteri speciali (_ va una sottolineatura sopra)/attenzione che un label può contenere anche solo numeri (per la semantica) //attenzione che un id può essere anche un numero
-
+ID	:	(LETTER | DIGIT | '-')(LETTER | DIGIT | '-')*;		//_ va una sottolineatura sopra
 
 
