@@ -44,7 +44,7 @@ wireRule
 	
 flagRule
 	:	
-		FLAG INTEGER INTEGER INTEGER
+		FLAG INTEGER INTEGER (INTEGER | ID) 
 	;
 	
 windowRule

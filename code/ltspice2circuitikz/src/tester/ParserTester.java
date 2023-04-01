@@ -13,8 +13,8 @@ public class ParserTester {
 	static Ltspice2circuitikzParser parser; 
    
 	public static void main(String[] args) { 
-		CommonTokenStream tokens; 
-	  	String fileIn = ".\\resources\\Test4.asc";
+		CommonTokenStream tokens;  
+	  	String fileIn = ".\\resources\\Test5.asc";
  
 		try {
 			System.out.println ("Parsing con ANTLR lexer");
