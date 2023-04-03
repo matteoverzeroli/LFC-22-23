@@ -3,7 +3,7 @@ package tester;
 import java.io.FileReader;
 import java.io.IOException;
 
-import compiler.Ltspice2circuitikz;
+import compiler.Ltspice2circuitikzLexer;
 
 import org.antlr.runtime.ANTLRReaderStream;
 import org.antlr.runtime.Token;
@@ -13,7 +13,7 @@ public class ScannerTester {
 
 	public static void main(String[] args) throws IOException {
 		// inserire il path-name del file di input
-	  	String fileIn = ".\\resources\\Test5.asc";
+	  	String fileIn = ".\\resources\\input.asc";
 	
 	  	Token tk;
 	  	int i;
@@ -21,7 +21,7 @@ public class ScannerTester {
 		try {
 			System.out.println ("Test ANTLR lexer");
 			// istanzio lo scanner passandogli un stream di ingresso
-			Ltspice2circuitikz lexer = new Ltspice2circuitikz (
+			Ltspice2circuitikzLexer lexer = new Ltspice2circuitikzLexer (
 									new ANTLRReaderStream(
 											new FileReader(fileIn)	)	); 
 			
@@ -29,7 +29,7 @@ public class ScannerTester {
 			// attivo un ciclo che scandisce lo stream dall'inizio alla fine
 			// richiedendo ogni volta allo scanner di fornire il token successivo (metodo nextToken)
 			// fino ad incontrare l' End Of File EOF
-			while ((tk = lexer.nextToken()).getType() != Ltspice2circuitikz.EOF) {
+			while ((tk = lexer.nextToken()).getType() != Ltspice2circuitikzLexer.EOF) {
 				// recuper le informazioni relative ai token rilevati
 				int line = tk.getLine();
 				int col = tk.getCharPositionInLine()+1;
@@ -37,7 +37,7 @@ public class ScannerTester {
 				String text = tk.getText();
 
 				// attivo questo controllo se voglio scartare i token nascosti
-				if (tk.getChannel() !=  Ltspice2circuitikz.HIDDEN)
+				if (tk.getChannel() !=  Ltspice2circuitikzLexer.HIDDEN)
 					// stampo le informazioni del token corrente
 					System.out.println("Token " + i++ + ": "
 							+ "(" + line + "," + col + ")\t\t" 

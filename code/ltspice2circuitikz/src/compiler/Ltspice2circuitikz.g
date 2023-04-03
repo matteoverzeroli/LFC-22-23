@@ -14,8 +14,10 @@ package compiler;
 
 @members {
 }
-parseCircuit:	prologueRule
-		componentRule* {System.out.println("Ho riconosciuto component rule");};
+parseCircuit:	prologueRule	{System.out.println("Ho riconosciuto prolog rule");}
+		componentRule* {System.out.println("Ho riconosciuto component rule");}
+		EOF
+	;
 prologueRule
 	:	versionRule //Controllo semantico che sia 4
 		sheetRule
@@ -49,12 +51,12 @@ flagRule
 	
 windowRule
 	:	
-		WINDOW INTEGER INTEGER INTEGER WINDOWOPTION INTEGER
+		WINDOW INTEGER INTEGER INTEGER ID INTEGER //N.B.
 	;
 
 symbolRule
 	:
-		SYMBOL SYMBOLTYPE INTEGER INTEGER (ROTTYPE | MIRRORTYPE)
+		SYMBOL SYMBOLTYPE INTEGER INTEGER ID //N.B.
 	;
 symattrRule
 	:
@@ -76,7 +78,7 @@ attrRule
 
 
 fragment 
-LETTER : 'a'..'z'|'A'..'Z';
+LETTER : 'a'..'z'|'A'..'Z' | '\uABCD'..'\uABD0'; //aggiungere lettere greche
 fragment 
 DIGIT : '0'..'9';
 fragment
@@ -175,6 +177,6 @@ WS  :   ( ' '
     ;
     
 STRING	:	'"' ~('"')* '"'; //TODO 
-ID	:	(LETTER | DIGIT | '-')(LETTER | DIGIT | '-')*;		//_ va una sottolineatura sopra
+ID	:	(LETTER | DIGIT | '-')(LETTER | DIGIT | '-')*;		//caratteri speciali? _ va una sottolineatura sopra
 
 
