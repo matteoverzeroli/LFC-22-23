@@ -1,11 +1,9 @@
 package tester;
 
-import java.io.FileReader;
 import java.io.IOException;
-
 import compiler.Ltspice2circuitikzLexer;
 
-import org.antlr.runtime.ANTLRReaderStream;
+import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.Token;
 
 
@@ -22,8 +20,7 @@ public class ScannerTester {
 			System.out.println ("Test ANTLR lexer");
 			// istanzio lo scanner passandogli un stream di ingresso
 			Ltspice2circuitikzLexer lexer = new Ltspice2circuitikzLexer (
-									new ANTLRReaderStream(
-											new FileReader(fileIn)	)	); 
+					new ANTLRFileStream(fileIn, "iso-8859-1")); 
 			
 			i = 1;
 			// attivo un ciclo che scandisce lo stream dall'inizio alla fine

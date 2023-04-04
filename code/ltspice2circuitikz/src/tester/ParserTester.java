@@ -1,8 +1,7 @@
 package tester;
 
-import java.io.FileReader;
 
-import org.antlr.runtime.ANTLRReaderStream;
+import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.CommonTokenStream;
 
 import compiler.Ltspice2circuitikzLexer;
@@ -14,16 +13,15 @@ public class ParserTester {
    
 	public static void main(String[] args) { 
 		CommonTokenStream tokens;  
-	  	String fileIn = ".\\resources\\Test2.asc";
+	  	String fileIn = ".\\resources\\input.asc";
  
 		try {
 			System.out.println ("Parsing con ANTLR lexer");
 			System.out.println ("-----------------------");
 
 			// 1.Istanzio il lexer passandogli il documento da analizzare
-			Ltspice2circuitikzLexer lexer = new Ltspice2circuitikzLexer(
-											new ANTLRReaderStream(
-												new FileReader(fileIn))); 
+			Ltspice2circuitikzLexer lexer = new Ltspice2circuitikzLexer (
+					new ANTLRFileStream(fileIn, "iso-8859-1")); 
 
 			// 2.Creo uno stream (canale) di token per la comunicazione tra lexer e parser
 		    tokens = new CommonTokenStream(lexer); 

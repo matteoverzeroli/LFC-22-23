@@ -46,26 +46,24 @@ wireRule
 	
 flagRule
 	:	
-		FLAG INTEGER INTEGER (INTEGER | ID) 
+		FLAG INTEGER INTEGER (INTEGER | ID | reservedWordRule) //ID non può contenere spazio in questo caso
 	;
 	
 windowRule
 	:	
-		WINDOW INTEGER INTEGER INTEGER ID INTEGER //N.B.
+		WINDOW INTEGER INTEGER INTEGER ID INTEGER
 	;
 
 symbolRule
 	:
-		SYMBOL SYMBOLTYPE INTEGER INTEGER ID //N.B.
+		SYMBOL SYMBOLTYPE INTEGER INTEGER ID
 	;
 symattrRule
 	:
 		SYMATTR ( INSTNAME ID
 			| DESCRIPTION DESCRIPTIONATTR
 			| TYPE SYMBOLTYPE
-			| VALUE (  INTEGER 
-				 | FLOAT 
-				 | ID)
+			| VALUE (INTEGER | FLOAT | ID | reservedWordRule)
 			| SPICELINE attrRule+)
 	;
 	
@@ -73,16 +71,26 @@ attrRule
 	:
 		(CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
 		 ASSIGN
-		(INTEGER | FLOAT | STRING | ID)
+		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
 ;
 
+reservedWordRule
+	:	
+		VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN
+	;
 
 fragment 
-LETTER : 'a'..'z'|'A'..'Z' | '\uABCD'..'\uABD0'; //aggiungere lettere greche
+LETTER : 'a'..'z'|'A'..'Z';
 fragment 
 DIGIT : '0'..'9';
 fragment
 EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
+fragment
+SPECIALCHAR: '\u0021'..'\u002F' |'\u003A'..'\u003C'|'\u003E'..'\u0040'|'\u005B'..'\u0060' //punctuation and symbols. '=' removed for STRING TOKEN
+	     |'\u007B'..'\u007E'|'\u00A1'..'\u017F' //latin punctuation and symbols
+	     |'\u0370'..'\u03FF' //greek alphabet
+	     |'\u0400'..'\u04FF' //cirillico   
+	     ;
 
 VERSION:		'Version';
 SHEET:		'SHEET';
@@ -117,14 +125,6 @@ SYMBOLTYPE:	'res'
 		| 'nmos'
 		| 'pmos'
 		| 'polcap';
-ROTTYPE	:	'R0' 
-		| 'R90' 
-		| 'R180' 
-		| 'R270';
-MIRRORTYPE	: 'M0' 
-		| 'M90' 
-		| 'M180' 
-		| 'M270';
 SYMATTR	:	'SYMATTR';
 INSTNAME:	'InstName';
 VALUE	:	'Value';
@@ -132,17 +132,6 @@ SPICELINE :	'SpiceLine';
 ASSIGN	:	'=';
 
 WINDOW 	:	'WINDOW';
-WINDOWOPTION:	'Invisibile' //label invisible
-		| 'Center' //label justification
-		| 'Left'
-		| 'Right'
-		| 'Top'
-		| 'Bottom'
-		| 'VCenter' //vertical label justification
-		| 'VLeft'
-		| 'VRight'
-		| 'VTop'
-		| 'VBottom';
 
 RATTRIBUTE:	'tol'
 		|'pwr';
@@ -168,7 +157,6 @@ IOPINATT:	'In'
 		| 'Out'
 		| 'BiDir';
 	
-//TODO: unità di misura tipo mu come le gestiamo?
 WS  :   ( ' '
         | '\t'
         | '\r'
@@ -176,7 +164,7 @@ WS  :   ( ' '
         )+ {$channel=HIDDEN;}
     ;
     
-STRING	:	'"' ~('"')* '"'; //TODO 
-ID	:	(LETTER | DIGIT | '-')(LETTER | DIGIT | '-')*;		//caratteri speciali? _ va una sottolineatura sopra
+STRING	:	'"' ~('"')* '"';
+ID	:	(LETTER | DIGIT | SPECIALCHAR)(LETTER | DIGIT | SPECIALCHAR)*;
 
 
