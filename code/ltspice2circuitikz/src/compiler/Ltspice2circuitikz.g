@@ -13,8 +13,38 @@ package compiler;
 }
 
 @members {
+	Handler h;
+	
+	
+	public Handler getHandler () {
+		return h;
+	}
+	
+	// Override e delega nella gestione degli errori sintattici
+	public void displayRecognitionError(String[] tokenNames,
+	                                     RecognitionException e) {
+	  	// recupero alcune meta informazioni relative all'errore
+		String hdr = " * " + getErrorHeader(e);
+		String msg = " - " + getErrorMessage(e, tokenNames);
+		
+		// recuperoil token corrente  
+		Token tk = input.LT(1);
+		
+		// lascio gestire il messaggio all'handler
+		h.handleError(tk, hdr, msg);
+	}
+	
+	void initParser () {
+		h = new Handler(input);
+	}
+		
+		
+	
 }
-parseCircuit:	prologueRule	{System.out.println("Ho riconosciuto prolog rule");}
+parseCircuit
+@init {initParser();}
+	:	
+		prologueRule	{System.out.println("Ho riconosciuto prolog rule");}
 		componentRule* {System.out.println("Ho riconosciuto component rule");}
 		EOF
 	;
@@ -72,9 +102,10 @@ symattrRule
 	;
 	
 attrRule
-	: 	ID //(CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
+	: 	attr = ID {h.checkAttribute($attr); } //(CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
 		ASSIGN
 		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
+		
 ;
 
 reservedWordRule
@@ -130,6 +161,9 @@ WS  :   ( ' '
     ;
     
 STRING	:	'"' ~('"')* '"';
+
 ID	:	(LETTER | DIGIT | SPECIALCHAR)(LETTER | DIGIT | SPECIALCHAR)*;
+
+ERROR_TK		: . ; 
 
 

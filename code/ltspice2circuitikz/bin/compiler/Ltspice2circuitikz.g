@@ -13,8 +13,38 @@ package compiler;
 }
 
 @members {
+	Handler h;
+	
+	
+	public Handler getHandler () {
+		return h;
+	}
+	
+	// Override e delega nella gestione degli errori sintattici
+	public void displayRecognitionError(String[] tokenNames,
+	                                     RecognitionException e) {
+	  	// recupero alcune meta informazioni relative all'errore
+		String hdr = " * " + getErrorHeader(e);
+		String msg = " - " + getErrorMessage(e, tokenNames);
+		
+		// recuperoil token corrente  
+		Token tk = input.LT(1);
+		
+		// lascio gestire il messaggio all'handler
+		h.handleError(tk, hdr, msg);
+	}
+	
+	void initParser () {
+		h = new Handler(input);
+	}
+		
+		
+	
 }
-parseCircuit:	prologueRule	{System.out.println("Ho riconosciuto prolog rule");}
+parseCircuit
+@init {initParser();}
+	:	
+		prologueRule	{System.out.println("Ho riconosciuto prolog rule");}
 		componentRule* {System.out.println("Ho riconosciuto component rule");}
 		EOF
 	;
@@ -38,6 +68,7 @@ componentRule
 		| symattrRule{System.out.println("sto riconoscendo symattr");}
 		| flagRule{System.out.println("sto riconoscendo flag");}
 		| windowRule{System.out.println("sto riconoscendo window");}
+		| iopinRule{System.out.println("sto riconoscendo iopin");}
 	;
 wireRule
 	:
@@ -51,32 +82,35 @@ flagRule
 	
 windowRule
 	:	
-		WINDOW INTEGER INTEGER INTEGER ID INTEGER
+		WINDOW INTEGER INTEGER INTEGER ID INTEGER //id=windowsoption
 	;
-
+iopinRule
+	:
+		IOPIN INTEGER INTEGER ID //iopinattribute	
+	;
 symbolRule
 	:
-		SYMBOL SYMBOLTYPE INTEGER INTEGER ID
+		SYMBOL ID INTEGER INTEGER ID //id1 = symboltype id2=rot|mirror type
 	;
 symattrRule
 	:
 		SYMATTR ( INSTNAME ID
-			| DESCRIPTION DESCRIPTIONATTR
-			| TYPE SYMBOLTYPE
+			| DESCRIPTION ID //description attribute
+			| TYPE ID //sybol type
 			| VALUE (INTEGER | FLOAT | ID | reservedWordRule)
 			| SPICELINE attrRule+)
 	;
 	
 attrRule
-	:
-		(CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
-		 ASSIGN
+	: 	attr = ID {h.checkAttribute($attr); } //(CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
+		ASSIGN
 		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
+		
 ;
 
 reservedWordRule
 	:	
-		VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN
+		VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN
 	;
 
 fragment 
@@ -92,70 +126,32 @@ SPECIALCHAR: '\u0021'..'\u002F' |'\u003A'..'\u003C'|'\u003E'..'\u0040'|'\u005B'.
 	     |'\u0400'..'\u04FF' //cirillico   
 	     ;
 
-VERSION:		'Version';
-SHEET:		'SHEET';
 INTEGER:		('-')?DIGIT+;
 FLOAT
     :   DIGIT+ '.' DIGIT* EXPONENT?
     |   '.' DIGIT+ EXPONENT?
     |   DIGIT+ EXPONENT
     ;
+    
+    
+//KEYWORD
+VERSION:		'Version';
+SHEET:		'SHEET';
 WIRE:		'WIRE';
 SYMBOL	:	'SYMBOL';
-SYMBOLTYPE:	'res' 
-		| 'res2'
-		| 'cap'
-		| 'ind' 
-		| 'ind2'
-		| 'diode'	
-		| 'schottky'
-		| 'zener'
-		| 'varactor'
-		| 'LED'
-		| 'TVSdiode'
-		| 'pnp'
-		| 'pnp2'
-		| 'pnp4'
-		| 'npn'
-		| 'npn2'
-		| 'npn3'
-		| 'npn4'
-		| 'voltage'
-		| 'current'
-		| 'nmos'
-		| 'pmos'
-		| 'polcap';
 SYMATTR	:	'SYMATTR';
-INSTNAME:	'InstName';
-VALUE	:	'Value';
-SPICELINE :	'SpiceLine';
 ASSIGN	:	'=';
-
 WINDOW 	:	'WINDOW';
-
-RATTRIBUTE:	'tol'
-		|'pwr';
-PARATTRIBUTE:	'Rser' //un voltage può avere un Rser
-		| 'Rpar'
-		| 'Cpar';
-CAPATTRIBUTE:	'V' // + PARATTRIBUTE
-		| 'Irms'
-		| 'Lser'
-		| 'mfg'
-		| 'pn'
-		| 'type';
-INDATTRIBUTE:	'Ipk'; //+ PARATTRIBUTE
-
-DESCRIPTION:	'Description';
-TYPE	:	'Type';
-DESCRIPTIONATTR:	'Diode'
-		| 'Capacitor'; // TODO: N.B. controlli semantici da vedere
-		
 FLAG 	:	'FLAG';
 IOPIN	:	'IOPIN';
-IOPINATT:	'In'
-		| 'Out'
-		| 'BiDir';
+
+
+//da riportare come id
+DESCRIPTION:	'Description';
+TYPE	:	'Type';
+VALUE	:	'Value';
+INSTNAME:	'InstName';
+SPICELINE :	'SpiceLine';
 	
 WS  :   ( ' '
         | '\t'
@@ -165,6 +161,9 @@ WS  :   ( ' '
     ;
     
 STRING	:	'"' ~('"')* '"';
+
 ID	:	(LETTER | DIGIT | SPECIALCHAR)(LETTER | DIGIT | SPECIALCHAR)*;
+
+ERROR_TK		: . ; 
 
 
