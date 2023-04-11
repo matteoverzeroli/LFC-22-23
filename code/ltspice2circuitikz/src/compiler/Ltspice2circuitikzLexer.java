@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-04-06 16:25:22
+// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-04-11 11:30:45
 
 package compiler;
 
@@ -12,29 +12,24 @@ import java.util.ArrayList;
 public class Ltspice2circuitikzLexer extends Lexer {
 	public static final int EOF=-1;
 	public static final int ASSIGN=4;
-	public static final int DESCRIPTION=5;
-	public static final int DIGIT=6;
-	public static final int ERROR_TK=7;
-	public static final int EXPONENT=8;
-	public static final int FLAG=9;
-	public static final int FLOAT=10;
-	public static final int ID=11;
-	public static final int INSTNAME=12;
-	public static final int INTEGER=13;
-	public static final int IOPIN=14;
-	public static final int LETTER=15;
-	public static final int SHEET=16;
-	public static final int SPECIALCHAR=17;
-	public static final int SPICELINE=18;
-	public static final int STRING=19;
-	public static final int SYMATTR=20;
-	public static final int SYMBOL=21;
-	public static final int TYPE=22;
-	public static final int VALUE=23;
-	public static final int VERSION=24;
-	public static final int WINDOW=25;
-	public static final int WIRE=26;
-	public static final int WS=27;
+	public static final int DIGIT=5;
+	public static final int ERROR_TK=6;
+	public static final int EXPONENT=7;
+	public static final int FLAG=8;
+	public static final int FLOAT=9;
+	public static final int ID=10;
+	public static final int INTEGER=11;
+	public static final int IOPIN=12;
+	public static final int LETTER=13;
+	public static final int SHEET=14;
+	public static final int SPECIALCHAR=15;
+	public static final int STRING=16;
+	public static final int SYMATTR=17;
+	public static final int SYMBOL=18;
+	public static final int VERSION=19;
+	public static final int WINDOW=20;
+	public static final int WIRE=21;
+	public static final int WS=22;
 
 	// delegates
 	// delegators
@@ -49,13 +44,13 @@ public class Ltspice2circuitikzLexer extends Lexer {
 	public Ltspice2circuitikzLexer(CharStream input, RecognizerSharedState state) {
 		super(input,state);
 	}
-	@Override public String getGrammarFileName() { return "C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g"; }
+	@Override public String getGrammarFileName() { return "C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g"; }
 
 	// $ANTLR start "LETTER"
 	public final void mLETTER() throws RecognitionException {
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:118:8: ( 'a' .. 'z' | 'A' .. 'Z' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:141:8: ( 'a' .. 'z' | 'A' .. 'Z' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -77,8 +72,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 	// $ANTLR start "DIGIT"
 	public final void mDIGIT() throws RecognitionException {
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:120:7: ( '0' .. '9' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:143:7: ( '0' .. '9' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 				input.consume();
@@ -100,8 +95,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 	// $ANTLR start "EXPONENT"
 	public final void mEXPONENT() throws RecognitionException {
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:122:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:122:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:145:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:145:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
 			{
 			if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
 				input.consume();
@@ -111,7 +106,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:122:22: ( '+' | '-' )?
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:145:22: ( '+' | '-' )?
 			int alt1=2;
 			int LA1_0 = input.LA(1);
 			if ( (LA1_0=='+'||LA1_0=='-') ) {
@@ -119,7 +114,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			}
 			switch (alt1) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 					{
 					if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
 						input.consume();
@@ -134,7 +129,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 			}
 
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:122:33: ( '0' .. '9' )+
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:145:33: ( '0' .. '9' )+
 			int cnt2=0;
 			loop2:
 			while (true) {
@@ -146,7 +141,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 				switch (alt2) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -179,8 +174,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 	// $ANTLR start "SPECIALCHAR"
 	public final void mSPECIALCHAR() throws RecognitionException {
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:124:12: ( '\\u0021' .. '\\u002F' | '\\u003A' .. '\\u003C' | '\\u003E' .. '\\u0040' | '\\u005B' .. '\\u0060' | '\\u007B' .. '\\u007E' | '\\u00A1' .. '\\u017F' | '\\u0370' .. '\\u03FF' | '\\u0400' .. '\\u04FF' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:147:12: ( '\\u0021' .. '\\u002F' | '\\u003A' .. '\\u003C' | '\\u003E' .. '\\u0040' | '\\u005B' .. '\\u0060' | '\\u007B' .. '\\u007E' | '\\u00A1' .. '\\u017F' | '\\u0370' .. '\\u03FF' | '\\u0400' .. '\\u04FF' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 			{
 			if ( (input.LA(1) >= '!' && input.LA(1) <= '/')||(input.LA(1) >= ':' && input.LA(1) <= '<')||(input.LA(1) >= '>' && input.LA(1) <= '@')||(input.LA(1) >= '[' && input.LA(1) <= '`')||(input.LA(1) >= '{' && input.LA(1) <= '~')||(input.LA(1) >= '\u00A1' && input.LA(1) <= '\u017F')||(input.LA(1) >= '\u0370' && input.LA(1) <= '\u04FF') ) {
 				input.consume();
@@ -204,10 +199,10 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = INTEGER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:8: ( ( '-' )? ( DIGIT )+ )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:11: ( '-' )? ( DIGIT )+
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:152:8: ( ( '-' )? ( DIGIT )+ )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:152:11: ( '-' )? ( DIGIT )+
 			{
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:11: ( '-' )?
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:152:11: ( '-' )?
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0=='-') ) {
@@ -215,7 +210,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			}
 			switch (alt3) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:12: '-'
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:152:12: '-'
 					{
 					match('-'); 
 					}
@@ -223,7 +218,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 			}
 
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:17: ( DIGIT )+
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:152:17: ( DIGIT )+
 			int cnt4=0;
 			loop4:
 			while (true) {
@@ -235,7 +230,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 				switch (alt4) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -272,14 +267,14 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = FLOAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:131:5: ( ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )? | '.' ( DIGIT )+ ( EXPONENT )? | ( DIGIT )+ EXPONENT )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:154:5: ( ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )? | '.' ( DIGIT )+ ( EXPONENT )? | ( DIGIT )+ EXPONENT )
 			int alt11=3;
 			alt11 = dfa11.predict(input);
 			switch (alt11) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:131:9: ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )?
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:154:9: ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )?
 					{
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:131:9: ( DIGIT )+
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:154:9: ( DIGIT )+
 					int cnt5=0;
 					loop5:
 					while (true) {
@@ -291,7 +286,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 						switch (alt5) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 							{
 							if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 								input.consume();
@@ -313,7 +308,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					}
 
 					match('.'); 
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:131:20: ( DIGIT )*
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:154:20: ( DIGIT )*
 					loop6:
 					while (true) {
 						int alt6=2;
@@ -324,7 +319,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 						switch (alt6) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 							{
 							if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 								input.consume();
@@ -342,7 +337,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 						}
 					}
 
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:131:27: ( EXPONENT )?
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:154:27: ( EXPONENT )?
 					int alt7=2;
 					int LA7_0 = input.LA(1);
 					if ( (LA7_0=='E'||LA7_0=='e') ) {
@@ -350,7 +345,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					}
 					switch (alt7) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:131:27: EXPONENT
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:154:27: EXPONENT
 							{
 							mEXPONENT(); 
 
@@ -362,10 +357,10 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:132:9: '.' ( DIGIT )+ ( EXPONENT )?
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:155:9: '.' ( DIGIT )+ ( EXPONENT )?
 					{
 					match('.'); 
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:132:13: ( DIGIT )+
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:155:13: ( DIGIT )+
 					int cnt8=0;
 					loop8:
 					while (true) {
@@ -377,7 +372,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 						switch (alt8) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 							{
 							if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 								input.consume();
@@ -398,7 +393,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 						cnt8++;
 					}
 
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:132:20: ( EXPONENT )?
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:155:20: ( EXPONENT )?
 					int alt9=2;
 					int LA9_0 = input.LA(1);
 					if ( (LA9_0=='E'||LA9_0=='e') ) {
@@ -406,7 +401,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					}
 					switch (alt9) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:132:20: EXPONENT
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:155:20: EXPONENT
 							{
 							mEXPONENT(); 
 
@@ -418,9 +413,9 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:9: ( DIGIT )+ EXPONENT
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:156:9: ( DIGIT )+ EXPONENT
 					{
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:9: ( DIGIT )+
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:156:9: ( DIGIT )+
 					int cnt10=0;
 					loop10:
 					while (true) {
@@ -432,7 +427,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 						switch (alt10) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 							{
 							if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 								input.consume();
@@ -473,13 +468,39 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = VERSION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:138:8: ( 'Version' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:138:11: 'Version'
-			{
-			match("Version"); 
-
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:161:8: ( 'Version' | 'version' )
+			int alt12=2;
+			int LA12_0 = input.LA(1);
+			if ( (LA12_0=='V') ) {
+				alt12=1;
+			}
+			else if ( (LA12_0=='v') ) {
+				alt12=2;
 			}
 
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 12, 0, input);
+				throw nvae;
+			}
+
+			switch (alt12) {
+				case 1 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:161:11: 'Version'
+					{
+					match("Version"); 
+
+					}
+					break;
+				case 2 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:161:23: 'version'
+					{
+					match("version"); 
+
+					}
+					break;
+
+			}
 			state.type = _type;
 			state.channel = _channel;
 		}
@@ -494,13 +515,39 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = SHEET;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:139:6: ( 'SHEET' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:139:9: 'SHEET'
-			{
-			match("SHEET"); 
-
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:162:6: ( 'SHEET' | 'sheet' )
+			int alt13=2;
+			int LA13_0 = input.LA(1);
+			if ( (LA13_0=='S') ) {
+				alt13=1;
+			}
+			else if ( (LA13_0=='s') ) {
+				alt13=2;
 			}
 
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 13, 0, input);
+				throw nvae;
+			}
+
+			switch (alt13) {
+				case 1 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:162:9: 'SHEET'
+					{
+					match("SHEET"); 
+
+					}
+					break;
+				case 2 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:162:19: 'sheet'
+					{
+					match("sheet"); 
+
+					}
+					break;
+
+			}
 			state.type = _type;
 			state.channel = _channel;
 		}
@@ -515,13 +562,39 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = WIRE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:140:5: ( 'WIRE' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:140:8: 'WIRE'
-			{
-			match("WIRE"); 
-
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:163:5: ( 'WIRE' | 'wire' )
+			int alt14=2;
+			int LA14_0 = input.LA(1);
+			if ( (LA14_0=='W') ) {
+				alt14=1;
+			}
+			else if ( (LA14_0=='w') ) {
+				alt14=2;
 			}
 
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 14, 0, input);
+				throw nvae;
+			}
+
+			switch (alt14) {
+				case 1 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:163:8: 'WIRE'
+					{
+					match("WIRE"); 
+
+					}
+					break;
+				case 2 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:163:17: 'wire'
+					{
+					match("wire"); 
+
+					}
+					break;
+
+			}
 			state.type = _type;
 			state.channel = _channel;
 		}
@@ -536,13 +609,39 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = SYMBOL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:141:8: ( 'SYMBOL' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:141:10: 'SYMBOL'
-			{
-			match("SYMBOL"); 
-
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:164:8: ( 'SYMBOL' | 'symbol' )
+			int alt15=2;
+			int LA15_0 = input.LA(1);
+			if ( (LA15_0=='S') ) {
+				alt15=1;
+			}
+			else if ( (LA15_0=='s') ) {
+				alt15=2;
 			}
 
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 15, 0, input);
+				throw nvae;
+			}
+
+			switch (alt15) {
+				case 1 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:164:10: 'SYMBOL'
+					{
+					match("SYMBOL"); 
+
+					}
+					break;
+				case 2 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:164:21: 'symbol'
+					{
+					match("symbol"); 
+
+					}
+					break;
+
+			}
 			state.type = _type;
 			state.channel = _channel;
 		}
@@ -557,13 +656,39 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = SYMATTR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:142:9: ( 'SYMATTR' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:142:11: 'SYMATTR'
-			{
-			match("SYMATTR"); 
-
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:165:9: ( 'SYMATTR' | 'symattr' )
+			int alt16=2;
+			int LA16_0 = input.LA(1);
+			if ( (LA16_0=='S') ) {
+				alt16=1;
+			}
+			else if ( (LA16_0=='s') ) {
+				alt16=2;
 			}
 
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 16, 0, input);
+				throw nvae;
+			}
+
+			switch (alt16) {
+				case 1 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:165:11: 'SYMATTR'
+					{
+					match("SYMATTR"); 
+
+					}
+					break;
+				case 2 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:165:23: 'symattr'
+					{
+					match("symattr"); 
+
+					}
+					break;
+
+			}
 			state.type = _type;
 			state.channel = _channel;
 		}
@@ -578,8 +703,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = ASSIGN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:143:8: ( '=' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:143:10: '='
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:166:8: ( '=' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:166:10: '='
 			{
 			match('='); 
 			}
@@ -598,13 +723,39 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = WINDOW;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:144:9: ( 'WINDOW' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:144:11: 'WINDOW'
-			{
-			match("WINDOW"); 
-
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:167:9: ( 'WINDOW' | 'windows' )
+			int alt17=2;
+			int LA17_0 = input.LA(1);
+			if ( (LA17_0=='W') ) {
+				alt17=1;
+			}
+			else if ( (LA17_0=='w') ) {
+				alt17=2;
 			}
 
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 17, 0, input);
+				throw nvae;
+			}
+
+			switch (alt17) {
+				case 1 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:167:11: 'WINDOW'
+					{
+					match("WINDOW"); 
+
+					}
+					break;
+				case 2 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:167:22: 'windows'
+					{
+					match("windows"); 
+
+					}
+					break;
+
+			}
 			state.type = _type;
 			state.channel = _channel;
 		}
@@ -619,13 +770,39 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = FLAG;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:145:7: ( 'FLAG' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:145:9: 'FLAG'
-			{
-			match("FLAG"); 
-
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:168:7: ( 'FLAG' | 'flag' )
+			int alt18=2;
+			int LA18_0 = input.LA(1);
+			if ( (LA18_0=='F') ) {
+				alt18=1;
+			}
+			else if ( (LA18_0=='f') ) {
+				alt18=2;
 			}
 
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 18, 0, input);
+				throw nvae;
+			}
+
+			switch (alt18) {
+				case 1 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:168:9: 'FLAG'
+					{
+					match("FLAG"); 
+
+					}
+					break;
+				case 2 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:168:18: 'flag'
+					{
+					match("flag"); 
+
+					}
+					break;
+
+			}
 			state.type = _type;
 			state.channel = _channel;
 		}
@@ -640,13 +817,39 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = IOPIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:146:7: ( 'IOPIN' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:146:9: 'IOPIN'
-			{
-			match("IOPIN"); 
-
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:169:7: ( 'IOPIN' | 'iopin' )
+			int alt19=2;
+			int LA19_0 = input.LA(1);
+			if ( (LA19_0=='I') ) {
+				alt19=1;
+			}
+			else if ( (LA19_0=='i') ) {
+				alt19=2;
 			}
 
+			else {
+				NoViableAltException nvae =
+					new NoViableAltException("", 19, 0, input);
+				throw nvae;
+			}
+
+			switch (alt19) {
+				case 1 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:169:9: 'IOPIN'
+					{
+					match("IOPIN"); 
+
+					}
+					break;
+				case 2 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:169:19: 'iopin'
+					{
+					match("iopin"); 
+
+					}
+					break;
+
+			}
 			state.type = _type;
 			state.channel = _channel;
 		}
@@ -656,132 +859,27 @@ public class Ltspice2circuitikzLexer extends Lexer {
 	}
 	// $ANTLR end "IOPIN"
 
-	// $ANTLR start "DESCRIPTION"
-	public final void mDESCRIPTION() throws RecognitionException {
-		try {
-			int _type = DESCRIPTION;
-			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:150:12: ( 'Description' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:150:14: 'Description'
-			{
-			match("Description"); 
-
-			}
-
-			state.type = _type;
-			state.channel = _channel;
-		}
-		finally {
-			// do for sure before leaving
-		}
-	}
-	// $ANTLR end "DESCRIPTION"
-
-	// $ANTLR start "TYPE"
-	public final void mTYPE() throws RecognitionException {
-		try {
-			int _type = TYPE;
-			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:151:6: ( 'Type' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:151:8: 'Type'
-			{
-			match("Type"); 
-
-			}
-
-			state.type = _type;
-			state.channel = _channel;
-		}
-		finally {
-			// do for sure before leaving
-		}
-	}
-	// $ANTLR end "TYPE"
-
-	// $ANTLR start "VALUE"
-	public final void mVALUE() throws RecognitionException {
-		try {
-			int _type = VALUE;
-			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:152:7: ( 'Value' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:152:9: 'Value'
-			{
-			match("Value"); 
-
-			}
-
-			state.type = _type;
-			state.channel = _channel;
-		}
-		finally {
-			// do for sure before leaving
-		}
-	}
-	// $ANTLR end "VALUE"
-
-	// $ANTLR start "INSTNAME"
-	public final void mINSTNAME() throws RecognitionException {
-		try {
-			int _type = INSTNAME;
-			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:153:9: ( 'InstName' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:153:11: 'InstName'
-			{
-			match("InstName"); 
-
-			}
-
-			state.type = _type;
-			state.channel = _channel;
-		}
-		finally {
-			// do for sure before leaving
-		}
-	}
-	// $ANTLR end "INSTNAME"
-
-	// $ANTLR start "SPICELINE"
-	public final void mSPICELINE() throws RecognitionException {
-		try {
-			int _type = SPICELINE;
-			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:154:11: ( 'SpiceLine' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:154:13: 'SpiceLine'
-			{
-			match("SpiceLine"); 
-
-			}
-
-			state.type = _type;
-			state.channel = _channel;
-		}
-		finally {
-			// do for sure before leaving
-		}
-	}
-	// $ANTLR end "SPICELINE"
-
 	// $ANTLR start "WS"
 	public final void mWS() throws RecognitionException {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:156:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:156:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:171:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:171:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
 			{
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:156:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
-			int cnt12=0;
-			loop12:
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:171:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+			int cnt20=0;
+			loop20:
 			while (true) {
-				int alt12=2;
-				int LA12_0 = input.LA(1);
-				if ( ((LA12_0 >= '\t' && LA12_0 <= '\n')||LA12_0=='\r'||LA12_0==' ') ) {
-					alt12=1;
+				int alt20=2;
+				int LA20_0 = input.LA(1);
+				if ( ((LA20_0 >= '\t' && LA20_0 <= '\n')||LA20_0=='\r'||LA20_0==' ') ) {
+					alt20=1;
 				}
 
-				switch (alt12) {
+				switch (alt20) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 					{
 					if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 						input.consume();
@@ -795,11 +893,11 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					break;
 
 				default :
-					if ( cnt12 >= 1 ) break loop12;
-					EarlyExitException eee = new EarlyExitException(12, input);
+					if ( cnt20 >= 1 ) break loop20;
+					EarlyExitException eee = new EarlyExitException(20, input);
 					throw eee;
 				}
-				cnt12++;
+				cnt20++;
 			}
 
 			_channel=HIDDEN;
@@ -819,22 +917,22 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = STRING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:163:8: ( '\"' (~ ( '\"' ) )* '\"' )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:163:10: '\"' (~ ( '\"' ) )* '\"'
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:178:8: ( '\"' (~ ( '\"' ) )* '\"' )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:178:10: '\"' (~ ( '\"' ) )* '\"'
 			{
 			match('\"'); 
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:163:14: (~ ( '\"' ) )*
-			loop13:
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:178:14: (~ ( '\"' ) )*
+			loop21:
 			while (true) {
-				int alt13=2;
-				int LA13_0 = input.LA(1);
-				if ( ((LA13_0 >= '\u0000' && LA13_0 <= '!')||(LA13_0 >= '#' && LA13_0 <= '\uFFFF')) ) {
-					alt13=1;
+				int alt21=2;
+				int LA21_0 = input.LA(1);
+				if ( ((LA21_0 >= '\u0000' && LA21_0 <= '!')||(LA21_0 >= '#' && LA21_0 <= '\uFFFF')) ) {
+					alt21=1;
 				}
 
-				switch (alt13) {
+				switch (alt21) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 					{
 					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '\uFFFF') ) {
 						input.consume();
@@ -848,7 +946,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					break;
 
 				default :
-					break loop13;
+					break loop21;
 				}
 			}
 
@@ -869,8 +967,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:165:4: ( ( LETTER | DIGIT | SPECIALCHAR ) ( LETTER | DIGIT | SPECIALCHAR )* )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:165:6: ( LETTER | DIGIT | SPECIALCHAR ) ( LETTER | DIGIT | SPECIALCHAR )*
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:180:4: ( ( LETTER | DIGIT | SPECIALCHAR ) ( LETTER | DIGIT | SPECIALCHAR )* )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:180:6: ( LETTER | DIGIT | SPECIALCHAR ) ( LETTER | DIGIT | SPECIALCHAR )*
 			{
 			if ( (input.LA(1) >= '!' && input.LA(1) <= '<')||(input.LA(1) >= '>' && input.LA(1) <= '~')||(input.LA(1) >= '\u00A1' && input.LA(1) <= '\u017F')||(input.LA(1) >= '\u0370' && input.LA(1) <= '\u04FF') ) {
 				input.consume();
@@ -880,18 +978,18 @@ public class Ltspice2circuitikzLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:165:36: ( LETTER | DIGIT | SPECIALCHAR )*
-			loop14:
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:180:36: ( LETTER | DIGIT | SPECIALCHAR )*
+			loop22:
 			while (true) {
-				int alt14=2;
-				int LA14_0 = input.LA(1);
-				if ( ((LA14_0 >= '!' && LA14_0 <= '<')||(LA14_0 >= '>' && LA14_0 <= '~')||(LA14_0 >= '\u00A1' && LA14_0 <= '\u017F')||(LA14_0 >= '\u0370' && LA14_0 <= '\u04FF')) ) {
-					alt14=1;
+				int alt22=2;
+				int LA22_0 = input.LA(1);
+				if ( ((LA22_0 >= '!' && LA22_0 <= '<')||(LA22_0 >= '>' && LA22_0 <= '~')||(LA22_0 >= '\u00A1' && LA22_0 <= '\u017F')||(LA22_0 >= '\u0370' && LA22_0 <= '\u04FF')) ) {
+					alt22=1;
 				}
 
-				switch (alt14) {
+				switch (alt22) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:
 					{
 					if ( (input.LA(1) >= '!' && input.LA(1) <= '<')||(input.LA(1) >= '>' && input.LA(1) <= '~')||(input.LA(1) >= '\u00A1' && input.LA(1) <= '\u017F')||(input.LA(1) >= '\u0370' && input.LA(1) <= '\u04FF') ) {
 						input.consume();
@@ -905,7 +1003,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 					break;
 
 				default :
-					break loop14;
+					break loop22;
 				}
 			}
 
@@ -925,8 +1023,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = ERROR_TK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:167:11: ( . )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:167:13: .
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:182:11: ( . )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:182:13: .
 			{
 			matchAny(); 
 			}
@@ -942,145 +1040,110 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:8: ( INTEGER | FLOAT | VERSION | SHEET | WIRE | SYMBOL | SYMATTR | ASSIGN | WINDOW | FLAG | IOPIN | DESCRIPTION | TYPE | VALUE | INSTNAME | SPICELINE | WS | STRING | ID | ERROR_TK )
-		int alt15=20;
-		alt15 = dfa15.predict(input);
-		switch (alt15) {
+		// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:8: ( INTEGER | FLOAT | VERSION | SHEET | WIRE | SYMBOL | SYMATTR | ASSIGN | WINDOW | FLAG | IOPIN | WS | STRING | ID | ERROR_TK )
+		int alt23=15;
+		alt23 = dfa23.predict(input);
+		switch (alt23) {
 			case 1 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:10: INTEGER
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:10: INTEGER
 				{
 				mINTEGER(); 
 
 				}
 				break;
 			case 2 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:18: FLOAT
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:18: FLOAT
 				{
 				mFLOAT(); 
 
 				}
 				break;
 			case 3 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:24: VERSION
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:24: VERSION
 				{
 				mVERSION(); 
 
 				}
 				break;
 			case 4 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:32: SHEET
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:32: SHEET
 				{
 				mSHEET(); 
 
 				}
 				break;
 			case 5 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:38: WIRE
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:38: WIRE
 				{
 				mWIRE(); 
 
 				}
 				break;
 			case 6 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:43: SYMBOL
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:43: SYMBOL
 				{
 				mSYMBOL(); 
 
 				}
 				break;
 			case 7 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:50: SYMATTR
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:50: SYMATTR
 				{
 				mSYMATTR(); 
 
 				}
 				break;
 			case 8 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:58: ASSIGN
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:58: ASSIGN
 				{
 				mASSIGN(); 
 
 				}
 				break;
 			case 9 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:65: WINDOW
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:65: WINDOW
 				{
 				mWINDOW(); 
 
 				}
 				break;
 			case 10 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:72: FLAG
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:72: FLAG
 				{
 				mFLAG(); 
 
 				}
 				break;
 			case 11 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:77: IOPIN
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:77: IOPIN
 				{
 				mIOPIN(); 
 
 				}
 				break;
 			case 12 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:83: DESCRIPTION
-				{
-				mDESCRIPTION(); 
-
-				}
-				break;
-			case 13 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:95: TYPE
-				{
-				mTYPE(); 
-
-				}
-				break;
-			case 14 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:100: VALUE
-				{
-				mVALUE(); 
-
-				}
-				break;
-			case 15 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:106: INSTNAME
-				{
-				mINSTNAME(); 
-
-				}
-				break;
-			case 16 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:115: SPICELINE
-				{
-				mSPICELINE(); 
-
-				}
-				break;
-			case 17 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:125: WS
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:83: WS
 				{
 				mWS(); 
 
 				}
 				break;
-			case 18 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:128: STRING
+			case 13 :
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:86: STRING
 				{
 				mSTRING(); 
 
 				}
 				break;
-			case 19 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:135: ID
+			case 14 :
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:93: ID
 				{
 				mID(); 
 
 				}
 				break;
-			case 20 :
-				// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:138: ERROR_TK
+			case 15 :
+				// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:1:96: ERROR_TK
 				{
 				mERROR_TK(); 
 
@@ -1092,7 +1155,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 
 
 	protected DFA11 dfa11 = new DFA11(this);
-	protected DFA15 dfa15 = new DFA15(this);
+	protected DFA23 dfa23 = new DFA23(this);
 	static final String DFA11_eotS =
 		"\5\uffff";
 	static final String DFA11_eofS =
@@ -1144,214 +1207,211 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "130:1: FLOAT : ( ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )? | '.' ( DIGIT )+ ( EXPONENT )? | ( DIGIT )+ EXPONENT );";
+			return "153:1: FLOAT : ( ( DIGIT )+ '.' ( DIGIT )* ( EXPONENT )? | '.' ( DIGIT )+ ( EXPONENT )? | ( DIGIT )+ EXPONENT );";
 		}
 	}
 
-	static final String DFA15_eotS =
-		"\1\uffff\1\21\1\22\4\21\1\uffff\4\21\1\uffff\1\21\2\uffff\1\22\2\uffff"+
-		"\1\22\1\51\1\21\1\51\6\21\1\uffff\5\21\1\uffff\1\21\1\46\1\uffff\1\51"+
-		"\1\21\1\uffff\1\21\1\51\16\21\1\51\1\21\1\51\6\21\1\120\1\21\1\122\3\21"+
-		"\1\126\1\21\1\130\1\131\3\21\1\uffff\1\21\1\uffff\1\136\2\21\1\uffff\1"+
-		"\21\2\uffff\1\142\2\21\1\145\1\uffff\2\21\1\150\1\uffff\1\151\1\21\1\uffff"+
-		"\2\21\2\uffff\1\21\1\156\1\21\1\160\1\uffff\1\21\1\uffff\1\21\1\163\1"+
-		"\uffff";
-	static final String DFA15_eofS =
+	static final String DFA23_eotS =
+		"\1\uffff\1\24\1\25\7\24\1\uffff\4\24\1\uffff\1\24\2\uffff\1\25\2\uffff"+
+		"\1\25\1\55\1\24\1\55\10\24\1\uffff\4\24\1\uffff\1\24\1\52\1\uffff\1\55"+
+		"\1\24\1\uffff\1\24\1\55\20\24\1\55\1\24\1\55\10\24\1\133\1\24\1\133\1"+
+		"\24\2\136\4\24\1\143\2\24\1\143\2\24\1\uffff\2\24\1\uffff\2\152\2\24\1"+
+		"\uffff\1\155\1\24\1\155\1\24\1\160\1\24\1\uffff\2\162\1\uffff\2\163\1"+
+		"\uffff\1\160\2\uffff";
+	static final String DFA23_eofS =
 		"\164\uffff";
-	static final String DFA15_minS =
-		"\1\0\1\60\1\41\1\60\1\141\1\110\1\111\1\uffff\1\114\1\117\1\145\1\171"+
-		"\1\uffff\1\0\2\uffff\1\41\2\uffff\2\41\1\53\1\41\1\162\1\154\1\105\1\115"+
-		"\1\151\1\116\1\uffff\1\101\1\120\2\163\1\160\1\uffff\1\0\1\41\1\uffff"+
-		"\1\41\1\53\1\uffff\1\60\1\41\1\53\1\163\1\165\1\105\1\101\1\143\1\105"+
-		"\1\104\1\107\1\111\1\164\1\143\1\145\1\60\1\41\1\60\1\41\1\151\1\145\1"+
-		"\124\1\117\1\124\1\145\1\41\1\117\1\41\2\116\1\162\1\41\1\157\2\41\1\114"+
-		"\1\124\1\114\1\uffff\1\127\1\uffff\1\41\1\141\1\151\1\uffff\1\156\2\uffff"+
-		"\1\41\1\122\1\151\1\41\1\uffff\1\155\1\160\1\41\1\uffff\1\41\1\156\1\uffff"+
-		"\1\145\1\164\2\uffff\1\145\1\41\1\151\1\41\1\uffff\1\157\1\uffff\1\156"+
-		"\1\41\1\uffff";
-	static final String DFA15_maxS =
-		"\1\uffff\1\71\1\u04ff\1\71\1\145\1\160\1\111\1\uffff\1\114\1\156\1\145"+
-		"\1\171\1\uffff\1\uffff\2\uffff\1\u04ff\2\uffff\2\u04ff\1\71\1\u04ff\1"+
-		"\162\1\154\1\105\1\115\1\151\1\122\1\uffff\1\101\1\120\2\163\1\160\1\uffff"+
-		"\1\uffff\1\u04ff\1\uffff\1\u04ff\1\71\1\uffff\1\71\1\u04ff\1\71\1\163"+
-		"\1\165\1\105\1\102\1\143\1\105\1\104\1\107\1\111\1\164\1\143\1\145\1\71"+
-		"\1\u04ff\1\71\1\u04ff\1\151\1\145\1\124\1\117\1\124\1\145\1\u04ff\1\117"+
-		"\1\u04ff\2\116\1\162\1\u04ff\1\157\2\u04ff\1\114\1\124\1\114\1\uffff\1"+
-		"\127\1\uffff\1\u04ff\1\141\1\151\1\uffff\1\156\2\uffff\1\u04ff\1\122\1"+
-		"\151\1\u04ff\1\uffff\1\155\1\160\1\u04ff\1\uffff\1\u04ff\1\156\1\uffff"+
-		"\1\145\1\164\2\uffff\1\145\1\u04ff\1\151\1\u04ff\1\uffff\1\157\1\uffff"+
-		"\1\156\1\u04ff\1\uffff";
-	static final String DFA15_acceptS =
-		"\7\uffff\1\10\4\uffff\1\21\1\uffff\1\23\1\24\1\uffff\1\23\1\1\12\uffff"+
-		"\1\10\5\uffff\1\21\2\uffff\1\22\2\uffff\1\2\46\uffff\1\5\1\uffff\1\12"+
-		"\3\uffff\1\15\1\uffff\1\16\1\4\4\uffff\1\13\3\uffff\1\6\2\uffff\1\11\2"+
-		"\uffff\1\3\1\7\4\uffff\1\17\1\uffff\1\20\2\uffff\1\14";
-	static final String DFA15_specialS =
-		"\1\0\14\uffff\1\2\26\uffff\1\1\117\uffff}>";
-	static final String[] DFA15_transitionS = {
-			"\11\17\2\14\2\17\1\14\22\17\1\14\1\16\1\15\12\16\1\1\1\3\1\16\12\2\3"+
-			"\16\1\7\6\16\1\12\1\16\1\10\2\16\1\11\11\16\1\5\1\13\1\16\1\4\1\6\47"+
-			"\16\42\17\u00df\16\u01f0\17\u0190\16\ufb00\17",
-			"\12\20",
-			"\15\21\1\24\1\21\12\23\3\21\1\uffff\7\21\1\25\37\21\1\25\31\21\42\uffff"+
-			"\u00df\21\u01f0\uffff\u0190\21",
-			"\12\26",
-			"\1\30\3\uffff\1\27",
-			"\1\31\20\uffff\1\32\26\uffff\1\33",
-			"\1\34",
-			"",
-			"\1\36",
-			"\1\37\36\uffff\1\40",
+	static final String DFA23_minS =
+		"\1\0\1\60\1\41\1\60\2\145\1\110\1\150\1\111\1\151\1\uffff\1\114\1\154"+
+		"\1\117\1\157\1\uffff\1\0\2\uffff\1\41\2\uffff\2\41\1\53\1\41\2\162\1\105"+
+		"\1\115\1\145\1\155\1\116\1\156\1\uffff\1\101\1\141\1\120\1\160\1\uffff"+
+		"\1\0\1\41\1\uffff\1\41\1\53\1\uffff\1\60\1\41\1\53\2\163\1\105\1\101\1"+
+		"\145\1\141\1\105\1\104\1\145\1\144\1\107\1\147\1\111\1\151\1\60\1\41\1"+
+		"\60\1\41\2\151\1\124\1\117\1\124\1\164\1\157\1\164\1\41\1\117\1\41\1\157"+
+		"\2\41\1\116\1\156\2\157\1\41\1\114\1\124\1\41\1\154\1\164\1\uffff\1\127"+
+		"\1\167\1\uffff\2\41\2\156\1\uffff\1\41\1\122\1\41\1\162\1\41\1\163\1\uffff"+
+		"\2\41\1\uffff\2\41\1\uffff\1\41\2\uffff";
+	static final String DFA23_maxS =
+		"\1\uffff\1\71\1\u04ff\1\71\2\145\1\131\1\171\1\111\1\151\1\uffff\1\114"+
+		"\1\154\1\117\1\157\1\uffff\1\uffff\2\uffff\1\u04ff\2\uffff\2\u04ff\1\71"+
+		"\1\u04ff\2\162\1\105\1\115\1\145\1\155\1\122\1\162\1\uffff\1\101\1\141"+
+		"\1\120\1\160\1\uffff\1\uffff\1\u04ff\1\uffff\1\u04ff\1\71\1\uffff\1\71"+
+		"\1\u04ff\1\71\2\163\1\105\1\102\1\145\1\142\1\105\1\104\1\145\1\144\1"+
+		"\107\1\147\1\111\1\151\1\71\1\u04ff\1\71\1\u04ff\2\151\1\124\1\117\1\124"+
+		"\1\164\1\157\1\164\1\u04ff\1\117\1\u04ff\1\157\2\u04ff\1\116\1\156\2\157"+
+		"\1\u04ff\1\114\1\124\1\u04ff\1\154\1\164\1\uffff\1\127\1\167\1\uffff\2"+
+		"\u04ff\2\156\1\uffff\1\u04ff\1\122\1\u04ff\1\162\1\u04ff\1\163\1\uffff"+
+		"\2\u04ff\1\uffff\2\u04ff\1\uffff\1\u04ff\2\uffff";
+	static final String DFA23_acceptS =
+		"\12\uffff\1\10\4\uffff\1\14\1\uffff\1\16\1\17\1\uffff\1\16\1\1\14\uffff"+
+		"\1\10\4\uffff\1\14\2\uffff\1\15\2\uffff\1\2\55\uffff\1\5\2\uffff\1\12"+
+		"\4\uffff\1\4\6\uffff\1\13\2\uffff\1\6\2\uffff\1\11\1\uffff\1\3\1\7";
+	static final String DFA23_specialS =
+		"\1\0\17\uffff\1\1\27\uffff\1\2\113\uffff}>";
+	static final String[] DFA23_transitionS = {
+			"\11\22\2\17\2\22\1\17\22\22\1\17\1\21\1\20\12\21\1\1\1\3\1\21\12\2\3"+
+			"\21\1\12\10\21\1\13\2\21\1\15\11\21\1\6\2\21\1\4\1\10\16\21\1\14\2\21"+
+			"\1\16\11\21\1\7\2\21\1\5\1\11\7\21\42\22\u00df\21\u01f0\22\u0190\21\ufb00"+
+			"\22",
+			"\12\23",
+			"\15\24\1\27\1\24\12\26\3\24\1\uffff\7\24\1\30\37\24\1\30\31\24\42\uffff"+
+			"\u00df\24\u01f0\uffff\u0190\24",
+			"\12\31",
+			"\1\32",
+			"\1\33",
+			"\1\34\20\uffff\1\35",
+			"\1\36\20\uffff\1\37",
+			"\1\40",
 			"\1\41",
-			"\1\42",
 			"",
-			"\41\46\1\44\1\45\32\44\1\46\101\44\42\46\u00df\44\u01f0\46\u0190\44"+
-			"\ufb00\46",
+			"\1\43",
+			"\1\44",
+			"\1\45",
+			"\1\46",
+			"",
+			"\41\52\1\50\1\51\32\50\1\52\101\50\42\52\u00df\50\u01f0\52\u0190\50"+
+			"\ufb00\52",
 			"",
 			"",
-			"\17\21\12\20\3\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190"+
-			"\21",
+			"\17\24\12\23\3\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190"+
+			"\24",
 			"",
 			"",
-			"\15\21\1\24\1\21\12\23\3\21\1\uffff\7\21\1\25\37\21\1\25\31\21\42\uffff"+
-			"\u00df\21\u01f0\uffff\u0190\21",
-			"\17\21\12\47\3\21\1\uffff\7\21\1\50\37\21\1\50\31\21\42\uffff\u00df"+
-			"\21\u01f0\uffff\u0190\21",
-			"\1\52\1\uffff\1\52\2\uffff\12\53",
-			"\17\21\12\26\3\21\1\uffff\7\21\1\54\37\21\1\54\31\21\42\uffff\u00df"+
-			"\21\u01f0\uffff\u0190\21",
-			"\1\55",
-			"\1\56",
-			"\1\57",
-			"\1\60",
+			"\15\24\1\27\1\24\12\26\3\24\1\uffff\7\24\1\30\37\24\1\30\31\24\42\uffff"+
+			"\u00df\24\u01f0\uffff\u0190\24",
+			"\17\24\12\53\3\24\1\uffff\7\24\1\54\37\24\1\54\31\24\42\uffff\u00df"+
+			"\24\u01f0\uffff\u0190\24",
+			"\1\56\1\uffff\1\56\2\uffff\12\57",
+			"\17\24\12\31\3\24\1\uffff\7\24\1\60\37\24\1\60\31\24\42\uffff\u00df"+
+			"\24\u01f0\uffff\u0190\24",
 			"\1\61",
-			"\1\63\3\uffff\1\62",
-			"",
+			"\1\62",
+			"\1\63",
 			"\1\64",
 			"\1\65",
 			"\1\66",
-			"\1\67",
-			"\1\70",
+			"\1\70\3\uffff\1\67",
+			"\1\72\3\uffff\1\71",
 			"",
-			"\41\46\1\44\1\45\32\44\1\46\101\44\42\46\u00df\44\u01f0\46\u0190\44"+
-			"\ufb00\46",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
-			"",
-			"\17\21\12\47\3\21\1\uffff\7\21\1\50\37\21\1\50\31\21\42\uffff\u00df"+
-			"\21\u01f0\uffff\u0190\21",
-			"\1\71\1\uffff\1\71\2\uffff\12\72",
-			"",
-			"\12\53",
-			"\17\21\12\53\3\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190"+
-			"\21",
-			"\1\73\1\uffff\1\73\2\uffff\12\74",
+			"\1\73",
+			"\1\74",
 			"\1\75",
 			"\1\76",
-			"\1\77",
-			"\1\101\1\100",
-			"\1\102",
+			"",
+			"\41\52\1\50\1\51\32\50\1\52\101\50\42\52\u00df\50\u01f0\52\u0190\50"+
+			"\ufb00\52",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
+			"",
+			"\17\24\12\53\3\24\1\uffff\7\24\1\54\37\24\1\54\31\24\42\uffff\u00df"+
+			"\24\u01f0\uffff\u0190\24",
+			"\1\77\1\uffff\1\77\2\uffff\12\100",
+			"",
+			"\12\57",
+			"\17\24\12\57\3\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190"+
+			"\24",
+			"\1\101\1\uffff\1\101\2\uffff\12\102",
 			"\1\103",
 			"\1\104",
 			"\1\105",
-			"\1\106",
-			"\1\107",
+			"\1\107\1\106",
 			"\1\110",
-			"\1\111",
-			"\12\72",
-			"\17\21\12\72\3\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190"+
-			"\21",
-			"\12\74",
-			"\17\21\12\74\3\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190"+
-			"\21",
-			"\1\112",
+			"\1\112\1\111",
 			"\1\113",
 			"\1\114",
 			"\1\115",
 			"\1\116",
 			"\1\117",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
+			"\1\120",
 			"\1\121",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
+			"\1\122",
+			"\12\100",
+			"\17\24\12\100\3\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190"+
+			"\24",
+			"\12\102",
+			"\17\24\12\102\3\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190"+
+			"\24",
 			"\1\123",
 			"\1\124",
 			"\1\125",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
+			"\1\126",
 			"\1\127",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
+			"\1\130",
+			"\1\131",
 			"\1\132",
-			"\1\133",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
 			"\1\134",
-			"",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
 			"\1\135",
-			"",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
 			"\1\137",
 			"\1\140",
-			"",
 			"\1\141",
-			"",
-			"",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
-			"\1\143",
+			"\1\142",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
 			"\1\144",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
-			"",
+			"\1\145",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
 			"\1\146",
 			"\1\147",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
 			"",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
-			"\1\152",
+			"\1\150",
+			"\1\151",
 			"",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
 			"\1\153",
 			"\1\154",
 			"",
-			"",
-			"\1\155",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
+			"\1\156",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
 			"\1\157",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
-			"",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
 			"\1\161",
 			"",
-			"\1\162",
-			"\34\21\1\uffff\101\21\42\uffff\u00df\21\u01f0\uffff\u0190\21",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
+			"",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
+			"",
+			"\34\24\1\uffff\101\24\42\uffff\u00df\24\u01f0\uffff\u0190\24",
+			"",
 			""
 	};
 
-	static final short[] DFA15_eot = DFA.unpackEncodedString(DFA15_eotS);
-	static final short[] DFA15_eof = DFA.unpackEncodedString(DFA15_eofS);
-	static final char[] DFA15_min = DFA.unpackEncodedStringToUnsignedChars(DFA15_minS);
-	static final char[] DFA15_max = DFA.unpackEncodedStringToUnsignedChars(DFA15_maxS);
-	static final short[] DFA15_accept = DFA.unpackEncodedString(DFA15_acceptS);
-	static final short[] DFA15_special = DFA.unpackEncodedString(DFA15_specialS);
-	static final short[][] DFA15_transition;
+	static final short[] DFA23_eot = DFA.unpackEncodedString(DFA23_eotS);
+	static final short[] DFA23_eof = DFA.unpackEncodedString(DFA23_eofS);
+	static final char[] DFA23_min = DFA.unpackEncodedStringToUnsignedChars(DFA23_minS);
+	static final char[] DFA23_max = DFA.unpackEncodedStringToUnsignedChars(DFA23_maxS);
+	static final short[] DFA23_accept = DFA.unpackEncodedString(DFA23_acceptS);
+	static final short[] DFA23_special = DFA.unpackEncodedString(DFA23_specialS);
+	static final short[][] DFA23_transition;
 
 	static {
-		int numStates = DFA15_transitionS.length;
-		DFA15_transition = new short[numStates][];
+		int numStates = DFA23_transitionS.length;
+		DFA23_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA15_transition[i] = DFA.unpackEncodedString(DFA15_transitionS[i]);
+			DFA23_transition[i] = DFA.unpackEncodedString(DFA23_transitionS[i]);
 		}
 	}
 
-	protected class DFA15 extends DFA {
+	protected class DFA23 extends DFA {
 
-		public DFA15(BaseRecognizer recognizer) {
+		public DFA23(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 15;
-			this.eot = DFA15_eot;
-			this.eof = DFA15_eof;
-			this.min = DFA15_min;
-			this.max = DFA15_max;
-			this.accept = DFA15_accept;
-			this.special = DFA15_special;
-			this.transition = DFA15_transition;
+			this.decisionNumber = 23;
+			this.eot = DFA23_eot;
+			this.eof = DFA23_eof;
+			this.min = DFA23_min;
+			this.max = DFA23_max;
+			this.accept = DFA23_accept;
+			this.special = DFA23_special;
+			this.transition = DFA23_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "1:1: Tokens : ( INTEGER | FLOAT | VERSION | SHEET | WIRE | SYMBOL | SYMATTR | ASSIGN | WINDOW | FLAG | IOPIN | DESCRIPTION | TYPE | VALUE | INSTNAME | SPICELINE | WS | STRING | ID | ERROR_TK );";
+			return "1:1: Tokens : ( INTEGER | FLOAT | VERSION | SHEET | WIRE | SYMBOL | SYMATTR | ASSIGN | WINDOW | FLAG | IOPIN | WS | STRING | ID | ERROR_TK );";
 		}
 		@Override
 		public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
@@ -1359,48 +1419,51 @@ public class Ltspice2circuitikzLexer extends Lexer {
 			int _s = s;
 			switch ( s ) {
 					case 0 : 
-						int LA15_0 = input.LA(1);
+						int LA23_0 = input.LA(1);
 						s = -1;
-						if ( (LA15_0=='-') ) {s = 1;}
-						else if ( ((LA15_0 >= '0' && LA15_0 <= '9')) ) {s = 2;}
-						else if ( (LA15_0=='.') ) {s = 3;}
-						else if ( (LA15_0=='V') ) {s = 4;}
-						else if ( (LA15_0=='S') ) {s = 5;}
-						else if ( (LA15_0=='W') ) {s = 6;}
-						else if ( (LA15_0=='=') ) {s = 7;}
-						else if ( (LA15_0=='F') ) {s = 8;}
-						else if ( (LA15_0=='I') ) {s = 9;}
-						else if ( (LA15_0=='D') ) {s = 10;}
-						else if ( (LA15_0=='T') ) {s = 11;}
-						else if ( ((LA15_0 >= '\t' && LA15_0 <= '\n')||LA15_0=='\r'||LA15_0==' ') ) {s = 12;}
-						else if ( (LA15_0=='\"') ) {s = 13;}
-						else if ( (LA15_0=='!'||(LA15_0 >= '#' && LA15_0 <= ',')||LA15_0=='/'||(LA15_0 >= ':' && LA15_0 <= '<')||(LA15_0 >= '>' && LA15_0 <= 'C')||LA15_0=='E'||(LA15_0 >= 'G' && LA15_0 <= 'H')||(LA15_0 >= 'J' && LA15_0 <= 'R')||LA15_0=='U'||(LA15_0 >= 'X' && LA15_0 <= '~')||(LA15_0 >= '\u00A1' && LA15_0 <= '\u017F')||(LA15_0 >= '\u0370' && LA15_0 <= '\u04FF')) ) {s = 14;}
-						else if ( ((LA15_0 >= '\u0000' && LA15_0 <= '\b')||(LA15_0 >= '\u000B' && LA15_0 <= '\f')||(LA15_0 >= '\u000E' && LA15_0 <= '\u001F')||(LA15_0 >= '\u007F' && LA15_0 <= '\u00A0')||(LA15_0 >= '\u0180' && LA15_0 <= '\u036F')||(LA15_0 >= '\u0500' && LA15_0 <= '\uFFFF')) ) {s = 15;}
+						if ( (LA23_0=='-') ) {s = 1;}
+						else if ( ((LA23_0 >= '0' && LA23_0 <= '9')) ) {s = 2;}
+						else if ( (LA23_0=='.') ) {s = 3;}
+						else if ( (LA23_0=='V') ) {s = 4;}
+						else if ( (LA23_0=='v') ) {s = 5;}
+						else if ( (LA23_0=='S') ) {s = 6;}
+						else if ( (LA23_0=='s') ) {s = 7;}
+						else if ( (LA23_0=='W') ) {s = 8;}
+						else if ( (LA23_0=='w') ) {s = 9;}
+						else if ( (LA23_0=='=') ) {s = 10;}
+						else if ( (LA23_0=='F') ) {s = 11;}
+						else if ( (LA23_0=='f') ) {s = 12;}
+						else if ( (LA23_0=='I') ) {s = 13;}
+						else if ( (LA23_0=='i') ) {s = 14;}
+						else if ( ((LA23_0 >= '\t' && LA23_0 <= '\n')||LA23_0=='\r'||LA23_0==' ') ) {s = 15;}
+						else if ( (LA23_0=='\"') ) {s = 16;}
+						else if ( (LA23_0=='!'||(LA23_0 >= '#' && LA23_0 <= ',')||LA23_0=='/'||(LA23_0 >= ':' && LA23_0 <= '<')||(LA23_0 >= '>' && LA23_0 <= 'E')||(LA23_0 >= 'G' && LA23_0 <= 'H')||(LA23_0 >= 'J' && LA23_0 <= 'R')||(LA23_0 >= 'T' && LA23_0 <= 'U')||(LA23_0 >= 'X' && LA23_0 <= 'e')||(LA23_0 >= 'g' && LA23_0 <= 'h')||(LA23_0 >= 'j' && LA23_0 <= 'r')||(LA23_0 >= 't' && LA23_0 <= 'u')||(LA23_0 >= 'x' && LA23_0 <= '~')||(LA23_0 >= '\u00A1' && LA23_0 <= '\u017F')||(LA23_0 >= '\u0370' && LA23_0 <= '\u04FF')) ) {s = 17;}
+						else if ( ((LA23_0 >= '\u0000' && LA23_0 <= '\b')||(LA23_0 >= '\u000B' && LA23_0 <= '\f')||(LA23_0 >= '\u000E' && LA23_0 <= '\u001F')||(LA23_0 >= '\u007F' && LA23_0 <= '\u00A0')||(LA23_0 >= '\u0180' && LA23_0 <= '\u036F')||(LA23_0 >= '\u0500' && LA23_0 <= '\uFFFF')) ) {s = 18;}
 						if ( s>=0 ) return s;
 						break;
 
 					case 1 : 
-						int LA15_36 = input.LA(1);
+						int LA23_16 = input.LA(1);
 						s = -1;
-						if ( (LA15_36=='\"') ) {s = 37;}
-						else if ( (LA15_36=='!'||(LA15_36 >= '#' && LA15_36 <= '<')||(LA15_36 >= '>' && LA15_36 <= '~')||(LA15_36 >= '\u00A1' && LA15_36 <= '\u017F')||(LA15_36 >= '\u0370' && LA15_36 <= '\u04FF')) ) {s = 36;}
-						else if ( ((LA15_36 >= '\u0000' && LA15_36 <= ' ')||LA15_36=='='||(LA15_36 >= '\u007F' && LA15_36 <= '\u00A0')||(LA15_36 >= '\u0180' && LA15_36 <= '\u036F')||(LA15_36 >= '\u0500' && LA15_36 <= '\uFFFF')) ) {s = 38;}
-						else s = 17;
+						if ( (LA23_16=='!'||(LA23_16 >= '#' && LA23_16 <= '<')||(LA23_16 >= '>' && LA23_16 <= '~')||(LA23_16 >= '\u00A1' && LA23_16 <= '\u017F')||(LA23_16 >= '\u0370' && LA23_16 <= '\u04FF')) ) {s = 40;}
+						else if ( (LA23_16=='\"') ) {s = 41;}
+						else if ( ((LA23_16 >= '\u0000' && LA23_16 <= ' ')||LA23_16=='='||(LA23_16 >= '\u007F' && LA23_16 <= '\u00A0')||(LA23_16 >= '\u0180' && LA23_16 <= '\u036F')||(LA23_16 >= '\u0500' && LA23_16 <= '\uFFFF')) ) {s = 42;}
+						else s = 20;
 						if ( s>=0 ) return s;
 						break;
 
 					case 2 : 
-						int LA15_13 = input.LA(1);
+						int LA23_40 = input.LA(1);
 						s = -1;
-						if ( (LA15_13=='!'||(LA15_13 >= '#' && LA15_13 <= '<')||(LA15_13 >= '>' && LA15_13 <= '~')||(LA15_13 >= '\u00A1' && LA15_13 <= '\u017F')||(LA15_13 >= '\u0370' && LA15_13 <= '\u04FF')) ) {s = 36;}
-						else if ( (LA15_13=='\"') ) {s = 37;}
-						else if ( ((LA15_13 >= '\u0000' && LA15_13 <= ' ')||LA15_13=='='||(LA15_13 >= '\u007F' && LA15_13 <= '\u00A0')||(LA15_13 >= '\u0180' && LA15_13 <= '\u036F')||(LA15_13 >= '\u0500' && LA15_13 <= '\uFFFF')) ) {s = 38;}
-						else s = 17;
+						if ( (LA23_40=='\"') ) {s = 41;}
+						else if ( (LA23_40=='!'||(LA23_40 >= '#' && LA23_40 <= '<')||(LA23_40 >= '>' && LA23_40 <= '~')||(LA23_40 >= '\u00A1' && LA23_40 <= '\u017F')||(LA23_40 >= '\u0370' && LA23_40 <= '\u04FF')) ) {s = 40;}
+						else if ( ((LA23_40 >= '\u0000' && LA23_40 <= ' ')||LA23_40=='='||(LA23_40 >= '\u007F' && LA23_40 <= '\u00A0')||(LA23_40 >= '\u0180' && LA23_40 <= '\u036F')||(LA23_40 >= '\u0500' && LA23_40 <= '\uFFFF')) ) {s = 42;}
+						else s = 20;
 						if ( s>=0 ) return s;
 						break;
 			}
 			NoViableAltException nvae =
-				new NoViableAltException(getDescription(), 15, _s, input);
+				new NoViableAltException(getDescription(), 23, _s, input);
 			error(nvae);
 			throw nvae;
 		}

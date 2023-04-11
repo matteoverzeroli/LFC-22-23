@@ -6,6 +6,7 @@ import org.antlr.runtime.CommonTokenStream;
 
 import compiler.Ltspice2circuitikzLexer;
 import compiler.Ltspice2circuitikzParser;
+import compiler.Handler;
 
 public class ParserTester {
  
@@ -31,6 +32,16 @@ public class ParserTester {
 
 			// 4.Lancio l'analisi sintattica del documento di ingresso
 			parser.parseCircuit(); 
+			
+			// 5.controllo i risultati
+			Handler h = parser.getHandler();
+			if (h.getErrorList().size() == 0)
+				System.out.println ("Parsing terminato con successo");
+			else
+				for (int i=0; i<h.getErrorList().size(); i++)
+					System.err.println ("Errore " + (i+1) + 
+							":\t" + h.getErrorList().get(i)+"");
+			
 		
 		} catch (Exception e) {
 			System.out.println ("Parsing con ANTLR abortito\n\n");

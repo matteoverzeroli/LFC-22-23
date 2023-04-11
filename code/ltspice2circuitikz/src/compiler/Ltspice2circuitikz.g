@@ -49,12 +49,13 @@ parseCircuit
 		EOF
 	;
 prologueRule
-	:	versionRule //Controllo semantico che sia 4
+	:	ver = versionRule {h.checkVersion(ver);}
 		sheetRule
 	;
-versionRule
+versionRule returns[Token tk]
 	:	
-		VERSION INTEGER
+		VERSION 
+		ver = INTEGER{tk = $ver;}
 	;
 	
 sheetRule
@@ -82,27 +83,49 @@ flagRule
 	
 windowRule
 	:	
-		WINDOW INTEGER INTEGER INTEGER ID INTEGER //id=windowsoption
+		WINDOW 
+		INTEGER 
+		INTEGER 
+		INTEGER 
+		id = ID {h.checkWindowsOptions($id);}
+		INTEGER
 	;
 iopinRule
 	:
-		IOPIN INTEGER INTEGER ID //iopinattribute	
+		IOPIN
+		INTEGER
+		INTEGER
+		id = ID {h.checkIOPinAttr($id);}
 	;
 symbolRule
 	:
-		SYMBOL ID INTEGER INTEGER ID //id1 = symboltype id2=rot|mirror type
+		SYMBOL 
+		symbolType = ID {h.checkSymbolType($symbolType);}
+		INTEGER 
+		INTEGER 
+		rotType = ID {h.checkRotType($rotType);}
 	;
 symattrRule
-	:
-		SYMATTR ( INSTNAME ID
+	:	
+		SYMATTR id1 = ID {h.checkSymMattrAttr($id1);} 
+			(id2  = ID {h.checkSymMattrAttrValue($id1, $id2);} (attrRuleNoId attrRule*)?
+			| INTEGER {h.checkSymMattrAttrValue($id1, "int");}
+			| FLOAT {h.checkSymMattrAttrValue($id1, "float");}
+			| reservedWordRule {h.checkSymMattrAttrValue($id1, "reserved");})
+	
+		/*SYMATTR ( INSTNAME ID
 			| DESCRIPTION ID //description attribute
 			| TYPE ID //sybol type
 			| VALUE (INTEGER | FLOAT | ID | reservedWordRule)
-			| SPICELINE attrRule+)
+			| SPICELINE attrRule+)*/
 	;
-	
+attrRuleNoId
+	:
+		ASSIGN
+		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
+	;
 attrRule
-	: 	attr = ID {h.checkAttribute($attr); } //(CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
+	: 	ID	 //TODO:ancora da controllore quali attributi sono consentiti ATTENZIONE (CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
 		ASSIGN
 		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
 		
@@ -134,24 +157,16 @@ FLOAT
     ;
     
     
-//KEYWORD
-VERSION:		'Version';
-SHEET:		'SHEET';
-WIRE:		'WIRE';
-SYMBOL	:	'SYMBOL';
-SYMATTR	:	'SYMATTR';
+//KEYWORD //todo:funziona anche con altre combinazioni maiuscole minuscole 
+VERSION:		'Version' | 'version';
+SHEET:		'SHEET' | 'sheet';
+WIRE:		'WIRE' | 'wire';
+SYMBOL	:	'SYMBOL' | 'symbol';
+SYMATTR	:	'SYMATTR' | 'symattr';
 ASSIGN	:	'=';
-WINDOW 	:	'WINDOW';
-FLAG 	:	'FLAG';
-IOPIN	:	'IOPIN';
-
-
-//da riportare come id
-DESCRIPTION:	'Description';
-TYPE	:	'Type';
-VALUE	:	'Value';
-INSTNAME:	'InstName';
-SPICELINE :	'SpiceLine';
+WINDOW 	:	'WINDOW' | 'windows';
+FLAG 	:	'FLAG' | 'flag';
+IOPIN	:	'IOPIN' | 'iopin';
 	
 WS  :   ( ' '
         | '\t'
