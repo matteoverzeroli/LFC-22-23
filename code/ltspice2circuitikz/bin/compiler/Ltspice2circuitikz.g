@@ -49,13 +49,13 @@ parseCircuit
 		EOF
 	;
 prologueRule
-	:	ver = versionRule {h.checkVersion(ver);}
+	:	versionRule
 		sheetRule
 	;
-versionRule returns[Token tk]
+versionRule
 	:	
 		VERSION 
-		ver = INTEGER{tk = $ver;}
+		ver = INTEGER{h.checkVersion($ver);}
 	;
 	
 sheetRule
@@ -108,7 +108,7 @@ symbolRule
 symattrRule
 	:	
 		SYMATTR id1 = ID {h.checkSymMattrAttr($id1);} 
-			(id2  = ID {h.checkSymMattrAttrValue($id1, $id2);} (attrRule+)?
+			(id2  = ID {h.checkSymMattrAttrValue($id1, $id2);} (attrRuleNoId attrRule*)?
 			| INTEGER {h.checkSymMattrAttrValue($id1, "int");}
 			| FLOAT {h.checkSymMattrAttrValue($id1, "float");}
 			| reservedWordRule {h.checkSymMattrAttrValue($id1, "reserved");})
@@ -119,9 +119,13 @@ symattrRule
 			| VALUE (INTEGER | FLOAT | ID | reservedWordRule)
 			| SPICELINE attrRule+)*/
 	;
-	
+attrRuleNoId
+	:
+		ASSIGN
+		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
+	;
 attrRule
-	: 	//attr = ID {h.checkAttribute($attr); } //(CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
+	: 	ID	 //TODO:ancora da controllore quali attributi sono consentiti ATTENZIONE (CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
 		ASSIGN
 		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
 		

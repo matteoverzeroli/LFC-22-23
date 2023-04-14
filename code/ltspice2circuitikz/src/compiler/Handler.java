@@ -15,18 +15,18 @@ import compiler.util.ERROR;
 
 public class Handler {
 
-	List<String> listWindowsOptions = Arrays.asList("invisibile", "center", "left", "right", "top",
-			"bottom", "vcenter", "vleft", "vright", "vtop", "vbottom");
-	List<String> listIOPinAttr = Arrays.asList("in", "out", "bidir");
+	List<String> listWindowsOptions = Arrays.asList("Invisibile", "Center", "Left", "Right", "Top",
+			"Bottom", "VCenter", "VLeft", "VRight", "VTop", "VBottom");
+	List<String> listIOPinAttr = Arrays.asList("In", "Out", "BiDir");
 	List<String> listSymbolType = Arrays.asList("res", "res2", "cap", "ind", "ind2", "diode", "schottky",
-			"zener", "varactor", "LED", "tvsdiode", "pnp", "pnp2", "pnp4" ,"npn", "npn2", "npn3", "npn4",
+			"zener", "varactor", "LED", "TVSdiode", "pnp", "pnp2", "pnp4" ,"npn", "npn2", "npn3", "npn4",
 			"voltage", "current", "nmos", "pmos", "polcap");
-	List<String> listMirrorType = Arrays.asList("m0", "m90", "m180", "m270");
-	List<String> listRotType = Arrays.asList("r0", "r90", "r180", "r270");
-	List<String> listSymAttr = Arrays.asList("instname", "description", "type", "value", "spiceline");
-	List<String> listDescAttr = Arrays.asList("diode", "capacitor");
-	List<String> listCapAttribute = Arrays.asList("v", "irms", "lser", "mfg", "pn", "type");
-	List<String> listIndAttribute = Arrays.asList("ipk");
+	List<String> listMirrorType = Arrays.asList("M0", "M90", "M180", "M270");
+	List<String> listRotType = Arrays.asList("R0", "R90", "R180", "R270");
+	List<String> listSymAttr = Arrays.asList("InstName", "Description", "Type", "Value", "SpiceLine");
+	List<String> listDescAttr = Arrays.asList("Diode", "Capacitor");
+	List<String> listCapAttribute = Arrays.asList("V", "Irms", "Lser", "mfg", "pn", "type");
+	List<String> listIndAttribute = Arrays.asList("Ipk");
 	List<String> listParAttribute = Arrays.asList("Rser", "Rpar","Cpar");
 	List<String> listRAttribute = Arrays.asList("tol", "pwr");
 	
@@ -138,7 +138,7 @@ public class Handler {
 	public void checkWindowsOptions(Token token) {
 		if(token != null) {
 			String wOption = token.getText();
-			if(listWindowsOptions.contains(wOption.toLowerCase()))
+			if(listWindowsOptions.contains(wOption))
 				System.out.println("Windows option is correct");
 			else {
 				System.out.println("Windows option is not correct");
@@ -153,7 +153,7 @@ public class Handler {
 	public void checkIOPinAttr(Token token) {
 		if(token != null) {
 			String ioPinAttr = token.getText();
-			if(listIOPinAttr.contains(ioPinAttr.toLowerCase()))
+			if(listIOPinAttr.contains(ioPinAttr))
 				System.out.println("IO Pin Attribute is correct");
 			else {
 				System.out.println("IO Pin Attribute is not correct");
@@ -167,7 +167,7 @@ public class Handler {
 	public void checkSymbolType(Token token) {
 		if(token != null) {
 			String symbolType = token.getText();
-			if(listSymbolType.contains(symbolType.toLowerCase()))
+			if(listSymbolType.contains(symbolType))
 				System.out.println("Symbol type is correct");
 			else {
 				System.out.println("Symbol type is not correct");
@@ -182,7 +182,7 @@ public class Handler {
 		if(token != null) {
 			String rotType = token.getText();
 			if(rotType.startsWith("R") || rotType.startsWith("r")) {
-				if(listRotType.contains(rotType.toLowerCase()))
+				if(listRotType.contains(rotType))
 					System.out.println("Rotation type is correct");
 				else {
 					System.out.println("Rotation type is not correct");
@@ -190,7 +190,7 @@ public class Handler {
 				}
 			}
 			else if(rotType.startsWith("m") || rotType.startsWith("M")) {
-				if(listMirrorType.contains(rotType.toLowerCase()))
+				if(listMirrorType.contains(rotType))
 					System.out.println("Mirror type is correct");
 				else {
 					System.out.println("Mirror type is not correct");
@@ -209,7 +209,7 @@ public class Handler {
 	public void checkSymMattrAttr(Token token) {
 		if(token != null) {
 			String symAttr = token.getText();
-			if(listSymAttr.contains(symAttr.toLowerCase()))
+			if(listSymAttr.contains(symAttr))
 				System.out.println("SYMATTR type is correct");
 			else {
 				System.out.println("SYMATTR type is not correct");
@@ -231,7 +231,7 @@ public class Handler {
 				symAttrValue = tokenSymAttrValue.toString();
 			
 			if(symAttr.compareToIgnoreCase("description") == 0){
-				if(listDescAttr.contains(symAttrValue.toLowerCase())) {
+				if(listDescAttr.contains(symAttrValue)) {
 					System.out.println("Description type is correct");
 				}
 				else {
@@ -240,7 +240,7 @@ public class Handler {
 				}
 			}
 			else if(symAttr.compareToIgnoreCase("type") == 0){
-				if(listSymbolType.contains(symAttrValue.toLowerCase())) {
+				if(listSymbolType.contains(symAttrValue)) {
 					System.out.println("Type value is correct");
 				}
 				else {
@@ -249,10 +249,10 @@ public class Handler {
 				}
 			}
 			else if(symAttr.compareToIgnoreCase("spiceline") == 0){
-				if(listCapAttribute.contains(symAttrValue.toLowerCase()) ||
-						listParAttribute.contains(symAttrValue.toLowerCase()) ||
-						listRAttribute.contains(symAttrValue.toLowerCase()) ||
-						listIndAttribute.contains(symAttrValue.toLowerCase())) {
+				if(listCapAttribute.contains(symAttrValue) ||
+						listParAttribute.contains(symAttrValue) ||
+						listRAttribute.contains(symAttrValue) ||
+						listIndAttribute.contains(symAttrValue)) {
 					System.out.println("SpiceLine value is correct");
 				}
 				else {

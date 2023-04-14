@@ -49,13 +49,13 @@ parseCircuit
 		EOF
 	;
 prologueRule
-	:	ver = versionRule {h.checkVersion(ver);}
+	:	versionRule
 		sheetRule
 	;
-versionRule returns[Token tk]
+versionRule
 	:	
 		VERSION 
-		ver = INTEGER{tk = $ver;}
+		ver = INTEGER{h.checkVersion($ver);}
 	;
 	
 sheetRule
