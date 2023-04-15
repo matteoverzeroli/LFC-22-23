@@ -77,7 +77,7 @@
  
  /*
  * 
-	INDATTRIBUTE:	'Ipk'; //+ PARATTRIBUTE
+	INDATTRIBUTE:	'Ipk' +altro; //+ PARATTRIBUTE
  */
  
  

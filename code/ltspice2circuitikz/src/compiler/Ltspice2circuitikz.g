@@ -65,8 +65,8 @@ sheetRule
 	
 componentRule
 	:	wireRule {System.out.println("sto riconoscendo wirerule");}
-		| symbolRule {System.out.println("sto riconoscendo symbol");}
-		| symattrRule{System.out.println("sto riconoscendo symattr");}
+		| symbol = symbolRule {System.out.println("sto riconoscendo symbol"); h.setLastSymbol(symbol);}
+		| symattrRule {System.out.println("sto riconoscendo symattr");}
 		| flagRule{System.out.println("sto riconoscendo flag");}
 		| windowRule{System.out.println("sto riconoscendo window");}
 		| iopinRule{System.out.println("sto riconoscendo iopin");}
@@ -97,18 +97,18 @@ iopinRule
 		INTEGER
 		id = ID {h.checkIOPinAttr($id);}
 	;
-symbolRule
+symbolRule returns[Token symbol]
 	:
 		SYMBOL 
-		symbolType = ID {h.checkSymbolType($symbolType);}
+		symbolType = ID {h.checkSymbolType($symbolType); symbol = $symbolType;}
 		INTEGER 
 		INTEGER 
 		rotType = ID {h.checkRotType($rotType);}
 	;
-symattrRule
+symattrRule//TODO da controllare
 	:	
 		SYMATTR id1 = ID {h.checkSymMattrAttr($id1);} 
-			(id2  = ID {h.checkSymMattrAttrValue($id1, $id2);} (attrRuleNoId attrRule*)?
+			(id2  = ID {h.checkSymMattrAttrValue($id1, $id2);} (attrRuleNoId attrRule[$id1]*)?
 			| INTEGER {h.checkSymMattrAttrValue($id1, "int");}
 			| FLOAT {h.checkSymMattrAttrValue($id1, "float");}
 			| reservedWordRule {h.checkSymMattrAttrValue($id1, "reserved");})
@@ -124,8 +124,8 @@ attrRuleNoId
 		ASSIGN
 		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
 	;
-attrRule
-	: 	ID	 //TODO:ancora da controllore quali attributi sono consentiti ATTENZIONE (CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
+attrRule [Token id1]
+	: 	id2 = ID {h.checkSymMattrAttrValue(id1, $id2);} 
 		ASSIGN
 		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
 		

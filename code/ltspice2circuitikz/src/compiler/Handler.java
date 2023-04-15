@@ -26,9 +26,11 @@ public class Handler {
 	List<String> listSymAttr = Arrays.asList("InstName", "Description", "Type", "Value", "SpiceLine");
 	List<String> listDescAttr = Arrays.asList("Diode", "Capacitor");
 	List<String> listCapAttribute = Arrays.asList("V", "Irms", "Lser", "mfg", "pn", "type");
-	List<String> listIndAttribute = Arrays.asList("Ipk");
+	List<String> listIndAttribute = Arrays.asList("Ipk", "mfg", "pn");
 	List<String> listParAttribute = Arrays.asList("Rser", "Rpar","Cpar");
 	List<String> listRAttribute = Arrays.asList("tol", "pwr");
+	
+	private String lastSymbol;
 	
 	TokenStream input;
 	List<String> errorList;
@@ -38,6 +40,8 @@ public class Handler {
 		
 		this.input = input;
 		errorList = new ArrayList<String>();
+		
+		lastSymbol = null;
 	}
 	
 	public List<String> getErrorList(){
@@ -110,9 +114,12 @@ public class Handler {
 			case TYPE_ERROR:
 				errMsg += "Type value '" + tk.getText() + "' is not valid";
 				break;	
-			case SPICELINEVALUE_ERROR:
+			case SPICELINEVALUE_ERROR: //TODO usato?
 				errMsg += "SpiceLine value '" + tk.getText() + "' is not valid";
-				break;	
+				break;
+			case SYMBOLTYPENULL_ERROR:
+				errMsg += "The SpiceLine value '" + tk.getText() + "' has no symbol reference";
+				break;
 			default:
 				errMsg += "Message error not defined";
 				
@@ -221,6 +228,10 @@ public class Handler {
 		}
 	}
 	
+	/*
+	 * da completare per tutti i simboli
+	 * 
+	 */
 	public void checkSymMattrAttrValue(Token tokenSymAttr, Object tokenSymAttrValue) {
 		if(tokenSymAttr != null && tokenSymAttrValue != null) {
 			String symAttr = tokenSymAttr.getText();
@@ -230,7 +241,7 @@ public class Handler {
 			else
 				symAttrValue = tokenSymAttrValue.toString();
 			
-			if(symAttr.compareToIgnoreCase("description") == 0){
+			if(symAttr.compareTo("Description") == 0){
 				if(listDescAttr.contains(symAttrValue)) {
 					System.out.println("Description type is correct");
 				}
@@ -239,7 +250,7 @@ public class Handler {
 					myErrorHandler(DESCRIPTION_ERROR, (Token)tokenSymAttrValue);
 				}
 			}
-			else if(symAttr.compareToIgnoreCase("type") == 0){
+			else if(symAttr.compareTo("Type") == 0){
 				if(listSymbolType.contains(symAttrValue)) {
 					System.out.println("Type value is correct");
 				}
@@ -248,16 +259,31 @@ public class Handler {
 					myErrorHandler(TYPE_ERROR, (Token)tokenSymAttrValue);
 				}
 			}
-			else if(symAttr.compareToIgnoreCase("spiceline") == 0){
-				if(listCapAttribute.contains(symAttrValue) ||
-						listParAttribute.contains(symAttrValue) ||
-						listRAttribute.contains(symAttrValue) ||
-						listIndAttribute.contains(symAttrValue)) {
-					System.out.println("SpiceLine value is correct");
-				}
-				else {
-					System.out.println("SpiceLine value is not correct");
-					myErrorHandler(SPICELINEVALUE_ERROR, (Token)tokenSymAttrValue);
+			else if(symAttr.compareTo("SpiceLine") == 0){
+				if(lastSymbol != null) {
+					switch(lastSymbol) {
+						case "res":
+						case "res2":
+							checkResAttribute(tokenSymAttrValue);
+							break;
+						case "cap":
+						case "polcap":
+							checkCapAttribute(tokenSymAttrValue);
+							break;
+						case "ind":
+						case "ind2":
+							checkIndAttribute(tokenSymAttrValue);
+							break;
+						case "voltage":
+							checkVoltageAttribute(tokenSymAttrValue);
+							break;
+						default: 
+							System.err.println("Symbol attribute " + lastSymbol + " not already taken in consideration");
+							break;
+					}
+				} else {
+					System.out.println("No symbol to refer SpiceLine value");
+					myErrorHandler(SYMBOLTYPENULL_ERROR, (Token)tokenSymAttrValue);
 				}
 			}
 		}
@@ -265,4 +291,55 @@ public class Handler {
 			System.err.println("SYMATTR type/value null!!");
 		}
 	}
+	
+	public void setLastSymbol(Token token) {
+		if(token != null) {
+			lastSymbol = token.getText();
+		}
+		else {
+			System.out.println("Last symbol is null");
+		}
+	}
+
+	private void checkResAttribute(Object tokenSymAttrValue) {
+		String symAttrValue = ((Token)tokenSymAttrValue).getText();
+		if(listRAttribute.contains(symAttrValue)) {
+			System.out.println("SpiceLine res value is correct");
+		}
+		else {
+			System.out.println("SpiceLine res value is not correct");
+			myErrorHandler(SPICELINEVALUE_ERROR, (Token)tokenSymAttrValue);
+		}
+	}
+	private void checkCapAttribute(Object tokenSymAttrValue) {
+		String symAttrValue = ((Token)tokenSymAttrValue).getText();
+		if(listCapAttribute.contains(symAttrValue) || listParAttribute.contains(symAttrValue)) {
+			System.out.println("SpiceLine cap value is correct");
+		}
+		else {
+			System.out.println("SpiceLine cap value is not correct");
+			myErrorHandler(SPICELINEVALUE_ERROR, (Token)tokenSymAttrValue);
+		}
+	}
+	private void checkIndAttribute(Object tokenSymAttrValue) {
+		String symAttrValue = ((Token)tokenSymAttrValue).getText();
+		if(listIndAttribute.contains(symAttrValue) || listParAttribute.contains(symAttrValue)) {
+			System.out.println("SpiceLine ind value is correct");
+		}
+		else {
+			System.out.println("SpiceLine ind value is not correct");
+			myErrorHandler(SPICELINEVALUE_ERROR, (Token)tokenSymAttrValue);
+		}
+	}
+	private void checkVoltageAttribute(Object tokenSymAttrValue) {
+		String symAttrValue = ((Token)tokenSymAttrValue).getText();
+		if(symAttrValue.equals("Rser")) {
+			System.out.println("SpiceLine voltage value is correct");
+		}
+		else {
+			System.out.println("SpiceLine voltage value is not correct");
+			myErrorHandler(SPICELINEVALUE_ERROR, (Token)tokenSymAttrValue);
+		}
+	}
+	
 }

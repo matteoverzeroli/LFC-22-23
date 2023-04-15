@@ -97,7 +97,7 @@ iopinRule
 		INTEGER
 		id = ID {h.checkIOPinAttr($id);}
 	;
-symbolRule
+symbolRule returns[Token symbol]
 	:
 		SYMBOL 
 		symbolType = ID {h.checkSymbolType($symbolType);}
@@ -105,7 +105,7 @@ symbolRule
 		INTEGER 
 		rotType = ID {h.checkRotType($rotType);}
 	;
-symattrRule
+symattrRule//TODO da controllare
 	:	
 		SYMATTR id1 = ID {h.checkSymMattrAttr($id1);} 
 			(id2  = ID {h.checkSymMattrAttrValue($id1, $id2);} (attrRuleNoId attrRule*)?
@@ -125,7 +125,7 @@ attrRuleNoId
 		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
 	;
 attrRule
-	: 	ID	 //TODO:ancora da controllore quali attributi sono consentiti ATTENZIONE (CAPATTRIBUTE | PARATTRIBUTE | RATTRIBUTE | INDATTRIBUTE)
+	: 	ID	 
 		ASSIGN
 		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
 		
