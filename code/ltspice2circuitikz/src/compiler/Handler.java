@@ -34,6 +34,8 @@ public class Handler {
 	private boolean typeAttributePresent;
 	private boolean descAttributePresent;
 	
+	private String formattedText = new String();
+	
 	TokenStream input;
 	List<String> errorList;
 	
@@ -415,6 +417,11 @@ public class Handler {
 			System.out.println("SpiceLine voltage value is not correct");
 			myErrorHandler(SPICELINEVALUE_ERROR, (Token)tokenSymAttrValue);
 		}
+	}
+	
+	public void appendRuleToStream(String rule) {
+		formattedText += rule;
+		System.out.println("Formatted Text: " + formattedText);
 	}
 	
 }
