@@ -45,17 +45,17 @@ parseCircuit
 @init {initParser();}
 	:	
 		prologueRule	{System.out.println("Ho riconosciuto prolog rule");}
-		componentRule* {System.out.println("Ho riconosciuto component rule");}
+		componentRule* {h.checkMandatoryAttribute(); System.out.println("Ho riconosciuto component rule"); }
 		EOF
 	;
 prologueRule
-	:	versionRule
+	:	versionString = versionRule {System.out.println("Version is equal to " + versionString);}
 		sheetRule
 	;
-versionRule
+versionRule returns[String versionString = new String()]
 	:	
 		VERSION 
-		ver = INTEGER{h.checkVersion($ver);}
+		ver = INTEGER{h.checkVersion($ver); versionString+="VERSION "+ver.getText();}
 	;
 	
 sheetRule
@@ -65,7 +65,7 @@ sheetRule
 	
 componentRule
 	:	wireRule {System.out.println("sto riconoscendo wirerule");}
-		| symbol = symbolRule {System.out.println("sto riconoscendo symbol"); h.setLastSymbol(symbol);}
+		| symbol = symbolRule {System.out.println("sto riconoscendo symbol"); h.checkMandatoryAttribute(); h.setLastSymbol(symbol);}
 		| symattrRule {System.out.println("sto riconoscendo symattr");}
 		| flagRule{System.out.println("sto riconoscendo flag");}
 		| windowRule{System.out.println("sto riconoscendo window");}

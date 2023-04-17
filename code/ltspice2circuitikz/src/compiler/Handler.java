@@ -20,7 +20,7 @@ public class Handler {
 	List<String> listIOPinAttr = Arrays.asList("In", "Out", "BiDir");
 	List<String> listSymbolType = Arrays.asList("res", "res2", "cap", "ind", "ind2", "diode", "schottky",
 			"zener", "varactor", "LED", "TVSdiode", "pnp", "pnp2", "pnp4" ,"npn", "npn2", "npn3", "npn4",
-			"voltage", "current", "nmos", "pmos", "polcap");
+			"voltage", "current", "nmos", "nmos4", "pmos", "polcap");
 	List<String> listMirrorType = Arrays.asList("M0", "M90", "M180", "M270");
 	List<String> listRotType = Arrays.asList("R0", "R90", "R180", "R270");
 	List<String> listSymAttr = Arrays.asList("InstName", "Description", "Type", "Value", "SpiceLine");
@@ -30,7 +30,9 @@ public class Handler {
 	List<String> listParAttribute = Arrays.asList("Rser", "Rpar","Cpar");
 	List<String> listRAttribute = Arrays.asList("tol", "pwr");
 	
-	private String lastSymbol;
+	private Token lastSymbol;
+	private boolean typeAttributePresent;
+	private boolean descAttributePresent;
 	
 	TokenStream input;
 	List<String> errorList;
@@ -119,6 +121,12 @@ public class Handler {
 				break;
 			case SYMBOLTYPENULL_ERROR:
 				errMsg += "The SpiceLine value '" + tk.getText() + "' has no symbol reference";
+				break;
+			case MISS_TYPEATTR_ERROR:
+				errMsg += "Missing type attribute for previous symbol '" + tk.getText() + "' ";
+				break;
+			case MISS_DESCATTR_ERROR:
+				errMsg += "Missing desc attribute for previous symbol '" + tk.getText() + "' ";
 				break;
 			default:
 				errMsg += "Message error not defined";
@@ -228,10 +236,7 @@ public class Handler {
 		}
 	}
 	
-	/*
-	 * da completare per tutti i simboli
-	 * 
-	 */
+
 	public void checkSymMattrAttrValue(Token tokenSymAttr, Object tokenSymAttrValue) {
 		if(tokenSymAttr != null && tokenSymAttrValue != null) {
 			String symAttr = tokenSymAttr.getText();
@@ -242,26 +247,64 @@ public class Handler {
 				symAttrValue = tokenSymAttrValue.toString();
 			
 			if(symAttr.compareTo("Description") == 0){
-				if(listDescAttr.contains(symAttrValue)) {
-					System.out.println("Description type is correct");
-				}
-				else {
-					System.out.println("Description type is not correct");
-					myErrorHandler(DESCRIPTION_ERROR, (Token)tokenSymAttrValue);
+				if (lastSymbol != null) {
+					
+					descAttributePresent = true;
+					if (lastSymbol.equals("schottky") || lastSymbol.equals("zener") || lastSymbol.equals("LED")) {
+						if (symAttrValue.compareTo("Diode") == 0)
+							System.out.println("Description type for diode is correct");
+						else {
+							System.out.println("Description type for diode is not correct");
+							myErrorHandler(DESCRIPTION_ERROR, (Token)tokenSymAttrValue);
+						}
+					}
+					
+					if (lastSymbol.equals("polcap")) {
+						if (symAttrValue.compareTo("Capacitor") == 0)
+							System.out.println("Description type for cap is correct");
+						else {
+							System.out.println("Description type for cap is not correct");
+							myErrorHandler(DESCRIPTION_ERROR, (Token)tokenSymAttrValue);
+						}
+					}
+				} else {
+					System.out.println("No symbol to refer Description value");
+					myErrorHandler(SYMBOLTYPENULL_ERROR, (Token)tokenSymAttrValue);
 				}
 			}
 			else if(symAttr.compareTo("Type") == 0){
-				if(listSymbolType.contains(symAttrValue)) {
-					System.out.println("Type value is correct");
-				}
-				else {
-					System.out.println("Type value is not correct");
-					myErrorHandler(TYPE_ERROR, (Token)tokenSymAttrValue);
+				
+				if (lastSymbol != null) {
+					
+					typeAttributePresent = true;
+					if (lastSymbol.getText().equals("schottky") 
+							|| lastSymbol.getText().equals("zener") 
+							|| lastSymbol.getText().equals("varactor")
+							|| lastSymbol.getText().equals("LED")) {
+						if (symAttrValue.compareTo("diode") == 0)
+							System.out.println("Type for diode is correct");
+						else {
+							System.out.println("Type for diode is not correct");
+							myErrorHandler(TYPE_ERROR, (Token)tokenSymAttrValue);
+						}
+					}
+					
+					if (lastSymbol.getText().equals("polcap")) {
+						if (symAttrValue.compareTo("cap") == 0)
+							System.out.println("Type for cap is correct");
+						else {
+							System.out.println("Type for cap is not correct");
+							myErrorHandler(TYPE_ERROR, (Token)tokenSymAttrValue);
+						}
+					}
+				} else {
+					System.out.println("No symbol to refer Type value");
+					myErrorHandler(SYMBOLTYPENULL_ERROR, (Token)tokenSymAttrValue);
 				}
 			}
 			else if(symAttr.compareTo("SpiceLine") == 0){
 				if(lastSymbol != null) {
-					switch(lastSymbol) {
+					switch(lastSymbol.getText()) {
 						case "res":
 						case "res2":
 							checkResAttribute(tokenSymAttrValue);
@@ -278,7 +321,7 @@ public class Handler {
 							checkVoltageAttribute(tokenSymAttrValue);
 							break;
 						default: 
-							System.err.println("Symbol attribute " + lastSymbol + " not already taken in consideration");
+							System.err.println("Symbol attribute " + lastSymbol.getText() + " not already taken in consideration");
 							break;
 					}
 				} else {
@@ -286,20 +329,52 @@ public class Handler {
 					myErrorHandler(SYMBOLTYPENULL_ERROR, (Token)tokenSymAttrValue);
 				}
 			}
+			else if (symAttr.compareTo("Value") == 0) {
+				
+			}
+			else if (symAttr.compareTo("InstName") == 0) {
+				
+			}
 		}
 		else {
 			System.err.println("SYMATTR type/value null!!");
 		}
 	}
 	
+	public void checkMandatoryAttribute() {
+		
+		if (lastSymbol != null) {
+			if (lastSymbol.getText().equals("varactor") 
+					|| lastSymbol.getText().equals("schottky") 
+					|| lastSymbol.getText().equals("zener")
+					|| lastSymbol.getText().equals("LED") 
+					|| lastSymbol.getText().equals("polcap")) {
+				
+				if (!typeAttributePresent) {
+					System.out.println("Missing Type attribute for SYMBOL");
+					myErrorHandler(MISS_TYPEATTR_ERROR, lastSymbol);
+				}
+				
+				if (!lastSymbol.getText().equals("varactor") && !descAttributePresent) {
+					System.out.println("Missing Desc attribute for SYMBOL");
+					myErrorHandler(MISS_DESCATTR_ERROR, lastSymbol);
+				}
+			}
+		}
+	}
+
 	public void setLastSymbol(Token token) {
+		
+		typeAttributePresent = false;
+		descAttributePresent = false;
+		
 		if(token != null) {
-			lastSymbol = token.getText();
+			lastSymbol = token;
 		}
 		else {
 			System.out.println("Last symbol is null");
 		}
-	}
+	}	
 
 	private void checkResAttribute(Object tokenSymAttrValue) {
 		String symAttrValue = ((Token)tokenSymAttrValue).getText();

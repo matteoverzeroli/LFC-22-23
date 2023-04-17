@@ -45,17 +45,17 @@ parseCircuit
 @init {initParser();}
 	:	
 		prologueRule	{System.out.println("Ho riconosciuto prolog rule");}
-		componentRule* {System.out.println("Ho riconosciuto component rule");}
+		componentRule* {h.checkMandatoryAttribute(); System.out.println("Ho riconosciuto component rule"); }
 		EOF
 	;
 prologueRule
-	:	versionRule
+	:	versionString = versionRule {System.out.println("Version is equal to " + versionString);}
 		sheetRule
 	;
-versionRule
+versionRule returns[String versionString = new String()]
 	:	
 		VERSION 
-		ver = INTEGER{h.checkVersion($ver);}
+		ver = INTEGER{h.checkVersion($ver); versionString+="VERSION "+ver.getText();}
 	;
 	
 sheetRule
@@ -65,8 +65,8 @@ sheetRule
 	
 componentRule
 	:	wireRule {System.out.println("sto riconoscendo wirerule");}
-		| symbolRule {System.out.println("sto riconoscendo symbol");}
-		| symattrRule{System.out.println("sto riconoscendo symattr");}
+		| symbol = symbolRule {System.out.println("sto riconoscendo symbol"); h.checkMandatoryAttribute(); h.setLastSymbol(symbol);}
+		| symattrRule {System.out.println("sto riconoscendo symattr");}
 		| flagRule{System.out.println("sto riconoscendo flag");}
 		| windowRule{System.out.println("sto riconoscendo window");}
 		| iopinRule{System.out.println("sto riconoscendo iopin");}
@@ -100,7 +100,7 @@ iopinRule
 symbolRule returns[Token symbol]
 	:
 		SYMBOL 
-		symbolType = ID {h.checkSymbolType($symbolType);}
+		symbolType = ID {h.checkSymbolType($symbolType); symbol = $symbolType;}
 		INTEGER 
 		INTEGER 
 		rotType = ID {h.checkRotType($rotType);}
@@ -108,7 +108,7 @@ symbolRule returns[Token symbol]
 symattrRule//TODO da controllare
 	:	
 		SYMATTR id1 = ID {h.checkSymMattrAttr($id1);} 
-			(id2  = ID {h.checkSymMattrAttrValue($id1, $id2);} (attrRuleNoId attrRule*)?
+			(id2  = ID {h.checkSymMattrAttrValue($id1, $id2);} (attrRuleNoId attrRule[$id1]*)?
 			| INTEGER {h.checkSymMattrAttrValue($id1, "int");}
 			| FLOAT {h.checkSymMattrAttrValue($id1, "float");}
 			| reservedWordRule {h.checkSymMattrAttrValue($id1, "reserved");})
@@ -124,8 +124,8 @@ attrRuleNoId
 		ASSIGN
 		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
 	;
-attrRule
-	: 	ID	 
+attrRule [Token id1]
+	: 	id2 = ID {h.checkSymMattrAttrValue(id1, $id2);} 
 		ASSIGN
 		(INTEGER | FLOAT | STRING | ID | reservedWordRule)
 		
