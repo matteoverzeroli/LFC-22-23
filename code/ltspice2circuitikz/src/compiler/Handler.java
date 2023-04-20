@@ -2,6 +2,9 @@ package compiler;
 
 
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +37,7 @@ public class Handler {
 	private boolean typeAttributePresent;
 	private boolean descAttributePresent;
 	
-	private String formattedText = new String();
+	private FileWriter fileOut;
 	
 	TokenStream input;
 	List<String> errorList;
@@ -46,6 +49,15 @@ public class Handler {
 		errorList = new ArrayList<String>();
 		
 		lastSymbol = null;
+		
+		try {
+			fileOut = new FileWriter("formatted_circuit", false);
+			fileOut.write("");
+			fileOut.close();
+			fileOut = new FileWriter("formatted_circuit", true);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public List<String> getErrorList(){
@@ -137,45 +149,51 @@ public class Handler {
 		errorList.add(errMsg);
 	}
 	
-	public void checkVersion(Token token) {
-		if(token != null) {
-			String version = token.getText();
+	public void checkVersion(Token v, Token ver) {
+		if(ver != null) {
+			String version = ver.getText();
 			if(version.compareTo("4") == 0)
 				System.out.println("Version number is correct");
 			else {
 				System.out.println("Version number is not correct");
-				myErrorHandler(VERSION_ERROR, token);
+				myErrorHandler(VERSION_ERROR, ver);
 			}
+			
+			appendRuleToStream(false, true, true, v, ver);
 		}
 		else {
 			System.err.println("Version null!!");
 		}
 	}
 	
-	public void checkWindowsOptions(Token token) {
-		if(token != null) {
-			String wOption = token.getText();
+	public void checkWindowsOptions(Token id, Token w, Token i1, Token i2, Token i3, Token i4) {
+		if(id != null) {
+			String wOption = id.getText();
 			if(listWindowsOptions.contains(wOption))
 				System.out.println("Windows option is correct");
 			else {
 				System.out.println("Windows option is not correct");
-				myErrorHandler(WINDOWOPTION_ERROR, token);
+				myErrorHandler(WINDOWOPTION_ERROR, id);
 			}
+			
+			appendRuleToStream(false, true, true, w, i1, i2, i3, id, i4);
 		}
 		else {
 			System.err.println("Windows Options null!!");
 		}
 	}
 
-	public void checkIOPinAttr(Token token) {
-		if(token != null) {
-			String ioPinAttr = token.getText();
+	public void checkIOPinAttr(Token id, Token i, Token i1, Token i2) {
+		if(id != null) {
+			String ioPinAttr = id.getText();
 			if(listIOPinAttr.contains(ioPinAttr))
 				System.out.println("IO Pin Attribute is correct");
 			else {
 				System.out.println("IO Pin Attribute is not correct");
-				myErrorHandler(IOPINATTR_ERROR, token);
+				myErrorHandler(IOPINATTR_ERROR, id);
 			}
+			
+			appendRuleToStream(false, true, true, i, i1, i2, id);
 		}
 		else {
 			System.err.println("IO Pin Attribute null!!");
@@ -195,15 +213,15 @@ public class Handler {
 			System.err.println("Symbol type null!!");
 		}
 	}
-	public void checkRotType(Token token) {
-		if(token != null) {
-			String rotType = token.getText();
+	public void checkRotType(Token rotToken, Token s, Token symbolType, Token i1, Token i2) {
+		if(rotToken != null) {
+			String rotType = rotToken.getText();
 			if(rotType.startsWith("R") || rotType.startsWith("r")) {
 				if(listRotType.contains(rotType))
 					System.out.println("Rotation type is correct");
 				else {
 					System.out.println("Rotation type is not correct");
-					myErrorHandler(ROTATIONTYPE_ERROR, token);
+					myErrorHandler(ROTATIONTYPE_ERROR, rotToken);
 				}
 			}
 			else if(rotType.startsWith("m") || rotType.startsWith("M")) {
@@ -211,27 +229,31 @@ public class Handler {
 					System.out.println("Mirror type is correct");
 				else {
 					System.out.println("Mirror type is not correct");
-					myErrorHandler(MIRRORTYPE_ERROR, token);
+					myErrorHandler(MIRRORTYPE_ERROR, rotToken);
 				}
 			} else {
 				System.out.println("Rotation/Mirror type not recognised");
-				myErrorHandler(ROTMIRR_ERROR, token);
+				myErrorHandler(ROTMIRR_ERROR, rotToken);
 			}
+			
+			appendRuleToStream(false, true, true, s, symbolType, i1, i2, rotToken);
 		}
 		else {
 			System.err.println("Rotation type null!!");
 		}
 	}
 	
-	public void checkSymMattrAttr(Token token) {
-		if(token != null) {
-			String symAttr = token.getText();
+	public void checkSymMattrAttr(Token id1, Token s) {
+		if(id1 != null) {
+			String symAttr = id1.getText();
 			if(listSymAttr.contains(symAttr))
 				System.out.println("SYMATTR type is correct");
 			else {
 				System.out.println("SYMATTR type is not correct");
-				myErrorHandler(SYMATTRTYPE_ERROR, token);
+				myErrorHandler(SYMATTRTYPE_ERROR, id1);
 			}
+			
+			appendRuleToStream(false, true, false, s, id1);
 		}
 		else {
 			System.err.println("SYMATTR type null!!");
@@ -332,10 +354,10 @@ public class Handler {
 				}
 			}
 			else if (symAttr.compareTo("Value") == 0) {
-				
+				//TODO
 			}
 			else if (symAttr.compareTo("InstName") == 0) {
-				
+				//TODO
 			}
 		}
 		else {
@@ -366,11 +388,12 @@ public class Handler {
 	}
 
 	public void setLastSymbol(Token token) {
-		
-		typeAttributePresent = false;
-		descAttributePresent = false;
-		
 		if(token != null) {
+			checkMandatoryAttribute(); 
+			
+			typeAttributePresent = false;
+			descAttributePresent = false;
+			
 			lastSymbol = token;
 		}
 		else {
@@ -419,9 +442,26 @@ public class Handler {
 		}
 	}
 	
-	public void appendRuleToStream(String rule) {
-		formattedText += rule;
-		System.out.println("Formatted Text: " + formattedText);
+	public void appendRuleToStream(boolean addBeforeWS, boolean addAfterWS, boolean addEndLine, Token... tokens) {
+		try {
+			int i = 0;
+			while(i < tokens.length-1) {
+				fileOut.append((addBeforeWS? " " : "") + tokens[i].getText() + (addAfterWS? " " : ""));
+				i++;
+			}
+			if(tokens.length != 0)
+				fileOut.append((addBeforeWS? " " : "") + tokens[i].getText());
+			if(addEndLine)
+				fileOut.append("\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-	
+	public void closeFileOut() {
+		try {
+			fileOut.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

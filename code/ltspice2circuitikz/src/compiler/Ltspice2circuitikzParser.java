@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-04-17 19:32:33
+// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-04-20 15:10:29
 
 package compiler;
 
@@ -53,7 +53,7 @@ public class Ltspice2circuitikzParser extends Parser {
 	}
 
 	@Override public String[] getTokenNames() { return Ltspice2circuitikzParser.tokenNames; }
-	@Override public String getGrammarFileName() { return "C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g"; }
+	@Override public String getGrammarFileName() { return "C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g"; }
 
 
 		Handler h;
@@ -80,26 +80,23 @@ public class Ltspice2circuitikzParser extends Parser {
 		void initParser () {
 			h = new Handler(input);
 		}
-			
-			
-		
 
 
 
 	// $ANTLR start "parseCircuit"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:44:1: parseCircuit : prologueRule ( componentRule )* EOF ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:41:1: parseCircuit : prologueRule ( componentRule )* EOF ;
 	public final void parseCircuit() throws RecognitionException {
 		initParser();
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:46:2: ( prologueRule ( componentRule )* EOF )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:47:3: prologueRule ( componentRule )* EOF
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:43:2: ( prologueRule ( componentRule )* EOF )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:44:3: prologueRule ( componentRule )* EOF
 			{
 			pushFollow(FOLLOW_prologueRule_in_parseCircuit56);
 			prologueRule();
 			state._fsp--;
 
 			System.out.println("Ho riconosciuto prolog rule");
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:48:3: ( componentRule )*
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:45:3: ( componentRule )*
 			loop1:
 			while (true) {
 				int alt1=2;
@@ -110,7 +107,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 				switch (alt1) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:48:3: componentRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:45:3: componentRule
 					{
 					pushFollow(FOLLOW_componentRule_in_parseCircuit62);
 					componentRule();
@@ -142,11 +139,11 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "prologueRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:51:1: prologueRule : versionRule sheetRule ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:48:1: prologueRule : versionRule sheetRule ;
 	public final void prologueRule() throws RecognitionException {
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:52:2: ( versionRule sheetRule )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:52:4: versionRule sheetRule
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:49:2: ( versionRule sheetRule )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:49:4: versionRule sheetRule
 			{
 			pushFollow(FOLLOW_versionRule_in_prologueRule80);
 			versionRule();
@@ -172,21 +169,18 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "versionRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:55:1: versionRule : v= VERSION ver= INTEGER ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:52:1: versionRule : v= VERSION ver= INTEGER ;
 	public final void versionRule() throws RecognitionException {
 		Token v=null;
 		Token ver=null;
 
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:56:2: (v= VERSION ver= INTEGER )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:57:3: v= VERSION ver= INTEGER
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:53:2: (v= VERSION ver= INTEGER )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:54:3: v= VERSION ver= INTEGER
 			{
 			v=(Token)match(input,VERSION,FOLLOW_VERSION_in_versionRule100); 
 			ver=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_versionRule109); 
-			 
-						h.checkVersion(ver); 
-						h.appendRuleToStream(v.getText()+" "+ver.getText()+'\n');
-					
+			h.checkVersion(v, ver);
 			}
 
 		}
@@ -203,7 +197,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "sheetRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:65:1: sheetRule : s= SHEET i1= INTEGER i2= INTEGER i3= INTEGER ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:58:1: sheetRule : s= SHEET i1= INTEGER i2= INTEGER i3= INTEGER ;
 	public final void sheetRule() throws RecognitionException {
 		Token s=null;
 		Token i1=null;
@@ -211,14 +205,14 @@ public class Ltspice2circuitikzParser extends Parser {
 		Token i3=null;
 
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:66:2: (s= SHEET i1= INTEGER i2= INTEGER i3= INTEGER )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:67:3: s= SHEET i1= INTEGER i2= INTEGER i3= INTEGER
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:59:2: (s= SHEET i1= INTEGER i2= INTEGER i3= INTEGER )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:60:3: s= SHEET i1= INTEGER i2= INTEGER i3= INTEGER
 			{
-			s=(Token)match(input,SHEET,FOLLOW_SHEET_in_sheetRule130); 
-			i1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_sheetRule134); 
-			i2=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_sheetRule138); 
-			i3=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_sheetRule142); 
-			h.appendRuleToStream(s.getText()+" "+i1.getText()+" "+i2.getText()+" "+i3.getText()+'\n');
+			s=(Token)match(input,SHEET,FOLLOW_SHEET_in_sheetRule128); 
+			i1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_sheetRule132); 
+			i2=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_sheetRule136); 
+			i3=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_sheetRule140); 
+			h.appendRuleToStream(false, true, true, s, i1, i2, i3);
 			}
 
 		}
@@ -235,12 +229,12 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "componentRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:71:1: componentRule : ( wireRule |symbol= symbolRule | symattrRule | flagRule | windowRule | iopinRule );
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:63:1: componentRule : ( wireRule |symbol= symbolRule | symattrRule | flagRule | windowRule | iopinRule );
 	public final void componentRule() throws RecognitionException {
 		Token symbol =null;
 
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:72:2: ( wireRule |symbol= symbolRule | symattrRule | flagRule | windowRule | iopinRule )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:64:2: ( wireRule |symbol= symbolRule | symattrRule | flagRule | windowRule | iopinRule )
 			int alt2=6;
 			switch ( input.LA(1) ) {
 			case WIRE:
@@ -280,9 +274,9 @@ public class Ltspice2circuitikzParser extends Parser {
 			}
 			switch (alt2) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:72:4: wireRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:64:4: wireRule
 					{
-					pushFollow(FOLLOW_wireRule_in_componentRule158);
+					pushFollow(FOLLOW_wireRule_in_componentRule154);
 					wireRule();
 					state._fsp--;
 
@@ -290,19 +284,19 @@ public class Ltspice2circuitikzParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:73:5: symbol= symbolRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:65:5: symbol= symbolRule
 					{
-					pushFollow(FOLLOW_symbolRule_in_componentRule170);
+					pushFollow(FOLLOW_symbolRule_in_componentRule166);
 					symbol=symbolRule();
 					state._fsp--;
 
-					System.out.println("sto riconoscendo symbol"); h.checkMandatoryAttribute(); h.setLastSymbol(symbol);
+					System.out.println("sto riconoscendo symbol"); h.setLastSymbol(symbol);
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:74:5: symattrRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:66:5: symattrRule
 					{
-					pushFollow(FOLLOW_symattrRule_in_componentRule178);
+					pushFollow(FOLLOW_symattrRule_in_componentRule174);
 					symattrRule();
 					state._fsp--;
 
@@ -310,9 +304,9 @@ public class Ltspice2circuitikzParser extends Parser {
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:75:5: flagRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:67:5: flagRule
 					{
-					pushFollow(FOLLOW_flagRule_in_componentRule186);
+					pushFollow(FOLLOW_flagRule_in_componentRule182);
 					flagRule();
 					state._fsp--;
 
@@ -320,9 +314,9 @@ public class Ltspice2circuitikzParser extends Parser {
 					}
 					break;
 				case 5 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:76:5: windowRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:68:5: windowRule
 					{
-					pushFollow(FOLLOW_windowRule_in_componentRule193);
+					pushFollow(FOLLOW_windowRule_in_componentRule189);
 					windowRule();
 					state._fsp--;
 
@@ -330,9 +324,9 @@ public class Ltspice2circuitikzParser extends Parser {
 					}
 					break;
 				case 6 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:77:5: iopinRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:69:5: iopinRule
 					{
-					pushFollow(FOLLOW_iopinRule_in_componentRule200);
+					pushFollow(FOLLOW_iopinRule_in_componentRule196);
 					iopinRule();
 					state._fsp--;
 
@@ -355,7 +349,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "wireRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:79:1: wireRule : w= WIRE i1= INTEGER i2= INTEGER i3= INTEGER i4= INTEGER ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:71:1: wireRule : w= WIRE i1= INTEGER i2= INTEGER i3= INTEGER i4= INTEGER ;
 	public final void wireRule() throws RecognitionException {
 		Token w=null;
 		Token i1=null;
@@ -364,15 +358,15 @@ public class Ltspice2circuitikzParser extends Parser {
 		Token i4=null;
 
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:80:2: (w= WIRE i1= INTEGER i2= INTEGER i3= INTEGER i4= INTEGER )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:81:3: w= WIRE i1= INTEGER i2= INTEGER i3= INTEGER i4= INTEGER
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:72:2: (w= WIRE i1= INTEGER i2= INTEGER i3= INTEGER i4= INTEGER )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:73:3: w= WIRE i1= INTEGER i2= INTEGER i3= INTEGER i4= INTEGER
 			{
-			w=(Token)match(input,WIRE,FOLLOW_WIRE_in_wireRule215); 
-			i1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_wireRule219); 
-			i2=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_wireRule223); 
-			i3=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_wireRule227); 
-			i4=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_wireRule231); 
-			h.appendRuleToStream(w.getText()+" "+i1.getText()+" "+i2.getText()+" "+i3.getText()+" "+i4.getText()+'\n');
+			w=(Token)match(input,WIRE,FOLLOW_WIRE_in_wireRule211); 
+			i1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_wireRule215); 
+			i2=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_wireRule219); 
+			i3=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_wireRule223); 
+			i4=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_wireRule227); 
+			h.appendRuleToStream(false, true, true, w, i1, i2, i3, i4);
 			}
 
 		}
@@ -389,7 +383,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "flagRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:85:1: flagRule : f= FLAG i1= INTEGER i2= INTEGER v= ( INTEGER | ID | reservedWordRule ) ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:76:1: flagRule : f= FLAG i1= INTEGER i2= INTEGER v= ( INTEGER | ID | reservedWordRule ) ;
 	public final void flagRule() throws RecognitionException {
 		Token f=null;
 		Token i1=null;
@@ -397,13 +391,13 @@ public class Ltspice2circuitikzParser extends Parser {
 		Token v=null;
 
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:86:2: (f= FLAG i1= INTEGER i2= INTEGER v= ( INTEGER | ID | reservedWordRule ) )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:3: f= FLAG i1= INTEGER i2= INTEGER v= ( INTEGER | ID | reservedWordRule )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:77:2: (f= FLAG i1= INTEGER i2= INTEGER v= ( INTEGER | ID | reservedWordRule ) )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:78:3: f= FLAG i1= INTEGER i2= INTEGER v= ( INTEGER | ID | reservedWordRule )
 			{
-			f=(Token)match(input,FLAG,FOLLOW_FLAG_in_flagRule252); 
-			i1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_flagRule256); 
-			i2=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_flagRule260); 
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:34: ( INTEGER | ID | reservedWordRule )
+			f=(Token)match(input,FLAG,FOLLOW_FLAG_in_flagRule246); 
+			i1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_flagRule250); 
+			i2=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_flagRule254); 
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:78:34: ( INTEGER | ID | reservedWordRule )
 			int alt3=3;
 			switch ( input.LA(1) ) {
 			case INTEGER:
@@ -436,21 +430,21 @@ public class Ltspice2circuitikzParser extends Parser {
 			}
 			switch (alt3) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:35: INTEGER
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:78:35: INTEGER
 					{
-					v=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_flagRule265); 
+					v=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_flagRule259); 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:45: ID
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:78:45: ID
 					{
-					v=(Token)match(input,ID,FOLLOW_ID_in_flagRule269); 
+					v=(Token)match(input,ID,FOLLOW_ID_in_flagRule263); 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:87:50: reservedWordRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:78:50: reservedWordRule
 					{
-					pushFollow(FOLLOW_reservedWordRule_in_flagRule273);
+					pushFollow(FOLLOW_reservedWordRule_in_flagRule267);
 					reservedWordRule();
 					state._fsp--;
 
@@ -459,7 +453,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 			}
 
-			h.appendRuleToStream(f.getText()+" "+i1.getText()+" "+i2.getText()+" "+v.getText()+'\n');
+			h.appendRuleToStream(false, true, true,f, i1, i2, v);
 			}
 
 		}
@@ -476,7 +470,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "windowRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:91:1: windowRule : w= WINDOW i1= INTEGER i2= INTEGER i3= INTEGER id= ID i4= INTEGER ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:81:1: windowRule : w= WINDOW i1= INTEGER i2= INTEGER i3= INTEGER id= ID i4= INTEGER ;
 	public final void windowRule() throws RecognitionException {
 		Token w=null;
 		Token i1=null;
@@ -486,17 +480,16 @@ public class Ltspice2circuitikzParser extends Parser {
 		Token i4=null;
 
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:92:2: (w= WINDOW i1= INTEGER i2= INTEGER i3= INTEGER id= ID i4= INTEGER )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:93:3: w= WINDOW i1= INTEGER i2= INTEGER i3= INTEGER id= ID i4= INTEGER
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:82:2: (w= WINDOW i1= INTEGER i2= INTEGER i3= INTEGER id= ID i4= INTEGER )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:83:3: w= WINDOW i1= INTEGER i2= INTEGER i3= INTEGER id= ID i4= INTEGER
 			{
-			w=(Token)match(input,WINDOW,FOLLOW_WINDOW_in_windowRule296); 
-			i1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_windowRule303); 
-			i2=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_windowRule310); 
-			i3=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_windowRule317); 
-			id=(Token)match(input,ID,FOLLOW_ID_in_windowRule326); 
-			h.checkWindowsOptions(id);
-			i4=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_windowRule334); 
-			h.appendRuleToStream(w.getText()+" "+i1.getText()+" "+i2.getText()+" "+i3.getText()+" "+id.getText()+" "+i4.getText()+'\n');
+			w=(Token)match(input,WINDOW,FOLLOW_WINDOW_in_windowRule287); 
+			i1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_windowRule294); 
+			i2=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_windowRule301); 
+			i3=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_windowRule308); 
+			id=(Token)match(input,ID,FOLLOW_ID_in_windowRule317); 
+			i4=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_windowRule323); 
+			h.checkWindowsOptions(id, w, i1, i2, i3, i4);
 			}
 
 		}
@@ -513,7 +506,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "iopinRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:101:1: iopinRule : i= IOPIN i1= INTEGER i2= INTEGER id= ID ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:91:1: iopinRule : i= IOPIN i1= INTEGER i2= INTEGER id= ID ;
 	public final void iopinRule() throws RecognitionException {
 		Token i=null;
 		Token i1=null;
@@ -521,17 +514,14 @@ public class Ltspice2circuitikzParser extends Parser {
 		Token id=null;
 
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:102:2: (i= IOPIN i1= INTEGER i2= INTEGER id= ID )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:103:3: i= IOPIN i1= INTEGER i2= INTEGER id= ID
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:92:2: (i= IOPIN i1= INTEGER i2= INTEGER id= ID )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:93:3: i= IOPIN i1= INTEGER i2= INTEGER id= ID
 			{
-			i=(Token)match(input,IOPIN,FOLLOW_IOPIN_in_iopinRule352); 
-			i1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_iopinRule358); 
-			i2=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_iopinRule364); 
-			id=(Token)match(input,ID,FOLLOW_ID_in_iopinRule372); 
-
-						h.checkIOPinAttr(id);
-						h.appendRuleToStream(i.getText()+" "+i1.getText()+" "+i2.getText()+" "+id.getText()+'\n');
-					
+			i=(Token)match(input,IOPIN,FOLLOW_IOPIN_in_iopinRule341); 
+			i1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_iopinRule347); 
+			i2=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_iopinRule353); 
+			id=(Token)match(input,ID,FOLLOW_ID_in_iopinRule361); 
+			h.checkIOPinAttr(id, i, i1, i2);
 			}
 
 		}
@@ -548,7 +538,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "symbolRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:113:1: symbolRule returns [Token symbol] : s= SYMBOL symbolType= ID i1= INTEGER i2= INTEGER rotType= ID ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:100:1: symbolRule returns [Token symbol] : s= SYMBOL symbolType= ID i1= INTEGER i2= INTEGER rotType= ID ;
 	public final Token symbolRule() throws RecognitionException {
 		Token symbol = null;
 
@@ -560,19 +550,16 @@ public class Ltspice2circuitikzParser extends Parser {
 		Token rotType=null;
 
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:114:2: (s= SYMBOL symbolType= ID i1= INTEGER i2= INTEGER rotType= ID )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:115:3: s= SYMBOL symbolType= ID i1= INTEGER i2= INTEGER rotType= ID
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:101:2: (s= SYMBOL symbolType= ID i1= INTEGER i2= INTEGER rotType= ID )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:102:3: s= SYMBOL symbolType= ID i1= INTEGER i2= INTEGER rotType= ID
 			{
-			s=(Token)match(input,SYMBOL,FOLLOW_SYMBOL_in_symbolRule397); 
-			symbolType=(Token)match(input,ID,FOLLOW_ID_in_symbolRule406); 
+			s=(Token)match(input,SYMBOL,FOLLOW_SYMBOL_in_symbolRule386); 
+			symbolType=(Token)match(input,ID,FOLLOW_ID_in_symbolRule395); 
 			h.checkSymbolType(symbolType); symbol = symbolType;
-			i1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_symbolRule414); 
-			i2=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_symbolRule421); 
-			rotType=(Token)match(input,ID,FOLLOW_ID_in_symbolRule430); 
-
-						h.checkRotType(rotType);
-						h.appendRuleToStream(s.getText()+" "+symbolType.getText()+" "+i1.getText()+" "+i2.getText()+" "+rotType.getText()+'\n');
-					
+			i1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_symbolRule403); 
+			i2=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_symbolRule410); 
+			rotType=(Token)match(input,ID,FOLLOW_ID_in_symbolRule419); 
+			h.checkRotType(rotType, s, symbolType, i1, i2);
 			}
 
 		}
@@ -590,7 +577,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "symattrRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:125:1: symattrRule : s= SYMATTR id1= ID (id2= ID ( attrRuleNoId ( attrRule[$id1] )* )? |i= INTEGER |f= FLOAT |r= reservedWordRule ) ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:108:1: symattrRule : s= SYMATTR id1= ID (id2= ID ( attrRuleNoId ( attrRule[$id1] )* )? |i= INTEGER |f= FLOAT |r= reservedWordRule ) ;
 	public final void symattrRule() throws RecognitionException {
 		Token s=null;
 		Token id1=null;
@@ -599,13 +586,13 @@ public class Ltspice2circuitikzParser extends Parser {
 		Token f=null;
 
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:2: (s= SYMATTR id1= ID (id2= ID ( attrRuleNoId ( attrRule[$id1] )* )? |i= INTEGER |f= FLOAT |r= reservedWordRule ) )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:127:3: s= SYMATTR id1= ID (id2= ID ( attrRuleNoId ( attrRule[$id1] )* )? |i= INTEGER |f= FLOAT |r= reservedWordRule )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:109:2: (s= SYMATTR id1= ID (id2= ID ( attrRuleNoId ( attrRule[$id1] )* )? |i= INTEGER |f= FLOAT |r= reservedWordRule ) )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:110:3: s= SYMATTR id1= ID (id2= ID ( attrRuleNoId ( attrRule[$id1] )* )? |i= INTEGER |f= FLOAT |r= reservedWordRule )
 			{
-			s=(Token)match(input,SYMATTR,FOLLOW_SYMATTR_in_symattrRule450); 
-			id1=(Token)match(input,ID,FOLLOW_ID_in_symattrRule454); 
-			h.checkSymMattrAttr(id1);h.appendRuleToStream(s.getText()+" "+id1.getText());
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:128:4: (id2= ID ( attrRuleNoId ( attrRule[$id1] )* )? |i= INTEGER |f= FLOAT |r= reservedWordRule )
+			s=(Token)match(input,SYMATTR,FOLLOW_SYMATTR_in_symattrRule437); 
+			id1=(Token)match(input,ID,FOLLOW_ID_in_symattrRule441); 
+			h.checkSymMattrAttr(id1, s);
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:4: (id2= ID ( attrRuleNoId ( attrRule[$id1] )* )? |i= INTEGER |f= FLOAT |r= reservedWordRule )
 			int alt6=4;
 			switch ( input.LA(1) ) {
 			case ID:
@@ -643,11 +630,11 @@ public class Ltspice2circuitikzParser extends Parser {
 			}
 			switch (alt6) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:128:5: id2= ID ( attrRuleNoId ( attrRule[$id1] )* )?
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:5: id2= ID ( attrRuleNoId ( attrRule[$id1] )* )?
 					{
-					id2=(Token)match(input,ID,FOLLOW_ID_in_symattrRule465); 
-					h.checkSymMattrAttrValue(id1, id2);h.appendRuleToStream(" "+id2.getText());
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:128:92: ( attrRuleNoId ( attrRule[$id1] )* )?
+					id2=(Token)match(input,ID,FOLLOW_ID_in_symattrRule452); 
+					h.checkSymMattrAttrValue(id1, id2);h.appendRuleToStream(true, false, false, id2);
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:96: ( attrRuleNoId ( attrRule[$id1] )* )?
 					int alt5=2;
 					int LA5_0 = input.LA(1);
 					if ( (LA5_0==ASSIGN) ) {
@@ -655,13 +642,13 @@ public class Ltspice2circuitikzParser extends Parser {
 					}
 					switch (alt5) {
 						case 1 :
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:128:93: attrRuleNoId ( attrRule[$id1] )*
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:97: attrRuleNoId ( attrRule[$id1] )*
 							{
-							pushFollow(FOLLOW_attrRuleNoId_in_symattrRule470);
+							pushFollow(FOLLOW_attrRuleNoId_in_symattrRule457);
 							attrRuleNoId();
 							state._fsp--;
 
-							// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:128:106: ( attrRule[$id1] )*
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:110: ( attrRule[$id1] )*
 							loop4:
 							while (true) {
 								int alt4=2;
@@ -672,9 +659,9 @@ public class Ltspice2circuitikzParser extends Parser {
 
 								switch (alt4) {
 								case 1 :
-									// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:128:106: attrRule[$id1]
+									// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:110: attrRule[$id1]
 									{
-									pushFollow(FOLLOW_attrRule_in_symattrRule472);
+									pushFollow(FOLLOW_attrRule_in_symattrRule459);
 									attrRule(id1);
 									state._fsp--;
 
@@ -694,33 +681,33 @@ public class Ltspice2circuitikzParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:6: i= INTEGER
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:112:6: i= INTEGER
 					{
-					i=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_symattrRule485); 
-					h.checkSymMattrAttrValue(id1, "int");h.appendRuleToStream(i.getText());
+					i=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_symattrRule472); 
+					h.checkSymMattrAttrValue(id1, "int");h.appendRuleToStream(true, false, false, i);
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:130:6: f= FLOAT
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:113:6: f= FLOAT
 					{
-					f=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_symattrRule496); 
-					h.checkSymMattrAttrValue(id1, "float");h.appendRuleToStream(f.getText());
+					f=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_symattrRule483); 
+					h.checkSymMattrAttrValue(id1, "float");h.appendRuleToStream(true, false, false, f);
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:131:6: r= reservedWordRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:114:6: r= reservedWordRule
 					{
-					pushFollow(FOLLOW_reservedWordRule_in_symattrRule507);
+					pushFollow(FOLLOW_reservedWordRule_in_symattrRule494);
 					reservedWordRule();
 					state._fsp--;
 
-					h.checkSymMattrAttrValue(id1, "reserved");
+					h.checkSymMattrAttrValue(id1, "reserved"); h.appendRuleToStream(true, false, false, f);
 					}
 					break;
 
 			}
 
-			h.appendRuleToStream("\n");
+			h.appendRuleToStream(false, false, true);
 			}
 
 		}
@@ -737,17 +724,17 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "attrRuleNoId"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:139:1: attrRuleNoId : a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:123:1: attrRuleNoId : a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) ;
 	public final void attrRuleNoId() throws RecognitionException {
 		Token a=null;
 		Token v=null;
 
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:140:2: (a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:141:3: a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:124:2: (a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:125:3: a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
 			{
-			a=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_attrRuleNoId532); 
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:142:5: ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
+			a=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_attrRuleNoId522); 
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:5: ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
 			int alt7=5;
 			switch ( input.LA(1) ) {
 			case INTEGER:
@@ -790,33 +777,33 @@ public class Ltspice2circuitikzParser extends Parser {
 			}
 			switch (alt7) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:142:6: INTEGER
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:6: INTEGER
 					{
-					v=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_attrRuleNoId539); 
+					v=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_attrRuleNoId529); 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:142:16: FLOAT
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:16: FLOAT
 					{
-					v=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_attrRuleNoId543); 
+					v=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_attrRuleNoId533); 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:142:24: STRING
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:24: STRING
 					{
-					v=(Token)match(input,STRING,FOLLOW_STRING_in_attrRuleNoId547); 
+					v=(Token)match(input,STRING,FOLLOW_STRING_in_attrRuleNoId537); 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:142:33: ID
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:33: ID
 					{
-					v=(Token)match(input,ID,FOLLOW_ID_in_attrRuleNoId551); 
+					v=(Token)match(input,ID,FOLLOW_ID_in_attrRuleNoId541); 
 					}
 					break;
 				case 5 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:142:38: reservedWordRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:38: reservedWordRule
 					{
-					pushFollow(FOLLOW_reservedWordRule_in_attrRuleNoId555);
+					pushFollow(FOLLOW_reservedWordRule_in_attrRuleNoId545);
 					reservedWordRule();
 					state._fsp--;
 
@@ -825,7 +812,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 			}
 
-			h.appendRuleToStream(" "+a.getText()+" "+v.getText());
+			h.appendRuleToStream(false, false, false, a, v);
 			}
 
 		}
@@ -842,20 +829,20 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "attrRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:145:1: attrRule[Token id1] : id2= ID a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:1: attrRule[Token id1] : id2= ID a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) ;
 	public final void attrRule(Token id1) throws RecognitionException {
 		Token id2=null;
 		Token a=null;
 		Token v=null;
 
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:146:2: (id2= ID a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:147:3: id2= ID a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:130:2: (id2= ID a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:131:3: id2= ID a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
 			{
-			id2=(Token)match(input,ID,FOLLOW_ID_in_attrRule580); 
-			h.checkSymMattrAttrValue(id1, id2);
-			a=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_attrRule589); 
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:149:5: ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
+			id2=(Token)match(input,ID,FOLLOW_ID_in_attrRule570); 
+			h.checkSymMattrAttrValue(id1, id2); h.appendRuleToStream(true, false, false, id2);
+			a=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_attrRule578); 
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:5: ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
 			int alt8=5;
 			switch ( input.LA(1) ) {
 			case INTEGER:
@@ -898,33 +885,33 @@ public class Ltspice2circuitikzParser extends Parser {
 			}
 			switch (alt8) {
 				case 1 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:149:6: INTEGER
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:6: INTEGER
 					{
-					v=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_attrRule596); 
+					v=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_attrRule585); 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:149:16: FLOAT
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:16: FLOAT
 					{
-					v=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_attrRule600); 
+					v=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_attrRule589); 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:149:24: STRING
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:24: STRING
 					{
-					v=(Token)match(input,STRING,FOLLOW_STRING_in_attrRule604); 
+					v=(Token)match(input,STRING,FOLLOW_STRING_in_attrRule593); 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:149:33: ID
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:33: ID
 					{
-					v=(Token)match(input,ID,FOLLOW_ID_in_attrRule608); 
+					v=(Token)match(input,ID,FOLLOW_ID_in_attrRule597); 
 					}
 					break;
 				case 5 :
-					// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:149:38: reservedWordRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:38: reservedWordRule
 					{
-					pushFollow(FOLLOW_reservedWordRule_in_attrRule612);
+					pushFollow(FOLLOW_reservedWordRule_in_attrRule601);
 					reservedWordRule();
 					state._fsp--;
 
@@ -933,7 +920,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 			}
 
-			h.appendRuleToStream(id2.getText()+" "+a.getText()+" "+v.getText());
+			h.appendRuleToStream(false, false, false, a, v);
 			}
 
 		}
@@ -950,13 +937,13 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "reservedWordRule"
-	// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:154:1: reservedWordRule : v= ( VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN ) ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:138:1: reservedWordRule : v= ( VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN ) ;
 	public final void reservedWordRule() throws RecognitionException {
 		Token v=null;
 
 		try {
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:155:2: (v= ( VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN ) )
-			// C:\\Users\\Davide\\Desktop\\UniBG\\Studio\\5_Anno\\Linguaggi Formali E Compilatori\\progetto\\LFC-22-23\\code\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:156:3: v= ( VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:139:2: (v= ( VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN ) )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:140:3: v= ( VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN )
 			{
 			v=input.LT(1);
 			if ( input.LA(1)==ASSIGN||input.LA(1)==FLAG||input.LA(1)==IOPIN||input.LA(1)==SHEET||(input.LA(1) >= SYMATTR && input.LA(1) <= WIRE) ) {
@@ -967,7 +954,7 @@ public class Ltspice2circuitikzParser extends Parser {
 				MismatchedSetException mse = new MismatchedSetException(null,input);
 				throw mse;
 			}
-			h.appendRuleToStream(v.getText());
+			h.appendRuleToStream(false, false, false, v);
 			}
 
 		}
@@ -992,62 +979,62 @@ public class Ltspice2circuitikzParser extends Parser {
 	public static final BitSet FOLLOW_sheetRule_in_prologueRule84 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_VERSION_in_versionRule100 = new BitSet(new long[]{0x0000000000000800L});
 	public static final BitSet FOLLOW_INTEGER_in_versionRule109 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SHEET_in_sheetRule130 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_sheetRule134 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_sheetRule138 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_sheetRule142 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_wireRule_in_componentRule158 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_symbolRule_in_componentRule170 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_symattrRule_in_componentRule178 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_flagRule_in_componentRule186 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_windowRule_in_componentRule193 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_iopinRule_in_componentRule200 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_WIRE_in_wireRule215 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_SHEET_in_sheetRule128 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_sheetRule132 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_sheetRule136 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_sheetRule140 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_wireRule_in_componentRule154 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_symbolRule_in_componentRule166 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_symattrRule_in_componentRule174 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_flagRule_in_componentRule182 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_windowRule_in_componentRule189 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_iopinRule_in_componentRule196 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_WIRE_in_wireRule211 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_wireRule215 = new BitSet(new long[]{0x0000000000000800L});
 	public static final BitSet FOLLOW_INTEGER_in_wireRule219 = new BitSet(new long[]{0x0000000000000800L});
 	public static final BitSet FOLLOW_INTEGER_in_wireRule223 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_wireRule227 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_wireRule231 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FLAG_in_flagRule252 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_flagRule256 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_flagRule260 = new BitSet(new long[]{0x00000000003E5D10L});
-	public static final BitSet FOLLOW_INTEGER_in_flagRule265 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_flagRule269 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_reservedWordRule_in_flagRule273 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_WINDOW_in_windowRule296 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_windowRule303 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_windowRule310 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_windowRule317 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_ID_in_windowRule326 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_windowRule334 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_IOPIN_in_iopinRule352 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_iopinRule358 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_iopinRule364 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_ID_in_iopinRule372 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SYMBOL_in_symbolRule397 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_ID_in_symbolRule406 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_symbolRule414 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_INTEGER_in_symbolRule421 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_ID_in_symbolRule430 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SYMATTR_in_symattrRule450 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_ID_in_symattrRule454 = new BitSet(new long[]{0x00000000003E5F10L});
-	public static final BitSet FOLLOW_ID_in_symattrRule465 = new BitSet(new long[]{0x0000000000000012L});
-	public static final BitSet FOLLOW_attrRuleNoId_in_symattrRule470 = new BitSet(new long[]{0x0000000000000402L});
-	public static final BitSet FOLLOW_attrRule_in_symattrRule472 = new BitSet(new long[]{0x0000000000000402L});
-	public static final BitSet FOLLOW_INTEGER_in_symattrRule485 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FLOAT_in_symattrRule496 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_reservedWordRule_in_symattrRule507 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ASSIGN_in_attrRuleNoId532 = new BitSet(new long[]{0x00000000003F5F10L});
-	public static final BitSet FOLLOW_INTEGER_in_attrRuleNoId539 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FLOAT_in_attrRuleNoId543 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_in_attrRuleNoId547 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_attrRuleNoId551 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_reservedWordRule_in_attrRuleNoId555 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_attrRule580 = new BitSet(new long[]{0x0000000000000010L});
-	public static final BitSet FOLLOW_ASSIGN_in_attrRule589 = new BitSet(new long[]{0x00000000003F5F10L});
-	public static final BitSet FOLLOW_INTEGER_in_attrRule596 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FLOAT_in_attrRule600 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_in_attrRule604 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_attrRule608 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_reservedWordRule_in_attrRule612 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_set_in_reservedWordRule636 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_INTEGER_in_wireRule227 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FLAG_in_flagRule246 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_flagRule250 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_flagRule254 = new BitSet(new long[]{0x00000000003E5D10L});
+	public static final BitSet FOLLOW_INTEGER_in_flagRule259 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_flagRule263 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_reservedWordRule_in_flagRule267 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_WINDOW_in_windowRule287 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_windowRule294 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_windowRule301 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_windowRule308 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_ID_in_windowRule317 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_windowRule323 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_IOPIN_in_iopinRule341 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_iopinRule347 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_iopinRule353 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_ID_in_iopinRule361 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SYMBOL_in_symbolRule386 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_ID_in_symbolRule395 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_symbolRule403 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_INTEGER_in_symbolRule410 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_ID_in_symbolRule419 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SYMATTR_in_symattrRule437 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_ID_in_symattrRule441 = new BitSet(new long[]{0x00000000003E5F10L});
+	public static final BitSet FOLLOW_ID_in_symattrRule452 = new BitSet(new long[]{0x0000000000000012L});
+	public static final BitSet FOLLOW_attrRuleNoId_in_symattrRule457 = new BitSet(new long[]{0x0000000000000402L});
+	public static final BitSet FOLLOW_attrRule_in_symattrRule459 = new BitSet(new long[]{0x0000000000000402L});
+	public static final BitSet FOLLOW_INTEGER_in_symattrRule472 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FLOAT_in_symattrRule483 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_reservedWordRule_in_symattrRule494 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ASSIGN_in_attrRuleNoId522 = new BitSet(new long[]{0x00000000003F5F10L});
+	public static final BitSet FOLLOW_INTEGER_in_attrRuleNoId529 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FLOAT_in_attrRuleNoId533 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_STRING_in_attrRuleNoId537 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_attrRuleNoId541 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_reservedWordRule_in_attrRuleNoId545 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_attrRule570 = new BitSet(new long[]{0x0000000000000010L});
+	public static final BitSet FOLLOW_ASSIGN_in_attrRule578 = new BitSet(new long[]{0x00000000003F5F10L});
+	public static final BitSet FOLLOW_INTEGER_in_attrRule585 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FLOAT_in_attrRule589 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_STRING_in_attrRule593 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_attrRule597 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_reservedWordRule_in_attrRule601 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_set_in_reservedWordRule625 = new BitSet(new long[]{0x0000000000000002L});
 }

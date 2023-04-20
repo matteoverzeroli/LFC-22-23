@@ -37,9 +37,6 @@ package compiler;
 	void initParser () {
 		h = new Handler(input);
 	}
-		
-		
-	
 }
 parseCircuit
 @init {initParser();}
@@ -55,22 +52,17 @@ prologueRule
 versionRule 
 	:	
 		v=VERSION 
-		ver = INTEGER
-		{ 
-			h.checkVersion($ver); 
-			h.appendRuleToStream(v.getText()+" "+ver.getText()+'\n');
-		}
+		ver = INTEGER {h.checkVersion(v, ver);}
 	;
 	
 sheetRule
 	:	
-		s=SHEET i1=INTEGER i2=INTEGER i3=INTEGER
-		{h.appendRuleToStream(s.getText()+" "+i1.getText()+" "+i2.getText()+" "+i3.getText()+'\n');}
+		s=SHEET i1=INTEGER i2=INTEGER i3=INTEGER {h.appendRuleToStream(false, true, true, s, i1, i2, i3);}
 	;
 	
 componentRule
 	:	wireRule {System.out.println("sto riconoscendo wirerule");}
-		| symbol = symbolRule {System.out.println("sto riconoscendo symbol"); h.checkMandatoryAttribute(); h.setLastSymbol(symbol);}
+		| symbol = symbolRule {System.out.println("sto riconoscendo symbol"); h.setLastSymbol(symbol);}
 		| symattrRule {System.out.println("sto riconoscendo symattr");}
 		| flagRule{System.out.println("sto riconoscendo flag");}
 		| windowRule{System.out.println("sto riconoscendo window");}
@@ -78,14 +70,12 @@ componentRule
 	;
 wireRule
 	:
-		w=WIRE i1=INTEGER i2=INTEGER i3=INTEGER i4=INTEGER
-		{h.appendRuleToStream(w.getText()+" "+i1.getText()+" "+i2.getText()+" "+i3.getText()+" "+i4.getText()+'\n');}
+		w=WIRE i1=INTEGER i2=INTEGER i3=INTEGER i4=INTEGER {h.appendRuleToStream(false, true, true, w, i1, i2, i3, i4);}
 	;
 	
 flagRule
 	:	
-		f=FLAG i1=INTEGER i2=INTEGER v=(INTEGER | ID | reservedWordRule) //ID non può contenere spazio in questo caso
-		{h.appendRuleToStream(f.getText()+" "+i1.getText()+" "+i2.getText()+" "+v.getText()+'\n');}
+		f=FLAG i1=INTEGER i2=INTEGER v=(INTEGER | ID | reservedWordRule) {h.appendRuleToStream(false, true, true,f, i1, i2, v);}
 	;
 	
 windowRule
@@ -94,9 +84,9 @@ windowRule
 		i1=INTEGER 
 		i2=INTEGER 
 		i3=INTEGER 
-		id = ID {h.checkWindowsOptions($id);}
+		id = ID
 		i4=INTEGER
-		{h.appendRuleToStream(w.getText()+" "+i1.getText()+" "+i2.getText()+" "+i3.getText()+" "+id.getText()+" "+i4.getText()+'\n');}
+		{h.checkWindowsOptions(id, w, i1, i2, i3, i4);}
 	;
 iopinRule
 	:
@@ -104,32 +94,26 @@ iopinRule
 		i1=INTEGER
 		i2=INTEGER
 		id = ID 
-		{
-			h.checkIOPinAttr($id);
-			h.appendRuleToStream(i.getText()+" "+i1.getText()+" "+i2.getText()+" "+id.getText()+'\n');
-		}
+		{h.checkIOPinAttr(id, i, i1, i2);}
 		
 	;
 symbolRule returns[Token symbol]
 	:
 		s=SYMBOL 
-		symbolType = ID {h.checkSymbolType($symbolType); symbol = $symbolType;}
+		symbolType = ID {h.checkSymbolType(symbolType); symbol = symbolType;}
 		i1=INTEGER 
 		i2=INTEGER 
-		rotType = ID 
-		{
-			h.checkRotType($rotType);
-			h.appendRuleToStream(s.getText()+" "+symbolType.getText()+" "+i1.getText()+" "+i2.getText()+" "+rotType.getText()+'\n');
-		}
+		rotType = ID  {h.checkRotType(rotType, s, symbolType, i1, i2);}
 	;
 symattrRule//TODO da controllare
 	:	
-		s=SYMATTR id1=ID {h.checkSymMattrAttr($id1);h.appendRuleToStream(s.getText()+" "+id1.getText());} 
-			(id2=ID {h.checkSymMattrAttrValue($id1, $id2);h.appendRuleToStream(" "+id2.getText());} (attrRuleNoId attrRule[$id1]*)?
-			| i=INTEGER {h.checkSymMattrAttrValue($id1, "int");h.appendRuleToStream(i.getText());}
-			| f=FLOAT {h.checkSymMattrAttrValue($id1, "float");h.appendRuleToStream(f.getText());}
-			| r=reservedWordRule {h.checkSymMattrAttrValue($id1, "reserved");})
-		{h.appendRuleToStream("\n");}
+		s=SYMATTR id1=ID {h.checkSymMattrAttr(id1, s);} 
+			(id2=ID {h.checkSymMattrAttrValue(id1, id2);h.appendRuleToStream(true, false, false, id2);} (attrRuleNoId attrRule[$id1]*)?
+			| i=INTEGER {h.checkSymMattrAttrValue(id1, "int");h.appendRuleToStream(true, false, false, i);}
+			| f=FLOAT {h.checkSymMattrAttrValue(id1, "float");h.appendRuleToStream(true, false, false, f);}
+			| r=reservedWordRule {h.checkSymMattrAttrValue(id1, "reserved"); h.appendRuleToStream(true, false, false, f);})
+		{h.appendRuleToStream(false, false, true);}
+		
 		/*SYMATTR ( INSTNAME ID
 			| DESCRIPTION ID //description attribute
 			| TYPE ID //sybol type
@@ -140,21 +124,21 @@ attrRuleNoId
 	:
 		a=ASSIGN
 		v=(INTEGER | FLOAT | STRING | ID | reservedWordRule)
-		{h.appendRuleToStream(" "+a.getText()+" "+v.getText());}
+		{h.appendRuleToStream(false, false, false, a, v);}
 	;
 attrRule [Token id1]
 	: 	
-		id2 = ID {h.checkSymMattrAttrValue(id1, $id2);} 
+		id2 = ID {h.checkSymMattrAttrValue(id1, id2); h.appendRuleToStream(true, false, false, id2);}
 		a=ASSIGN
 		v=(INTEGER | FLOAT | STRING | ID | reservedWordRule)
-		{h.appendRuleToStream(id2.getText()+" "+a.getText()+" "+v.getText());}
+		{h.appendRuleToStream(false, false, false, a, v);}
 		
 ;
 
 reservedWordRule 
 	:	
 		v=(VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN)
-		{h.appendRuleToStream(v.getText());}
+		{h.appendRuleToStream(false, false, false, v);}
 	;
 
 fragment 

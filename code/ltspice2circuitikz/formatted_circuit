@@ -3,19 +3,8 @@ SHEET 1 880 680
 FLAG 1 2 VERSION
 SYMBOL LED -320 -496 R0
 SYMATTR Type diode
-
-
-
-
-
 SYMATTR InstName D1
-SYMATTR Value 
-
-
-
-
-
-LXK2-PW14
+SYMATTR Value LXK2-PW14
 SYMATTR Description Diode
 SYMBOL diode -432 -480 R0
 SYMATTR InstName D2
