@@ -261,7 +261,7 @@ public class Handler {
 	}
 	
 
-	public void checkSymMattrAttrValue(Token tokenSymAttr, Object tokenSymAttrValue) {
+	public void checkSymMattrAttrValue(Token tokenSymAttr, Object tokenSymAttrValue, Token value) {
 		if(tokenSymAttr != null && tokenSymAttrValue != null) {
 			String symAttr = tokenSymAttr.getText();
 			String symAttrValue;
@@ -358,6 +358,15 @@ public class Handler {
 			}
 			else if (symAttr.compareTo("InstName") == 0) {
 				//TODO
+			}
+			
+			if(!symAttrValue.equals("reserved")) { //reservedWorldRule append the string
+				if(value == null) {
+					appendRuleToStream(true, false, false, (Token)tokenSymAttrValue);
+				} 
+				else{
+					appendRuleToStream(true, false, false, value);
+				}
 			}
 		}
 		else {
