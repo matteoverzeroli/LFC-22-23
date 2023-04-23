@@ -13,7 +13,10 @@ import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
 
 import static compiler.util.ERROR.*;
+
+import compiler.util.Component;
 import compiler.util.ERROR;
+import compiler.util.Wire;
 
 
 public class Handler {
@@ -40,15 +43,22 @@ public class Handler {
 	private FileWriter fileOut;
 	
 	TokenStream input;
+	Component lastComponent;
 	List<String> errorList;
+	List<Component> components;
+	List<Wire> wires;
+	
 	
 	public Handler (TokenStream input) {
 		System.out.println("------ Handler Init ------");
 		
 		this.input = input;
 		errorList = new ArrayList<String>();
+		components = new ArrayList<Component>();
+		wires = new ArrayList<Wire>();
 		
 		lastSymbol = null;
+		lastComponent = null;
 		
 		try {
 			fileOut = new FileWriter("formatted_circuit", false);
@@ -202,9 +212,15 @@ public class Handler {
 	public void checkSymbolType(Token token) {
 		if(token != null) {
 			String symbolType = token.getText();
-			if(listSymbolType.contains(symbolType))
+			if(listSymbolType.contains(symbolType)) {
 				System.out.println("Symbol type is correct");
-			else {
+				
+				if (lastComponent != null)
+					components.add(lastComponent);
+				
+				lastComponent = new Component(symbolType);
+				
+			} else {
 				System.out.println("Symbol type is not correct");
 				myErrorHandler(SYMBOLTYPE_ERROR, token);
 			}
@@ -234,6 +250,15 @@ public class Handler {
 			} else {
 				System.out.println("Rotation/Mirror type not recognised");
 				myErrorHandler(ROTMIRR_ERROR, rotToken);
+			}
+			
+			/* non so chi è x e chi y con certezza */
+			if (lastComponent != null) {
+				int x = Integer.parseInt(i1.getText());
+				int y = Integer.parseInt(i2.getText());
+				
+				lastComponent.setPosition(x, y);
+				lastComponent.setRotation(rotType);
 			}
 			
 			appendRuleToStream(false, true, true, s, symbolType, i1, i2, rotToken);
@@ -354,10 +379,14 @@ public class Handler {
 				}
 			}
 			else if (symAttr.compareTo("Value") == 0) {
-				//TODO
+				if (lastComponent != null) {
+					lastComponent.setValue(((Token)tokenSymAttrValue).getText());
+				}
 			}
 			else if (symAttr.compareTo("InstName") == 0) {
-				//TODO
+				if (lastComponent != null) {
+					lastComponent.setName(((Token)tokenSymAttrValue).getText());
+				}
 			}
 			
 			if(!symAttrValue.equals("reserved")) { //reservedWorldRule append the string
@@ -402,8 +431,11 @@ public class Handler {
 			
 			typeAttributePresent = false;
 			descAttributePresent = false;
-			
 			lastSymbol = token;
+			
+			/* non posso mettere qua la creazione del nuovo componente 
+			 * perchè mi perdo l'informazione sulla rotation.
+			 * Lo faccio quando controllo il symbolType */	
 		}
 		else {
 			System.out.println("Last symbol is null");
@@ -462,6 +494,19 @@ public class Handler {
 				fileOut.append((addBeforeWS? " " : "") + tokens[i].getText());
 			if(addEndLine)
 				fileOut.append("\n");
+			
+			/* ci sono casi in cui potrebbe capitare che il primo token è WIRE 
+			 * ma non è una regola WIRE? Secondo me no.
+			 * Devo controllare i token? Secondo me no, c'è già la rule che fa il 
+			 * controllo su tipo e numero di token dopo WIRE.*/
+			if (tokens.length > 0 && tokens[0].getText().equals("WIRE")) {
+				Wire wire = new Wire(Integer.parseInt(tokens[1].getText()),
+									Integer.parseInt(tokens[2].getText()),
+									Integer.parseInt(tokens[3].getText()),
+									Integer.parseInt(tokens[4].getText()));
+				
+				wires.add(wire);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -471,6 +516,20 @@ public class Handler {
 			fileOut.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void printComponents() {
+		
+		if (lastComponent != null)
+			components.add(lastComponent);
+		
+		for (Component c : components) {
+			System.out.println(c);
+		}
+		
+		for (Wire w : wires) {
+			System.out.println(w);
 		}
 	}
 }

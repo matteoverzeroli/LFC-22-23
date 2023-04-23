@@ -42,7 +42,7 @@ parseCircuit
 @init {initParser();}
 	:	
 		prologueRule	{System.out.println("Ho riconosciuto prolog rule");}
-		componentRule* {h.checkMandatoryAttribute(); System.out.println("Ho riconosciuto component rule"); }
+		componentRule* {h.checkMandatoryAttribute(); h.printComponents(); System.out.println("Ho riconosciuto component rule"); }
 		EOF
 	;
 prologueRule 

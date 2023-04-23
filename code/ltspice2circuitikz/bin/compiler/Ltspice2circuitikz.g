@@ -36,13 +36,13 @@ package compiler;
 	
 	void initParser () {
 		h = new Handler(input);
-	}	
+	}
 }
 parseCircuit
 @init {initParser();}
 	:	
 		prologueRule	{System.out.println("Ho riconosciuto prolog rule");}
-		componentRule* {h.checkMandatoryAttribute(); System.out.println("Ho riconosciuto component rule"); }
+		componentRule* {h.checkMandatoryAttribute(); h.printComponents(); System.out.println("Ho riconosciuto component rule"); }
 		EOF
 	;
 prologueRule 
@@ -52,22 +52,17 @@ prologueRule
 versionRule 
 	:	
 		v=VERSION 
-		ver = INTEGER
-		{ 
-			h.checkVersion($ver); 
-			h.appendRuleToStream(true, v, ver);
-		}
+		ver = INTEGER {h.checkVersion(v, ver);}
 	;
 	
 sheetRule
 	:	
-		s=SHEET i1=INTEGER i2=INTEGER i3=INTEGER
-		{h.appendRuleToStream(true, s, i1, i2, i3);}
+		s=SHEET i1=INTEGER i2=INTEGER i3=INTEGER {h.appendRuleToStream(false, true, true, s, i1, i2, i3);}
 	;
 	
 componentRule
 	:	wireRule {System.out.println("sto riconoscendo wirerule");}
-		| symbol = symbolRule {System.out.println("sto riconoscendo symbol"); h.checkMandatoryAttribute(); h.setLastSymbol(symbol);}
+		| symbol = symbolRule {System.out.println("sto riconoscendo symbol"); h.setLastSymbol(symbol);}
 		| symattrRule {System.out.println("sto riconoscendo symattr");}
 		| flagRule{System.out.println("sto riconoscendo flag");}
 		| windowRule{System.out.println("sto riconoscendo window");}
@@ -75,14 +70,12 @@ componentRule
 	;
 wireRule
 	:
-		w=WIRE i1=INTEGER i2=INTEGER i3=INTEGER i4=INTEGER
-		{h.appendRuleToStream(true,w, i1, i2, i3, i4);}
+		w=WIRE i1=INTEGER i2=INTEGER i3=INTEGER i4=INTEGER {h.appendRuleToStream(false, true, true, w, i1, i2, i3, i4);}
 	;
 	
 flagRule
 	:	
-		f=FLAG i1=INTEGER i2=INTEGER v=(INTEGER | ID | reservedWordRule) //ID non può contenere spazio in questo caso
-		{h.appendRuleToStream(true, f, i1, i2, v);}
+		f=FLAG i1=INTEGER i2=INTEGER v=(INTEGER | ID | reservedWordRule) {h.appendRuleToStream(false, true, true,f, i1, i2, v);}
 	;
 	
 windowRule
@@ -91,9 +84,9 @@ windowRule
 		i1=INTEGER 
 		i2=INTEGER 
 		i3=INTEGER 
-		id = ID {h.checkWindowsOptions($id);}
+		id = ID
 		i4=INTEGER
-		{h.appendRuleToStream(true, w, i1, i2, i3, id, i4);}
+		{h.checkWindowsOptions(id, w, i1, i2, i3, i4);}
 	;
 iopinRule
 	:
@@ -101,32 +94,26 @@ iopinRule
 		i1=INTEGER
 		i2=INTEGER
 		id = ID 
-		{
-			h.checkIOPinAttr($id);
-			h.appendRuleToStream(true,i, i1, i2, id);
-		}
+		{h.checkIOPinAttr(id, i, i1, i2);}
 		
 	;
 symbolRule returns[Token symbol]
 	:
 		s=SYMBOL 
-		symbolType = ID {h.checkSymbolType($symbolType); symbol = $symbolType;}
+		symbolType = ID {h.checkSymbolType(symbolType); symbol = symbolType;}
 		i1=INTEGER 
 		i2=INTEGER 
-		rotType = ID 
-		{
-			h.checkRotType($rotType);
-			h.appendRuleToStream(true, s, symbolType, i1, i2, rotType);
-		}
+		rotType = ID  {h.checkRotType(rotType, s, symbolType, i1, i2);}
 	;
 symattrRule//TODO da controllare
 	:	
-		s=SYMATTR id1=ID {h.checkSymMattrAttr($id1);h.appendRuleToStream(false, s, id1);} 
-			(id2=ID {h.checkSymMattrAttrValue($id1, $id2);h.appendRuleToStream(false, id2);} (attrRuleNoId attrRule[$id1]*)?
-			| i=INTEGER {h.checkSymMattrAttrValue($id1, "int");h.appendRuleToStream(false, i);} //non ci va lo spazio
-			| f=FLOAT {h.checkSymMattrAttrValue($id1, "float");h.appendRuleToStream(false, f);} //non ci va lo spazio
-			| r=reservedWordRule {h.checkSymMattrAttrValue($id1, "reserved");})
-		{h.appendRuleToStream(true);}
+		s=SYMATTR id1=ID {h.checkSymMattrAttr(id1, s);} 
+			(id2=ID {h.checkSymMattrAttrValue(id1, id2, null);} (attrRuleNoId attrRule[$id1]*)?
+			| i=INTEGER {h.checkSymMattrAttrValue(id1, "int", i);}
+			| f=FLOAT {h.checkSymMattrAttrValue(id1, "float", f);}
+			| reservedWordRule {h.checkSymMattrAttrValue(id1, "reserved", null);})
+		{h.appendRuleToStream(false, false, true);}
+		
 		/*SYMATTR ( INSTNAME ID
 			| DESCRIPTION ID //description attribute
 			| TYPE ID //sybol type
@@ -137,21 +124,21 @@ attrRuleNoId
 	:
 		a=ASSIGN
 		v=(INTEGER | FLOAT | STRING | ID | reservedWordRule)
-		{h.appendRuleToStream(false, a, v);}
+		{h.appendRuleToStream(false, false, false, a, v);}
 	;
 attrRule [Token id1]
 	: 	
-		id2 = ID {h.checkSymMattrAttrValue(id1, $id2);} 
+		id2 = ID {h.checkSymMattrAttrValue(id1, id2, null);}
 		a=ASSIGN
 		v=(INTEGER | FLOAT | STRING | ID | reservedWordRule)
-		{h.appendRuleToStream(false, id2, a, v);}
+		{h.appendRuleToStream(false, false, false, a, v);}
 		
 ;
 
 reservedWordRule 
 	:	
 		v=(VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN)
-		{h.appendRuleToStream(false, v);}
+		{h.appendRuleToStream(true, false, false, v);}
 	;
 
 fragment 
