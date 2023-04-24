@@ -211,9 +211,16 @@ public class Handler {
 	}
 	public void checkSymbolType(Token token) {
 		if(token != null) {
+			
+			checkMandatoryAttribute(); 			
+			
 			String symbolType = token.getText();
 			if(listSymbolType.contains(symbolType)) {
 				System.out.println("Symbol type is correct");
+				
+				typeAttributePresent = false;
+				descAttributePresent = false;
+				lastSymbol = token;
 				
 				if (lastComponent != null)
 					components.add(lastComponent);
@@ -252,7 +259,7 @@ public class Handler {
 				myErrorHandler(ROTMIRR_ERROR, rotToken);
 			}
 			
-			/* non so chi è x e chi y con certezza */
+
 			if (lastComponent != null) {
 				int x = Integer.parseInt(i1.getText());
 				int y = Integer.parseInt(i2.getText());
@@ -425,23 +432,6 @@ public class Handler {
 		}
 	}
 
-	public void setLastSymbol(Token token) {
-		if(token != null) {
-			checkMandatoryAttribute(); 
-			
-			typeAttributePresent = false;
-			descAttributePresent = false;
-			lastSymbol = token;
-			
-			/* non posso mettere qua la creazione del nuovo componente 
-			 * perchè mi perdo l'informazione sulla rotation.
-			 * Lo faccio quando controllo il symbolType */	
-		}
-		else {
-			System.out.println("Last symbol is null");
-		}
-	}	
-
 	private void checkResAttribute(Object tokenSymAttrValue) {
 		String symAttrValue = ((Token)tokenSymAttrValue).getText();
 		if(listRAttribute.contains(symAttrValue)) {
@@ -483,6 +473,18 @@ public class Handler {
 		}
 	}
 	
+	public void createWire(boolean addBeforeWS, boolean addAfterWS, boolean addEndLine, Token... tokens) {
+		appendRuleToStream(addBeforeWS, addAfterWS, addEndLine, tokens);
+		
+		Wire wire = new Wire(Integer.parseInt(tokens[1].getText()),
+				Integer.parseInt(tokens[2].getText()),
+				Integer.parseInt(tokens[3].getText()),
+				Integer.parseInt(tokens[4].getText()));
+
+		wires.add(wire);
+		
+	}
+	
 	public void appendRuleToStream(boolean addBeforeWS, boolean addAfterWS, boolean addEndLine, Token... tokens) {
 		try {
 			int i = 0;
@@ -494,19 +496,6 @@ public class Handler {
 				fileOut.append((addBeforeWS? " " : "") + tokens[i].getText());
 			if(addEndLine)
 				fileOut.append("\n");
-			
-			/* ci sono casi in cui potrebbe capitare che il primo token è WIRE 
-			 * ma non è una regola WIRE? Secondo me no.
-			 * Devo controllare i token? Secondo me no, c'è già la rule che fa il 
-			 * controllo su tipo e numero di token dopo WIRE.*/
-			if (tokens.length > 0 && tokens[0].getText().equals("WIRE")) {
-				Wire wire = new Wire(Integer.parseInt(tokens[1].getText()),
-									Integer.parseInt(tokens[2].getText()),
-									Integer.parseInt(tokens[3].getText()),
-									Integer.parseInt(tokens[4].getText()));
-				
-				wires.add(wire);
-			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -531,5 +520,11 @@ public class Handler {
 		for (Wire w : wires) {
 			System.out.println(w);
 		}
+	}
+	
+	public void endOfFileChecks() {
+		
+		checkMandatoryAttribute();
+		printComponents();
 	}
 }

@@ -11,6 +11,8 @@ public class Component {
 	private int rotationAngle;
 	private String rotationType;
 	
+	/* ingloba il token qua dentro così lo puoi ritornare */
+	
 	public Component(String type) {
 		super();
 		this.type = type;

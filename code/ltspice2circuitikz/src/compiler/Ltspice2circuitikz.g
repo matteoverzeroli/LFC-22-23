@@ -42,8 +42,8 @@ parseCircuit
 @init {initParser();}
 	:	
 		prologueRule	{System.out.println("Ho riconosciuto prolog rule");}
-		componentRule* {h.checkMandatoryAttribute(); h.printComponents(); System.out.println("Ho riconosciuto component rule"); }
-		EOF
+		componentRule* {System.out.println("Ho riconosciuto component rule"); }
+		EOF {h.endOfFileChecks();}  
 	;
 prologueRule 
 	:	versionRule
@@ -62,7 +62,7 @@ sheetRule
 	
 componentRule
 	:	wireRule {System.out.println("sto riconoscendo wirerule");}
-		| symbol = symbolRule {System.out.println("sto riconoscendo symbol"); h.setLastSymbol(symbol);}
+		| symbol = symbolRule {System.out.println("sto riconoscendo symbol");}
 		| symattrRule {System.out.println("sto riconoscendo symattr");}
 		| flagRule{System.out.println("sto riconoscendo flag");}
 		| windowRule{System.out.println("sto riconoscendo window");}
@@ -70,7 +70,7 @@ componentRule
 	;
 wireRule
 	:
-		w=WIRE i1=INTEGER i2=INTEGER i3=INTEGER i4=INTEGER {h.appendRuleToStream(false, true, true, w, i1, i2, i3, i4);}
+		w=WIRE i1=INTEGER i2=INTEGER i3=INTEGER i4=INTEGER {h.createWire(false, true, true, w, i1, i2, i3, i4);}
 	;
 	
 flagRule
