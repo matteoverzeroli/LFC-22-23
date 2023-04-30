@@ -108,10 +108,10 @@ symbolRule returns[Token symbol]
 symattrRule//TODO da controllare
 	:	
 		s=SYMATTR id1=ID {h.checkSymMattrAttr(id1, s);} 
-			(id2=ID {h.checkSymMattrAttrValue(id1, id2, null);} (attrRuleNoId attrRule[$id1]*)?
+			(id2=ID {h.checkSymMattrAttrValue(id1, id2, null);} (attrRuleNoId attrRule[id1]*)?
 			| i=INTEGER {h.checkSymMattrAttrValue(id1, "int", i);}
 			| f=FLOAT {h.checkSymMattrAttrValue(id1, "float", f);}
-			| reservedWordRule {h.checkSymMattrAttrValue(id1, "reserved", null);})
+			| r = reservedWordRule {h.checkSymMattrAttrValue(id1, "reserved", r);})
 		{h.appendRuleToStream(false, false, true);}
 		
 		/*SYMATTR ( INSTNAME ID
@@ -133,12 +133,12 @@ attrRule [Token id1]
 		v=(INTEGER | FLOAT | STRING | ID | reservedWordRule)
 		{h.appendRuleToStream(false, false, false, a, v);}
 		
-;
+	;
 
-reservedWordRule 
+reservedWordRule returns [Token word]
 	:	
 		v=(VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN)
-		{h.appendRuleToStream(true, false, false, v);}
+		{word = v; h.appendRuleToStream(true, false, false, v);}
 	;
 
 fragment 

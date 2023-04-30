@@ -1,8 +1,5 @@
 package compiler;
 
-
-
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -387,12 +384,22 @@ public class Handler {
 			}
 			else if (symAttr.compareTo("Value") == 0) {
 				if (lastComponent != null) {
-					lastComponent.setValue(((Token)tokenSymAttrValue).getText());
+					if(value == null) {
+						lastComponent.setValue(((Token)tokenSymAttrValue).getText());
+					}
+					else {
+						lastComponent.setValue(value.getText());
+					}	
 				}
 			}
 			else if (symAttr.compareTo("InstName") == 0) {
 				if (lastComponent != null) {
-					lastComponent.setName(((Token)tokenSymAttrValue).getText());
+					if(value == null) {
+						lastComponent.setName(((Token)tokenSymAttrValue).getText());
+					}
+					else {
+						lastComponent.setName(value.getText());
+					}
 				}
 			}
 			
@@ -526,5 +533,6 @@ public class Handler {
 		
 		checkMandatoryAttribute();
 		printComponents();
+		closeFileOut();
 	}
 }

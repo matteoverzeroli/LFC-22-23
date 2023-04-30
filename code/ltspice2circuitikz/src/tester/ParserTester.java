@@ -35,7 +35,6 @@ public class ParserTester {
 			
 			// 5.controllo i risultati
 			Handler h = parser.getHandler();
-			h.closeFileOut();
 			
 			if (h.getErrorList().size() == 0)
 				System.out.println ("Parsing terminato con successo");
