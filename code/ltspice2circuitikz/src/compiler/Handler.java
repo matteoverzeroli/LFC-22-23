@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
@@ -38,6 +39,7 @@ public class Handler {
 	private boolean descAttributePresent;
 	
 	private FileWriter fileOut;
+	private FileWriter fileLatexOut;
 	
 	TokenStream input;
 	Component lastComponent;
@@ -58,10 +60,10 @@ public class Handler {
 		lastComponent = null;
 		
 		try {
-			fileOut = new FileWriter("formatted_circuit", false);
+			fileOut = new FileWriter("formatted_circuit.asc", false);
 			fileOut.write("");
 			fileOut.close();
-			fileOut = new FileWriter("formatted_circuit", true);
+			fileOut = new FileWriter("formatted_circuit.asc", true);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -222,7 +224,8 @@ public class Handler {
 				if (lastComponent != null)
 					components.add(lastComponent);
 				
-				lastComponent = new Component(symbolType);
+				lastComponent = new Component();
+				lastComponent.setType(symbolType);
 				
 			} else {
 				System.out.println("Symbol type is not correct");
@@ -261,8 +264,8 @@ public class Handler {
 				int x = Integer.parseInt(i1.getText());
 				int y = Integer.parseInt(i2.getText());
 				
-				lastComponent.setPosition(x, y);
 				lastComponent.setRotation(rotType);
+				lastComponent.setPosition(x, y);
 			}
 			
 			appendRuleToStream(false, true, true, s, symbolType, i1, i2, rotToken);
@@ -529,10 +532,82 @@ public class Handler {
 		}
 	}
 	
+	private void inizializeFileLatex() throws IOException {
+
+		fileLatexOut = new FileWriter("./latex_output/translated_circuit.tex", false);
+		fileLatexOut.write("");
+		fileLatexOut.close();
+		fileLatexOut = new FileWriter("./latex_output/translated_circuit.tex", true);
+		fileLatexOut.write("\\documentclass{article}\n"
+				+ "\\usepackage{circuitikz}\n"
+				+ "\\begin{document}\n"
+				+ "\\begin{center}\n"
+				+ "\\begin{circuitikz}\n");
+	}
+	
+	private void translateCircuitToLatex() throws IOException {
+		int x_min = Integer.MAX_VALUE;//sarà l'offset del mio sdr; dovrò togliere questi offset e invertire la y
+		int y_max = Integer.MIN_VALUE;
+		float scale = 50;
+		
+		for(Component c : components) {
+			int c_x = c.getMinX();
+			int c_y = c.getMaxY();
+			
+			if(c_x < x_min) 
+				x_min = c_x;
+			if(c_y > y_max)
+				y_max = c_y;
+			
+		}
+		for(Wire w : wires) {
+			int w_x = w.getMinX();
+			int w_y = w.getMaxY();
+			
+			if(w_x < x_min) 
+				x_min = w_x;
+			if(w_y > y_max)
+				y_max = w_y;
+		}
+		
+		for(Component c : components) {
+			float x1 = (c.getX1() - x_min)/scale;
+			float y1 = -((c.getY1() - y_max))/scale;
+			float x2 = (c.getX2() - x_min)/scale;
+			float y2 = -((c.getY2() - y_max))/scale;
+			
+			fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%.2f,%.2f) to[%s=$%s$] (%.2f,%.2f);\n", x1, y1, c.getType(), c.getName(), x2, y2));
+		}
+		for(Wire w : wires) {
+			float x1 = (w.getX1() - x_min)/scale;
+			float y1 = -((w.getY1() - y_max))/scale;
+			float x2 = (w.getX2() - x_min)/scale;
+			float y2 = -((w.getY2() - y_max))/scale;
+			
+			fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%.2f,%.2f) to[short] (%.2f,%.2f);\n", x1, y1, x2, y2));
+		}
+		
+		
+	}
+	
+	private void closeFileLatex() throws IOException {
+		fileLatexOut.write("\\end{circuitikz}\r\n"
+				+ "\\end{center}\r\n"
+				+ "\\end{document}");
+		fileLatexOut.close();
+	}
+	
 	public void endOfFileChecks() {
 		
 		checkMandatoryAttribute();
 		printComponents();
 		closeFileOut();
+		try {
+			inizializeFileLatex();
+			translateCircuitToLatex();
+			closeFileLatex();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
