@@ -576,7 +576,7 @@ public class Handler {
 			float x2 = (c.getX2() - x_min)/scale;
 			float y2 = -((c.getY2() - y_max))/scale;
 			
-			fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%.2f,%.2f) to[%s=$%s$] (%.2f,%.2f);\n", x1, y1, c.getType(), c.getName(), x2, y2));
+			fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%.2f,%.2f) to[%s=$%s$, a={%s}] (%.2f,%.2f);\n", x1, y1, c.getType(), c.getName(), c.getValue() != null ?c.getValue() : "", x2, y2));
 		}
 		for(Wire w : wires) {
 			float x1 = (w.getX1() - x_min)/scale;
