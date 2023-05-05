@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-04-30 18:34:19
+// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-05-05 10:07:08
 
 package compiler;
 
@@ -454,7 +454,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 			}
 
-			h.appendRuleToStream(false, true, true,f, i1, i2, v);
+			h.handleFlag(false, true, true,f, i1, i2, v);
 			}
 
 		}

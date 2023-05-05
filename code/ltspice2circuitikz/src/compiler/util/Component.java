@@ -44,6 +44,8 @@ public class Component {
 			return "C";
 		case "ind":
 			return "L";
+		case "diode":
+			return "Do";
 		default:	
 			return type;
 		}
@@ -53,7 +55,7 @@ public class Component {
 		this.type = type;
 	}
 	
-	private void applyRotation(int x, int y) {
+	private void applyRotationDipole(int x, int y) {
 		int x1_offset, x2_offset, y1_offset, y2_offset;
 		
 		switch(type) {
@@ -65,6 +67,7 @@ public class Component {
 			y2_offset = 96;
 			break;
 		case "cap":
+		case "diode":
 			x1_offset = 16;
 			y1_offset = 0;
 			x2_offset = 16;
@@ -103,26 +106,29 @@ public class Component {
 				this.x2 = x - x2_offset;
 				this.y2 = y + y2_offset;
 			} else if(rotationAngle == 90) {
-				this.x1 = x + y2_offset;
-				this.y1 = y + x1_offset;
-				this.x2 = x + y1_offset;
-				this.y2 = y + x2_offset;
+				this.x2 = x + y2_offset;
+				this.y2 = y + x1_offset;
+				this.x1 = x + y1_offset;
+				this.y1 = y + x2_offset;
 			} else if(rotationAngle == 180) {
 				this.x1 = x + x1_offset;
 				this.y1 = y - y1_offset;
 				this.x2 = x + x2_offset;
 				this.y2 = y - y2_offset;
 			} else if(rotationAngle == 270) {
-				this.x1 = x - y1_offset;
-				this.y1 = y - x1_offset;
 				this.x2 = x - y2_offset;
-				this.y2 = y - x2_offset;
+				this.y2 = y - x1_offset;
+				this.x1 = x - y1_offset;
+				this.y1 = y - x2_offset;
 			}
 		}
 	}
 	
 	public void setPosition(int x, int y) {
-		applyRotation(x,y);
+		switch(this.type) {
+		default: //if need to add for tripoles
+			applyRotationDipole(x,y);
+		}
 			
 	}
 

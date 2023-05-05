@@ -14,6 +14,7 @@ import static compiler.util.ERROR.*;
 
 import compiler.util.Component;
 import compiler.util.ERROR;
+import compiler.util.Flag;
 import compiler.util.Wire;
 
 
@@ -44,9 +45,12 @@ public class Handler {
 	TokenStream input;
 	Component lastComponent;
 	List<String> errorList;
-	List<Component> components;
-	List<Wire> wires;
 	
+	List<Component> components;
+	List<Wire> wires;	
+	List<Flag> flags;
+	
+	private static float LATEXSCALE = 50;
 	
 	public Handler (TokenStream input) {
 		System.out.println("------ Handler Init ------");
@@ -55,6 +59,7 @@ public class Handler {
 		errorList = new ArrayList<String>();
 		components = new ArrayList<Component>();
 		wires = new ArrayList<Wire>();
+		flags = new ArrayList<Flag>();
 		
 		lastSymbol = null;
 		lastComponent = null;
@@ -495,6 +500,12 @@ public class Handler {
 		
 	}
 	
+	public void handleFlag(boolean addBeforeWS, boolean addAfterWS, boolean addEndLine, Token... tokens){
+		flags.add(new Flag(Integer.parseInt(tokens[1].getText()), Integer.parseInt(tokens[2].getText()), tokens[3].getText()));
+		appendRuleToStream(addBeforeWS, addAfterWS, addEndLine, tokens);
+	
+	}
+	
 	public void appendRuleToStream(boolean addBeforeWS, boolean addAfterWS, boolean addEndLine, Token... tokens) {
 		try {
 			int i = 0;
@@ -530,6 +541,9 @@ public class Handler {
 		for (Wire w : wires) {
 			System.out.println(w);
 		}
+		for (Flag f : flags) {
+			System.out.println(f);
+		}
 	}
 	
 	private void inizializeFileLatex() throws IOException {
@@ -544,11 +558,10 @@ public class Handler {
 				+ "\\begin{center}\n"
 				+ "\\begin{circuitikz}\n");
 	}
-	
+		
 	private void translateCircuitToLatex() throws IOException {
 		int x_min = Integer.MAX_VALUE;//sarà l'offset del mio sdr; dovrò togliere questi offset e invertire la y
 		int y_max = Integer.MIN_VALUE;
-		float scale = 50;
 		
 		for(Component c : components) {
 			int c_x = c.getMinX();
@@ -570,26 +583,59 @@ public class Handler {
 				y_max = w_y;
 		}
 		
-		for(Component c : components) {
-			float x1 = (c.getX1() - x_min)/scale;
-			float y1 = -((c.getY1() - y_max))/scale;
-			float x2 = (c.getX2() - x_min)/scale;
-			float y2 = -((c.getY2() - y_max))/scale;
+		for(Flag f : flags) {
+			int f_x = f.getX();
+			int f_y = f.getY();
 			
-			fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%.2f,%.2f) to[%s=$%s$, a={%s}] (%.2f,%.2f);\n", x1, y1, c.getType(), c.getName(), c.getValue() != null ?c.getValue() : "", x2, y2));
+			if(f_x < x_min) 
+				x_min = f_x;
+			if(f_y > y_max)
+				y_max = f_y;
+		}
+		
+		for(Component c : components) {
+			float x1 = (c.getX1() - x_min)/LATEXSCALE;
+			float y1 = -((c.getY1() - y_max))/LATEXSCALE;
+			float x2 = (c.getX2() - x_min)/LATEXSCALE;
+			float y2 = -((c.getY2() - y_max))/LATEXSCALE;
+			
+			fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%.2f,%.2f) to[%s=$%s$, a={%s}] (%.2f,%.2f);\n", 
+					x1, y1, c.getType(), c.getName(), c.getValue() != null ?c.getValue() : "", x2, y2));
 		}
 		for(Wire w : wires) {
-			float x1 = (w.getX1() - x_min)/scale;
-			float y1 = -((w.getY1() - y_max))/scale;
-			float x2 = (w.getX2() - x_min)/scale;
-			float y2 = -((w.getY2() - y_max))/scale;
+			float x1 = (w.getX1() - x_min)/LATEXSCALE;
+			float y1 = -((w.getY1() - y_max))/LATEXSCALE;
+			float x2 = (w.getX2() - x_min)/LATEXSCALE;
+			float y2 = -((w.getY2() - y_max))/LATEXSCALE;
 			
-			fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%.2f,%.2f) to[short] (%.2f,%.2f);\n", x1, y1, x2, y2));
+			fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%.2f,%.2f) to[short, l=${%s}$,] (%.2f,%.2f);\n", x1, y1, getWireFlag(x_min, y_max, x1, y1, x2, y2) ,x2, y2));
 		}
 		
+		for(Flag f : flags) {
+			float x = (f.getX() - x_min)/LATEXSCALE;
+			float y = -((f.getY() - y_max))/LATEXSCALE;
+			
+			if(f.getLabel().equals("0")) {
+				fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%f,%f) to (%f,%f) node[ground]{};\n", 
+						x,y,x,y));
+			}
+		}
 		
 	}
-	
+	private String getWireFlag(int x_min, int y_max, float x1, float y1, float x2, float y2) {
+		for(Flag f : flags) {
+			float x = (f.getX() - x_min)/LATEXSCALE;
+			float y = -((f.getY() - y_max))/LATEXSCALE;
+			
+			if(!f.getLabel().equals("0") && (x == x1 && y == y1) || (x == x2 && y == y2)) {
+				String label;
+				label = f.getLabel();
+				flags.remove(f);
+				return label;
+			}
+		}
+		return "";
+	}
 	private void closeFileLatex() throws IOException {
 		fileLatexOut.write("\\end{circuitikz}\r\n"
 				+ "\\end{center}\r\n"
