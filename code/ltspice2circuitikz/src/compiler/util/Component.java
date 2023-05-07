@@ -1,8 +1,10 @@
 package compiler.util;
 
+import org.antlr.runtime.Token;
+
 public class Component {
 
-	
+	private Token token;
 	private String name;
 	private String value;
 	private String type;
@@ -13,10 +15,13 @@ public class Component {
 	private int rotationAngle;
 	private String rotationType;
 	
-	/* ingloba il token qua dentro così lo puoi ritornare */
-	
-	public Component() {
+	public Component(Token token) {
 		super();
+		this.token = token;
+	}
+	
+	public Token getToken() {
+		return token;
 	}
 
 	public String getName() {

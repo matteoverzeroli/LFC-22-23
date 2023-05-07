@@ -35,7 +35,6 @@ public class Handler {
 	List<String> listParAttribute = Arrays.asList("Rser", "Rpar","Cpar");
 	List<String> listRAttribute = Arrays.asList("tol", "pwr");
 	
-	private Token lastSymbol;
 	private boolean typeAttributePresent;
 	private boolean descAttributePresent;
 	
@@ -61,7 +60,6 @@ public class Handler {
 		wires = new ArrayList<Wire>();
 		flags = new ArrayList<Flag>();
 		
-		lastSymbol = null;
 		lastComponent = null;
 		
 		try {
@@ -224,12 +222,11 @@ public class Handler {
 				
 				typeAttributePresent = false;
 				descAttributePresent = false;
-				lastSymbol = token;
-				
+
 				if (lastComponent != null)
 					components.add(lastComponent);
 				
-				lastComponent = new Component();
+				lastComponent = new Component(token);
 				lastComponent.setType(symbolType);
 				
 			} else {
@@ -308,10 +305,12 @@ public class Handler {
 				symAttrValue = tokenSymAttrValue.toString();
 			
 			if(symAttr.compareTo("Description") == 0){
-				if (lastSymbol != null) {
+				if (lastComponent != null) {
 					
 					descAttributePresent = true;
-					if (lastSymbol.equals("schottky") || lastSymbol.equals("zener") || lastSymbol.equals("LED")) {
+					if (lastComponent.getToken().getText().equals("schottky") 
+							|| lastComponent.getToken().getText().equals("zener") 
+							|| lastComponent.getToken().getText().equals("LED")) {
 						if (symAttrValue.compareTo("Diode") == 0)
 							System.out.println("Description type for diode is correct");
 						else {
@@ -320,7 +319,7 @@ public class Handler {
 						}
 					}
 					
-					if (lastSymbol.equals("polcap")) {
+					if (lastComponent.getToken().getText().equals("polcap")) {
 						if (symAttrValue.compareTo("Capacitor") == 0)
 							System.out.println("Description type for cap is correct");
 						else {
@@ -335,13 +334,13 @@ public class Handler {
 			}
 			else if(symAttr.compareTo("Type") == 0){
 				
-				if (lastSymbol != null) {
+				if (lastComponent != null) {
 					
 					typeAttributePresent = true;
-					if (lastSymbol.getText().equals("schottky") 
-							|| lastSymbol.getText().equals("zener") 
-							|| lastSymbol.getText().equals("varactor")
-							|| lastSymbol.getText().equals("LED")) {
+					if (lastComponent.getToken().getText().equals("schottky") 
+							|| lastComponent.getToken().getText().equals("zener") 
+							|| lastComponent.getToken().getText().equals("varactor")
+							|| lastComponent.getToken().getText().equals("LED")) {
 						if (symAttrValue.compareTo("diode") == 0)
 							System.out.println("Type for diode is correct");
 						else {
@@ -350,7 +349,7 @@ public class Handler {
 						}
 					}
 					
-					if (lastSymbol.getText().equals("polcap")) {
+					if (lastComponent.getToken().getText().equals("polcap")) {
 						if (symAttrValue.compareTo("cap") == 0)
 							System.out.println("Type for cap is correct");
 						else {
@@ -364,8 +363,8 @@ public class Handler {
 				}
 			}
 			else if(symAttr.compareTo("SpiceLine") == 0){
-				if(lastSymbol != null) {
-					switch(lastSymbol.getText()) {
+				if(lastComponent != null) {
+					switch(lastComponent.getToken().getText()) {
 						case "res":
 						case "res2":
 							checkResAttribute(tokenSymAttrValue);
@@ -382,7 +381,8 @@ public class Handler {
 							checkVoltageAttribute(tokenSymAttrValue);
 							break;
 						default: 
-							System.err.println("Symbol attribute " + lastSymbol.getText() + " not already taken in consideration");
+							System.err.println("Symbol attribute " + lastComponent.getToken().getText()
+												+ " not already taken in consideration");
 							break;
 					}
 				} else {
@@ -427,21 +427,21 @@ public class Handler {
 	
 	public void checkMandatoryAttribute() {
 		
-		if (lastSymbol != null) {
-			if (lastSymbol.getText().equals("varactor") 
-					|| lastSymbol.getText().equals("schottky") 
-					|| lastSymbol.getText().equals("zener")
-					|| lastSymbol.getText().equals("LED") 
-					|| lastSymbol.getText().equals("polcap")) {
+		if (lastComponent != null) {
+			if (lastComponent.getToken().getText().equals("varactor") 
+					|| lastComponent.getToken().getText().equals("schottky") 
+					|| lastComponent.getToken().getText().equals("zener")
+					|| lastComponent.getToken().getText().equals("LED") 
+					|| lastComponent.getToken().getText().equals("polcap")) {
 				
 				if (!typeAttributePresent) {
 					System.out.println("Missing Type attribute for SYMBOL");
-					myErrorHandler(MISS_TYPEATTR_ERROR, lastSymbol);
+					myErrorHandler(MISS_TYPEATTR_ERROR, lastComponent.getToken());
 				}
 				
-				if (!lastSymbol.getText().equals("varactor") && !descAttributePresent) {
+				if (!lastComponent.getToken().getText().equals("varactor") && !descAttributePresent) {
 					System.out.println("Missing Desc attribute for SYMBOL");
-					myErrorHandler(MISS_DESCATTR_ERROR, lastSymbol);
+					myErrorHandler(MISS_DESCATTR_ERROR, lastComponent.getToken());
 				}
 			}
 		}

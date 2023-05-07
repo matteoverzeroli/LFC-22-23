@@ -11,7 +11,7 @@ public class ScannerTester {
 
 	public static void main(String[] args) throws IOException {
 		// inserire il path-name del file di input
-	  	String fileIn = ".\\resources\\input.asc";
+	  	String fileIn = ".\\resources\\Test1.asc";
 	
 	  	Token tk;
 	  	int i;

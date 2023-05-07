@@ -75,7 +75,7 @@ wireRule
 	
 flagRule
 	:	
-		f=FLAG i1=INTEGER i2=INTEGER v=(INTEGER | ID | reservedWordRule) {h.appendRuleToStream(false, true, true,f, i1, i2, v);}
+		f=FLAG i1=INTEGER i2=INTEGER v=(INTEGER | ID | reservedWordRule) {h.handleFlag(false, true, true,f, i1, i2, v);}
 	;
 	
 windowRule
