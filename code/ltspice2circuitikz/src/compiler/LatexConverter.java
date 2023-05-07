@@ -17,6 +17,7 @@ public class LatexConverter {
 	private static FileWriter fileLatexOut;
 	
 	
+	
 	public static void convertToLatex(List<Component> components,
 			List<Wire> wires, List<Flag> flags) throws IOException {
 		inizializeFileLatex();
