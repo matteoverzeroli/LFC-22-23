@@ -51,6 +51,8 @@ public class Component {
 			return "L";
 		case "diode":
 			return "Do";
+		case "voltage":
+			return "vsource";
 		default:	
 			return type;
 		}
@@ -77,6 +79,12 @@ public class Component {
 			y1_offset = 0;
 			x2_offset = 16;
 			y2_offset = 64;
+			break;
+		case "voltage":
+			x1_offset = 0;
+			y1_offset = 96;
+			x2_offset = 0;
+			y2_offset = 16;
 			break;
 		default:
 			x1_offset = x2_offset = y1_offset = y2_offset = 0;
@@ -127,6 +135,8 @@ public class Component {
 				this.y1 = y - x2_offset;
 			}
 		}
+		
+
 	}
 	
 	public void setPosition(int x, int y) {
