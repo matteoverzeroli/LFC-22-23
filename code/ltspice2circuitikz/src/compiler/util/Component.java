@@ -47,6 +47,8 @@ public class Component {
 			return "R"; 
 		case "cap":
 			return "C";
+		case "polcap":
+			return "eC";
 		case "ind":
 			return "L";
 		case "diode":
@@ -74,6 +76,7 @@ public class Component {
 			y2_offset = 96;
 			break;
 		case "cap":
+		case "polcap":
 		case "diode":
 			x1_offset = 16;
 			y1_offset = 0;

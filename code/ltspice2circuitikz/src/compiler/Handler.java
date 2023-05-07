@@ -431,8 +431,7 @@ public class Handler {
 			if (lastComponent.getToken().getText().equals("varactor") 
 					|| lastComponent.getToken().getText().equals("schottky") 
 					|| lastComponent.getToken().getText().equals("zener")
-					|| lastComponent.getToken().getText().equals("LED") 
-					|| lastComponent.getToken().getText().equals("polcap")) {
+					|| lastComponent.getToken().getText().equals("LED")) {
 				
 				if (!typeAttributePresent) {
 					System.out.println("Missing Type attribute for SYMBOL");
