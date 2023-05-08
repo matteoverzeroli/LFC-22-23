@@ -1,5 +1,8 @@
+- salvare il formatted circuit con la codifica giusta
 
-Fare un test su questo file .asc
+
+
+-Fare un test su questo file .asc
 
 Version 4
 SHEET 1 880 680
