@@ -1,11 +1,14 @@
 package compiler;
 
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
@@ -29,7 +32,7 @@ public class Handler {
 	List<String> listMirrorType = Arrays.asList("M0", "M90", "M180", "M270");
 	List<String> listRotType = Arrays.asList("R0", "R90", "R180", "R270");
 	List<String> listSymAttr = Arrays.asList("InstName", "Description", "Type", "Value", "SpiceLine");
-	List<String> listDescAttr = Arrays.asList("Diode", "Capacitor");
+	List<String> listDescAttr = Arrays.asList("Diode", "Capacitor", "Polarized");
 	List<String> listCapAttribute = Arrays.asList("V", "Irms", "Lser", "mfg", "pn", "type");
 	List<String> listIndAttribute = Arrays.asList("Ipk", "mfg", "pn");
 	List<String> listParAttribute = Arrays.asList("Rser", "Rpar","Cpar");
@@ -38,8 +41,10 @@ public class Handler {
 	private boolean typeAttributePresent;
 	private boolean descAttributePresent;
 	
-	private FileWriter fileOut;
-	private FileWriter fileLatexOut;
+	private boolean polarizedPresent; //to handle Polarized Capacitor description
+	private boolean capacitorPresent; //to handle Polarized Capacitor description
+	
+	private OutputStreamWriter fileOut;
 	
 	TokenStream input;
 	Component lastComponent;
@@ -48,8 +53,6 @@ public class Handler {
 	List<Component> components;
 	List<Wire> wires;	
 	List<Flag> flags;
-	
-	private static float LATEXSCALE = 50;
 	
 	public Handler (TokenStream input) {
 		System.out.println("------ Handler Init ------");
@@ -63,10 +66,11 @@ public class Handler {
 		lastComponent = null;
 		
 		try {
-			fileOut = new FileWriter("formatted_circuit.asc", false);
+			Files.createDirectories(Paths.get("./circuit_output/")); //create folder for circuit output
+			fileOut = new OutputStreamWriter(new FileOutputStream("./circuit_output/formatted_circuit.asc", false), StandardCharsets.ISO_8859_1);
 			fileOut.write("");
 			fileOut.close();
-			fileOut = new FileWriter("formatted_circuit.asc", true);
+			fileOut = new OutputStreamWriter(new FileOutputStream("./circuit_output/formatted_circuit.asc", true), StandardCharsets.ISO_8859_1);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -138,7 +142,16 @@ public class Handler {
 				break;
 			case DESCRIPTION_ERROR:
 				errMsg += "Description Type '" + tk.getText() + "' is not valid";
-				break;			
+				break;		
+			case DESCRIPTION_NOT_ALLOWED:
+				errMsg += "Description Type '" + tk.getText() + "' not allowed for this symbol";
+				break;
+			case DESCRIPTION_POLARIZED_ERROR:
+				errMsg += "Description Type '" + tk.getText() + "' is not valid: expected Polarized Capacitor";
+				break;
+			case DESCRIPTION_POLARIZED_NOCAPACITOR_ERROR:
+				errMsg += "Description Type of '" + tk.getText() + "' is not valid: expected also Capacitor";
+				break;				
 			case TYPE_ERROR:
 				errMsg += "Type value '" + tk.getText() + "' is not valid";
 				break;	
@@ -222,6 +235,8 @@ public class Handler {
 				
 				typeAttributePresent = false;
 				descAttributePresent = false;
+				polarizedPresent = false;
+				capacitorPresent = false;
 
 				if (lastComponent != null)
 					components.add(lastComponent);
@@ -304,34 +319,55 @@ public class Handler {
 			else
 				symAttrValue = tokenSymAttrValue.toString();
 			
-			if(symAttr.compareTo("Description") == 0){
-				if (lastComponent != null) {
-					
-					descAttributePresent = true;
-					if (lastComponent.getToken().getText().equals("schottky") 
-							|| lastComponent.getToken().getText().equals("zener") 
-							|| lastComponent.getToken().getText().equals("LED")) {
-						if (symAttrValue.compareTo("Diode") == 0)
-							System.out.println("Description type for diode is correct");
-						else {
-							System.out.println("Description type for diode is not correct");
-							myErrorHandler(DESCRIPTION_ERROR, (Token)tokenSymAttrValue);
+			if(symAttr.compareTo("Description") == 0) {
+				if(listDescAttr.contains(symAttrValue)){
+	
+					if (lastComponent != null) {
+						
+						descAttributePresent = true;
+						if (lastComponent.getToken().getText().equals("schottky") 
+								|| lastComponent.getToken().getText().equals("zener") 
+								|| lastComponent.getToken().getText().equals("LED")) {
+							if (symAttrValue.compareTo("Diode") == 0)
+								System.out.println("Description type for diode is correct");
+							else {
+								System.out.println("Description type for diode is not correct");
+								myErrorHandler(DESCRIPTION_ERROR, (Token)tokenSymAttrValue);
+							}
 						}
-					}
-					
-					if (lastComponent.getToken().getText().equals("polcap")) {
-						if (symAttrValue.compareTo("Capacitor") == 0)
-							System.out.println("Description type for cap is correct");
-						else {
-							System.out.println("Description type for cap is not correct");
-							myErrorHandler(DESCRIPTION_ERROR, (Token)tokenSymAttrValue);
+						
+						else if (lastComponent.getToken().getText().equals("polcap")) {
+							if (symAttrValue.compareTo("Capacitor") == 0)
+								System.out.println("Description type for polcap is correct");
+							else {
+								System.out.println("Description type for polcap is not correct");
+								myErrorHandler(DESCRIPTION_ERROR, (Token)tokenSymAttrValue);
+							}
+						} else if(lastComponent.getToken().getText().equals("cap")) {
+							if(symAttrValue.equals("Polarized")) {
+								System.out.println("Description type for cap is correct");
+								polarizedPresent = true;
+							}
+							else {
+								System.out.println("Description type for cap is not correct");
+								myErrorHandler(DESCRIPTION_ERROR, (Token)tokenSymAttrValue);
+							}
 						}
+						
+					} else {
+						System.out.println("No symbol to refer Description value");
+						myErrorHandler(SYMBOLTYPENULL_ERROR, (Token)tokenSymAttrValue);
 					}
-				} else {
-					System.out.println("No symbol to refer Description value");
-					myErrorHandler(SYMBOLTYPENULL_ERROR, (Token)tokenSymAttrValue);
 				}
-			}
+				else {
+					System.out.println("Description type is not correct ");
+					if(tokenSymAttrValue instanceof Token)
+						myErrorHandler(DESCRIPTION_ERROR, (Token)tokenSymAttrValue);
+					else
+						myErrorHandler(DESCRIPTION_ERROR, value);
+				}
+			} 
+			
 			else if(symAttr.compareTo("Type") == 0){
 				
 				if (lastComponent != null) {
@@ -425,6 +461,34 @@ public class Handler {
 		}
 	}
 	
+
+	public void checkPolarizedCapacitor(Token id1, Token id2, Token id3) {
+		if(lastComponent.getToken().getText().equals("cap")) {
+			if (id2.getText().compareTo("Polarized") == 0) {
+				System.out.println("Description type for cap is correct: Polarized");
+				if (id3.getText().equals("Capacitor")) {
+					System.out.println("Description type for cap is correct: Capacitor");
+					capacitorPresent = true;
+				}
+				else {
+					System.out.println("Description type for cap is correct: expected Capacitor");
+					myErrorHandler(DESCRIPTION_POLARIZED_ERROR, id3);
+				}
+			}
+			else {
+				System.out.println("Description type for cap is correct: expected Polarized");
+				myErrorHandler(DESCRIPTION_POLARIZED_ERROR, id2);
+			}
+			
+		} 
+		else {
+			System.out.println("Description type for this symbol is not allowed");
+			myErrorHandler(DESCRIPTION_NOT_ALLOWED, lastComponent.getToken());
+		}
+		appendRuleToStream(true, false, false, id3);
+		
+	}
+	
 	public void checkMandatoryAttribute() {
 		
 		if (lastComponent != null) {
@@ -441,6 +505,12 @@ public class Handler {
 				if (!lastComponent.getToken().getText().equals("varactor") && !descAttributePresent) {
 					System.out.println("Missing Desc attribute for SYMBOL");
 					myErrorHandler(MISS_DESCATTR_ERROR, lastComponent.getToken());
+				}
+			} 
+			else if(lastComponent.getToken().getText().equals("cap") && descAttributePresent) {
+				if(polarizedPresent && !capacitorPresent){
+					System.out.println("Missing capacitor for in description");
+					myErrorHandler(DESCRIPTION_POLARIZED_NOCAPACITOR_ERROR, lastComponent.getToken());
 				}
 			}
 		}

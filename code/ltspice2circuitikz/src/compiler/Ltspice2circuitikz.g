@@ -107,12 +107,15 @@ symbolRule returns[Token symbol]
 	;
 symattrRule//TODO da controllare
 	:	
-		s=SYMATTR id1=ID {h.checkSymMattrAttr(id1, s);} 
-			(id2=ID {h.checkSymMattrAttrValue(id1, id2, null);} (attrRuleNoId attrRule[id1]*)?
+	    	s=SYMATTR id1=ID {h.checkSymMattrAttr(id1, s);} 
+			( id2=ID {h.checkSymMattrAttrValue(id1, id2, null);} 
+				( id3=ID {h.checkPolarizedCapacitor(id1, id2, id3);}
+				| (attrRuleNoId attrRule[id1]*)?)
 			| i=INTEGER {h.checkSymMattrAttrValue(id1, "int", i);}
 			| f=FLOAT {h.checkSymMattrAttrValue(id1, "float", f);}
 			| r = reservedWordRule {h.checkSymMattrAttrValue(id1, "reserved", r);})
 		{h.appendRuleToStream(false, false, true);}
+	
 		
 		/*SYMATTR ( INSTNAME ID
 			| DESCRIPTION ID //description attribute

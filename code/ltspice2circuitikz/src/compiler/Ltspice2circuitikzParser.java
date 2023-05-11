@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-05-05 10:07:08
+// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g 2023-05-10 10:30:20
 
 package compiler;
 
@@ -578,38 +578,39 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "symattrRule"
-	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:108:1: symattrRule : s= SYMATTR id1= ID (id2= ID ( attrRuleNoId ( attrRule[id1] )* )? |i= INTEGER |f= FLOAT |r= reservedWordRule ) ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:108:1: symattrRule : s= SYMATTR id1= ID (id2= ID (id3= ID | ( attrRuleNoId ( attrRule[id1] )* )? ) |i= INTEGER |f= FLOAT |r= reservedWordRule ) ;
 	public final void symattrRule() throws RecognitionException {
 		Token s=null;
 		Token id1=null;
 		Token id2=null;
+		Token id3=null;
 		Token i=null;
 		Token f=null;
 		Token r =null;
 
 		try {
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:109:2: (s= SYMATTR id1= ID (id2= ID ( attrRuleNoId ( attrRule[id1] )* )? |i= INTEGER |f= FLOAT |r= reservedWordRule ) )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:110:3: s= SYMATTR id1= ID (id2= ID ( attrRuleNoId ( attrRule[id1] )* )? |i= INTEGER |f= FLOAT |r= reservedWordRule )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:109:2: (s= SYMATTR id1= ID (id2= ID (id3= ID | ( attrRuleNoId ( attrRule[id1] )* )? ) |i= INTEGER |f= FLOAT |r= reservedWordRule ) )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:110:7: s= SYMATTR id1= ID (id2= ID (id3= ID | ( attrRuleNoId ( attrRule[id1] )* )? ) |i= INTEGER |f= FLOAT |r= reservedWordRule )
 			{
-			s=(Token)match(input,SYMATTR,FOLLOW_SYMATTR_in_symattrRule441); 
-			id1=(Token)match(input,ID,FOLLOW_ID_in_symattrRule445); 
+			s=(Token)match(input,SYMATTR,FOLLOW_SYMATTR_in_symattrRule445); 
+			id1=(Token)match(input,ID,FOLLOW_ID_in_symattrRule449); 
 			h.checkSymMattrAttr(id1, s);
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:4: (id2= ID ( attrRuleNoId ( attrRule[id1] )* )? |i= INTEGER |f= FLOAT |r= reservedWordRule )
-			int alt6=4;
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:4: (id2= ID (id3= ID | ( attrRuleNoId ( attrRule[id1] )* )? ) |i= INTEGER |f= FLOAT |r= reservedWordRule )
+			int alt7=4;
 			switch ( input.LA(1) ) {
 			case ID:
 				{
-				alt6=1;
+				alt7=1;
 				}
 				break;
 			case INTEGER:
 				{
-				alt6=2;
+				alt7=2;
 				}
 				break;
 			case FLOAT:
 				{
-				alt6=3;
+				alt7=3;
 				}
 				break;
 			case ASSIGN:
@@ -622,57 +623,89 @@ public class Ltspice2circuitikzParser extends Parser {
 			case WINDOW:
 			case WIRE:
 				{
-				alt6=4;
+				alt7=4;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 6, 0, input);
+					new NoViableAltException("", 7, 0, input);
 				throw nvae;
 			}
-			switch (alt6) {
+			switch (alt7) {
 				case 1 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:5: id2= ID ( attrRuleNoId ( attrRule[id1] )* )?
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:6: id2= ID (id3= ID | ( attrRuleNoId ( attrRule[id1] )* )? )
 					{
-					id2=(Token)match(input,ID,FOLLOW_ID_in_symattrRule456); 
+					id2=(Token)match(input,ID,FOLLOW_ID_in_symattrRule461); 
 					h.checkSymMattrAttrValue(id1, id2, null);
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:56: ( attrRuleNoId ( attrRule[id1] )* )?
-					int alt5=2;
-					int LA5_0 = input.LA(1);
-					if ( (LA5_0==ASSIGN) ) {
-						alt5=1;
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:112:5: (id3= ID | ( attrRuleNoId ( attrRule[id1] )* )? )
+					int alt6=2;
+					int LA6_0 = input.LA(1);
+					if ( (LA6_0==ID) ) {
+						alt6=1;
 					}
-					switch (alt5) {
+					else if ( (LA6_0==EOF||LA6_0==ASSIGN||LA6_0==FLAG||LA6_0==IOPIN||(LA6_0 >= SYMATTR && LA6_0 <= SYMBOL)||(LA6_0 >= WINDOW && LA6_0 <= WIRE)) ) {
+						alt6=2;
+					}
+
+					else {
+						NoViableAltException nvae =
+							new NoViableAltException("", 6, 0, input);
+						throw nvae;
+					}
+
+					switch (alt6) {
 						case 1 :
-							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:57: attrRuleNoId ( attrRule[id1] )*
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:112:7: id3= ID
 							{
-							pushFollow(FOLLOW_attrRuleNoId_in_symattrRule461);
-							attrRuleNoId();
-							state._fsp--;
-
-							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:70: ( attrRule[id1] )*
-							loop4:
-							while (true) {
-								int alt4=2;
-								int LA4_0 = input.LA(1);
-								if ( (LA4_0==ID) ) {
-									alt4=1;
-								}
-
-								switch (alt4) {
+							id3=(Token)match(input,ID,FOLLOW_ID_in_symattrRule474); 
+							h.checkPolarizedCapacitor(id1, id2, id3);
+							}
+							break;
+						case 2 :
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:113:7: ( attrRuleNoId ( attrRule[id1] )* )?
+							{
+							// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:113:7: ( attrRuleNoId ( attrRule[id1] )* )?
+							int alt5=2;
+							int LA5_0 = input.LA(1);
+							if ( (LA5_0==ASSIGN) ) {
+								alt5=1;
+							}
+							switch (alt5) {
 								case 1 :
-									// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:111:70: attrRule[id1]
+									// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:113:8: attrRuleNoId ( attrRule[id1] )*
 									{
-									pushFollow(FOLLOW_attrRule_in_symattrRule463);
-									attrRule(id1);
+									pushFollow(FOLLOW_attrRuleNoId_in_symattrRule485);
+									attrRuleNoId();
 									state._fsp--;
+
+									// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:113:21: ( attrRule[id1] )*
+									loop4:
+									while (true) {
+										int alt4=2;
+										int LA4_0 = input.LA(1);
+										if ( (LA4_0==ID) ) {
+											alt4=1;
+										}
+
+										switch (alt4) {
+										case 1 :
+											// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:113:21: attrRule[id1]
+											{
+											pushFollow(FOLLOW_attrRule_in_symattrRule487);
+											attrRule(id1);
+											state._fsp--;
+
+											}
+											break;
+
+										default :
+											break loop4;
+										}
+									}
 
 									}
 									break;
 
-								default :
-									break loop4;
-								}
 							}
 
 							}
@@ -683,23 +716,23 @@ public class Ltspice2circuitikzParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:112:6: i= INTEGER
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:114:6: i= INTEGER
 					{
-					i=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_symattrRule476); 
+					i=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_symattrRule501); 
 					h.checkSymMattrAttrValue(id1, "int", i);
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:113:6: f= FLOAT
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:115:6: f= FLOAT
 					{
-					f=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_symattrRule487); 
+					f=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_symattrRule512); 
 					h.checkSymMattrAttrValue(id1, "float", f);
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:114:6: r= reservedWordRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:116:6: r= reservedWordRule
 					{
-					pushFollow(FOLLOW_reservedWordRule_in_symattrRule500);
+					pushFollow(FOLLOW_reservedWordRule_in_symattrRule525);
 					r=reservedWordRule();
 					state._fsp--;
 
@@ -726,125 +759,17 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "attrRuleNoId"
-	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:123:1: attrRuleNoId : a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:1: attrRuleNoId : a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) ;
 	public final void attrRuleNoId() throws RecognitionException {
 		Token a=null;
 		Token v=null;
 
 		try {
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:124:2: (a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:125:3: a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:127:2: (a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:128:3: a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
 			{
-			a=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_attrRuleNoId528); 
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:5: ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
-			int alt7=5;
-			switch ( input.LA(1) ) {
-			case INTEGER:
-				{
-				alt7=1;
-				}
-				break;
-			case FLOAT:
-				{
-				alt7=2;
-				}
-				break;
-			case STRING:
-				{
-				alt7=3;
-				}
-				break;
-			case ID:
-				{
-				alt7=4;
-				}
-				break;
-			case ASSIGN:
-			case FLAG:
-			case IOPIN:
-			case SHEET:
-			case SYMATTR:
-			case SYMBOL:
-			case VERSION:
-			case WINDOW:
-			case WIRE:
-				{
-				alt7=5;
-				}
-				break;
-			default:
-				NoViableAltException nvae =
-					new NoViableAltException("", 7, 0, input);
-				throw nvae;
-			}
-			switch (alt7) {
-				case 1 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:6: INTEGER
-					{
-					v=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_attrRuleNoId535); 
-					}
-					break;
-				case 2 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:16: FLOAT
-					{
-					v=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_attrRuleNoId539); 
-					}
-					break;
-				case 3 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:24: STRING
-					{
-					v=(Token)match(input,STRING,FOLLOW_STRING_in_attrRuleNoId543); 
-					}
-					break;
-				case 4 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:33: ID
-					{
-					v=(Token)match(input,ID,FOLLOW_ID_in_attrRuleNoId547); 
-					}
-					break;
-				case 5 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:126:38: reservedWordRule
-					{
-					pushFollow(FOLLOW_reservedWordRule_in_attrRuleNoId551);
-					v=reservedWordRule();
-					state._fsp--;
-
-					}
-					break;
-
-			}
-
-			h.appendRuleToStream(false, false, false, a, v);
-			}
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-	}
-	// $ANTLR end "attrRuleNoId"
-
-
-
-	// $ANTLR start "attrRule"
-	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:1: attrRule[Token id1] : id2= ID a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) ;
-	public final void attrRule(Token id1) throws RecognitionException {
-		Token id2=null;
-		Token a=null;
-		Token v=null;
-
-		try {
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:130:2: (id2= ID a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:131:3: id2= ID a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
-			{
-			id2=(Token)match(input,ID,FOLLOW_ID_in_attrRule576); 
-			h.checkSymMattrAttrValue(id1, id2, null);
-			a=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_attrRule584); 
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:5: ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
+			a=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_attrRuleNoId555); 
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:5: ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
 			int alt8=5;
 			switch ( input.LA(1) ) {
 			case INTEGER:
@@ -887,33 +812,141 @@ public class Ltspice2circuitikzParser extends Parser {
 			}
 			switch (alt8) {
 				case 1 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:6: INTEGER
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:6: INTEGER
 					{
-					v=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_attrRule591); 
+					v=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_attrRuleNoId562); 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:16: FLOAT
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:16: FLOAT
 					{
-					v=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_attrRule595); 
+					v=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_attrRuleNoId566); 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:24: STRING
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:24: STRING
 					{
-					v=(Token)match(input,STRING,FOLLOW_STRING_in_attrRule599); 
+					v=(Token)match(input,STRING,FOLLOW_STRING_in_attrRuleNoId570); 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:33: ID
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:33: ID
 					{
-					v=(Token)match(input,ID,FOLLOW_ID_in_attrRule603); 
+					v=(Token)match(input,ID,FOLLOW_ID_in_attrRuleNoId574); 
 					}
 					break;
 				case 5 :
-					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:38: reservedWordRule
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:129:38: reservedWordRule
 					{
-					pushFollow(FOLLOW_reservedWordRule_in_attrRule607);
+					pushFollow(FOLLOW_reservedWordRule_in_attrRuleNoId578);
+					v=reservedWordRule();
+					state._fsp--;
+
+					}
+					break;
+
+			}
+
+			h.appendRuleToStream(false, false, false, a, v);
+			}
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "attrRuleNoId"
+
+
+
+	// $ANTLR start "attrRule"
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:132:1: attrRule[Token id1] : id2= ID a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) ;
+	public final void attrRule(Token id1) throws RecognitionException {
+		Token id2=null;
+		Token a=null;
+		Token v=null;
+
+		try {
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:133:2: (id2= ID a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule ) )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:134:3: id2= ID a= ASSIGN v= ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
+			{
+			id2=(Token)match(input,ID,FOLLOW_ID_in_attrRule603); 
+			h.checkSymMattrAttrValue(id1, id2, null);
+			a=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_attrRule611); 
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:136:5: ( INTEGER | FLOAT | STRING | ID | reservedWordRule )
+			int alt9=5;
+			switch ( input.LA(1) ) {
+			case INTEGER:
+				{
+				alt9=1;
+				}
+				break;
+			case FLOAT:
+				{
+				alt9=2;
+				}
+				break;
+			case STRING:
+				{
+				alt9=3;
+				}
+				break;
+			case ID:
+				{
+				alt9=4;
+				}
+				break;
+			case ASSIGN:
+			case FLAG:
+			case IOPIN:
+			case SHEET:
+			case SYMATTR:
+			case SYMBOL:
+			case VERSION:
+			case WINDOW:
+			case WIRE:
+				{
+				alt9=5;
+				}
+				break;
+			default:
+				NoViableAltException nvae =
+					new NoViableAltException("", 9, 0, input);
+				throw nvae;
+			}
+			switch (alt9) {
+				case 1 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:136:6: INTEGER
+					{
+					v=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_attrRule618); 
+					}
+					break;
+				case 2 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:136:16: FLOAT
+					{
+					v=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_attrRule622); 
+					}
+					break;
+				case 3 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:136:24: STRING
+					{
+					v=(Token)match(input,STRING,FOLLOW_STRING_in_attrRule626); 
+					}
+					break;
+				case 4 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:136:33: ID
+					{
+					v=(Token)match(input,ID,FOLLOW_ID_in_attrRule630); 
+					}
+					break;
+				case 5 :
+					// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:136:38: reservedWordRule
+					{
+					pushFollow(FOLLOW_reservedWordRule_in_attrRule634);
 					v=reservedWordRule();
 					state._fsp--;
 
@@ -939,7 +972,7 @@ public class Ltspice2circuitikzParser extends Parser {
 
 
 	// $ANTLR start "reservedWordRule"
-	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:138:1: reservedWordRule returns [Token word] : v= ( VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN ) ;
+	// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:141:1: reservedWordRule returns [Token word] : v= ( VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN ) ;
 	public final Token reservedWordRule() throws RecognitionException {
 		Token word = null;
 
@@ -947,8 +980,8 @@ public class Ltspice2circuitikzParser extends Parser {
 		Token v=null;
 
 		try {
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:139:2: (v= ( VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN ) )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:140:3: v= ( VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:142:2: (v= ( VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN ) )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\compiler\\Ltspice2circuitikz.g:143:3: v= ( VERSION | SHEET | WIRE | FLAG | WINDOW | SYMBOL | SYMATTR | ASSIGN | IOPIN )
 			{
 			v=input.LT(1);
 			if ( input.LA(1)==ASSIGN||input.LA(1)==FLAG||input.LA(1)==IOPIN||input.LA(1)==SHEET||(input.LA(1) >= SYMATTR && input.LA(1) <= WIRE) ) {
@@ -1021,26 +1054,27 @@ public class Ltspice2circuitikzParser extends Parser {
 	public static final BitSet FOLLOW_INTEGER_in_symbolRule407 = new BitSet(new long[]{0x0000000000000800L});
 	public static final BitSet FOLLOW_INTEGER_in_symbolRule414 = new BitSet(new long[]{0x0000000000000400L});
 	public static final BitSet FOLLOW_ID_in_symbolRule423 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SYMATTR_in_symattrRule441 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_ID_in_symattrRule445 = new BitSet(new long[]{0x00000000003E5F10L});
-	public static final BitSet FOLLOW_ID_in_symattrRule456 = new BitSet(new long[]{0x0000000000000012L});
-	public static final BitSet FOLLOW_attrRuleNoId_in_symattrRule461 = new BitSet(new long[]{0x0000000000000402L});
-	public static final BitSet FOLLOW_attrRule_in_symattrRule463 = new BitSet(new long[]{0x0000000000000402L});
-	public static final BitSet FOLLOW_INTEGER_in_symattrRule476 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FLOAT_in_symattrRule487 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_reservedWordRule_in_symattrRule500 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ASSIGN_in_attrRuleNoId528 = new BitSet(new long[]{0x00000000003F5F10L});
-	public static final BitSet FOLLOW_INTEGER_in_attrRuleNoId535 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FLOAT_in_attrRuleNoId539 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_in_attrRuleNoId543 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_attrRuleNoId547 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_reservedWordRule_in_attrRuleNoId551 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_attrRule576 = new BitSet(new long[]{0x0000000000000010L});
-	public static final BitSet FOLLOW_ASSIGN_in_attrRule584 = new BitSet(new long[]{0x00000000003F5F10L});
-	public static final BitSet FOLLOW_INTEGER_in_attrRule591 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FLOAT_in_attrRule595 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_in_attrRule599 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_attrRule603 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_reservedWordRule_in_attrRule607 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_set_in_reservedWordRule635 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SYMATTR_in_symattrRule445 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_ID_in_symattrRule449 = new BitSet(new long[]{0x00000000003E5F10L});
+	public static final BitSet FOLLOW_ID_in_symattrRule461 = new BitSet(new long[]{0x0000000000000412L});
+	public static final BitSet FOLLOW_ID_in_symattrRule474 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_attrRuleNoId_in_symattrRule485 = new BitSet(new long[]{0x0000000000000402L});
+	public static final BitSet FOLLOW_attrRule_in_symattrRule487 = new BitSet(new long[]{0x0000000000000402L});
+	public static final BitSet FOLLOW_INTEGER_in_symattrRule501 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FLOAT_in_symattrRule512 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_reservedWordRule_in_symattrRule525 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ASSIGN_in_attrRuleNoId555 = new BitSet(new long[]{0x00000000003F5F10L});
+	public static final BitSet FOLLOW_INTEGER_in_attrRuleNoId562 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FLOAT_in_attrRuleNoId566 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_STRING_in_attrRuleNoId570 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_attrRuleNoId574 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_reservedWordRule_in_attrRuleNoId578 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_attrRule603 = new BitSet(new long[]{0x0000000000000010L});
+	public static final BitSet FOLLOW_ASSIGN_in_attrRule611 = new BitSet(new long[]{0x00000000003F5F10L});
+	public static final BitSet FOLLOW_INTEGER_in_attrRule618 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FLOAT_in_attrRule622 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_STRING_in_attrRule626 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_attrRule630 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_reservedWordRule_in_attrRule634 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_set_in_reservedWordRule662 = new BitSet(new long[]{0x0000000000000002L});
 }
