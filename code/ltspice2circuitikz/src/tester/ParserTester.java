@@ -15,7 +15,7 @@ public class ParserTester {
 
 	public static void main(String[] args) { 
 		CommonTokenStream tokens;  
-		String fileIn = ".\\resources\\input-polarized.asc";
+		String fileIn = ".\\resources\\Test4 - Ponte Diodi.asc";
 
 		try {
 			System.out.println ("Parsing con ANTLR lexer");

@@ -26,7 +26,7 @@ public class LatexConverter {
 	private static List<Flag> flags;
 
 	private static int x_min = Integer.MAX_VALUE;// sarà l'offset del mio sdr; dovrò togliere questi offset e invertire
-													// la y
+	// la y
 	private static int y_max = Integer.MIN_VALUE;
 
 	public static void convertToLatex(List<Component> components, List<Wire> wires, List<Flag> flags)
@@ -106,7 +106,7 @@ public class LatexConverter {
 
 			if (f.getLabel().equals("0")) {
 				fileLatexOut
-						.write(String.format(Locale.ROOT, "\\draw (%f,%f) to (%f,%f) node[ground]{};\n", x, y, x, y));
+				.write(String.format(Locale.ROOT, "\\draw (%f,%f) to (%f,%f) node[ground]{};\n", x, y, x, y));
 			}
 		}
 
