@@ -28,12 +28,19 @@ public class LatexConverter {
 	private static int x_min = Integer.MAX_VALUE;// sarà l'offset del mio sdr; dovrò togliere questi offset e invertire
 	// la y
 	private static int y_max = Integer.MIN_VALUE;
+	private static int x_max = Integer.MIN_VALUE;
+	private static int y_min = Integer.MAX_VALUE;
+	private static int width = 0;
+	private static int height = 0;
+
+	public static boolean rotate = false;
 
 	public static void convertToLatex(List<Component> components, List<Wire> wires, List<Flag> flags)
 			throws IOException {
 		LatexConverter.components = components;
 		LatexConverter.wires = wires;
 		LatexConverter.flags = flags;
+		calculateAspectRatio();
 		inizializeFileLatex();
 		translateCircuitToLatex();
 		closeFileLatex();
@@ -46,29 +53,50 @@ public class LatexConverter {
 		fileLatexOut.write("");
 		fileLatexOut.close();
 		fileLatexOut = new FileWriter("./latex_output/translated_circuit.tex", true);
-		fileLatexOut.write("\\documentclass{article}\n" + "\\usepackage{circuitikz}\n" + "\\begin{document}\n"
-				+ "\\begin{center}\n" + "\\begin{circuitikz}\n");
+
+
+
+
+		if (rotate) {
+			fileLatexOut.write("\\documentclass{article}\n" + "\\usepackage{circuitikz}\n" + "\\begin{document}\n"
+					+ "\\begin{center}\n" + "\\rotatebox{270}{\n" + "\\begin{circuitikz}\n");
+		} else {
+			fileLatexOut.write("\\documentclass{article}\n" + "\\usepackage{circuitikz}\n" + "\\begin{document}\n"
+					+ "\\begin{center}\n" + "\\begin{circuitikz}\n");
+		}
 	}
 
-	private static void translateCircuitToLatex() throws IOException {
+	private static void calculateAspectRatio() {
 		for (Component c : components) {
-			int c_x = c.getMinX();
-			int c_y = c.getMaxY();
+			int min_x = c.getMinX();
+			int max_y = c.getMaxY();
+			int max_x = c.getMaxX();
+			int min_y = c.getMinY();
 
-			if (c_x < x_min)
-				x_min = c_x;
-			if (c_y > y_max)
-				y_max = c_y;
-
+			if (min_x < x_min)
+				x_min = min_x;
+			if (max_x > x_max)
+				x_max = max_x;
+			if (max_y > y_max)
+				y_max = max_y;
+			if (min_y < y_min)
+				y_min = min_y;
 		}
-		for (Wire w : wires) {
-			int w_x = w.getMinX();
-			int w_y = w.getMaxY();
 
-			if (w_x < x_min)
-				x_min = w_x;
-			if (w_y > y_max)
-				y_max = w_y;
+		for (Wire w : wires) {
+			int min_x = w.getMinX();
+			int max_y = w.getMaxY();
+			int max_x = w.getMaxX();
+			int min_y = w.getMinY();
+
+			if (min_x < x_min)
+				x_min = min_x;
+			if (max_x > x_max)
+				x_max = max_x;
+			if (max_y > y_max)
+				y_max = max_y;
+			if (min_y < y_min)
+				y_min = min_y;
 		}
 
 		for (Flag f : flags) {
@@ -77,8 +105,34 @@ public class LatexConverter {
 
 			if (f_x < x_min)
 				x_min = f_x;
+			if (f_x > x_max)
+				x_max = f_x;
 			if (f_y > y_max)
 				y_max = f_y;
+			if (f_y < y_min)
+				y_min = f_y;
+		}
+
+		width = Math.abs(x_min - x_max);
+		height = Math.abs(y_min - y_max);
+
+		System.out.println(width / LATEXSCALE);
+		System.out.println(height / LATEXSCALE);
+
+		if ((width / LATEXSCALE) > 15 && width > height)
+			rotate = true;
+	}
+
+	private static void translateCircuitToLatex() throws IOException {
+
+		if (!rotate) {
+			if ((width / LATEXSCALE) > 15 || (height / LATEXSCALE) > 17) {
+				LATEXSCALE = Math.max(width/15, height/17) + 1;
+			}
+		} else {
+			if ((width / LATEXSCALE) > 17 || (height / LATEXSCALE) > 15) {
+				LATEXSCALE = Math.max(width/17, height/15) + 1;				
+			}
 		}
 
 		for (Component c : components) {
@@ -142,7 +196,15 @@ public class LatexConverter {
 	}
 
 	private static void closeFileLatex() throws IOException {
-		fileLatexOut.write("\\end{circuitikz}\r\n" + "\\end{center}\r\n" + "\\end{document}");
+
+
+		if (rotate) {
+			fileLatexOut.write("\\end{circuitikz}}\r\n" + "\\end{center}\r\n" + "\\end{document}");
+		} else {
+			fileLatexOut.write("\\end{circuitikz}\r\n" + "\\end{center}\r\n" + "\\end{document}");
+		}
+
+
 		fileLatexOut.close();
 
 		ProcessBuilder pb = new ProcessBuilder("pdflatex", "translated_circuit.tex").inheritIO()

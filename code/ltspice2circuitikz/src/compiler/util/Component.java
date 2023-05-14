@@ -171,6 +171,15 @@ public class Component {
 	public int getMaxY() {//da modificare se aggiungo y3
 		return Math.max(y1, y2);
 	}
+	
+	public int getMaxX() {
+		return Math.max(x1, x2);
+	}
+	
+	public int getMinY() {
+		return Math.min(y1, y2);
+	}
+	
 	public void setRotation(String rotationString) {
 		rotationType = rotationString.substring(0, 1);
 		rotationAngle = Integer.parseInt(rotationString.substring(1));
