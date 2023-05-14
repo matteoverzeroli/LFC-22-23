@@ -86,11 +86,11 @@ public class Handler {
 			tk = input.LT(-1);
 
 		if (tk.getType() == Ltspice2circuitikzLexer.ERROR_TK)
-			errMsg = "Lexical Error " + LEXICAL_ERROR;
+			errMsg = "Lexical Error (" + LEXICAL_ERROR + ")";
 		else 
-			errMsg = "Syntax Error " + SYNTAX_ERROR;
+			errMsg = "Syntax Error (" + SYNTAX_ERROR + ")";
 
-		errMsg += " at [" + tk.getLine() + ", " + (tk.getCharPositionInLine()+1) + "]: " +
+		errMsg += " at [" + tk.getLine() + ", " + (tk.getCharPositionInLine()+1) + "] " +
 				" on token '" + tk.getText() + "'";
 
 		errorList.add(errMsg);
@@ -104,7 +104,7 @@ public class Handler {
 		else if (code == SYNTAX_ERROR)//it should never happen
 			errMsg = "Fake Syntax Error " + code;
 		else
-			errMsg = "Semantic Error " + code; 
+			errMsg = "Semantic Error (" + code + ")"; 
 	
 		if (tk == null)
 			tk = input.LT(-1);
@@ -114,7 +114,7 @@ public class Handler {
 		
 		switch(code) {
 			case VERSION_ERROR:
-				errMsg += "Version number '" + tk.getText() + "' is not equal to 4";
+				errMsg += "Expected version number '4' but found version number equal to '" + tk.getText() + "'";
 				break;
 			case ATTRIBUTE_ERROR:
 				errMsg += "ID '" + tk.getText() + "' is not an attribute";
@@ -155,7 +155,7 @@ public class Handler {
 			case TYPE_ERROR:
 				errMsg += "Type value '" + tk.getText() + "' is not valid";
 				break;	
-			case SPICELINEVALUE_ERROR: //TODO usato?
+			case SPICELINEVALUE_ERROR: 
 				errMsg += "SpiceLine value '" + tk.getText() + "' is not valid";
 				break;
 			case SYMBOLTYPENULL_ERROR:
@@ -168,7 +168,7 @@ public class Handler {
 				errMsg += "Missing desc attribute for previous symbol '" + tk.getText() + "' ";
 				break;
 			default:
-				errMsg += "Message error not defined";
+				errMsg += "Message error not defined, please contact support";
 				
 		}
 		errorList.add(errMsg);
@@ -590,6 +590,7 @@ public class Handler {
 			e.printStackTrace();
 		}
 	}
+	
 	public void closeFileOut() {
 		try {
 			fileOut.close();
@@ -598,6 +599,7 @@ public class Handler {
 		}
 	}
 	
+	// la toglierei, non ci serve più
 	public void printComponents() {
 		
 		if (lastComponent != null)
@@ -621,7 +623,8 @@ public class Handler {
 		printComponents();
 		closeFileOut();
 		try {
-			LatexConverter.convertToLatex( components, wires, flags);
+			if (errorList.isEmpty())
+				LatexConverter.convertToLatex( components, wires, flags);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
