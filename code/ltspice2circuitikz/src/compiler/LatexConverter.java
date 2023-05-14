@@ -54,14 +54,13 @@ public class LatexConverter {
 		fileLatexOut.close();
 		fileLatexOut = new FileWriter("./latex_output/translated_circuit.tex", true);
 
-
-
-
 		if (rotate) {
-			fileLatexOut.write("\\documentclass{article}\n" + "\\usepackage{circuitikz}\n" + "\\begin{document}\n"
-					+ "\\begin{center}\n" + "\\rotatebox{270}{\n" + "\\begin{circuitikz}\n");
+			fileLatexOut.write("\\documentclass{article}\n" + "\\usepackage{circuitikz}\n"
+					+ "\\usepackage[a4paper, total={6in, 8in}]{geometry}\n" + "\\begin{document}\n" + "\\begin{center}\n"
+					+ "\\rotatebox{270}{\n" + "\\begin{circuitikz}\n");
 		} else {
-			fileLatexOut.write("\\documentclass{article}\n" + "\\usepackage{circuitikz}\n" + "\\begin{document}\n"
+			fileLatexOut.write("\\documentclass{article}\n" + "\\usepackage{circuitikz}\n" 
+					+ "\\usepackage[a4paper, total={6in, 8in}]{geometry}\n" + "\\begin{document}\n"
 					+ "\\begin{center}\n" + "\\begin{circuitikz}\n");
 		}
 	}
@@ -127,11 +126,11 @@ public class LatexConverter {
 
 		if (!rotate) {
 			if ((width / LATEXSCALE) > 15 || (height / LATEXSCALE) > 17) {
-				LATEXSCALE = Math.max(width/15, height/17) + 1;
+				LATEXSCALE = Math.max(width / 15, height / 17) + 1;
 			}
 		} else {
 			if ((width / LATEXSCALE) > 17 || (height / LATEXSCALE) > 15) {
-				LATEXSCALE = Math.max(width/17, height/15) + 1;				
+				LATEXSCALE = Math.max(width / 17, height / 15) + 1;
 			}
 		}
 
@@ -160,7 +159,7 @@ public class LatexConverter {
 
 			if (f.getLabel().equals("0")) {
 				fileLatexOut
-				.write(String.format(Locale.ROOT, "\\draw (%f,%f) to (%f,%f) node[ground]{};\n", x, y, x, y));
+						.write(String.format(Locale.ROOT, "\\draw (%f,%f) to (%f,%f) node[ground]{};\n", x, y, x, y));
 			}
 		}
 
@@ -188,7 +187,7 @@ public class LatexConverter {
 		}
 		for (Map.Entry<Point, Integer> entry : nodes.entrySet()) {
 			if (entry.getValue() >= 3) {
-				fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%s,%s) to[short, -*] (%s,%s);",
+				fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%s,%s) to[short, -*] (%s,%s);\n",
 						(entry.getKey().getX() - x_min) / LATEXSCALE, -(entry.getKey().getY() - y_max) / LATEXSCALE,
 						(entry.getKey().getX() - x_min) / LATEXSCALE, -(entry.getKey().getY() - y_max) / LATEXSCALE));
 			}
@@ -197,13 +196,11 @@ public class LatexConverter {
 
 	private static void closeFileLatex() throws IOException {
 
-
 		if (rotate) {
 			fileLatexOut.write("\\end{circuitikz}}\r\n" + "\\end{center}\r\n" + "\\end{document}");
 		} else {
 			fileLatexOut.write("\\end{circuitikz}\r\n" + "\\end{center}\r\n" + "\\end{document}");
 		}
-
 
 		fileLatexOut.close();
 
