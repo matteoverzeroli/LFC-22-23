@@ -1,0 +1,2 @@
+Error 1:	Syntax Error (SYNTAX_ERROR) at [12, 9]  on token 'InstName'
+Error 2:	Semantic Error (ROTMIRR_ERROR) at [12, 9]: Rotation/Mirror Type 'InstName' is not valid

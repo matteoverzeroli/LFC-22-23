@@ -105,7 +105,7 @@ symbolRule returns[Token symbol]
 		i2=INTEGER 
 		rotType = ID  {h.checkRotType(rotType, s, symbolType, i1, i2);}
 	;
-symattrRule//TODO da controllare
+symattrRule
 	:	
 	    	s=SYMATTR id1=ID {h.checkSymMattrAttr(id1, s);} 
 			( id2=ID {h.checkSymMattrAttrValue(id1, id2, null);} 
@@ -113,10 +113,9 @@ symattrRule//TODO da controllare
 				| (attrRuleNoId attrRule[id1]*)?)
 			| i=INTEGER {h.checkSymMattrAttrValue(id1, "int", i);}
 			| f=FLOAT {h.checkSymMattrAttrValue(id1, "float", f);}
-			| r = reservedWordRule {h.checkSymMattrAttrValue(id1, "reserved", r);})
+			/*| r = reservedWordRule {h.checkSymMattrAttrValue(id1, "reserved", r);}*/)
 		{h.appendRuleToStream(false, false, true);}
 	
-		
 		/*SYMATTR ( INSTNAME ID
 			| DESCRIPTION ID //description attribute
 			| TYPE ID //sybol type

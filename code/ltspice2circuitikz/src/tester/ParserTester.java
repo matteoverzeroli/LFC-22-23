@@ -1,6 +1,10 @@
 package tester;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -15,8 +19,12 @@ public class ParserTester {
 
 	public static void main(String[] args) {
 		CommonTokenStream tokens;
-		String fileIn = ".\\resources\\input.asc";
-
+		String fileIn;
+		fileIn = ".\\resources\\input.asc";
+		/*
+		 * if(args.length == 1) { fileIn = args[0]; } else { throw new
+		 * RuntimeException("File path not provided"); }
+		 */
 		try {
 			System.out.println("Parsing con ANTLR lexer");
 			System.out.println("-----------------------");
@@ -40,15 +48,35 @@ public class ParserTester {
 				System.out.println("Parsing terminato con successo");
 			else {
 				File myObj = new File("./circuit_output/formatted_circuit.asc");
-				if (myObj.delete()) {
-					System.out.println("Deleted the file: " + myObj.getName());
-				} else {
-					System.out.println("Failed to delete the file.");
+				myObj.delete();
+				Files.delete(Paths.get("./circuit_output"));
+
+				File directory = new File("./latex_output");
+				File[] files = directory.listFiles();
+				if (files != null) {
+					for (File file : files)
+						file.delete();
 				}
-				for (int i = 0; i < h.getErrorList().size(); i++)
+				directory.delete();
+
+				// save error logs
+				Files.createDirectories(Paths.get("./logs")); // create folder for error log output
+				FileWriter fileErrorOut = new FileWriter("./logs/errors.log", false);
+				fileErrorOut.write("");
+				fileErrorOut.close();
+				fileErrorOut = new FileWriter("./logs/errors.log", true);
+
+				for (int i = 0; i < h.getErrorList().size(); i++) {
 					System.err.println("Error " + (i + 1) + ":\t" + h.getErrorList().get(i) + "");
+					fileErrorOut.write("Error " + (i + 1) + ":\t" + h.getErrorList().get(i) + "\n");
+				}
+
+				fileErrorOut.close();
 			}
 
+		} catch (IOException e) {
+			System.out.println("Problem in deleting or creating files");
+			e.printStackTrace();
 		} catch (Exception e) {
 			System.out.println("Parsing con ANTLR abortito\n\n");
 			e.printStackTrace();
