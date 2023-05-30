@@ -21,10 +21,12 @@ public class ParserTester {
 		CommonTokenStream tokens;
 		String fileIn;
 		fileIn = ".\\resources\\input.asc";
-		/*
-		 * if(args.length == 1) { fileIn = args[0]; } else { throw new
-		 * RuntimeException("File path not provided"); }
-		 */
+
+		/*if (args.length == 1) {
+			fileIn = args[0];
+		} else {
+			throw new RuntimeException("File path not provided");
+		}*/
 		try {
 			System.out.println("Parsing con ANTLR lexer");
 			System.out.println("-----------------------");
@@ -44,9 +46,15 @@ public class ParserTester {
 			// 5.controllo i risultati
 			Handler h = parser.getHandler();
 
-			if (h.getErrorList().size() == 0)
+			if (h.getErrorList().size() == 0) {
 				System.out.println("Parsing terminato con successo");
-			else {
+				File directory = new File("./logs");
+				File[] files = directory.listFiles();
+				if (files != null) {
+					for (File file : files)
+						file.delete();
+				}
+			} else {
 				File myObj = new File("./circuit_output/formatted_circuit.asc");
 				myObj.delete();
 				Files.delete(Paths.get("./circuit_output"));
