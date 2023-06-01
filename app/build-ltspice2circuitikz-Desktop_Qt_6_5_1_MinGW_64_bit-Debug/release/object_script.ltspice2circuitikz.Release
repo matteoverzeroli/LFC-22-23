@@ -1,0 +1,10 @@
+release/filehandler.o
+release/main.o
+release/mainwindow.o
+release/pdfviewer.o
+release/processhandler.o
+release/qrc_resources.o
+release/moc_filehandler.o
+release/moc_mainwindow.o
+release/moc_pdfviewer.o
+release/moc_processhandler.o
