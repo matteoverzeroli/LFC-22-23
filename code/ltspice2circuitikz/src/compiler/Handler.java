@@ -7,35 +7,21 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
 
-import static compiler.util.ERROR.*;
+import static compiler.util.Error.*;
 
+import compiler.util.AttributeList;
 import compiler.util.Component;
-import compiler.util.ERROR;
+import compiler.util.Error;
+import compiler.util.ErrorMessage;
 import compiler.util.Flag;
 import compiler.util.Wire;
 
 public class Handler {
-
-	List<String> listWindowsOptions = Arrays.asList("Invisibile", "Center", "Left", "Right", "Top", "Bottom", "VCenter",
-			"VLeft", "VRight", "VTop", "VBottom");
-	List<String> listIOPinAttr = Arrays.asList("In", "Out", "BiDir");
-	List<String> listSymbolType = Arrays.asList("res", "res2", "cap", "ind", "ind2", "diode", "schottky", "zener",
-			"varactor", "LED", "TVSdiode", "pnp", "pnp2", "pnp4", "npn", "npn2", "npn3", "npn4", "voltage", "current",
-			"nmos", "nmos4", "pmos", "polcap");
-	List<String> listMirrorType = Arrays.asList("M0", "M90", "M180", "M270");
-	List<String> listRotType = Arrays.asList("R0", "R90", "R180", "R270");
-	List<String> listSymAttr = Arrays.asList("InstName", "Description", "Type", "Value", "SpiceLine");
-	List<String> listDescAttr = Arrays.asList("Diode", "Capacitor", "Polarized");
-	List<String> listCapAttribute = Arrays.asList("V", "Irms", "Lser", "mfg", "pn", "type");
-	List<String> listIndAttribute = Arrays.asList("Ipk", "mfg", "pn");
-	List<String> listParAttribute = Arrays.asList("Rser", "Rpar", "Cpar");
-	List<String> listRAttribute = Arrays.asList("tol", "pwr");
 
 	private boolean typeAttributePresent;
 	private boolean descAttributePresent;
@@ -43,44 +29,49 @@ public class Handler {
 	private boolean polarizedPresent; // to handle Polarized Capacitor description
 	private boolean capacitorPresent; // to handle Polarized Capacitor description
 
-	private OutputStreamWriter fileOut;
+	private TokenStream input; // input token stream
+	private Component lastComponent; // last read component
 
-	TokenStream input;
-	Component lastComponent;
-	List<String> errorList;
+	private OutputStreamWriter fileFormattedOut; // stream used to create formatted version of the circuit file
 
-	List<Component> components;
-	List<Wire> wires;
-	List<Flag> flags;
+	private List<String> syntaxErrorList;
+	private List<String> semanticErrorList;
+
+	private List<Component> components; // list of read components
+	private List<Wire> wires; // list of read wires
+	private List<Flag> flags; // list of flags components
 
 	public Handler(TokenStream input) {
 		System.out.println("------ Handler Init ------");
 
 		this.input = input;
-		errorList = new ArrayList<String>();
+
+		syntaxErrorList = new ArrayList<String>();
+		semanticErrorList = new ArrayList<String>();
+
 		components = new ArrayList<Component>();
 		wires = new ArrayList<Wire>();
 		flags = new ArrayList<Flag>();
 
 		lastComponent = null;
 
+		// create a file which contains correctly formatted .asc file
 		try {
 			Files.createDirectories(Paths.get("./circuit_output/")); // create folder for circuit output
-			fileOut = new OutputStreamWriter(new FileOutputStream("./circuit_output/formatted_circuit.asc", false),
-					StandardCharsets.ISO_8859_1);
-			fileOut.write("");
-			fileOut.close();
-			fileOut = new OutputStreamWriter(new FileOutputStream("./circuit_output/formatted_circuit.asc", true),
-					StandardCharsets.ISO_8859_1);
+			fileFormattedOut = new OutputStreamWriter(
+					new FileOutputStream("./circuit_output/formatted_circuit.asc", false), StandardCharsets.ISO_8859_1);
+			fileFormattedOut.write("");
+			fileFormattedOut.close();
+			fileFormattedOut = new OutputStreamWriter(
+					new FileOutputStream("./circuit_output/formatted_circuit.asc", true), StandardCharsets.ISO_8859_1);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public List<String> getErrorList() {
-		return errorList;
-	}
-
+	/**
+	 * Handle lexical and syntax errors
+	 */
 	public void handleError(Token tk, String hdr, String msg) {
 		String errMsg;
 		if (tk == null)
@@ -92,12 +83,16 @@ public class Handler {
 			errMsg = "Syntax Error (" + SYNTAX_ERROR + ")";
 
 		errMsg += " at [" + tk.getLine() + ", " + (tk.getCharPositionInLine() + 1) + "] " + " on token '" + tk.getText()
-				+ "'";
+				+ "'" + msg;
 
-		errorList.add(errMsg);
+		syntaxErrorList.add(errMsg);
 	}
 
-	void myErrorHandler(ERROR code, Token tk) {
+	/**
+	 * Handle semantic erros
+	 */
+
+	void myErrorHandler(Error code, Token tk) {
 		String errMsg;
 
 		if (code == LEXICAL_ERROR)// it should never happen
@@ -111,67 +106,10 @@ public class Handler {
 			tk = input.LT(-1);
 
 		errMsg += " at [" + tk.getLine() + ", " + (tk.getCharPositionInLine() + 1) + "]: ";
-
-		switch (code) {
-		case VERSION_ERROR:
-			errMsg += "Expected version number '4' but found version number equal to '" + tk.getText() + "'";
-			break;
-		case ATTRIBUTE_ERROR:
-			errMsg += "ID '" + tk.getText() + "' is not an attribute";
-			break;
-		case WINDOWOPTION_ERROR:
-			errMsg += "Windows Option '" + tk.getText() + "' is not valid";
-			break;
-		case IOPINATTR_ERROR:
-			errMsg += "IO Pin Attribute '" + tk.getText() + "' is not valid";
-			break;
-		case SYMBOLTYPE_ERROR:
-			errMsg += "Symbol Type '" + tk.getText() + "' is not valid";
-			break;
-		case ROTATIONTYPE_ERROR:
-			errMsg += "Rotation Type '" + tk.getText() + "' is not valid";
-			break;
-		case MIRRORTYPE_ERROR:
-			errMsg += "Mirror Type '" + tk.getText() + "' is not valid";
-			break;
-		case ROTMIRR_ERROR:
-			errMsg += "Rotation/Mirror Type '" + tk.getText() + "' is not valid";
-			break;
-		case SYMATTRTYPE_ERROR:
-			errMsg += "SYMATTR Type '" + tk.getText() + "' is not valid";
-			break;
-		case DESCRIPTION_ERROR:
-			errMsg += "Description Type '" + tk.getText() + "' is not valid";
-			break;
-		case DESCRIPTION_NOT_ALLOWED:
-			errMsg += "Description Type '" + tk.getText() + "' not allowed for this symbol";
-			break;
-		case DESCRIPTION_POLARIZED_ERROR:
-			errMsg += "Description Type '" + tk.getText() + "' is not valid: expected Polarized Capacitor";
-			break;
-		case DESCRIPTION_POLARIZED_NOCAPACITOR_ERROR:
-			errMsg += "Description Type of '" + tk.getText() + "' is not valid: expected also Capacitor";
-			break;
-		case TYPE_ERROR:
-			errMsg += "Type value '" + tk.getText() + "' is not valid";
-			break;
-		case SPICELINEVALUE_ERROR:
-			errMsg += "SpiceLine value '" + tk.getText() + "' is not valid";
-			break;
-		case SYMBOLTYPENULL_ERROR:
-			errMsg += "The SpiceLine value '" + tk.getText() + "' has no symbol reference";
-			break;
-		case MISS_TYPEATTR_ERROR:
-			errMsg += "Missing type attribute for previous symbol '" + tk.getText() + "' ";
-			break;
-		case MISS_DESCATTR_ERROR:
-			errMsg += "Missing desc attribute for previous symbol '" + tk.getText() + "' ";
-			break;
-		default:
-			errMsg += "Message error not defined, please contact support";
-
-		}
-		errorList.add(errMsg);
+		
+		errMsg = ErrorMessage.getErrorMessageFromCode(errMsg, code, tk);
+		
+		semanticErrorList.add(errMsg);
 	}
 
 	public void checkVersion(Token v, Token ver) {
@@ -193,7 +131,7 @@ public class Handler {
 	public void checkWindowsOptions(Token id, Token w, Token i1, Token i2, Token i3, Token i4) {
 		if (id != null) {
 			String wOption = id.getText();
-			if (listWindowsOptions.contains(wOption))
+			if (AttributeList.getListWindowsOptions().contains(wOption))
 				System.out.println("Windows option is correct");
 			else {
 				System.out.println("Windows option is not correct");
@@ -209,7 +147,7 @@ public class Handler {
 	public void checkIOPinAttr(Token id, Token i, Token i1, Token i2) {
 		if (id != null) {
 			String ioPinAttr = id.getText();
-			if (listIOPinAttr.contains(ioPinAttr))
+			if (AttributeList.getListIOPinAttr().contains(ioPinAttr))
 				System.out.println("IO Pin Attribute is correct");
 			else {
 				System.out.println("IO Pin Attribute is not correct");
@@ -228,7 +166,7 @@ public class Handler {
 			checkMandatoryAttribute();
 
 			String symbolType = token.getText();
-			if (listSymbolType.contains(symbolType)) {
+			if (AttributeList.getListSymbolType().contains(symbolType)) {
 				System.out.println("Symbol type is correct");
 
 				typeAttributePresent = false;
@@ -256,7 +194,7 @@ public class Handler {
 			if (tryParseInt(i1.getText()) && tryParseInt(i2.getText())) {
 				String rotType = rotToken.getText();
 				if (rotType.startsWith("R") || rotType.startsWith("r")) {
-					if (listRotType.contains(rotType)) {
+					if (AttributeList.getListRotType().contains(rotType)) {
 						System.out.println("Rotation type is correct");
 						if (lastComponent != null) {
 							int x = Integer.parseInt(i1.getText());
@@ -271,7 +209,7 @@ public class Handler {
 						myErrorHandler(ROTATIONTYPE_ERROR, rotToken);
 					}
 				} else if (rotType.startsWith("m") || rotType.startsWith("M")) {
-					if (listMirrorType.contains(rotType)) {
+					if (AttributeList.getListMirrorType().contains(rotType)) {
 						System.out.println("Mirror type is correct");
 
 						if (lastComponent != null) {
@@ -285,7 +223,7 @@ public class Handler {
 					} else {
 						System.out.println("Mirror type is not correct");
 						myErrorHandler(MIRRORTYPE_ERROR, rotToken);
-						
+
 					}
 				} else {
 					System.out.println("Rotation/Mirror type not recognised");
@@ -302,7 +240,7 @@ public class Handler {
 	public void checkSymMattrAttr(Token id1, Token s) {
 		if (id1 != null) {
 			String symAttr = id1.getText();
-			if (listSymAttr.contains(symAttr))
+			if (AttributeList.getListSymAttr().contains(symAttr))
 				System.out.println("SYMATTR type is correct");
 			else {
 				System.out.println("SYMATTR type is not correct");
@@ -325,7 +263,7 @@ public class Handler {
 				symAttrValue = tokenSymAttrValue.toString();
 
 			if (symAttr.compareTo("Description") == 0) {
-				if (listDescAttr.contains(symAttrValue)) {
+				if (AttributeList.getListDescAttr().contains(symAttrValue)) {
 
 					if (lastComponent != null) {
 
@@ -509,7 +447,7 @@ public class Handler {
 
 	private void checkResAttribute(Object tokenSymAttrValue) {
 		String symAttrValue = ((Token) tokenSymAttrValue).getText();
-		if (listRAttribute.contains(symAttrValue)) {
+		if (AttributeList.getListRAttribute().contains(symAttrValue)) {
 			System.out.println("SpiceLine res value is correct");
 		} else {
 			System.out.println("SpiceLine res value is not correct");
@@ -519,7 +457,8 @@ public class Handler {
 
 	private void checkCapAttribute(Object tokenSymAttrValue) {
 		String symAttrValue = ((Token) tokenSymAttrValue).getText();
-		if (listCapAttribute.contains(symAttrValue) || listParAttribute.contains(symAttrValue)) {
+		if (AttributeList.getListCapAttribute().contains(symAttrValue)
+				|| AttributeList.getListParAttribute().contains(symAttrValue)) {
 			System.out.println("SpiceLine cap value is correct");
 		} else {
 			System.out.println("SpiceLine cap value is not correct");
@@ -529,7 +468,8 @@ public class Handler {
 
 	private void checkIndAttribute(Object tokenSymAttrValue) {
 		String symAttrValue = ((Token) tokenSymAttrValue).getText();
-		if (listIndAttribute.contains(symAttrValue) || listParAttribute.contains(symAttrValue)) {
+		if (AttributeList.getListIndAttribute().contains(symAttrValue)
+				|| AttributeList.getListParAttribute().contains(symAttrValue)) {
 			System.out.println("SpiceLine ind value is correct");
 		} else {
 			System.out.println("SpiceLine ind value is not correct");
@@ -574,21 +514,21 @@ public class Handler {
 		try {
 			int i = 0;
 			while (i < tokens.length - 1) {
-				fileOut.append((addBeforeWS ? " " : "") + tokens[i].getText() + (addAfterWS ? " " : ""));
+				fileFormattedOut.append((addBeforeWS ? " " : "") + tokens[i].getText() + (addAfterWS ? " " : ""));
 				i++;
 			}
 			if (tokens.length != 0)
-				fileOut.append((addBeforeWS ? " " : "") + tokens[i].getText());
+				fileFormattedOut.append((addBeforeWS ? " " : "") + tokens[i].getText());
 			if (addEndLine)
-				fileOut.append("\n");
+				fileFormattedOut.append("\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void closeFileOut() {
+	public void closeFileFormattedOut() {
 		try {
-			fileOut.close();
+			fileFormattedOut.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -616,13 +556,21 @@ public class Handler {
 
 		checkMandatoryAttribute();
 		printComponents();
-		closeFileOut();
+		closeFileFormattedOut();
 		try {
-			if (errorList.isEmpty())
+			if (semanticErrorList.isEmpty() && syntaxErrorList.isEmpty())
 				LatexConverter.convertToLatex(components, wires, flags);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<String> getSintaxErrorList() {
+		return syntaxErrorList;
+	}
+
+	public List<String> getSemanticErrorList() {
+		return semanticErrorList;
 	}
 
 	private boolean tryParseInt(String value) {

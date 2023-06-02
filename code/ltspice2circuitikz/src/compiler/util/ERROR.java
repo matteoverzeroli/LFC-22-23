@@ -1,6 +1,6 @@
 package compiler.util;
 
-public enum ERROR {
+public enum Error {
 	LEXICAL_ERROR,
 	SYNTAX_ERROR,
 	VERSION_ERROR,

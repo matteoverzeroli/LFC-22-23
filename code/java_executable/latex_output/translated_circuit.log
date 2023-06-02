@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.1)  30 MAY 2023 14:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.1)  31 MAY 2023 17:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -501,8 +501,7 @@ ftex.def
 File: l3backend-pdftex.def 2022-09-28 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count287
 \l__pdf_internal_box=\box63
-)
-No file translated_circuit.aux.
+) (translated_circuit.aux)
 \openout1 = `translated_circuit.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
@@ -588,9 +587,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {C:/Users/Matteo/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 (translated_circuit.aux) ) 
 Here is how much of TeX's memory you used:
- 28255 strings out of 475385
- 742098 string characters out of 2776435
- 1290802 words of memory out of 3000000
+ 28257 strings out of 475385
+ 742213 string characters out of 2776435
+ 1290793 words of memory out of 3000000
  49387 multiletter control sequences out of 15000+600000
  469259 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191

@@ -27,8 +27,8 @@ package compiler;
 		String hdr = " * " + getErrorHeader(e);
 		String msg = " - " + getErrorMessage(e, tokenNames);
 		
-		// recuperoil token corrente  
-		Token tk = input.LT(1);
+		// recupero il token corrente  
+		Token tk = input.LT(0);
 		
 		// lascio gestire il messaggio all'handler
 		h.handleError(tk, hdr, msg);
@@ -113,7 +113,7 @@ symattrRule
 				| (attrRuleNoId attrRule[id1]*)?)
 			| i=INTEGER {h.checkSymMattrAttrValue(id1, "int", i);}
 			| f=FLOAT {h.checkSymMattrAttrValue(id1, "float", f);}
-			/*| r = reservedWordRule {h.checkSymMattrAttrValue(id1, "reserved", r);}*/)
+			| r = reservedWordRule {h.checkSymMattrAttrValue(id1, "reserved", r);})
 		{h.appendRuleToStream(false, false, true);}
 	
 		/*SYMATTR ( INSTNAME ID

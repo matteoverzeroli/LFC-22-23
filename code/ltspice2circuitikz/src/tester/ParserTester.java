@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -27,6 +28,7 @@ public class ParserTester {
 		} else {
 			throw new RuntimeException("File path not provided");
 		}*/
+		
 		try {
 			System.out.println("Parsing con ANTLR lexer");
 			System.out.println("-----------------------");
@@ -46,7 +48,7 @@ public class ParserTester {
 			// 5.controllo i risultati
 			Handler h = parser.getHandler();
 
-			if (h.getErrorList().size() == 0) {
+			if (h.getSintaxErrorList().isEmpty()&& h.getSemanticErrorList().isEmpty()) {
 				System.out.println("Parsing terminato con successo");
 				File directory = new File("./logs");
 				File[] files = directory.listFiles();
@@ -73,10 +75,17 @@ public class ParserTester {
 				fileErrorOut.write("");
 				fileErrorOut.close();
 				fileErrorOut = new FileWriter("./logs/errors.log", true);
-
-				for (int i = 0; i < h.getErrorList().size(); i++) {
-					System.err.println("Error " + (i + 1) + ":\t" + h.getErrorList().get(i) + "");
-					fileErrorOut.write("Error " + (i + 1) + ":\t" + h.getErrorList().get(i) + "\n");
+				
+				List<String> errorList;
+				
+				if(h.getSintaxErrorList().isEmpty()) {
+					errorList = h.getSemanticErrorList();
+				} else {
+					errorList = h.getSintaxErrorList();				
+				}
+				for (int i = 0; i < errorList.size(); i++) {
+					System.err.println("Error " + (i + 1) + ":\t" + errorList.get(i) + "");
+					fileErrorOut.write("Error " + (i + 1) + ":\t" + errorList.get(i) + "\n");
 				}
 
 				fileErrorOut.close();
@@ -114,12 +123,14 @@ public class ParserTester {
 			// 5.controllo i risultati
 			Handler h = parser.getHandler();
 
-			if (h.getErrorList().size() == 0)
+			if (h.getSintaxErrorList().isEmpty() && h.getSemanticErrorList().isEmpty())
 				return "Parsing terminato con successo";
 			else {
 				String errors = "";
-				for (int i = 0; i < h.getErrorList().size(); i++)
-					errors += "Errore " + (i + 1) + ":\t" + h.getErrorList().get(i) + "";
+				for (int i = 0; i < h.getSintaxErrorList().size(); i++)
+					errors += "Errore " + (i + 1) + ":\t" + h.getSintaxErrorList().get(i) + "";
+				for (int i = 0; i < h.getSemanticErrorList().size(); i++)
+					errors += "Errore " + (i + h.getSintaxErrorList().size()) + ":\t" + h.getSemanticErrorList().get(i) + "";
 
 				return errors;
 			}
