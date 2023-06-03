@@ -126,6 +126,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_resources.cpp
 release/qrc_resources.cpp: ../ltspice2circuitikz/resources.qrc \
 		C:/Qt/6.5.1/mingw_64/bin/rcc.exe \
+		../ltspice2circuitikz/images/refresh.png \
 		../ltspice2circuitikz/images/play-button.png \
 		../ltspice2circuitikz/images/open-folder.png
 	C:\Qt\6.5.1\mingw_64\bin\rcc.exe -name resources --no-zstd ..\ltspice2circuitikz\resources.qrc -o release\qrc_resources.cpp
@@ -426,6 +427,9 @@ release/moc_mainwindow.cpp: ../ltspice2circuitikz/mainwindow.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qdatetime.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qcalendar.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.5.1/mingw_64/include/QtCore/QTimer \
+		C:/Qt/6.5.1/mingw_64/include/QtCore/qtimer.h \
+		C:/Qt/6.5.1/mingw_64/include/QtCore/qbasictimer.h \
 		../ltspice2circuitikz/processhandler.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/QProcess \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qprocess.h \
@@ -942,6 +946,9 @@ release/main.o: ../ltspice2circuitikz/main.cpp ../ltspice2circuitikz/mainwindow.
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qdatetime.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qcalendar.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.5.1/mingw_64/include/QtCore/QTimer \
+		C:/Qt/6.5.1/mingw_64/include/QtCore/qtimer.h \
+		C:/Qt/6.5.1/mingw_64/include/QtCore/qbasictimer.h \
 		../ltspice2circuitikz/processhandler.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/QProcess \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qprocess.h \
@@ -1160,6 +1167,9 @@ release/mainwindow.o: ../ltspice2circuitikz/mainwindow.cpp ../ltspice2circuitikz
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qdatetime.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qcalendar.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.5.1/mingw_64/include/QtCore/QTimer \
+		C:/Qt/6.5.1/mingw_64/include/QtCore/qtimer.h \
+		C:/Qt/6.5.1/mingw_64/include/QtCore/qbasictimer.h \
 		../ltspice2circuitikz/processhandler.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/QProcess \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qprocess.h \

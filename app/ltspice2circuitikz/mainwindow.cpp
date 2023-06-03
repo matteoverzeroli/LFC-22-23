@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ascFileHandler(new FileHandler(this))
     , errorFileHandler(new FileHandler(this))
     , latexFileHandler(new FileHandler(this))
+    , formattedFileHandler(new FileHandler(this))
     , processHandler(new ProcessHandler(this))
 
 {
@@ -50,6 +51,14 @@ void MainWindow::createActions()
     connect(openFile, &QAction::triggered, this, &MainWindow::openAscFile);
     fileMenu->addAction(openFile);
     fileToolBar->addAction(openFile);
+
+    const QIcon reload = QIcon::fromTheme("document-new", QIcon(":/images/refresh.png"));
+    QAction *refreshFile = new QAction(reload, tr("&Refresh"), this);
+    refreshFile->setShortcuts(QKeySequence::New);
+    refreshFile->setStatusTip(tr("Refresh .ASC file"));
+    connect(refreshFile, &QAction::triggered, this, &MainWindow::refreshASCFile);
+    fileMenu->addAction(refreshFile);
+    fileToolBar->addAction(refreshFile);
 
     const QIcon newIcon = QIcon::fromTheme("document-new", QIcon(":/images/play-button.png"));
     QAction *runProgram = new QAction(newIcon, tr("&Run"), this);
@@ -104,6 +113,16 @@ void MainWindow::createDockWidgets()
 
     connect(latexFileHandler, &FileHandler::contentChanged, latexTextEdit, &QPlainTextEdit::setPlainText);
 
+    dock = new QDockWidget(tr("Formatted ASC File"), this);
+    formattedAscTextEdit = new QPlainTextEdit(dock);
+    formattedAscTextEdit->setReadOnly(true);
+    dock->setWidget(formattedAscTextEdit);
+    dock->setVisible(false);
+    addDockWidget(Qt::RightDockWidgetArea, dock);
+    viewMenu->addAction(dock->toggleViewAction());
+
+    connect(formattedFileHandler, &FileHandler::contentChanged, formattedAscTextEdit, &QPlainTextEdit::setPlainText);
+
 }
 
 void MainWindow::openAscFile()
@@ -131,6 +150,16 @@ void MainWindow::runAntlrCompiler()
     runningProcessTimer->start(1000);
 }
 
+void MainWindow::refreshASCFile()
+{
+    if (ascFileHandler->getPath().isEmpty()) {
+        QMessageBox::warning(this, "Attention!", "No .ASC file opened! Open an .ASC file and retry.", QMessageBox::Ok);
+        return;
+    }
+
+    ascFileHandler->readFile(ascFileHandler->getPath());
+}
+
 void MainWindow::processTerminated()
 {
     qDebug() << "Process terminated correctly!";
@@ -144,11 +173,13 @@ void MainWindow::processTerminated()
         errorFileHandler->readFile("./logs/errors.log");
         errorListTextEdit->setStyleSheet("color:red;");
         latexTextEdit->setPlainText("");
+        formattedAscTextEdit->setPlainText("");
 
         return;
     }
 
     latexFileHandler->readFile("./latex_output/translated_circuit.tex");
+    formattedFileHandler->readFile("./circuit_output/formatted_circuit.asc");
     errorListTextEdit->setStyleSheet("color:green;");
     errorListTextEdit->setPlainText("Latex output produced correctly!");
 

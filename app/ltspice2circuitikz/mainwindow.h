@@ -29,11 +29,13 @@ private slots:
     void openAscFile();
     void runAntlrCompiler();
     void processTerminated();
+    void refreshASCFile();
 private:
     Ui::MainWindow *ui;
     QPlainTextEdit *ascTextEdit;
     QPlainTextEdit *errorListTextEdit;
     QPlainTextEdit *latexTextEdit;
+    QPlainTextEdit *formattedAscTextEdit;
     QTimer *runningProcessTimer;
 
     QMenu *viewMenu;
@@ -41,6 +43,7 @@ private:
     FileHandler *ascFileHandler;
     FileHandler *errorFileHandler;
     FileHandler *latexFileHandler;
+    FileHandler *formattedFileHandler;
     ProcessHandler *processHandler;
 
 
