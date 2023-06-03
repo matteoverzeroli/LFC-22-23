@@ -17,7 +17,7 @@ import compiler.util.Point;
 
 public class LatexConverter {
 
-	private static float LATEXSCALE = 50;
+	private static float LATEXSCALE = 50; //TODO quindi se la calcoli dopo potrebbe non essere inizializzata?
 
 	private static FileWriter fileLatexOut;
 
@@ -25,15 +25,14 @@ public class LatexConverter {
 	private static List<Wire> wires;
 	private static List<Flag> flags;
 
-	private static int x_min = Integer.MAX_VALUE;// sarà l'offset del mio sdr; dovrò togliere questi offset e invertire
-	// la y
+	private static int x_min = Integer.MAX_VALUE;
 	private static int y_max = Integer.MIN_VALUE;
 	private static int x_max = Integer.MIN_VALUE;
 	private static int y_min = Integer.MAX_VALUE;
 	private static int width = 0;
 	private static int height = 0;
 
-	public static boolean rotate = false;
+	private static boolean rotate = false;
 
 	public static void convertToLatex(List<Component> components, List<Wire> wires, List<Flag> flags)
 			throws IOException {
@@ -45,7 +44,10 @@ public class LatexConverter {
 		translateCircuitToLatex();
 		closeFileLatex();
 	}
-
+	
+	/**
+	 * Adds latex prolog
+	 */
 	private static void inizializeFileLatex() throws IOException {
 		Files.createDirectories(Paths.get("./latex_output")); // create folder for latex output
 
@@ -64,7 +66,10 @@ public class LatexConverter {
 					+ "\\begin{center}\n" + "\\begin{circuitikz}\n");
 		}
 	}
-
+	
+	/**
+	 * TODO
+	 */
 	private static void calculateAspectRatio() {
 		for (Component c : components) {
 			int min_x = c.getMinX();
@@ -115,9 +120,6 @@ public class LatexConverter {
 		width = Math.abs(x_min - x_max);
 		height = Math.abs(y_min - y_max);
 
-		System.out.println(width / LATEXSCALE);
-		System.out.println(height / LATEXSCALE);
-
 		if ((width / LATEXSCALE) > 15 && width > height)
 			rotate = true;
 	}
@@ -133,31 +135,37 @@ public class LatexConverter {
 				LATEXSCALE = Math.max(width / 17, height / 15) + 1;
 			}
 		}
-
+		
+		// scale and translate coordinates of a component
 		for (Component c : components) {
 			float x1 = (c.getX1() - x_min) / LATEXSCALE;
 			float y1 = -((c.getY1() - y_max)) / LATEXSCALE;
 			float x2 = (c.getX2() - x_min) / LATEXSCALE;
 			float y2 = -((c.getY2() - y_max)) / LATEXSCALE;
-
+			
+			// add the component to latex file
 			fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%.2f,%.2f) to[%s=$%s$, a={%s}] (%.2f,%.2f);\n", x1,
 					y1, c.getType(), c.getName(), c.getValue() != null ? c.getValue() : "", x2, y2));
 		}
+		
+		// scale and translate coordinates of a wire
 		for (Wire w : wires) {
 			float x1 = (w.getX1() - x_min) / LATEXSCALE;
 			float y1 = -((w.getY1() - y_max)) / LATEXSCALE;
 			float x2 = (w.getX2() - x_min) / LATEXSCALE;
 			float y2 = -((w.getY2() - y_max)) / LATEXSCALE;
-
+			
+			// add the wire to latex file
 			fileLatexOut.write(String.format(Locale.ROOT, "\\draw (%.2f,%.2f) to[short, l=${%s}$,] (%.2f,%.2f);\n", x1,
 					y1, getWireFlag(x_min, y_max, x1, y1, x2, y2, flags), x2, y2));
 		}
-
+		
+		// scale and translate coordinates of a ground flag
 		for (Flag f : flags) {
-			float x = (f.getX() - x_min) / LATEXSCALE;
-			float y = -((f.getY() - y_max)) / LATEXSCALE;
-
 			if (f.getLabel().equals("0")) {
+				float x = (f.getX() - x_min) / LATEXSCALE;
+				float y = -((f.getY() - y_max)) / LATEXSCALE;
+				
 				fileLatexOut
 						.write(String.format(Locale.ROOT, "\\draw (%f,%f) to (%f,%f) node[ground]{};\n", x, y, x, y));
 			}
@@ -166,7 +174,10 @@ public class LatexConverter {
 		findNode();
 
 	}
-
+	
+	/**
+	 * Finds nodes as the intersection of three wires
+	 */
 	private static void findNode() throws IOException {
 		Map<Point, Integer> nodes = new HashMap<>();
 		for (Wire w : wires) {
@@ -193,7 +204,10 @@ public class LatexConverter {
 			}
 		}
 	}
-
+	
+	/**
+	 * Closes latex file
+	 */
 	private static void closeFileLatex() throws IOException {
 
 		if (rotate) {
@@ -213,7 +227,10 @@ public class LatexConverter {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Finds flag related to a wire
+	 */
 	private static String getWireFlag(int x_min, int y_max, float x1, float y1, float x2, float y2, List<Flag> flags) {
 		for (Flag f : flags) {
 			float x = (f.getX() - x_min) / LATEXSCALE;

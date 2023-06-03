@@ -1,5 +1,7 @@
 package compiler;
 
+import static compiler.util.error.Error.*;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -12,14 +14,12 @@ import java.util.List;
 import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
 
-import static compiler.util.Error.*;
-
 import compiler.util.AttributeList;
 import compiler.util.Component;
-import compiler.util.Error;
-import compiler.util.ErrorMessage;
 import compiler.util.Flag;
 import compiler.util.Wire;
+import compiler.util.error.Error;
+import compiler.util.error.ErrorMessage;
 
 public class Handler {
 
@@ -34,8 +34,7 @@ public class Handler {
 
 	private OutputStreamWriter fileFormattedOut; // stream used to create formatted version of the circuit file
 
-	private List<String> syntaxErrorList;
-	private List<String> semanticErrorList;
+	private List<String> errorList; // list of lexical, syntax and semantic errors
 
 	private List<Component> components; // list of read components
 	private List<Wire> wires; // list of read wires
@@ -46,8 +45,7 @@ public class Handler {
 
 		this.input = input;
 
-		syntaxErrorList = new ArrayList<String>();
-		semanticErrorList = new ArrayList<String>();
+		errorList = new ArrayList<String>();
 
 		components = new ArrayList<Component>();
 		wires = new ArrayList<Wire>();
@@ -70,12 +68,10 @@ public class Handler {
 	}
 
 	/**
-	 * Handle lexical and syntax errors
+	 * Handles lexical and syntax errors
 	 */
 	public void handleError(Token tk, String hdr, String msg) {
 		String errMsg;
-		if (tk == null)
-			tk = input.LT(-1);
 
 		if (tk.getType() == Ltspice2circuitikzLexer.ERROR_TK)
 			errMsg = "Lexical Error (" + LEXICAL_ERROR + ")";
@@ -85,11 +81,11 @@ public class Handler {
 		errMsg += " at [" + tk.getLine() + ", " + (tk.getCharPositionInLine() + 1) + "] " + " on token '" + tk.getText()
 				+ "'" + msg;
 
-		syntaxErrorList.add(errMsg);
+		errorList.add(errMsg);
 	}
 
 	/**
-	 * Handle semantic erros
+	 * Handles semantic errors
 	 */
 
 	void myErrorHandler(Error code, Token tk) {
@@ -106,11 +102,15 @@ public class Handler {
 			tk = input.LT(-1);
 
 		errMsg += " at [" + tk.getLine() + ", " + (tk.getCharPositionInLine() + 1) + "]: ";
-		
+
 		errMsg = ErrorMessage.getErrorMessageFromCode(errMsg, code, tk);
-		
-		semanticErrorList.add(errMsg);
+
+		errorList.add(errMsg);
 	}
+
+	/**
+	 * Checks if the version of the file is 4
+	 */
 
 	public void checkVersion(Token v, Token ver) {
 		if (ver != null) {
@@ -128,21 +128,30 @@ public class Handler {
 		}
 	}
 
+	/**
+	 * Checks if the WINDOW option is valid
+	 */
+
 	public void checkWindowsOptions(Token id, Token w, Token i1, Token i2, Token i3, Token i4) {
 		if (id != null) {
 			String wOption = id.getText();
+
 			if (AttributeList.getListWindowsOptions().contains(wOption))
 				System.out.println("Windows option is correct");
 			else {
 				System.out.println("Windows option is not correct");
 				myErrorHandler(WINDOWOPTION_ERROR, id);
 			}
-
 			appendRuleToStream(false, true, true, w, i1, i2, i3, id, i4);
+
 		} else {
 			System.err.println("Windows Options null!!");
 		}
 	}
+
+	/**
+	 * Checks if IOPin attrubute is valid
+	 */
 
 	public void checkIOPinAttr(Token id, Token i, Token i1, Token i2) {
 		if (id != null) {
@@ -160,12 +169,16 @@ public class Handler {
 		}
 	}
 
+	/**
+	 * Checks if the symbol type is correct
+	 */
+
 	public void checkSymbolType(Token token) {
 		if (token != null && !token.getText().contains("missing")) {
-
 			checkMandatoryAttribute();
 
 			String symbolType = token.getText();
+
 			if (AttributeList.getListSymbolType().contains(symbolType)) {
 				System.out.println("Symbol type is correct");
 
@@ -189,13 +202,18 @@ public class Handler {
 		}
 	}
 
+	/**
+	 * Checks if the rotation type is correct
+	 */
 	public void checkRotType(Token rotToken, Token s, Token symbolType, Token i1, Token i2) {
 		if (rotToken != null) {
 			if (tryParseInt(i1.getText()) && tryParseInt(i2.getText())) {
 				String rotType = rotToken.getText();
+
 				if (rotType.startsWith("R") || rotType.startsWith("r")) {
 					if (AttributeList.getListRotType().contains(rotType)) {
 						System.out.println("Rotation type is correct");
+
 						if (lastComponent != null) {
 							int x = Integer.parseInt(i1.getText());
 							int y = Integer.parseInt(i2.getText());
@@ -203,11 +221,14 @@ public class Handler {
 							lastComponent.setRotation(rotType);
 							lastComponent.setPosition(x, y);
 						}
+
 						appendRuleToStream(false, true, true, s, symbolType, i1, i2, rotToken);
+
 					} else {
 						System.out.println("Rotation type is not correct");
 						myErrorHandler(ROTATIONTYPE_ERROR, rotToken);
 					}
+
 				} else if (rotType.startsWith("m") || rotType.startsWith("M")) {
 					if (AttributeList.getListMirrorType().contains(rotType)) {
 						System.out.println("Mirror type is correct");
@@ -219,11 +240,12 @@ public class Handler {
 							lastComponent.setRotation(rotType);
 							lastComponent.setPosition(x, y);
 						}
+
 						appendRuleToStream(false, true, true, s, symbolType, i1, i2, rotToken);
+
 					} else {
 						System.out.println("Mirror type is not correct");
 						myErrorHandler(MIRRORTYPE_ERROR, rotToken);
-
 					}
 				} else {
 					System.out.println("Rotation/Mirror type not recognised");
@@ -237,9 +259,14 @@ public class Handler {
 		}
 	}
 
+	/**
+	 * Checks the SYMATTR attribute
+	 */
+
 	public void checkSymMattrAttr(Token id1, Token s) {
 		if (id1 != null) {
 			String symAttr = id1.getText();
+
 			if (AttributeList.getListSymAttr().contains(symAttr))
 				System.out.println("SYMATTR type is correct");
 			else {
@@ -248,10 +275,16 @@ public class Handler {
 			}
 
 			appendRuleToStream(false, true, false, s, id1);
+
 		} else {
 			System.err.println("SYMATTR type null!!");
 		}
 	}
+
+	/**
+	 * Checks SYMATTR attribute values: Description, Type, SpiceLine, Value,
+	 * Instname
+	 */
 
 	public void checkSymMattrAttrValue(Token tokenSymAttr, Object tokenSymAttrValue, Token value) {
 		if (tokenSymAttr != null && tokenSymAttrValue != null) {
@@ -302,6 +335,7 @@ public class Handler {
 					}
 				} else {
 					System.out.println("Description type is not correct ");
+
 					if (tokenSymAttrValue instanceof Token)
 						myErrorHandler(DESCRIPTION_ERROR, (Token) tokenSymAttrValue);
 					else
@@ -395,6 +429,10 @@ public class Handler {
 		}
 	}
 
+	/**
+	 * Checks polarized capacitor description
+	 */
+
 	public void checkPolarizedCapacitor(Token id1, Token id2, Token id3) {
 		if (lastComponent.getToken().getText().equals("cap")) {
 			if (id2.getText().compareTo("Polarized") == 0) {
@@ -419,78 +457,13 @@ public class Handler {
 
 	}
 
-	public void checkMandatoryAttribute() {
-
-		if (lastComponent != null) {
-			if (lastComponent.getToken().getText().equals("varactor")
-					|| lastComponent.getToken().getText().equals("schottky")
-					|| lastComponent.getToken().getText().equals("zener")
-					|| lastComponent.getToken().getText().equals("LED")) {
-
-				if (!typeAttributePresent) {
-					System.out.println("Missing Type attribute for SYMBOL");
-					myErrorHandler(MISS_TYPEATTR_ERROR, lastComponent.getToken());
-				}
-
-				if (!lastComponent.getToken().getText().equals("varactor") && !descAttributePresent) {
-					System.out.println("Missing Desc attribute for SYMBOL");
-					myErrorHandler(MISS_DESCATTR_ERROR, lastComponent.getToken());
-				}
-			} else if (lastComponent.getToken().getText().equals("cap") && descAttributePresent) {
-				if (polarizedPresent && !capacitorPresent) {
-					System.out.println("Missing capacitor for in description");
-					myErrorHandler(DESCRIPTION_POLARIZED_NOCAPACITOR_ERROR, lastComponent.getToken());
-				}
-			}
-		}
-	}
-
-	private void checkResAttribute(Object tokenSymAttrValue) {
-		String symAttrValue = ((Token) tokenSymAttrValue).getText();
-		if (AttributeList.getListRAttribute().contains(symAttrValue)) {
-			System.out.println("SpiceLine res value is correct");
-		} else {
-			System.out.println("SpiceLine res value is not correct");
-			myErrorHandler(SPICELINEVALUE_ERROR, (Token) tokenSymAttrValue);
-		}
-	}
-
-	private void checkCapAttribute(Object tokenSymAttrValue) {
-		String symAttrValue = ((Token) tokenSymAttrValue).getText();
-		if (AttributeList.getListCapAttribute().contains(symAttrValue)
-				|| AttributeList.getListParAttribute().contains(symAttrValue)) {
-			System.out.println("SpiceLine cap value is correct");
-		} else {
-			System.out.println("SpiceLine cap value is not correct");
-			myErrorHandler(SPICELINEVALUE_ERROR, (Token) tokenSymAttrValue);
-		}
-	}
-
-	private void checkIndAttribute(Object tokenSymAttrValue) {
-		String symAttrValue = ((Token) tokenSymAttrValue).getText();
-		if (AttributeList.getListIndAttribute().contains(symAttrValue)
-				|| AttributeList.getListParAttribute().contains(symAttrValue)) {
-			System.out.println("SpiceLine ind value is correct");
-		} else {
-			System.out.println("SpiceLine ind value is not correct");
-			myErrorHandler(SPICELINEVALUE_ERROR, (Token) tokenSymAttrValue);
-		}
-	}
-
-	private void checkVoltageAttribute(Object tokenSymAttrValue) {
-		String symAttrValue = ((Token) tokenSymAttrValue).getText();
-		if (symAttrValue.equals("Rser")) {
-			System.out.println("SpiceLine voltage value is correct");
-		} else {
-			System.out.println("SpiceLine voltage value is not correct");
-			myErrorHandler(SPICELINEVALUE_ERROR, (Token) tokenSymAttrValue);
-		}
-	}
-
-	public void createWire(boolean addBeforeWS, boolean addAfterWS, boolean addEndLine, Token... tokens) {
+	/**
+	 * Adds a wire to wires list
+	 */
+	public void handleWire(Token... tokens) {
 		if (tryParseInt(tokens[1].getText()) && tryParseInt(tokens[2].getText()) && tryParseInt(tokens[3].getText())
 				&& tryParseInt(tokens[4].getText())) {
-			appendRuleToStream(addBeforeWS, addAfterWS, addEndLine, tokens);
+			appendRuleToStream(false, true, true, tokens);
 
 			Wire wire = new Wire(Integer.parseInt(tokens[1].getText()), Integer.parseInt(tokens[2].getText()),
 					Integer.parseInt(tokens[3].getText()), Integer.parseInt(tokens[4].getText()));
@@ -499,17 +472,24 @@ public class Handler {
 		}
 	}
 
-	public void handleFlag(boolean addBeforeWS, boolean addAfterWS, boolean addEndLine, Token... tokens) {
+	/**
+	 * Adds a flag to flag list
+	 */
+	public void handleFlag(Token... tokens) {
 		if (tryParseInt(tokens[1].getText()) && tryParseInt(tokens[2].getText())) {
+
 			flags.add(new Flag(Integer.parseInt(tokens[1].getText()), Integer.parseInt(tokens[2].getText()),
 					tokens[3].getText()));
-			appendRuleToStream(addBeforeWS, addAfterWS, addEndLine, tokens);
+			appendRuleToStream(false, true, true, tokens);
+
 		} else {
 			System.out.println("Try parse int failed!!!");
 		}
-
 	}
 
+	/**
+	 * Writes in fileFormattedOut a correctly formatted line from the input file
+	 */
 	public void appendRuleToStream(boolean addBeforeWS, boolean addAfterWS, boolean addEndLine, Token... tokens) {
 		try {
 			int i = 0;
@@ -526,52 +506,36 @@ public class Handler {
 		}
 	}
 
-	public void closeFileFormattedOut() {
-		try {
-			fileFormattedOut.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	// la toglierei, non ci serve più
-	public void printComponents() {
-
+	/**
+	 * Performs checks on the last read symbol before closing fileFormattedOut
+	 */
+	public void endOfFileChecks() {
+		
 		if (lastComponent != null)
 			components.add(lastComponent);
 
-		for (Component c : components) {
-			System.out.println(c);
-		}
-
-		for (Wire w : wires) {
-			System.out.println(w);
-		}
-		for (Flag f : flags) {
-			System.out.println(f);
-		}
-	}
-
-	public void endOfFileChecks() {
-
 		checkMandatoryAttribute();
-		printComponents();
 		closeFileFormattedOut();
+
 		try {
-			if (semanticErrorList.isEmpty() && syntaxErrorList.isEmpty())
+			if (errorList.isEmpty())
 				LatexConverter.convertToLatex(components, wires, flags);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public List<String> getSintaxErrorList() {
-		return syntaxErrorList;
+	/**
+	 * Returns error list
+	 */
+
+	public List<String> getErrorList() {
+		return errorList;
 	}
 
-	public List<String> getSemanticErrorList() {
-		return semanticErrorList;
-	}
+	/**
+	 * Tries to parse an Integer value from a String
+	 */
 
 	private boolean tryParseInt(String value) {
 		try {
@@ -579,6 +543,101 @@ public class Handler {
 			return true;
 		} catch (NumberFormatException e) {
 			return false;
+		}
+	}
+
+	/**
+	 * Checks if the mandatory attributes of a symbol are present
+	 */
+	private void checkMandatoryAttribute() {
+
+		if (lastComponent != null) {
+			if (lastComponent.getToken().getText().equals("varactor")
+					|| lastComponent.getToken().getText().equals("schottky")
+					|| lastComponent.getToken().getText().equals("zener")
+					|| lastComponent.getToken().getText().equals("LED")) {
+
+				if (!typeAttributePresent) {
+					System.out.println("Missing Type attribute for SYMBOL");
+					myErrorHandler(MISS_TYPEATTR_ERROR, lastComponent.getToken());
+				}
+
+				if (!lastComponent.getToken().getText().equals("varactor") && !descAttributePresent) {
+					System.out.println("Missing Desc attribute for SYMBOL");
+					myErrorHandler(MISS_DESCATTR_ERROR, lastComponent.getToken());
+				}
+
+			} else if (lastComponent.getToken().getText().equals("cap") && descAttributePresent) {
+				if (polarizedPresent && !capacitorPresent) {
+					System.out.println("Missing capacitor for in description");
+					myErrorHandler(DESCRIPTION_POLARIZED_NOCAPACITOR_ERROR, lastComponent.getToken());
+				}
+			}
+		}
+	}
+
+	/**
+	 * Checks if the attribute passed is allowed for a resistor
+	 */
+	private void checkResAttribute(Object tokenSymAttrValue) {
+		String symAttrValue = ((Token) tokenSymAttrValue).getText();
+		if (AttributeList.getListRAttribute().contains(symAttrValue)) {
+			System.out.println("SpiceLine res value is correct");
+		} else {
+			System.out.println("SpiceLine res value is not correct");
+			myErrorHandler(SPICELINEVALUE_ERROR, (Token) tokenSymAttrValue);
+		}
+	}
+
+	/**
+	 * Checks if the attribute passed is allowed for a capacitor
+	 */
+	private void checkCapAttribute(Object tokenSymAttrValue) {
+		String symAttrValue = ((Token) tokenSymAttrValue).getText();
+		if (AttributeList.getListCapAttribute().contains(symAttrValue)
+				|| AttributeList.getListParAttribute().contains(symAttrValue)) {
+			System.out.println("SpiceLine cap value is correct");
+		} else {
+			System.out.println("SpiceLine cap value is not correct");
+			myErrorHandler(SPICELINEVALUE_ERROR, (Token) tokenSymAttrValue);
+		}
+	}
+
+	/**
+	 * Checks if the attribute passed is allowed for a inductance
+	 */
+	private void checkIndAttribute(Object tokenSymAttrValue) {
+		String symAttrValue = ((Token) tokenSymAttrValue).getText();
+		if (AttributeList.getListIndAttribute().contains(symAttrValue)
+				|| AttributeList.getListParAttribute().contains(symAttrValue)) {
+			System.out.println("SpiceLine ind value is correct");
+		} else {
+			System.out.println("SpiceLine ind value is not correct");
+			myErrorHandler(SPICELINEVALUE_ERROR, (Token) tokenSymAttrValue);
+		}
+	}
+
+	/**
+	 * Checks if the attribute passed is allowed for a voltage source
+	 */
+	private void checkVoltageAttribute(Object tokenSymAttrValue) {
+		String symAttrValue = ((Token) tokenSymAttrValue).getText();
+		if (symAttrValue.equals("Rser")) {
+			System.out.println("SpiceLine voltage value is correct");
+		} else {
+			System.out.println("SpiceLine voltage value is not correct");
+			myErrorHandler(SPICELINEVALUE_ERROR, (Token) tokenSymAttrValue);
+		}
+	}
+
+	/**
+	 * Closes file fileFormattedOut
+	 */
+	private void closeFileFormattedOut() {
+		try {
+			fileFormattedOut.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -28,27 +27,27 @@ public class ParserTester {
 		} else {
 			throw new RuntimeException("File path not provided");
 		}*/
-		
+
 		try {
 			System.out.println("Parsing con ANTLR lexer");
 			System.out.println("-----------------------");
 
-			// 1.Istanzio il lexer passandogli il documento da analizzare
+			// Construct lexer
 			Ltspice2circuitikzLexer lexer = new Ltspice2circuitikzLexer(new ANTLRFileStream(fileIn, "iso-8859-1"));
 
-			// 2.Creo uno stream (canale) di token per la comunicazione tra lexer e parser
+			// Create a stream for communication between lexer and parser
 			tokens = new CommonTokenStream(lexer);
 
-			// 3.Istanzio il parser
+			// Create parser
 			parser = new Ltspice2circuitikzParser(tokens);
 
-			// 4.Lancio l'analisi sintattica del documento di ingresso
+			// Launch syntax analysis
 			parser.parseCircuit();
 
-			// 5.controllo i risultati
+			// Check errors
 			Handler h = parser.getHandler();
 
-			if (h.getSintaxErrorList().isEmpty()&& h.getSemanticErrorList().isEmpty()) {
+			if (h.getErrorList().isEmpty()) {
 				System.out.println("Parsing terminato con successo");
 				File directory = new File("./logs");
 				File[] files = directory.listFiles();
@@ -75,17 +74,10 @@ public class ParserTester {
 				fileErrorOut.write("");
 				fileErrorOut.close();
 				fileErrorOut = new FileWriter("./logs/errors.log", true);
-				
-				List<String> errorList;
-				
-				if(h.getSintaxErrorList().isEmpty()) {
-					errorList = h.getSemanticErrorList();
-				} else {
-					errorList = h.getSintaxErrorList();				
-				}
-				for (int i = 0; i < errorList.size(); i++) {
-					System.err.println("Error " + (i + 1) + ":\t" + errorList.get(i) + "");
-					fileErrorOut.write("Error " + (i + 1) + ":\t" + errorList.get(i) + "\n");
+
+				for (int i = 0; i < h.getErrorList().size(); i++) {
+					System.err.println("Error " + (i + 1) + ":\t" + h.getErrorList().get(i) + "");
+					fileErrorOut.write("Error " + (i + 1) + ":\t" + h.getErrorList().get(i) + "\n");
 				}
 
 				fileErrorOut.close();
@@ -98,7 +90,6 @@ public class ParserTester {
 			System.out.println("Parsing con ANTLR abortito\n\n");
 			e.printStackTrace();
 		}
-
 	}
 
 	public String runParser(String path) {
@@ -108,30 +99,22 @@ public class ParserTester {
 			System.out.println("Parsing con ANTLR lexer");
 			System.out.println("-----------------------");
 
-			// 1.Istanzio il lexer passandogli il documento da analizzare
 			Ltspice2circuitikzLexer lexer = new Ltspice2circuitikzLexer(new ANTLRFileStream(path, "iso-8859-1"));
 
-			// 2.Creo uno stream (canale) di token per la comunicazione tra lexer e parser
 			tokens = new CommonTokenStream(lexer);
 
-			// 3.Istanzio il parser
 			parser = new Ltspice2circuitikzParser(tokens);
 
-			// 4.Lancio l'analisi sintattica del documento di ingresso
 			parser.parseCircuit();
 
-			// 5.controllo i risultati
 			Handler h = parser.getHandler();
 
-			if (h.getSintaxErrorList().isEmpty() && h.getSemanticErrorList().isEmpty())
+			if (h.getErrorList().isEmpty())
 				return "Parsing terminato con successo";
 			else {
 				String errors = "";
-				for (int i = 0; i < h.getSintaxErrorList().size(); i++)
-					errors += "Errore " + (i + 1) + ":\t" + h.getSintaxErrorList().get(i) + "";
-				for (int i = 0; i < h.getSemanticErrorList().size(); i++)
-					errors += "Errore " + (i + h.getSintaxErrorList().size()) + ":\t" + h.getSemanticErrorList().get(i) + "";
-
+				for (int i = 0; i < h.getErrorList().size(); i++)
+					errors += "Errore " + (i + 1) + ":\t" + h.getErrorList().get(i) + "";
 				return errors;
 			}
 

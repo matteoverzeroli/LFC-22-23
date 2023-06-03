@@ -20,17 +20,16 @@ package compiler;
 		return h;
 	}
 	
-	// Override e delega nella gestione degli errori sintattici
+	// Override of syntax error handler
 	public void displayRecognitionError(String[] tokenNames,
 	                                     RecognitionException e) {
-	  	// recupero alcune meta informazioni relative all'errore
+
 		String hdr = " * " + getErrorHeader(e);
 		String msg = " - " + getErrorMessage(e, tokenNames);
 		
-		// recupero il token corrente  
-		Token tk = input.LT(0);
+		// takes the token which throw exception
+		Token tk = e.token;
 		
-		// lascio gestire il messaggio all'handler
 		h.handleError(tk, hdr, msg);
 	}
 	
@@ -70,12 +69,12 @@ componentRule
 	;
 wireRule
 	:
-		w=WIRE i1=INTEGER i2=INTEGER i3=INTEGER i4=INTEGER {h.createWire(false, true, true, w, i1, i2, i3, i4);}
+		w=WIRE i1=INTEGER i2=INTEGER i3=INTEGER i4=INTEGER {h.handleWire(w, i1, i2, i3, i4);}
 	;
 	
 flagRule
 	:	
-		f=FLAG i1=INTEGER i2=INTEGER v=(INTEGER | ID | reservedWordRule) {h.handleFlag(false, true, true,f, i1, i2, v);}
+		f=FLAG i1=INTEGER i2=INTEGER v=(INTEGER | ID | reservedWordRule) {h.handleFlag(f, i1, i2, v);}
 	;
 	
 windowRule

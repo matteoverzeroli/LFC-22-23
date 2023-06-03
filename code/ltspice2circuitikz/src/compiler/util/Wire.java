@@ -14,11 +14,11 @@ public class Wire {
 		this.y1 = y1;
 		this.y2 = y2;
 	}
-	public int getMinX() { //da modificare se aggiungo x3
+	public int getMinX() {
 		return Math.min(x1, x2);
 	}
 	
-	public int getMaxY() {//da modificare se aggiungo y3
+	public int getMaxY() {
 		return Math.max(y1, y2);
 	}
 	
