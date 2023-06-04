@@ -39,6 +39,8 @@ void ProcessHandler::processFinished(int exitCode, QProcess::ExitStatus exitStat
         qDebug() << "The process has not exited in a normal way!" << exitCode;
         qDebug() <<  myProcess->readAllStandardOutput();
         qDebug() <<  myProcess->readAllStandardError();
+
+        emit processTerminatedWithErrors();
         return;
     }
 
@@ -48,6 +50,8 @@ void ProcessHandler::processFinished(int exitCode, QProcess::ExitStatus exitStat
 void ProcessHandler::errorOccurred(QProcess::ProcessError error)
 {
     qDebug() << "An error occurred!" << error;
+
+    emit processTerminatedWithErrors();
 }
 
 void ProcessHandler::readStandardOutput()

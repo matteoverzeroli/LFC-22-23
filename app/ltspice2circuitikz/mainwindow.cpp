@@ -18,12 +18,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    setWindowTitle("Ltspice2circuitikz");
+
     createActions();
     createDockWidgets();
 
     runningProcessTimer->setSingleShot(false);
 
     connect(processHandler, &ProcessHandler::processTerminatedCorrectly, this, &MainWindow::processTerminated);
+    connect(processHandler, &ProcessHandler::processTerminatedWithErrors, this, &MainWindow::processEncounteredErrors);
     connect(runningProcessTimer, &QTimer::timeout, [this](){
         if (ui->statusbar->currentMessage() == "Running") ui->statusbar->showMessage("Running.");
         else if (ui->statusbar->currentMessage() == "Running.") ui->statusbar->showMessage("Running..");
@@ -135,6 +138,8 @@ void MainWindow::openAscFile()
 
     ascFileHandler->readFile(fileName);
 
+    latexTextEdit->setPlainText("");
+    formattedAscTextEdit->setPlainText("");
 }
 
 void MainWindow::runAntlrCompiler()
@@ -144,6 +149,10 @@ void MainWindow::runAntlrCompiler()
         QMessageBox::warning(this, "Attention!", "No .ASC file opened! Open an .ASC file and retry.", QMessageBox::Ok);
         return;
     }
+
+    latexTextEdit->setPlainText("");
+    formattedAscTextEdit->setPlainText("");
+    errorListTextEdit->setPlainText("");
 
     processHandler->runProcess(path);
 
@@ -184,6 +193,14 @@ void MainWindow::processTerminated()
     errorListTextEdit->setPlainText("Latex output produced correctly!");
 
     QDesktopServices::openUrl(QUrl::fromLocalFile("./latex_output/translated_circuit.pdf"));
+}
+
+void MainWindow::processEncounteredErrors()
+{
+    QMessageBox::warning(this, "Error!", "Some errors occour while running the process. Please contact us on github.", QMessageBox::Ok);
+
+    runningProcessTimer->stop();
+
 }
 
 void MainWindow::about()

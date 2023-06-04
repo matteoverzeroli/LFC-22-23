@@ -12,13 +12,11 @@ SOURCES += \
     filehandler.cpp \
     main.cpp \
     mainwindow.cpp \
-    pdfviewer.cpp \
     processhandler.cpp
 
 HEADERS += \
     filehandler.h \
     mainwindow.h \
-    pdfviewer.h \
     processhandler.h
 
 FORMS += \

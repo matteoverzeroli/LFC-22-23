@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{circuitikz}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\begin{document}
+\begin{center}
+\rotatebox{270}{
+\begin{circuitikz}
+\draw (6.72,4.16) to[R=$R1$, a={}] (6.72,2.56);
+\draw (12.16,3.84) to[C=$C1$, a={}] (12.16,2.56);
+\draw (16.00,3.84) to[C=$C2$, a={}] (16.00,2.56);
+\draw (10.24,8.32) to[Do=$D1$, a={}] (11.52,8.32);
+\draw (0.00,2.88) to[vsource=$V1$, a={}] (0.00,4.48);
+\draw (6.72,8.32) to[short, l=${}$,] (0.00,8.32);
+\draw (10.24,8.32) to[short, l=${}$,] (6.72,8.32);
+\draw (16.00,8.32) to[short, l=${}$,] (11.52,8.32);
+\draw (6.72,6.08) to[short, l=${}$,] (6.72,8.32);
+\draw (12.16,6.08) to[short, l=${}$,] (6.72,6.08);
+\draw (16.00,6.08) to[short, l=${}$,] (16.00,8.32);
+\draw (16.00,6.08) to[short, l=${}$,] (12.16,6.08);
+\draw (0.00,4.48) to[short, l=${}$,] (0.00,8.32);
+\draw (6.72,4.16) to[short, l=${}$,] (6.72,6.08);
+\draw (12.16,3.84) to[short, l=${}$,] (12.16,6.08);
+\draw (16.00,3.84) to[short, l=${}$,] (16.00,6.08);
+\draw (0.00,0.96) to[short, l=${}$,] (0.00,2.88);
+\draw (6.72,0.96) to[short, l=${}$,] (6.72,2.56);
+\draw (6.72,0.96) to[short, l=${}$,] (0.00,0.96);
+\draw (12.16,0.96) to[short, l=${}$,] (12.16,2.56);
+\draw (12.16,0.96) to[short, l=${}$,] (6.72,0.96);
+\draw (16.00,0.96) to[short, l=${}$,] (16.00,2.56);
+\draw (16.00,0.96) to[short, l=${}$,] (12.16,0.96);
+\draw (6.72,0.00) to[short, l=${}$,] (6.72,0.96);
+\draw (6.720000,0.000000) to (6.720000,0.000000) node[ground]{};
+\draw (12.16,6.08) to[short, -*] (12.16,6.08);
+\draw (16.0,6.08) to[short, -*] (16.0,6.08);
+\draw (12.16,0.96) to[short, -*] (12.16,0.96);
+\draw (6.72,6.08) to[short, -*] (6.72,6.08);
+\draw (6.72,0.96) to[short, -*] (6.72,0.96);
+\draw (6.72,8.32) to[short, -*] (6.72,8.32);
+\end{circuitikz}}
+\end{center}
+\end{document}

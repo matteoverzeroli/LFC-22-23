@@ -30,6 +30,7 @@ private slots:
     void runAntlrCompiler();
     void processTerminated();
     void refreshASCFile();
+    void processEncounteredErrors();
 private:
     Ui::MainWindow *ui;
     QPlainTextEdit *ascTextEdit;
