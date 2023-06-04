@@ -38,7 +38,7 @@ public class Handler {
 
 	private List<Component> components; // list of read components
 	private List<Wire> wires; // list of read wires
-	private List<Flag> flags; // list of flags components
+	private List<Flag> flags; // list of read flags components
 
 	public Handler(TokenStream input) {
 		System.out.println("------ Handler Init ------");
@@ -87,7 +87,6 @@ public class Handler {
 	/**
 	 * Handles semantic errors
 	 */
-
 	void myErrorHandler(Error code, Token tk) {
 		String errMsg;
 
@@ -109,9 +108,8 @@ public class Handler {
 	}
 
 	/**
-	 * Checks if the version of the file is 4
+	 * Checks if the version of the .ASC file is 4
 	 */
-
 	public void checkVersion(Token v, Token ver) {
 		if (ver != null) {
 			String version = ver.getText();
@@ -131,7 +129,6 @@ public class Handler {
 	/**
 	 * Checks if the WINDOW option is valid
 	 */
-
 	public void checkWindowsOptions(Token id, Token w, Token i1, Token i2, Token i3, Token i4) {
 		if (id != null) {
 			String wOption = id.getText();
@@ -152,7 +149,6 @@ public class Handler {
 	/**
 	 * Checks if IOPin attrubute is valid
 	 */
-
 	public void checkIOPinAttr(Token id, Token i, Token i1, Token i2) {
 		if (id != null) {
 			String ioPinAttr = id.getText();
@@ -172,7 +168,6 @@ public class Handler {
 	/**
 	 * Checks if the symbol type is correct
 	 */
-
 	public void checkSymbolType(Token token) {
 		if (token != null && !token.getText().contains("missing")) {
 			checkMandatoryAttribute();
@@ -262,7 +257,6 @@ public class Handler {
 	/**
 	 * Checks the SYMATTR attribute
 	 */
-
 	public void checkSymMattrAttr(Token id1, Token s) {
 		if (id1 != null) {
 			String symAttr = id1.getText();
@@ -285,7 +279,6 @@ public class Handler {
 	 * Checks SYMATTR attribute values: Description, Type, SpiceLine, Value,
 	 * Instname
 	 */
-
 	public void checkSymMattrAttrValue(Token tokenSymAttr, Object tokenSymAttrValue, Token value) {
 		if (tokenSymAttr != null && tokenSymAttrValue != null) {
 			String symAttr = tokenSymAttr.getText();
@@ -341,9 +334,7 @@ public class Handler {
 					else
 						myErrorHandler(DESCRIPTION_ERROR, value);
 				}
-			}
-
-			else if (symAttr.compareTo("Type") == 0) {
+			} else if (symAttr.compareTo("Type") == 0) {
 
 				if (lastComponent != null) {
 
@@ -432,7 +423,6 @@ public class Handler {
 	/**
 	 * Checks polarized capacitor description
 	 */
-
 	public void checkPolarizedCapacitor(Token id1, Token id2, Token id3) {
 		if (lastComponent.getToken().getText().equals("cap")) {
 			if (id2.getText().compareTo("Polarized") == 0) {
@@ -454,7 +444,6 @@ public class Handler {
 			myErrorHandler(DESCRIPTION_NOT_ALLOWED, lastComponent.getToken());
 		}
 		appendRuleToStream(true, false, false, id3);
-
 	}
 
 	/**
@@ -528,7 +517,6 @@ public class Handler {
 	/**
 	 * Returns error list
 	 */
-
 	public List<String> getErrorList() {
 		return errorList;
 	}
@@ -536,7 +524,6 @@ public class Handler {
 	/**
 	 * Tries to parse an Integer value from a String
 	 */
-
 	private boolean tryParseInt(String value) {
 		try {
 			Integer.parseInt(value);

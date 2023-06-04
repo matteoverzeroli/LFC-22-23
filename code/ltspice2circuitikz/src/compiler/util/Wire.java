@@ -14,6 +14,7 @@ public class Wire {
 		this.y1 = y1;
 		this.y2 = y2;
 	}
+	
 	public int getMinX() {
 		return Math.min(x1, x2);
 	}

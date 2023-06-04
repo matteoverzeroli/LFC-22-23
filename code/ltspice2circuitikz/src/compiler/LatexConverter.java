@@ -18,6 +18,8 @@ import compiler.util.Point;
 public class LatexConverter {
 
 	private static float LATEXSCALE = 50; //TODO quindi se la calcoli dopo potrebbe non essere inizializzata?
+	private static int maxWidthToDrawOn = 15; // max width in A4 paper where the circuitikz library can draw
+	private static int maxHeightToDrawOn = 17; // max height in A4 paper where the circuitikz library can draw
 
 	private static FileWriter fileLatexOut;
 
@@ -68,7 +70,8 @@ public class LatexConverter {
 	}
 	
 	/**
-	 * TODO
+	 * Extracts the max and min values touched by x and y and eventually set the rotate property
+	 * to true. 
 	 */
 	private static void calculateAspectRatio() {
 		for (Component c : components) {
@@ -119,20 +122,26 @@ public class LatexConverter {
 
 		width = Math.abs(x_min - x_max);
 		height = Math.abs(y_min - y_max);
-
-		if ((width / LATEXSCALE) > 15 && width > height)
+		
+		//if width is higher than the max width and the circuit is wider than high than rotate the circuit
+		if ((width / LATEXSCALE) > maxWidthToDrawOn && width > height)
 			rotate = true;
 	}
 
+	/**
+	 * Translate the circuit to latex output
+	 */
 	private static void translateCircuitToLatex() throws IOException {
 
+		// calculate the LATEXSCALE based on width, height and rotate property. +1 is to be sure that the 
+		// circuit does not collide with maximum values of width and height. 
 		if (!rotate) {
-			if ((width / LATEXSCALE) > 15 || (height / LATEXSCALE) > 17) {
-				LATEXSCALE = Math.max(width / 15, height / 17) + 1;
+			if ((width / LATEXSCALE) > maxWidthToDrawOn || (height / LATEXSCALE) > 17) {
+				LATEXSCALE = Math.max(width / maxWidthToDrawOn, height / 17) + 1;
 			}
 		} else {
-			if ((width / LATEXSCALE) > 17 || (height / LATEXSCALE) > 15) {
-				LATEXSCALE = Math.max(width / 17, height / 15) + 1;
+			if ((width / LATEXSCALE) > maxHeightToDrawOn || (height / LATEXSCALE) > maxWidthToDrawOn) {
+				LATEXSCALE = Math.max(width / maxHeightToDrawOn, height / maxWidthToDrawOn) + 1;
 			}
 		}
 		
