@@ -1073,9 +1073,7 @@ release/mainwindow.o: ../ltspice2circuitikz/mainwindow.cpp ../ltspice2circuitikz
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qprocess.h \
 		../ltspice2circuitikz/filehandler.h \
 		ui_mainwindow.h \
-		C:/Qt/6.5.1/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.5.1/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.5.1/mingw_64/include/QtWidgets/qapplication.h \
+		C:/Qt/6.5.1/mingw_64/include/QtCore/QCoreApplication \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qcoreapplication.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qeventloop.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qcoreapplication_platform.h \
@@ -1092,16 +1090,6 @@ release/mainwindow.o: ../ltspice2circuitikz/mainwindow.cpp ../ltspice2circuitikz
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qrunnable.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qexception.h \
 		C:/Qt/6.5.1/mingw_64/include/QtCore/qpromise.h \
-		C:/Qt/6.5.1/mingw_64/include/QtGui/qguiapplication.h \
-		C:/Qt/6.5.1/mingw_64/include/QtGui/qinputmethod.h \
-		C:/Qt/6.5.1/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/Qt/6.5.1/mingw_64/include/QtWidgets/QMenuBar \
-		C:/Qt/6.5.1/mingw_64/include/QtWidgets/qmenubar.h \
-		C:/Qt/6.5.1/mingw_64/include/QtWidgets/qmenu.h \
-		C:/Qt/6.5.1/mingw_64/include/QtWidgets/QStatusBar \
-		C:/Qt/6.5.1/mingw_64/include/QtWidgets/qstatusbar.h \
-		C:/Qt/6.5.1/mingw_64/include/QtWidgets/QWidget \
-		C:/Qt/6.5.1/mingw_64/include/QtCore/QCoreApplication \
 		C:/Qt/6.5.1/mingw_64/include/QtGui/QDesktopServices \
 		C:/Qt/6.5.1/mingw_64/include/QtGui/qdesktopservices.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\ltspice2circuitikz\mainwindow.cpp

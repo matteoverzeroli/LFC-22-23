@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.10.2)  4 JUN 2023 11:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.10.2)  4 JUN 2023 18:25
 entering extended mode
 **./translated_circuit.tex
 (translated_circuit.tex
@@ -576,25 +576,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 7.
 ! I can't write on file `translated_circuit.pdf'.
-Please type another file name for output: 
+Please type another file name for output
 ! Emergency stop.
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.10 \end{document}
+l.23 \end{document}
                    
-End of file on the terminal!
+*** (job aborted, file error in nonstop mode)
 
  
 Here is how much of TeX's memory you used:
- 27777 strings out of 478927
- 726539 string characters out of 2852061
- 1230425 words of memory out of 3000000
- 45393 multiletter control sequences out of 15000+600000
+ 28265 strings out of 478927
+ 740807 string characters out of 2852061
+ 1251058 words of memory out of 3000000
+ 45881 multiletter control sequences out of 15000+600000
  403430 words of font info for 27 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,6n,122p,472b,771s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 117i,6n,122p,472b,873s stack positions out of 5000i,500n,10000p,200000b,80000s
 !  ==> Fatal error occurred, no output PDF file produced!
-ts out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
-

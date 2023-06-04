@@ -197,7 +197,7 @@ void MainWindow::processTerminated()
 
 void MainWindow::processEncounteredErrors()
 {
-    QMessageBox::warning(this, "Error!", "Some errors occour while running the process. Please contact us on github.", QMessageBox::Ok);
+    QMessageBox::warning(this, "Attention!", "Check if the PDF is already opened, close it and retry. If the problem persists contact us on github.", QMessageBox::Ok);
 
     runningProcessTimer->stop();
 
