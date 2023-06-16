@@ -18,8 +18,8 @@ import com.omega.compiler.util.Wire;
 public class LatexConverter {
 
 	private static float LATEXSCALE = 50;
-	private final static int maxWidthToDrawOn = 15; // max width in A4 paper where the circuitikz library can draw
-	private final static int maxHeightToDrawOn = 17; // max height in A4 paper where the circuitikz library can draw
+	private final static int MAXWIDTHTODRAWON = 15; // max width in A4 paper where the circuitikz library can draw
+	private final static int MAXHEIGHTTODRAWON = 17; // max height in A4 paper where the circuitikz library can draw
 
 	private static FileWriter fileLatexOut;
 
@@ -124,7 +124,7 @@ public class LatexConverter {
 		height = Math.abs(y_min - y_max);
 		
 		//if width is higher than the max width and the circuit is wider than high than rotate the circuit
-		if ((width / LATEXSCALE) > maxWidthToDrawOn && width > height)
+		if ((width / LATEXSCALE) > MAXWIDTHTODRAWON && width > height)
 			rotate = true;
 	}
 
@@ -136,12 +136,12 @@ public class LatexConverter {
 		// calculate the LATEXSCALE based on width, height and rotate property. +1 is to be sure that the 
 		// circuit does not collide with maximum values of width and height. 
 		if (!rotate) {
-			if ((width / LATEXSCALE) > maxWidthToDrawOn || (height / LATEXSCALE) > maxHeightToDrawOn) {
-				LATEXSCALE = Math.max(width / maxWidthToDrawOn, height / maxHeightToDrawOn) + 1;
+			if ((width / LATEXSCALE) > MAXWIDTHTODRAWON || (height / LATEXSCALE) > MAXHEIGHTTODRAWON) {
+				LATEXSCALE = Math.max(width / MAXWIDTHTODRAWON, height / MAXHEIGHTTODRAWON) + 1;
 			}
 		} else {
-			if ((width / LATEXSCALE) > maxHeightToDrawOn || (height / LATEXSCALE) > maxWidthToDrawOn) {
-				LATEXSCALE = Math.max(width / maxHeightToDrawOn, height / maxWidthToDrawOn) + 1;
+			if ((width / LATEXSCALE) > MAXHEIGHTTODRAWON || (height / LATEXSCALE) > MAXWIDTHTODRAWON) {
+				LATEXSCALE = Math.max(width / MAXHEIGHTTODRAWON, height / MAXWIDTHTODRAWON) + 1;
 			}
 		}
 		

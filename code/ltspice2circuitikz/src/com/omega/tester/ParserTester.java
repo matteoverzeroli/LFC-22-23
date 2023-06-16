@@ -15,7 +15,7 @@ import com.omega.compiler.Ltspice2circuitikzParser;
 
 public class ParserTester {
 
-	static Ltspice2circuitikzParser parser;
+	private static Ltspice2circuitikzParser parser;
 
 	public static void main(String[] args) {
 		CommonTokenStream tokens;

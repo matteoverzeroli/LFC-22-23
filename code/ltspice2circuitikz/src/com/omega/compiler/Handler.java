@@ -87,7 +87,7 @@ public class Handler {
 	/**
 	 * Handles semantic errors
 	 */
-	void myErrorHandler(Error code, Token tk) {
+	public void myErrorHandler(Error code, Token tk) {
 		String errMsg;
 
 		if (code == LEXICAL_ERROR)// it should never happen

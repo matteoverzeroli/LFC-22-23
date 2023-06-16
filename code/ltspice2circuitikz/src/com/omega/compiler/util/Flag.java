@@ -1,8 +1,9 @@
 package com.omega.compiler.util;
 
 public class Flag {
-	int x,y;
-	String label;
+	private int x;
+	private int y;
+	private String label;
 
 	public Flag(int x, int y, String label) {
 		this.x = x;

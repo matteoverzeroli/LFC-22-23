@@ -194,7 +194,8 @@ public class Component {
 	public String getRotationType() {
 		return rotationType;
 	}
-
+	
+	@Override
 	public String toString() {
 		return "Name: " + getName() + " Type:" + getType() + " Value: " + getValue() + " x1: " + getX1() + " y1: "
 				+ getY1() + " x2: " + getX2() + " y2: " + getY2() + " Rotation type: " + getRotationType()
