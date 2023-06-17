@@ -192,9 +192,9 @@ FLOAT
     
     
 //KEYWORD 
-VERSION:	V E R S I O N ;//'Version' | 'version';
-SHEET:		S H E E T;
-WIRE:		W I R E;
+VERSION	:	V E R S I O N ;//'Version' | 'version';
+SHEET	:	S H E E T;
+WIRE	:	W I R E;
 SYMBOL	:	S Y M B O L;
 SYMATTR	:	S Y M A T T R;
 ASSIGN	:	'=';

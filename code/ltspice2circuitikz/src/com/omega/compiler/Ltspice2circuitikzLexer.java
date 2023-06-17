@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g 2023-06-04 18:24:27
+// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g 2023-06-17 12:43:49
 
 package com.omega.compiler;
 
@@ -1092,8 +1092,8 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = VERSION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g:195:8: ( V E R S I O N )
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g:195:10: V E R S I O N
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g:195:9: ( V E R S I O N )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g:195:11: V E R S I O N
 			{
 			mV(); 
 
@@ -1125,7 +1125,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = SHEET;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g:196:6: ( S H E E T )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g:196:7: ( S H E E T )
 			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g:196:9: S H E E T
 			{
 			mS(); 
@@ -1154,7 +1154,7 @@ public class Ltspice2circuitikzLexer extends Lexer {
 		try {
 			int _type = WIRE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g:197:5: ( W I R E )
+			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g:197:6: ( W I R E )
 			// C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g:197:8: W I R E
 			{
 			mW(); 

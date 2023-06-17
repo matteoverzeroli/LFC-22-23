@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g 2023-06-04 18:24:26
+// $ANTLR 3.5.1 C:\\Users\\Matteo\\Desktop\\eclipse workspace\\ltspice2circuitikz\\src\\com\\omega\\compiler\\Ltspice2circuitikz.g 2023-06-17 12:43:49
 
 package com.omega.compiler;
 

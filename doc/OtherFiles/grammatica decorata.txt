@@ -214,5 +214,3 @@ STRING	:	'"' ~('"')* '"';
 ID	:	(LETTER | DIGIT | SPECIALCHAR)(LETTER | DIGIT | SPECIALCHAR)*;
 
 ERROR_TK		: . ; 
-
-
