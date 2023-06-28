@@ -151,8 +151,8 @@ EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
 fragment
 SPECIALCHAR: '\u0021'..'\u002F' |'\u003A'..'\u003C'|'\u003E'..'\u0040'|'\u005B'..'\u0060' //punctuation and symbols. '=' removed for STRING TOKEN
 	     |'\u007B'..'\u007E'|'\u00A1'..'\u017F' //latin punctuation and symbols
-	     |'\u0370'..'\u03FF' //greek alphabet
-	     |'\u0400'..'\u04FF' //cirillico   
+	     |'\u0370'..'\u03FF' //Greek alphabet
+	     |'\u0400'..'\u04FF' //Cyrillic alphabet
 	     ;
 	     
 /* case insensitive lexer matching */
@@ -192,7 +192,7 @@ FLOAT
     
     
 //KEYWORD 
-VERSION	:	V E R S I O N ;//'Version' | 'version';
+VERSION	:	V E R S I O N ;
 SHEET	:	S H E E T;
 WIRE	:	W I R E;
 SYMBOL	:	S Y M B O L;
