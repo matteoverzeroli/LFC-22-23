@@ -37,7 +37,7 @@ Come si può notare, in questo file non vengono riportate informazioni sulla sim
 Tutte le coordinate sono espresse attraverso numeri interi e le parole chiave sono interpretate in modo \textit{case insensitive}. Il formato di codifica del file è \texttt{ISO-8859-1} e accetta qualsiasi carattere \texttt{UNICODE} all'interno delle label e dei nomi dei componenti. Le parole chiave e i relativi parametri sono separati da degli spazi bianchi. LTSpice è insensibile al numero di spazi tra i diversi token e di eventuali \textit{newline}. Tuttavia, il file .asc in output a LTSpice è formattato mantenendo un unico spazio tra ogni token e andando a capo ad ogni parola chiave.
 
 \section{ltspice2circuitikz}
-
+\todo{spiegazione generale della struttura della applicazione}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.5\textwidth]{./ImageFiles/deploy diagram.pdf}
@@ -47,11 +47,28 @@ Tutte le coordinate sono espresse attraverso numeri interi e le parole chiave so
 
 
 \subsubsection{Lexer e Parser}
-L'applicazione realizzata si basa su un lexer e un parser LL(1) generato grazie al tool AntlrWorks, che permette di leggere ed interpretare un file .asc e di effettuare la traduzione in un file .tex, grazie a delle azioni semantiche.
+L'applicazione realizzata si basa su un lexer e un parser LL(1) generato grazie al tool AntlrWorks, che permette di leggere ed interpretare un file .asc e di effettuare la traduzione in un file .tex tramite delle azioni semantiche. Per definire la grammatica utile al parsing del file .asc è stato eseguito un processo di reverse engeneering, analizzando il file generato da LTSpice con dei circuiti di esempio. Di seguito si riportano i token identificati e le regole sintattiche ricavate dall'analisi dei file .asc.
+\lstinputlisting[]{./OtherFiles/grammatica non decorata.txt}
+In particolare, si è notato che il programma non generava errore all'apertura del file se:
+\begin{itemize}
+	\item le parole chiave erano scritte in caratteri minuscoli o in una qualsiasi combinazione di caratteri minuscoli e maiuscoli;
+	\item venivano aggiunti degli spazi bianchi o dei caratteri di terminazione di riga tra le parole;\todo{come si dice il carcatte slash/n a parole?!?!?}
+\end{itemize}
+Per mantenere coerente la grammatica con queste regole, sono stati considerati come separatori tra i diversi token i caratteri di spazio bianco e di terminazione di riga. Inoltre, le parole chiave sono state rese invarianti rispetto al carattere delle lettere (lower o upper case). La grammatica completa si compone di nove parole chiavi: VERSION, SHEET, WIRE, SYMBOL, SYMATTR, simbolo di assegnamento (=), WINDOW e IOPIN. Ulteriori controlli sulle possibili strutture sono state inserite nella semantica discussa successivamente. Inoltre, LTSpice accetta l'inserimento di qualunque carattere \texttt{UNICODE} nelle label dei componenti. Per questo motivo sono stati aggiunti i token per la lettura dei caratteri speciali, dell'alfabeto greco e dell'alfabeto cirillico.
 
+\todo{discutere grammatica decorata}
+\lstinputlisting[]{./OtherFiles/grammatica decorata.txt}
+
+\todo{discutere struttura handler e file}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{./ImageFiles/class and package diagram.pdf}
 	\caption{Class and Package Diagram dell'applicazione.}
 	\label{fig:class_diagram}
 \end{figure}
+
+\section{Client app}
+\todo{inserirei due parole tecniche sulla applicazione client}
+
+\section{Sviluppi futuri}
+\todo{vedere se inserire qui o prima come aggiungere un componente}
