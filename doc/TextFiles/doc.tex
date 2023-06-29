@@ -45,9 +45,16 @@ Tutte le coordinate sono espresse attraverso numeri interi e le parole chiave so
 	\label{fig:deploy_diagram}
 \end{figure}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{./ImageFiles/class and package diagram.pdf}
+	\caption{Class and Package Diagram dell'applicazione.}
+	\label{fig:class_diagram}
+\end{figure}
+
 
 \subsubsection{Lexer e Parser}
-L'applicazione realizzata si basa su un lexer e un parser LL(1) generato grazie al tool AntlrWorks, che permette di leggere ed interpretare un file .asc e di effettuare la traduzione in un file .tex tramite delle azioni semantiche. Per definire la grammatica utile al parsing del file .asc è stato eseguito un processo di reverse engeneering, analizzando il file generato da LTSpice con dei circuiti di esempio. Di seguito si riportano i token identificati e le regole sintattiche ricavate dall'analisi dei file .asc.
+L'applicazione realizzata si basa su un lexer e un parser LL(1) generato nel linguaggio Java grazie al tool AntlrWorks, che permette di leggere ed interpretare un file .asc e di effettuare la traduzione in un file .tex tramite delle azioni semantiche. Per definire la grammatica utile al parsing del file .asc è stato eseguito un processo di reverse engeneering, analizzando il file generato da LTSpice con dei circuiti di esempio. Di seguito si riportano i token identificati e le regole sintattiche ricavate dall'analisi dei file .asc.
 \lstinputlisting[]{./OtherFiles/grammatica non decorata.txt}
 In particolare, si è notato che il programma non generava errore all'apertura del file se:
 \begin{itemize}
@@ -56,19 +63,42 @@ In particolare, si è notato che il programma non generava errore all'apertura d
 \end{itemize}
 Per mantenere coerente la grammatica con queste regole, sono stati considerati come separatori tra i diversi token i caratteri di spazio bianco e di terminazione di riga. Inoltre, le parole chiave sono state rese invarianti rispetto al carattere delle lettere (lower o upper case). La grammatica completa si compone di nove parole chiavi: VERSION, SHEET, WIRE, SYMBOL, SYMATTR, simbolo di assegnamento (=), WINDOW e IOPIN. Ulteriori controlli sulle possibili strutture sono state inserite nella semantica discussa successivamente. Inoltre, LTSpice accetta l'inserimento di qualunque carattere \texttt{UNICODE} nelle label dei componenti. Per questo motivo sono stati aggiunti i token per la lettura dei caratteri speciali, dell'alfabeto greco e dell'alfabeto cirillico.
 
-\todo{discutere grammatica decorata}
+\subsection{Semantica}
+Per gestire le azioni semantiche è stata predisposta la classe \texttt{Handler.java} che racchiude la definizione dei metodi utilizzati per i controlli semantici e le operazioni di traduzione. Di seguito si riporta la grammatica decorata con le operazioni semantiche.
 \lstinputlisting[]{./OtherFiles/grammatica decorata.txt}
 
-\todo{discutere struttura handler e file}
+\noindent
+Inizialmente, nel costruttore della classe vengono inizializzate alcune strutture dati che verranno utilizzate per gestire la traduzione. In particolare, vengono create le liste \texttt{components}, \texttt{wires} e \texttt{flags} che servono a memorizzare i componenti letti in modo incrementale durante l'analisi del file in input; viene inizializzata anche una lista che conterrà gli errori lessicali, sintattici e semantici. Inoltre, viene creata una cartella con il nome \texttt{circuit\_output} e un file denominato \texttt{formatted\_circuit.asc} che conterrà la descrizione del circuito in formato LTSpice formattato correttamente. Infatti, come già descritto in precedenza, l'inserimento di spazi bianchi e caratteri di terminazione di linea non precludono la possibilità di interpretare correttamente il file. Per questo motivo, ogni qualvolta viene letto un token o un'insieme di token essi sono accodati al file \texttt{formatted\_circuit.asc} grazie alla funzione \texttt{appendRuleToStream} dichiarata nell'handler. Questa funzione ha come argomenti l'insieme dei token da scrivere sul file e alcuni parametri booleani per descrivere come devono essere formattati nel file (aggiungere uno spazio prima o dopo ogni token e al termine il carattere di \textbackslash n al termine della riga). 
+
+\noindent
+Un altro campo importante nella classe \texttt{Handler.h} è lastComponent. Esso è di tipo Component, una classe contenuta nel package \texttt{com.omega.compiler.util} che contiene tutte le informazioni relative a un componente. Questa variabile è utilizzata per mantenere memoria dell'ultimo componente letto: in questo modo, è possibile poi effettuare dei controlli sulle regole che vengono lette successivamente e che si riferiscono a quel componete. Essa viene inizializzata nel metodo \texttt{checkSymbolType} chiamato quando si incontra la parola chiave \texttt{SYMBOL} nella regola sintattica \texttt{symbolRule}.
+\todo{che altri metodi descrivere...  mi concentrerei più sui metodi di traduzione }
+
+\noindent
+Al termine della lettura di tutto il contenuto del file .asc in input, se non ci sono stati errori viene chiamato il metodo statico \texttt{convertToLatex} della classe \texttt{LatexConverter} che inizia il processo di traduzione. Inoltre, si procede alla chiusura del file \texttt{formatted\_circuit.asc}.
+
+\subsection{Traduzione}
+La classe \texttt{LatexConverter} contiene i metodi necessari alla traduzione del circuito per la rappresentazione Latex. Il metodo \texttt{convertToLatex} chiamato dall'handler, riceve in ingresso la lista dei componenti, dei collegamenti e delle etichette ricavate dal file in ingresso. Successivamente, viene chiamato il metodo \texttt{calculateAspectRatio} che consente di calcolare i valori massimi e minimi delle coordinate x e y di tutti gli elementi del circuito e viene calcolata l'altezza e la larghezza del circuito nel sistema di riferimento di LTSpice. Se l'altezza è minore della larghezza allora il circuito verrà rappresentato su un foglio in modalità \textit{landscape}. Nella figura \ref{fig:sdr} sono mostrati i sistema di riferimenti utilizzati in LTSpice e in Latex. Non è conosciuta la posizione assoluta del sistema di riferimento in LTSpice rispetto alla finestra visualizzata.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\textwidth]{./ImageFiles/class and package diagram.pdf}
-	\caption{Class and Package Diagram dell'applicazione.}
-	\label{fig:class_diagram}
+	a)
+	\begin{minipage}{.460\textwidth}
+		\includegraphics[width=\linewidth]{./ImageFiles/sdr-lt.png}
+	\end{minipage}
+	b)
+	\begin{minipage}{.460\textwidth}
+		\includegraphics[width=\linewidth]{./ImageFiles/sdr-latex.png}
+	\end{minipage}
+	\caption{Sistemi di riferimento delle coordinate x e y in LTSpice e in Latex.}
+	\label{fig:sdr}
 \end{figure}
+
+\noindent
+Viene quindi creata la cartella \texttt{latex\_output} e il file \texttt{translated\_circuit.tex} che conterrà la traduzione in Latex del circuito. Dapprima, viene scritto il preambolo che contiene la descrizione del tipo di documento, la dimensione del foglio e l'import del pacchetto \texttt{circuitikz}. Queste informazioni verranno utilizzate dal compilatore \texttt{MikTex} durante la generazione del file pdf.
+
+\todo{continuare}
 
 \section{Client app}
 \todo{inserirei due parole tecniche sulla applicazione client}
 
-\section{Sviluppi futuri}
-\todo{vedere se inserire qui o prima come aggiungere un componente}
+\section{Esempi e sviluppi futuri}

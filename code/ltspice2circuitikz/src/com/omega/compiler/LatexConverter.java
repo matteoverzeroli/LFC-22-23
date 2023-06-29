@@ -70,7 +70,7 @@ public class LatexConverter {
 	}
 	
 	/**
-	 * Extracts the max and min values touched by x and y and eventually set the rotate property
+	 * Extracts the max and min values of x and y coordinates and eventually set the rotate property
 	 * to true. 
 	 */
 	private static void calculateAspectRatio() {
