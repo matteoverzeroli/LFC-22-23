@@ -185,7 +185,7 @@ public class LatexConverter {
 	}
 	
 	/**
-	 * Finds nodes as the intersection of three wires
+	 * Finds nodes as the intersection of al least three wires
 	 */
 	private static void findNode() throws IOException {
 		Map<Point, Integer> nodes = new HashMap<>();

@@ -96,7 +96,17 @@ La classe \texttt{LatexConverter} contiene i metodi necessari alla traduzione de
 \noindent
 Viene quindi creata la cartella \texttt{latex\_output} e il file \texttt{translated\_circuit.tex} che conterrà la traduzione in Latex del circuito. Dapprima, viene scritto il preambolo che contiene la descrizione del tipo di documento, la dimensione del foglio e l'import del pacchetto \texttt{circuitikz}. Queste informazioni verranno utilizzate dal compilatore \texttt{MikTex} durante la generazione del file pdf.
 
-\todo{continuare}
+\noindent
+Il passo successivo consiste nella vera e propria traduzione del circuito in Latex effettuata dalla funzione \texttt{translateCircuitToLatex}. Viene calcolato il fattore di scala (memorizzato nella variabile \texttt{LATEXSCALE}) tra le coordinate espresse nel sistema di riferimento di LTSpice e quello di Latex; \todo{se riesci a dire come che non ricordo :)}. Successivamente, vengono tradotti tutti i componenti, i collegamenti e i label inseriti nelle liste \texttt{components}, \texttt{wires} e \texttt{flags}; questa operazione richiede di recuperare le coordinate x e y degli estremi di collegamento di ogni componente e effettuare una rototraslazione per riportare le coordinate nel sistema di riferimento di Latex. In particolare, alla coordinata x viene sottratta la x minima calcolata nella funzione \texttt{calculateAspectRatio} mentre alla y viene sottratta la coordinata y massima, anch'essa calcolata precedentemente. Le coordinate y vengono poi invertite. Infine, tutte le coordinate vengono scalate con il fattore di scala \texttt{LATEXSCALE} calcolato precedentemente. Il comando Latex utilizzato per disegnare un componente secondo la libreria \texttt{circuitikz} è \texttt{draw} con la seguente struttura:
+\begin{itemize}
+	\item \textbackslash draw (x1,y1) to[$\langle$type$\rangle$=$\langle$name$\rangle$, a=$\langle$value$\rangle$] (x2,y2), per disegnare un componente; il $\langle$type$\rangle$ può essere R, C, eC, L, Do o vsource per indicare una resistenza, un capacitore, un capacitore polarizzato, una induttanza, un diodo e un generatore di tensione; $\langle$name$\rangle$ e $\langle$value$\rangle$ corrispondono al nome e al valore del componente;
+	\item \textbackslash draw (x1,y1) to[short, l=$\langle$label$\rangle$] (x2,y2), traccia un filo di collegamento dal punto (x1,y1) al punto (x2,y2) e associa eventualmente una label $\langle$label$\rangle$ al collegamento; questa label viene ricercata nella lista \texttt{flags}, cercando una flag che abbia le stesse coordinate di uno dei capi del collegamento;
+	\item \textbackslash draw (x,y) to (x,y) node[ground]{}, inserisce un nodo di massa nel punto (x,y); i nodi di massa in LTSpice sono rappresentati da dei flag con valore 0;
+	\item \textbackslash draw (x,y) to[short, -*] (x,y), permette di rimarcare un nodo come punto di collegamento tra tre fili; vengono ricavati cercando l'intersezione di almeno tre collegamenti grazie alla funzione \texttt{findNode};
+\end{itemize}
+Dopo aver terminato la traduzione, la funzione \texttt{closeFileLatex} esegue le operazioni di chiusura del file latex, dopo aver inserito l'epilogo. Successivamente, crea attiva un nuovo processo \texttt{pdflatex} al quale passa il nome del file da cui generare il pdf (\texttt{translated\_circuit.tex}). Se l'operazione va a buon fine, viene prodotto nella cartella \texttt{latex\_output} il pdf con la rappresentazione del circuito.
+
+\todo{gestione errori}
 
 \section{Client app}
 \todo{inserirei due parole tecniche sulla applicazione client}
