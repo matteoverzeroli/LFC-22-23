@@ -37,13 +37,22 @@ Come si può notare, in questo file non vengono riportate informazioni sulla sim
 Tutte le coordinate sono espresse attraverso numeri interi e le parole chiave sono interpretate in modo \textit{case insensitive}. Il formato di codifica del file è \texttt{ISO-8859-1} e accetta qualsiasi carattere \texttt{UNICODE} all'interno delle label e dei nomi dei componenti. Le parole chiave e i relativi parametri sono separati da degli spazi bianchi. LTSpice è insensibile al numero di spazi tra i diversi token e di eventuali \textit{newline}. Tuttavia, il file .asc in output a LTSpice è formattato mantenendo un unico spazio tra ogni token e andando a capo ad ogni parola chiave.
 
 \section{ltspice2circuitikz}
-\todo{spiegazione generale della struttura della applicazione}
+L'applicazione finale realizzata in questo progetto si compone da due principali componenti:
+\begin{itemize}
+	\item un'interfaccia grafica, realizzata con il framework Qt;
+	\item un'applicazione Java che realizza le operazioni necessarie per la traduzione, distribuita come un .jar eseguibile.
+\end{itemize}
+In figura \ref{fig:deploy_diagram} è mostrato il deploy diagram dell'intera applicazione.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.5\textwidth]{./ImageFiles/deploy diagram.pdf}
 	\caption{Deploy diagram del sistema.}
 	\label{fig:deploy_diagram}
 \end{figure}
+L'interfaccia utente (\textbf{UI ltspice2circuitikz}) avvia l'applicativo jar (ltspice2circuitikz.jar), il quale richiede in input il file .asc contente la specifica del circuito realizzata con LTSpice. A sua volta, l'applicazione Java, una volta terminata la traduzione, avvia il processo \textbf{pdflatex}, che richiede in input il file .tex tradotto e restituisce il pdf con la rappresentazione del circuito.
+
+\noindent
+In figura \ref{fig:class_diagram} viene mostrato il diagramma delle classi e dei package dell'applicazione  Java. \todo{aggiungere descrizione class diagram}
 
 \begin{figure}[h!]
 	\centering
@@ -52,7 +61,7 @@ Tutte le coordinate sono espresse attraverso numeri interi e le parole chiave so
 	\label{fig:class_diagram}
 \end{figure}
 
-
+\newpage
 \subsubsection{Lexer e Parser}
 L'applicazione realizzata si basa su un lexer e un parser LL(1) generato nel linguaggio Java grazie al tool AntlrWorks, che permette di leggere ed interpretare un file .asc e di effettuare la traduzione in un file .tex tramite delle azioni semantiche. Per definire la grammatica utile al parsing del file .asc è stato eseguito un processo di reverse engeneering, analizzando il file generato da LTSpice con dei circuiti di esempio. Di seguito si riportano i token identificati e le regole sintattiche ricavate dall'analisi dei file .asc.
 \lstinputlisting[]{./OtherFiles/grammatica non decorata.txt}
@@ -104,9 +113,10 @@ Il passo successivo consiste nella vera e propria traduzione del circuito in Lat
 	\item \textbackslash draw (x,y) to (x,y) node[ground]{}, inserisce un nodo di massa nel punto (x,y); i nodi di massa in LTSpice sono rappresentati da dei flag con valore 0;
 	\item \textbackslash draw (x,y) to[short, -*] (x,y), permette di rimarcare un nodo come punto di collegamento tra tre fili; vengono ricavati cercando l'intersezione di almeno tre collegamenti grazie alla funzione \texttt{findNode};
 \end{itemize}
-Dopo aver terminato la traduzione, la funzione \texttt{closeFileLatex} esegue le operazioni di chiusura del file latex, dopo aver inserito l'epilogo. Successivamente, crea attiva un nuovo processo \texttt{pdflatex} al quale passa il nome del file da cui generare il pdf (\texttt{translated\_circuit.tex}). Se l'operazione va a buon fine, viene prodotto nella cartella \texttt{latex\_output} il pdf con la rappresentazione del circuito.
+Dopo aver terminato la traduzione, la funzione \texttt{closeFileLatex} esegue le operazioni di chiusura del file latex, dopo aver inserito l'epilogo. Successivamente, crea un nuovo processo \texttt{pdflatex} al quale passa il nome del file da cui generare il pdf (\texttt{translated\_circuit.tex}). Se l'operazione va a buon fine, viene prodotto nella cartella \texttt{latex\_output} il pdf con la rappresentazione del circuito.
 
-\todo{gestione errori}
+\noindent
+Gli eventuali errori lessicali, sintattici e semantici vengono raccolti nella lista \texttt{errorList} dell'handler. Il metodo \texttt{main}, contenuto nella classe \texttt{ParserTester}, chiama il metodo \texttt{parseCircuit} dichiarato nella classe \texttt{Ltspice2circuitikzParser} che avvia l'analisi sintattica. Al termine, viene verificato se la lista \texttt{errorList} è vuota. In tal caso l'applicazione termina. Altrimenti, vengono eliminate le cartelle \texttt{circuit\_output} e \texttt{latex\_output} e viene creata la cartella \texttt{logs} che conterrà un file sulla quale vengono scritti gli errori rilevati.
 
 \section{Client app}
 \todo{inserirei due parole tecniche sulla applicazione client}
