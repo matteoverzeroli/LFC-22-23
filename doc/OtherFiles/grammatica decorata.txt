@@ -75,12 +75,6 @@ symattrRule
 			| f=FLOAT {h.checkSymMattrAttrValue(id1, "float", f);}
 			| r = reservedWordRule {h.checkSymMattrAttrValue(id1, "reserved", r);})
 		{h.appendRuleToStream(false, false, true);}
-	
-		/*SYMATTR ( INSTNAME ID
-			| DESCRIPTION ID //description attribute
-			| TYPE ID //sybol type
-			| VALUE (INTEGER | FLOAT | ID | reservedWordRule)
-			| SPICELINE attrRule+)*/
 	;
 attrRuleNoId
 	:
