@@ -34,6 +34,25 @@ Durante la generazione del file latex, vengono tenute in considerazione le dimen
 
 \clearpage
 
+\section{Grammatica file ASC}
+Nel normale processo di utilizzo dell'applicazione \textit{ltspice2circuitikz} non è necessario conoscere la grammatica del file .asc in quanto tale file viene generato dal programma LTSpice. Tuttavia, per completezza, vengono riportate di seguito le regole della grammatica. È importante notare che la grammatica è stata ricavata tramite un processo di \textit{reverse engineering} e pertanto potrebbe non essere completa.
+\begin{itemize}
+	\item \texttt{Version 4}: tutti i file iniziano con la seguente regola. L'applicazione è in grado di gestire solo la versione 4, che è quella attualmente usata dall'ultima versione di LTSpice;
+	\item \texttt{SHEET int width height}: il primo intero rappresenta il numero del foglio, i due interi successivi rappresentano le dimensioni di tale foglio;
+	\item \texttt{WIRE x1 y1 x2 y2}: rappresenta un filo di collegamento, seguito dalle coordinate x1, y1 ed x2, y2 dei capi del filo;
+	\item \texttt{FLAG x y content}: rappresenta contenuto e posizione di eventuali label associati ad un collegamento. Se il contenuto è 0, allora si indica la massa del circuito;
+	\item \texttt{SYMBOL type x y rotation}: rappresenta un componente. Le tipologie di componenti riconosciute dall'applicazione sono \textit{res}, \textit{cap}, \textit{polcap} \textit{ind}, \textit{diode} e \textit{voltage}. Il campo rotazione può contenere i seguenti valori: \textit{R0}, \textit{R90}, \textit{R180}, \textit{R270}, \textit{M0}, \textit{M90}, \textit{M180} e \textit{M270}. La lettera M indica che il componente oltre ad essere ruotato è anche specchiato;
+	\item \texttt{SYMATTR type ...}: permette di specificare eventuali attributi riferiti ad un componente, come per esempio il nome, il valore o altri parametri;
+	\item \texttt{WINDOW number x y pos size}: indica la posizione di una label associata ad un componente e la sia grandezza;
+	
+	\todo{non so cosa vuol dire nella WINDOW il primo parametro...}
+	\todo{IOPIN lo utilizziamo di solito? Non l'ho trovato nei nostri esempi soliti.}
+	  
+\end{itemize}
+
+
+\clearpage
+
 \section{Esempio di utilizzo}
 Di seguito viene mostrato come utilizzare l'applicazione \textit{ltspice2circuitikz}. 
 
