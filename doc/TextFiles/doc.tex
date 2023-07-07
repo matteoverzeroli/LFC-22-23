@@ -122,6 +122,58 @@ Dopo aver terminato la traduzione, la funzione \texttt{closeFileLatex} esegue le
 Gli eventuali errori lessicali, sintattici e semantici vengono raccolti nella lista \texttt{errorList} dell'handler. Il metodo \texttt{main}, contenuto nella classe \texttt{ParserTester}, chiama il metodo \texttt{parseCircuit} dichiarato nella classe \texttt{Ltspice2circuitikzParser} che avvia l'analisi sintattica e le operazioni di traduzione. Al termine, viene verificato se la lista \texttt{errorList} è vuota. In tal caso l'applicazione termina. Altrimenti, vengono eliminate le cartelle \texttt{circuit\_output} e \texttt{latex\_output} e viene creata la cartella \texttt{logs} che conterrà un file sul quale vengono scritti gli errori rilevati.
 
 \section{Client app}
-\todo{inserirei due parole tecniche sulla applicazione client}
+L'applicazione client è stata sviluppata utilizzando le librerie Qt 6.4.3 e l'ambiente di sviluppo Qt Creator 10.0.1. L'applicazione è stata sviluppata per sistema operativo Windows, ma grazie alle librerie Qt con lo stesso codice è possibile generare eseguibili anche per altri sistemi operativi (Linux, MacOs, Android e IOs). In figura \ref{fig:class_diagram_client} è mostrato il diagramma delle classi dell'applicazione.
 
-\section{Esempi e sviluppi futuri}\todo{cosa potremmo inserire? }
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{./ImageFiles/client app diagram.drawio.png}
+	\caption{Class Diagram dell'app client.}
+	\label{fig:class_diagram_client}
+\end{figure}
+
+\clearpage
+
+\section{Esempi e sviluppi futuri}
+Di seguito viene riportata una lista contente gli sviluppi futuri:
+\begin{itemize}
+	\item \textbf{Introduzione di nuovi componenti}: al momento, i componenti che possono essere utilizzati sono resistenze, condensatori, condensatori polarizzati, diodi e generatori di tensione. Ci sono altri componenti che possono essere inseriti all'interno dell'applicazione per generare circuiti più complessi.
+	\item \textbf{Gestione di formati diversi da A4}: al momento, l'applicazione è in grado di disegnare circuiti scalati in modo corretto basandosi sulle dimensioni di un foglio A4. 
+	\item \textbf{Gestione di fattori di scala molto grandi}: nel caso in cui il circuito sia estremamente grande, l'output generato può contenere dei difetti dovuti al fattore di scala. In tal caso, è consigliabile dividere il circuito su più fogli.
+\end{itemize}
+
+Di seguito viene mostrato come utilizzare l'applicazione \textit{ltspice2circuitikz}. 
+
+1. Aprire l'applicazione \textit{ltspice2circuitikz} cliccando due volte l'eseguibile \textit{ltspice2circuitikz.exe}. Si aprirà una schermata come quella mostrata in figura \ref{fig:punto_1}.
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./ImageFiles/mainview.png}
+	\caption{Schermata principale dell'applicazione.}
+	\label{fig:punto_1}
+\end{figure}
+
+2. Cliccare l'icona \textit{"Open File"} e selezionare un file .asc da aprire. Una volta selezionato il file, il suo contenuto verrà mostrato nella finestra in alto a sinistra (figura \ref{fig:punto_2}). Il contenuto del file non può essere modificato dall'applicazione ma deve essere modificato da un tool esterno. Nel caso venga modificato è possibile ricaricare il file premendo l'icona di \textit{"Refresh"}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./ImageFiles/file aperto.png}
+	\caption{Schermata che mostra il file aperto.}
+	\label{fig:punto_2}
+\end{figure}
+
+3. Premere il pulsante verde \textit{"Run"} per lanciare il processo di conversione. Se non ci sono errori, viene mostrato un messaggio verde nell'\textit{Application Output} e viene caricato il contenuto del file latex nella colonna di destra (figura \ref{fig:punto_3}). Inoltre, viene aperto il file pdf contenente il circuito generato. Se si vuole mostrare anche il file formattato in modo corretto, è sufficiente selezionare la voce \textit{"Formatted ASC File"} nel menù \textit{"View"}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./ImageFiles/run con successo.png}
+	\caption{Processo eseguito con successo.}
+	\label{fig:punto_3}
+\end{figure}
+
+4. Nel caso in cui ci siano errori semantici o sintattici, il processo si interrompe e nell'\textit{Application Output} vengono mostrati gli errori (figura \ref{fig:punto_4}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./ImageFiles/semantic error.png}
+	\caption{Presenza di errori semantici.}
+	\label{fig:punto_4}
+\end{figure}
