@@ -1,5 +1,4 @@
 \section{Introduzione}
-
 Il seguente progetto ha come obiettivo quello di realizzare un'applicazione che consenta di ricavare automaticamente la rappresentazione in \LaTeX \;di un circuito elettrico realizzato con il software di simulazione LTSpice (\href{https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html}{Analog Devices}), utilizzando il pacchetto \href{https://it.overleaf.com/learn/latex/CircuiTikz_package}{CircuiTikz} che permette la visualizzazione di un circuito in un documento latex. Infatti, LTSpice produce un file con estensione .asc che contiene tutte le informazioni utili alla rappresentazione grafica dei componenti, come ad esempio la posizione assoluta dei vari elementi circuitali, delle eventuali label associate alle connessioni e i valori dei vari componenti. L'idea alla base di questo progetto è quella di utilizzare le informazioni contenute nel file .asc e il pacchetto CircuiTikz per ottenere una rappresentazione in latex del circuito. Una volta ottenuto il file .tex, si utilizza lo strumento \texttt{pdflatex} (distribuito con il compilatore MikTex) per generare un documento pdf.
 \subsection{Tecnologie utilizzate}
 Per lo sviluppo di questo progetto si sono utilizzate le seguenti tecnologie:
@@ -7,7 +6,7 @@ Per lo sviluppo di questo progetto si sono utilizzate le seguenti tecnologie:
 	\item \texttt{ANTLRWorks 1.5.2}, per la generazione del lexer e del parser nel linguaggio Java;
 	\item libreria Java \texttt{antlr-complete} versione 3.4;
 	\item pacchetto \texttt{CircuiTikz} e compilatore \texttt{MikTex}, per la generazione del codice latex e del documento pdf;
-	\item \texttt{Eclipse IDE}, per la creazione del progetto Java del lexer e del parser e la compilazione;
+	\item \texttt{Eclipse IDE}, per la creazione del progetto Java del lexer e del parser;
 	\item framework Qt, per la creazione dell'app client;
 	\item \texttt{GitHub}, per il versioning del codice.
 \end{itemize}
@@ -109,7 +108,7 @@ La classe \texttt{LatexConverter} contiene i metodi necessari alla traduzione de
 Viene quindi creata la cartella \texttt{latex\_output} e il file \texttt{translated\_circuit.tex} che conterrà la traduzione in Latex del circuito. Dapprima, viene scritto nel file latex il preambolo che contiene la descrizione del tipo di documento, la dimensione del foglio e l'import del pacchetto \texttt{CircuiTikz}. Queste informazioni verranno utilizzate dal compilatore \texttt{MikTex} durante la generazione del file pdf.
 
 \noindent
-Il passo successivo consiste nella vera e propria traduzione del circuito in Latex effettuata dalla funzione \texttt{translateCircuitToLatex}. Inizialmente, vengono calcolate altezza e larghezza del circuito e nel caso in cui lo schematico sia più largo che alto viene impostata la variabile \texttt{rotate} che ruota il circuito in modo da ocupare meglio lo spazio. Poi, viene calcolato il fattore di scala (memorizzato nella variabile \texttt{LATEXSCALE}) tra le coordinate espresse nel sistema di riferimento di LTSpice e quello di Latex, in modo tale che il circuito tradotto sia contenuto interamente in un unico foglio. Successivamente, vengono tradotti tutti i componenti, i collegamenti e i label inseriti nelle liste \texttt{components}, \texttt{wires} e \texttt{flags}; questa operazione richiede di recuperare le coordinate x e y degli estremi di collegamento di ogni componente ed effettuare una rototraslazione per riportare le coordinate dal sistema di riferimento di LTSpice nel sistema di riferimento di Latex: alla coordinata x viene sottratta la x minima calcolata nella funzione \texttt{calculateAspectRatio} mentre alla y viene sottratta la coordinata y massima, anch'essa calcolata precedentemente. Le coordinate y vengono poi invertite. Infine, tutte le coordinate vengono scalate con il fattore di scala \texttt{LATEXSCALE} calcolato precedentemente. Il comando Latex utilizzato per disegnare un componente secondo la libreria \texttt{CircuiTikz} è \texttt{draw} così definito:
+Il passo successivo consiste nella vera e propria traduzione del circuito in Latex effettuata dalla funzione \texttt{translateCircuitToLatex}. Inizialmente, vengono calcolate altezza e larghezza del circuito e nel caso in cui lo schematico sia più largo che alto viene impostata la variabile \texttt{rotate} che ruota il circuito in modo da occupare meglio lo spazio. Poi, viene calcolato il fattore di scala (memorizzato nella variabile \texttt{LATEXSCALE}) tra le coordinate espresse nel sistema di riferimento di LTSpice e quello di Latex, in modo tale che il circuito tradotto sia contenuto interamente in un unico foglio. Successivamente, vengono tradotti tutti i componenti, i collegamenti e le label inserite nelle liste \texttt{components}, \texttt{wires} e \texttt{flags}; questa operazione richiede di recuperare le coordinate x e y degli estremi di collegamento di ogni componente ed effettuare una rototraslazione per riportare le coordinate dal sistema di riferimento di LTSpice nel sistema di riferimento di Latex: alla coordinata x viene sottratta la x minima calcolata nella funzione \texttt{calculateAspectRatio} mentre alla y viene sottratta la coordinata y massima, anch'essa calcolata precedentemente. Le coordinate y vengono poi invertite. Infine, tutte le coordinate vengono scalate con il fattore di scala \texttt{LATEXSCALE} calcolato precedentemente. Il comando Latex utilizzato per disegnare un componente secondo la libreria \texttt{CircuiTikz} è \texttt{draw} così definito:
 \begin{itemize}
 	\item \textbackslash draw (x1,y1) to[$\langle$type$\rangle$=$\langle$name$\rangle$, a=$\langle$value$\rangle$] (x2,y2), per disegnare un componente; il $\langle$type$\rangle$ può essere R, C, eC, L, Do o vsource per indicare una resistenza, un capacitore, un capacitore polarizzato, una induttanza, un diodo e un generatore di tensione; $\langle$name$\rangle$ e $\langle$value$\rangle$ corrispondono al nome e al valore del componente; le coordinate degli estremi vengono calcolate a partire dalle coordinate x,y del componente indicate nel file .asc che fanno riferimento al centro del componente; a queste coordinate vengono applicati degli offset (ricavati sperimentalmente) per calcolare la posizione dei capi di collegamento in funzione anche della rotazione o operazione di mirror applicata; queste operazioni sono inserite nella funzione \texttt{applyRotationDipole} nella classe \texttt{Component};
 	\item \textbackslash draw (x1,y1) to[short, l=$\langle$label$\rangle$] (x2,y2), traccia un filo di collegamento dal punto (x1,y1) al punto (x2,y2) e associa eventualmente una label $\langle$label$\rangle$ al collegamento; questa label viene ricercata nella lista \texttt{flags}, cercando una flag che abbia le stesse coordinate di uno dei capi del collegamento;
@@ -122,11 +121,11 @@ Dopo aver terminato la traduzione, la funzione \texttt{closeFileLatex} esegue le
 Gli eventuali errori lessicali, sintattici e semantici vengono raccolti nella lista \texttt{errorList} dell'handler. Il metodo \texttt{main}, contenuto nella classe \texttt{ParserTester}, chiama il metodo \texttt{parseCircuit} dichiarato nella classe \texttt{Ltspice2circuitikzParser} che avvia l'analisi sintattica e le operazioni di traduzione. Al termine, viene verificato se la lista \texttt{errorList} è vuota. In tal caso l'applicazione termina. Altrimenti, vengono eliminate le cartelle \texttt{circuit\_output} e \texttt{latex\_output} e viene creata la cartella \texttt{logs} che conterrà un file sul quale vengono scritti gli errori rilevati.
 
 \section{Client app}
-L'applicazione client è stata sviluppata utilizzando le librerie Qt 6.4.3 e l'ambiente di sviluppo Qt Creator 10.0.1. L'applicazione è stata sviluppata per sistema operativo Windows, ma grazie alle librerie Qt con lo stesso codice è possibile generare eseguibili anche per altri sistemi operativi (Linux, MacOs, Android e IOs). In figura \ref{fig:class_diagram_client} è mostrato il diagramma delle classi dell'applicazione.
+L'applicazione client è stata sviluppata utilizzando le librerie Qt 6.4.3 e l'ambiente di sviluppo Qt Creator 10.0.1. L'applicazione è stata sviluppata per sistema operativo Windows, ma grazie alle librerie Qt con lo stesso codice è possibile generare eseguibili anche per altri sistemi operativi (Linux, MacOs, Android e IOs). In figura \ref{fig:class_diagram_client} è mostrato il diagramma delle classi dell'applicazione. Il suo funzionamento viene descritto nel Manuale Utente.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\textwidth]{./ImageFiles/client app diagram.drawio.png}
+	\includegraphics[width=\textwidth]{./ImageFiles/client app diagram}
 	\caption{Class Diagram dell'app client.}
 	\label{fig:class_diagram_client}
 \end{figure}
@@ -136,44 +135,39 @@ L'applicazione client è stata sviluppata utilizzando le librerie Qt 6.4.3 e l'a
 \section{Esempi e sviluppi futuri}
 Di seguito viene riportata una lista contente gli sviluppi futuri:
 \begin{itemize}
-	\item \textbf{Introduzione di nuovi componenti}: al momento, i componenti che possono essere utilizzati sono resistenze, condensatori, condensatori polarizzati, diodi e generatori di tensione. Ci sono altri componenti che possono essere inseriti all'interno dell'applicazione per generare circuiti più complessi.
-	\item \textbf{Gestione di formati diversi da A4}: al momento, l'applicazione è in grado di disegnare circuiti scalati in modo corretto basandosi sulle dimensioni di un foglio A4. 
-	\item \textbf{Gestione di fattori di scala molto grandi}: nel caso in cui il circuito sia estremamente grande, l'output generato può contenere dei difetti dovuti al fattore di scala. In tal caso, è consigliabile dividere il circuito su più fogli.
+	\item \textbf{introduzione di nuovi componenti}: al momento, i componenti che possono essere utilizzati sono resistenze, condensatori, condensatori polarizzati, diodi e generatori di tensione. Ci sono altri componenti che possono essere inseriti all'interno dell'applicazione per generare circuiti più complessi.
+	\item \textbf{gestione di formati diversi da A4}: al momento, l'applicazione è in grado di disegnare circuiti scalati in modo corretto basandosi sulle dimensioni di un foglio A4. 
+	\item \textbf{gestione di fattori di scala molto grandi}: nel caso in cui il circuito sia estremamente grande, l'output generato può contenere dei difetti dovuti al fattore di scala. In tal caso, è consigliabile dividere il circuito su più fogli.
 \end{itemize}
-
 Di seguito viene mostrato come utilizzare l'applicazione \textit{ltspice2circuitikz}. 
-
-1. Aprire l'applicazione \textit{ltspice2circuitikz} cliccando due volte l'eseguibile \textit{ltspice2circuitikz.exe}. Si aprirà una schermata come quella mostrata in figura \ref{fig:punto_1}.
-
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.7\textwidth]{./ImageFiles/mainview.png}
-	\caption{Schermata principale dell'applicazione.}
-	\label{fig:punto_1}
-\end{figure}
-
-2. Cliccare l'icona \textit{"Open File"} e selezionare un file .asc da aprire. Una volta selezionato il file, il suo contenuto verrà mostrato nella finestra in alto a sinistra (figura \ref{fig:punto_2}). Il contenuto del file non può essere modificato dall'applicazione ma deve essere modificato da un tool esterno. Nel caso venga modificato è possibile ricaricare il file premendo l'icona di \textit{"Refresh"}.
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.7\textwidth]{./ImageFiles/file aperto.png}
-	\caption{Schermata che mostra il file aperto.}
-	\label{fig:punto_2}
-\end{figure}
-
-3. Premere il pulsante verde \textit{"Run"} per lanciare il processo di conversione. Se non ci sono errori, viene mostrato un messaggio verde nell'\textit{Application Output} e viene caricato il contenuto del file latex nella colonna di destra (figura \ref{fig:punto_3}). Inoltre, viene aperto il file pdf contenente il circuito generato. Se si vuole mostrare anche il file formattato in modo corretto, è sufficiente selezionare la voce \textit{"Formatted ASC File"} nel menù \textit{"View"}.
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.7\textwidth]{./ImageFiles/run con successo.png}
-	\caption{Processo eseguito con successo.}
-	\label{fig:punto_3}
-\end{figure}
-
-4. Nel caso in cui ci siano errori semantici o sintattici, il processo si interrompe e nell'\textit{Application Output} vengono mostrati gli errori (figura \ref{fig:punto_4}).
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.7\textwidth]{./ImageFiles/semantic error.png}
-	\caption{Presenza di errori semantici.}
-	\label{fig:punto_4}
-\end{figure}
+	\begin{enumerate}
+	\item Aprire l'applicazione \textit{ltspice2circuitikz} cliccando due volte l'eseguibile \textit{ltspice2circuitikz.exe}. Si aprirà una schermata come quella mostrata in figura \ref{fig:punto_1}.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{./ImageFiles/mainview.png}
+		\caption{Schermata principale dell'applicazione.}
+		\label{fig:punto_1}
+	\end{figure}
+	\item Cliccare l'icona \textit{"Open File"} e selezionare un file .asc da aprire. Una volta selezionato il file, il suo contenuto verrà mostrato nella finestra in alto a sinistra (figura \ref{fig:punto_2}). Il contenuto del file non può essere modificato dall'applicazione ma deve essere modificato da un tool esterno. Nel caso venga modificato è possibile ricaricare il file premendo l'icona di \textit{"Refresh"}.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{./ImageFiles/file aperto.png}
+		\caption{Schermata che mostra il file aperto.}
+		\label{fig:punto_2}
+	\end{figure}
+	\newpage
+	\item Premere il pulsante verde \textit{"Run"} per lanciare il processo di conversione. Se non ci sono errori, viene mostrato un messaggio verde nell'\textit{Application Output} e viene caricato il contenuto del file latex nella colonna di destra (figura \ref{fig:punto_3}). Inoltre, viene aperto il file pdf contenente il circuito generato. Se si vuole mostrare anche il file formattato in modo corretto, è sufficiente selezionare la voce \textit{"Formatted ASC File"} nel menù \textit{"View"}.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{./ImageFiles/run con successo.png}
+		\caption{Processo eseguito con successo.}
+		\label{fig:punto_3}
+	\end{figure}
+	\item Nel caso in cui ci siano errori semantici o sintattici, il processo si interrompe e nell'\textit{Application Output} vengono mostrati gli errori (figura \ref{fig:punto_4}).
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{./ImageFiles/semantic error.png}
+		\caption{Errori semantici.}
+		\label{fig:punto_4}
+	\end{figure}
+\end{enumerate}
