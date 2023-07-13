@@ -54,8 +54,9 @@ public class Component {
 		case "ind2":
 			return "L";
 		case "diode":
-		case "LED":
 			return "Do";
+		case "LED":
+			return "leDo";
 		case "schottky":
 			return "sDo";
 		case "zener":
@@ -93,6 +94,7 @@ public class Component {
 		case "zener":
 		case "schottky":
 		case "varactor":
+		case "LED":
 			x1_offset = 16;
 			y1_offset = 0;
 			x2_offset = 16;

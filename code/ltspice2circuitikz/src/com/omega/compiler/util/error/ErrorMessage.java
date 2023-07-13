@@ -52,7 +52,7 @@ public class ErrorMessage {
 			errMsg += "SpiceLine value '" + tk.getText() + "' is not valid.";
 			break;
 		case SYMBOLTYPENULL_ERROR:
-			errMsg += "The SpiceLine value '" + tk.getText() + "' has no symbol reference.";
+			errMsg += "The symbol attribute '" + tk.getText() + "' has no symbol reference.";
 			break;
 		case MISS_TYPEATTR_ERROR:
 			errMsg += "Missing type attribute for previous symbol '" + tk.getText() + "'.";

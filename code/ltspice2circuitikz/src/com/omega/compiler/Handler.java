@@ -367,7 +367,7 @@ public class Handler {
 					}
 				} else {
 					System.out.println("No symbol to refer Type value");
-					myErrorHandler(SYMBOLTYPENULL_ERROR, (Token) tokenSymAttrValue);
+					myErrorHandler(SYMBOLTYPENULL_ERROR, (Token) tokenSymAttr);
 				}
 			} else if (symAttr.compareTo("SpiceLine") == 0) {
 				if (lastComponent != null) {
@@ -394,7 +394,7 @@ public class Handler {
 					}
 				} else {
 					System.out.println("No symbol to refer SpiceLine value");
-					myErrorHandler(SYMBOLTYPENULL_ERROR, (Token) tokenSymAttrValue);
+					myErrorHandler(SYMBOLTYPENULL_ERROR, (Token) tokenSymAttr);
 				}
 			} else if (symAttr.compareTo("Value") == 0) {
 				if (lastComponent != null) {
@@ -403,6 +403,9 @@ public class Handler {
 					} else {
 						lastComponent.setValue(value.getText());
 					}
+				} else {
+					System.out.println("No symbol to refer SpiceLine value");
+					myErrorHandler(SYMBOLTYPENULL_ERROR, (Token) tokenSymAttr);
 				}
 			} else if (symAttr.compareTo("InstName") == 0) {
 				if (lastComponent != null) {
@@ -411,6 +414,9 @@ public class Handler {
 					} else {
 						lastComponent.setName(value.getText());
 					}
+				} else {
+					System.out.println("No symbol to refer SpiceLine value");
+					myErrorHandler(SYMBOLTYPENULL_ERROR, (Token) tokenSymAttr);
 				}
 			}
 
@@ -543,24 +549,8 @@ public class Handler {
 	 * Checks if the mandatory attributes of a symbol are present
 	 */
 	private void checkMandatoryAttribute() {
-
 		if (lastComponent != null) {
-			if (/*lastComponent.getToken().getText().equals("varactor")
-					|| lastComponent.getToken().getText().equals("schottky")
-					|| lastComponent.getToken().getText().equals("zener")
-					||*/ lastComponent.getToken().getText().equals("LED")) {
-
-				if (!typeAttributePresent) {
-					System.out.println("Missing Type attribute for SYMBOL");
-					myErrorHandler(MISS_TYPEATTR_ERROR, lastComponent.getToken());
-				}
-
-//				if (!lastComponent.getToken().getText().equals("varactor") && !descAttributePresent) {
-//					System.out.println("Missing Desc attribute for SYMBOL");
-//					myErrorHandler(MISS_DESCATTR_ERROR, lastComponent.getToken());
-//				}
-
-			} else if (lastComponent.getToken().getText().equals("cap") && descAttributePresent) {
+			if (lastComponent.getToken().getText().equals("cap") && descAttributePresent) {
 				if (polarizedPresent && !capacitorPresent) {
 					System.out.println("Missing capacitor for in description");
 					myErrorHandler(DESCRIPTION_POLARIZED_NOCAPACITOR_ERROR, lastComponent.getToken());

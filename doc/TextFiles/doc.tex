@@ -133,13 +133,11 @@ L'applicazione gestisce errori lessicali, sintattici e semantici. Di seguito son
 	\item \texttt{ROTMIRR\_ERROR}: l'attributo inserito non indica ne rotazione ne mirror;
 	\item \texttt{SYMATTRTYPE\_ERROR}: la parola che segue il token \texttt{SYMATTR} non è corretta. Le parole ammesse sono \texttt{InstName}, \texttt{Description}, \texttt{Type}, \texttt{Value}, \texttt{SpiceLine};
 	\item \texttt{DESCRIPTION\_ERROR}: la parola che segue l'attributo \texttt{Description} deve essere coerente con il simbolo in questione. Se il simbolo è \texttt{schottky}, \texttt{zener} o \texttt{LED} allora la parola che segue \texttt{Description} deve essere \texttt{Diode}. Se il simbolo è \texttt{polcap}, deve invece essere \texttt{Capacitor};
-	\item \texttt{DESCRIPTION\_POLARIZED\_ERROR}: è un caso particolare dell'errore precedente. Nel caso in cui il simbolo è \texttt{cap}, la descrizione è \texttt{Polarized Capacitor};\todo{scritto così sembra obbligatorio per tutti i cap}
-	\item \texttt{DESCRIPTION\_POLARIZED\_NOCAPACITOR\_ERROR}: indica il caso in cui il simbolo è \texttt{cap} e ci sia solo la parola \texttt{Polarized}, mentre l'applicazione si aspetta \texttt{Polarized Capacitor};
+	\item \texttt{DESCRIPTION\_POLARIZED\_ERROR}: è un caso particolare dell'errore precedente. Nel caso in cui il simbolo è \texttt{cap}, se la descrizione è presente deve essere uguale a \texttt{Polarized Capacitor};
+	\item \texttt{DESCRIPTION\_POLARIZED\_NOCAPACITOR\_ERROR}: indica il caso in cui il simbolo è \texttt{cap} e ci sia solo la parola \texttt{Polarized} come \texttt{Description}, mentre l'applicazione si aspetta \texttt{Polarized Capacitor};
 	\item \texttt{TYPE\_ERROR}: i valori dell'attributo che segue \texttt{Type} dipende dal componente in questione. Nel caso in cui il componente è \texttt{shottky}, \texttt{zener}, \texttt{LED} allora bisogna indicare \texttt{diode}. Nel caso in cui, invece, è \texttt{polcap} il valore accettato è \texttt{cap};
 	\item \texttt{SPICELINEVALUE\_ERROR}: un attributo che segue la parola \texttt{SpiceLine} non è corretto. Gli attributi riconosciuti sono \texttt{tol}, \texttt{pwr}, \texttt{Rser}, \texttt{Rpar}, \texttt{Cpar}, \texttt{Ipk}, \texttt{mfg}, \texttt{pn}, \texttt{V}, \texttt{Irms}, \texttt{Lser}, \texttt{type};
 	\item \texttt{SYMBOLTYPENULL\_ERROR}: indica che son presenti degli attributi ma non è stato dichiarato un simbolo in precedenza;
-	\item \texttt{MISS\_TYPEATTR\_ERROR}: indica la mancanza dell'attributo \texttt{Type}. Esso è necessario per i componenti \texttt{schottky}, \texttt{zener}, \texttt{LED}; \todo{significa questo vale?}
-	\item \texttt{MISS\_DESCATTR\_ERROR}: indica la mancanza dell'attributo \texttt{Description}. Vale per il componente \texttt{varactor};\todo{cosa significa vale ? vedo che nel codice è commentato }
 	
 \end{itemize}
 
