@@ -323,6 +323,9 @@ public class Handler {
 								System.out.println("Description type for cap is not correct");
 								myErrorHandler(DESCRIPTION_ERROR, (Token) tokenSymAttrValue);
 							}
+						} else {
+							System.out.println("Description type for this symbol is not allowed");
+							myErrorHandler(DESCRIPTION_NOT_ALLOWED, lastComponent.getToken());
 						}
 
 					} else {
