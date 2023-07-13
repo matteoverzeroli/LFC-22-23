@@ -9,9 +9,6 @@ public class ErrorMessage {
 		case VERSION_ERROR:
 			errMsg += "Expected version number '4' but found version number equal to '" + tk.getText() + "'.";
 			break;
-		case ATTRIBUTE_ERROR:
-			errMsg += "ID '" + tk.getText() + "' is not an attribute.";
-			break;
 		case WINDOWOPTION_ERROR:
 			errMsg += "Windows Option '" + tk.getText() + "' is not valid.";
 			break;
