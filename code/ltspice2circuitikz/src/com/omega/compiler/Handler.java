@@ -188,6 +188,9 @@ public class Handler {
 				lastComponent = new Component(token);
 				lastComponent.setType(symbolType);
 
+			} else if (AttributeList.getListSymbolToImplement().contains(symbolType)) {
+				System.out.println("Symbol type needs to be implemented");
+				myErrorHandler(SYMBOLTYPE_TO_IMPLEMENT, token);
 			} else {
 				System.out.println("Symbol type is not correct");
 				myErrorHandler(SYMBOLTYPE_ERROR, token);
@@ -539,20 +542,20 @@ public class Handler {
 	private void checkMandatoryAttribute() {
 
 		if (lastComponent != null) {
-			if (lastComponent.getToken().getText().equals("varactor")
+			if (/*lastComponent.getToken().getText().equals("varactor")
 					|| lastComponent.getToken().getText().equals("schottky")
 					|| lastComponent.getToken().getText().equals("zener")
-					|| lastComponent.getToken().getText().equals("LED")) {
+					||*/ lastComponent.getToken().getText().equals("LED")) {
 
 				if (!typeAttributePresent) {
 					System.out.println("Missing Type attribute for SYMBOL");
 					myErrorHandler(MISS_TYPEATTR_ERROR, lastComponent.getToken());
 				}
 
-				if (!lastComponent.getToken().getText().equals("varactor") && !descAttributePresent) {
-					System.out.println("Missing Desc attribute for SYMBOL");
-					myErrorHandler(MISS_DESCATTR_ERROR, lastComponent.getToken());
-				}
+//				if (!lastComponent.getToken().getText().equals("varactor") && !descAttributePresent) {
+//					System.out.println("Missing Desc attribute for SYMBOL");
+//					myErrorHandler(MISS_DESCATTR_ERROR, lastComponent.getToken());
+//				}
 
 			} else if (lastComponent.getToken().getText().equals("cap") && descAttributePresent) {
 				if (polarizedPresent && !capacitorPresent) {

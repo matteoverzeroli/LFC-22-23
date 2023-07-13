@@ -20,7 +20,7 @@ public class ParserTester {
 	public static void main(String[] args) {
 		CommonTokenStream tokens;
 		String fileIn;
-		fileIn = ".\\resources\\Test2 - RLC.asc";
+		fileIn = ".\\resources\\Draft1.asc";
 
 		/*if (args.length == 1) {
 			fileIn = args[0];

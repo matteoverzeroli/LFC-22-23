@@ -60,6 +60,9 @@ public class ErrorMessage {
 		case MISS_DESCATTR_ERROR:
 			errMsg += "Missing desc attribute for previous symbol '" + tk.getText() + "' ";
 			break;
+		case SYMBOLTYPE_TO_IMPLEMENT:
+			errMsg += "Symbol Type '" + tk.getText() + "' has not been implemented yet";
+			break;
 		default:
 			errMsg += "Message error not defined, please contact support";
 

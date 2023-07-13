@@ -44,15 +44,24 @@ public class Component {
 	public String getType() {
 		switch (type) {
 		case "res":
+		case "res2":
 			return "R";
 		case "cap":
 			return "C";
 		case "polcap":
 			return "eC";
 		case "ind":
+		case "ind2":
 			return "L";
 		case "diode":
+		case "LED":
 			return "Do";
+		case "schottky":
+			return "sDo";
+		case "zener":
+			return "zzDo";
+		case "varactor":
+			return "VCo";
 		case "voltage":
 			return "vsource";
 		default:
@@ -70,7 +79,9 @@ public class Component {
 		// apply offset to calculate the connection points of the components
 		switch (type) {
 		case "res":
+		case "res2":
 		case "ind":
+		case "ind2":
 			x1_offset = 16;
 			y1_offset = 16;
 			x2_offset = 16;
@@ -79,6 +90,9 @@ public class Component {
 		case "cap":
 		case "polcap":
 		case "diode":
+		case "zener":
+		case "schottky":
+		case "varactor":
 			x1_offset = 16;
 			y1_offset = 0;
 			x2_offset = 16;

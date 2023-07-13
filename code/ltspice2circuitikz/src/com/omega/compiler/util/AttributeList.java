@@ -15,8 +15,9 @@ public class AttributeList {
 			"Bottom", "VCenter", "VLeft", "VRight", "VTop", "VBottom");
 	private static List<String> listIOPinAttr = Arrays.asList("In", "Out", "BiDir");
 	private static List<String> listSymbolType = Arrays.asList("res", "res2", "cap", "ind", "ind2", "diode", "schottky",
-			"zener", "varactor", "LED", "TVSdiode", "pnp", "pnp2", "pnp4", "npn", "npn2", "npn3", "npn4", "voltage",
-			"current", "nmos", "nmos4", "pmos", "polcap");
+			"zener",  "LED",  "voltage", "polcap", "varactor");
+	private static List<String> listSymbolToImplement = Arrays.asList("TVSdiode", "pnp", "pnp2", "pnp4", "npn", 
+			"npn2", "npn3", "npn4","current", "nmos", "nmos4", "pmos");
 	private static List<String> listMirrorType = Arrays.asList("M0", "M90", "M180", "M270");
 	private static List<String> listRotType = Arrays.asList("R0", "R90", "R180", "R270");
 	private static List<String> listSymAttr = Arrays.asList("InstName", "Description", "Type", "Value", "SpiceLine");
@@ -112,5 +113,13 @@ public class AttributeList {
 
 	public static void setListRAttribute(List<String> listRAttribute) {
 		AttributeList.listRAttribute = listRAttribute;
+	}
+	
+	public static List<String> getListSymbolToImplement() {
+		return listSymbolToImplement;
+	}
+
+	public static void setListSymbolToImplement(List<String> listSymbolToImplement) {
+		AttributeList.listSymbolToImplement = listSymbolToImplement;
 	}
 }

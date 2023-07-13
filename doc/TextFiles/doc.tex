@@ -127,12 +127,21 @@ L'applicazione gestisce sia errori sintattici che errori semantici. Di seguito s
 	\item \texttt{ATTRIBUTE\_ERROR}: l'attributo inserito non appartiene all'elenco degli attributi permessi;
 	\item \texttt{WINDOWOPTION\_ERROR}: l'opzione riguardante la regola \texttt{WINDOW} non è corretta. Sono ammesse le seguenti opzioni: \texttt{Invisibile}, \texttt{Center}, \texttt{Left}, \texttt{Right}, \texttt{Top}, \texttt{Bottom}, \texttt{VCenter}, \texttt{VLeft}, \texttt{VRight}, \texttt{VTop} e \texttt{VBottom};
 	\item \texttt{IOPINATTR\_ERROR}: l'attributo associato alla regola \texttt{IOPIN} non è corretto. Sono ammessi i seguenti attributi: \texttt{In}, \texttt{Out}, \texttt{BiDir};
-	\item \texttt{SYMBOLTYPE\_ERROR}: il simbolo inserito non è stato riconosciuto. I simboli che al momento vengono riconosciuti dall'applicazione sono \todo{qui bisogna distinguere in simboli non riconosciuti e simboli non ancora implementati}
+	\item \texttt{SYMBOLTYPE\_ERROR}: il simbolo inserito non è stato riconosciuto. I simboli che al momento vengono riconosciuti dall'applicazione sono \texttt{res}, \texttt{res2}, \texttt{cap}, \texttt{ind}, \texttt{ind2}, \texttt{diode}, \texttt{schottky}, \texttt{zener},  \texttt{LED}, \texttt{varactor}, \texttt{voltage} e \texttt{polcap};
+	\item \texttt{SYMBOLTYPE\_TO\_IMPLEMENT}: il simbolo inserito è riconosciuto ma deve ancora essere implementato per la traduzione corretta. I simboli presenti nella lista \texttt{listSymbolToImplement} sono solo alcuni dei simboli riconosciuti da LTSpice che necessitano di implementazione;
 	\item \texttt{ROTATIONTYPE\_ERROR}: la rotazione definita per il componente non è valida. Le rotazioni accettate sono \texttt{R0}, \texttt{R90}, \texttt{R180} e \texttt{R270};
 	\item \texttt{MIRRORTYPE\_ERROR}: l'attributo di mirror definito per il componente non è valido. Gli attributi possibili sono \texttt{M0}, \texttt{M90}, \texttt{M180} e \texttt{M270};
 	\item \texttt{ROTMIRR\_ERROR}: l'attributo inserito non indica ne rotazione ne mirror;
 	\item \texttt{SYMATTRTYPE\_ERROR}: la parola che segue il token \texttt{SYMATTR} non è corretta. Le parole ammesse sono \texttt{InstName}, \texttt{Description}, \texttt{Type}, \texttt{Value}, \texttt{SpiceLine};
-	\item \texttt{DESCRIPTION\_ERROR}: la parola che segue l'attributo \texttt{Description} deve essere coerente con il simbolo in questione;\todo{Spiegare che se c'è diode allora bla bla se c'è coso allora bla bla}
+	\item \texttt{DESCRIPTION\_ERROR}: la parola che segue l'attributo \texttt{Description} deve essere coerente con il simbolo in questione. Se il simbolo è \texttt{schottky}, \texttt{zener} o \texttt{LED} allora la parola che segue \texttt{Description} deve essere \texttt{Diode}. Se il simbolo è \texttt{polcap}, deve invece essere \texttt{Capacitor};
+	\item \texttt{DESCRIPTION\_POLARIZED\_ERROR}: è un caso particolare dell'errore precedente. Nel caso in cui il simbolo è \texttt{cap}, la descrizione è \texttt{Polarized Capacitor};
+	\item \texttt{DESCRIPTION\_POLARIZED\_NOCAPACITOR\_ERROR}: indica il caso in cui il simbolo è \texttt{cap} e ci sia solo una parola nella descrizione, mentre l'applicazione se ne aspetta due;
+	\item \texttt{TYPE\_ERROR}: l'attributo che segue \texttt{Type} dipende dal componente in questione. Nel caso in cui il componente è \texttt{shottky}, \texttt{zener}, \texttt{LED} allora si aspetta \texttt{diode}. Nel caso in cui, invece, è \texttt{polcap} si aspetta \texttt{cap};
+	\item \texttt{SPICELINEVALUE\_ERROR}: un attributo che segue la parola \texttt{SpiceLine} non è corretto. Attributi riconosciuti sono \texttt{tol}, \texttt{pwr}, \texttt{Rser}, \texttt{Rpar}, \texttt{Cpar}, \texttt{Ipk}, \texttt{mfg}, \texttt{pn}, \texttt{V}, \texttt{Irms}, \texttt{Lser}, \texttt{type};
+	\item \texttt{SYMBOLTYPENULL\_ERROR}: indica che son presenti degli attributi ma non è stato dichiarato un simbolo in precedenza;
+	\item \texttt{MISS\_TYPEATTR\_ERROR}: indica la mancanza dell'attributo \texttt{Type}. Vale per i componenti \texttt{schottky}, \texttt{zener}, \texttt{LED};
+	\item \texttt{MISS\_DESCATTR\_ERROR}: indica la mancanza dell'attributo \texttt{Description}. Vale per il componente \texttt{varactor};
+	
 \end{itemize}
 
 \section{Client app}
