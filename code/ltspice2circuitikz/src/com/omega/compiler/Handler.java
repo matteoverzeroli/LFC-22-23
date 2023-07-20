@@ -23,7 +23,6 @@ import com.omega.compiler.util.error.ErrorMessage;
 
 public class Handler {
 
-	private boolean typeAttributePresent;
 	private boolean descAttributePresent;
 
 	private boolean polarizedPresent; // to handle Polarized Capacitor description
@@ -177,7 +176,6 @@ public class Handler {
 			if (AttributeList.getListSymbolType().contains(symbolType)) {
 				System.out.println("Symbol type is correct");
 
-				typeAttributePresent = false;
 				descAttributePresent = false;
 				polarizedPresent = false;
 				capacitorPresent = false;
@@ -344,7 +342,6 @@ public class Handler {
 
 				if (lastComponent != null) {
 
-					typeAttributePresent = true;
 					if (lastComponent.getToken().getText().equals("schottky")
 							|| lastComponent.getToken().getText().equals("zener")
 							|| lastComponent.getToken().getText().equals("varactor")
@@ -362,7 +359,7 @@ public class Handler {
 							System.out.println("Type for cap is correct");
 						else {
 							System.out.println("Type for cap is not correct");
-							myErrorHandler(TYPE_ERROR, (Token) tokenSymAttrValue);
+							myErrorHandler(TYPE_ERROR, value);
 						}
 					}
 				} else {
