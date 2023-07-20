@@ -350,7 +350,7 @@ public class Handler {
 							System.out.println("Type for diode is correct");
 						else {
 							System.out.println("Type for diode is not correct");
-							myErrorHandler(TYPE_ERROR, (Token) tokenSymAttrValue);
+							myErrorHandler(TYPE_ERROR, value);
 						}
 					}
 

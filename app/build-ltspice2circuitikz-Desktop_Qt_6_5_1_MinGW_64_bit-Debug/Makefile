@@ -317,6 +317,7 @@ Makefile: ../ltspice2circuitikz/ltspice2circuitikz.pro C:/Qt/6.5.1/mingw_64/mksp
 		../ltspice2circuitikz/ltspice2circuitikz.pro \
 		C:/Qt/6.5.1/mingw_64/lib/Qt6Widgets.prl \
 		C:/Qt/6.5.1/mingw_64/lib/Qt6Gui.prl \
+		C:/Qt/6.5.1/mingw_64/lib/Qt6Core5Compat.prl \
 		C:/Qt/6.5.1/mingw_64/lib/Qt6Core.prl \
 		C:/Qt/6.5.1/mingw_64/lib/Qt6EntryPoint.prl \
 		C:/Qt/6.5.1/mingw_64/mkspecs/features/build_pass.prf \
@@ -569,6 +570,7 @@ C:/Qt/6.5.1/mingw_64/mkspecs/features/lex.prf:
 ../ltspice2circuitikz/ltspice2circuitikz.pro:
 C:/Qt/6.5.1/mingw_64/lib/Qt6Widgets.prl:
 C:/Qt/6.5.1/mingw_64/lib/Qt6Gui.prl:
+C:/Qt/6.5.1/mingw_64/lib/Qt6Core5Compat.prl:
 C:/Qt/6.5.1/mingw_64/lib/Qt6Core.prl:
 C:/Qt/6.5.1/mingw_64/lib/Qt6EntryPoint.prl:
 C:/Qt/6.5.1/mingw_64/mkspecs/features/build_pass.prf:

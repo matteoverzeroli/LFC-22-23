@@ -1,5 +1,8 @@
 #include "FileHandler.h"
 #include <QFile>
+#include <QTextStream>
+#include <QDebug>
+#include <QTextCodec>
 
 FileHandler::FileHandler(QObject *parent)
     : QObject{parent}
@@ -20,7 +23,7 @@ bool FileHandler::readFile(QString path)
     if (!fileToOpen.open(QIODevice::ReadOnly))
         return false;
 
-    content = QString::fromLatin1(fileToOpen.readAll());
+    content = QString::fromLocal8Bit(fileToOpen.readAll());
 
     emit contentChanged(content);
 
